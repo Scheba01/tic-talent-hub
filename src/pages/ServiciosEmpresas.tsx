@@ -95,39 +95,39 @@ const ServiciosEmpresas = () => {
                 </h3>
               </div>
 
-              {/* Benefits - Clean List */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-primary/5 transition-colors">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+              {/* Benefits - Clean List with Larger Size */}
+              <div className="space-y-6 mb-10">
+                <div className="flex items-start space-x-6 p-6 rounded-lg hover:bg-primary/5 transition-colors">
+                  <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-foreground font-medium">
+                    <p className="text-lg text-foreground font-medium leading-relaxed">
                       <span className="font-semibold">Especialistas TIC:</span> Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-primary/5 transition-colors">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div className="flex items-start space-x-6 p-6 rounded-lg hover:bg-primary/5 transition-colors">
+                  <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-foreground font-medium">
+                    <p className="text-lg text-foreground font-medium leading-relaxed">
                       <span className="font-semibold">Validación 360°:</span> Evaluación técnica completa y referencias verificadas
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-primary/5 transition-colors">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div className="flex items-start space-x-6 p-6 rounded-lg hover:bg-primary/5 transition-colors">
+                  <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-foreground font-medium">
+                    <p className="text-lg text-foreground font-medium leading-relaxed">
                       <span className="font-semibold">Apoyo integral:</span> Acompañamiento en entrevistas, negociación y cierre
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-primary/5 transition-colors">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div className="flex items-start space-x-6 p-6 rounded-lg hover:bg-primary/5 transition-colors">
+                  <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-foreground font-medium">
+                    <p className="text-lg text-foreground font-medium leading-relaxed">
                       <span className="font-semibold">Sin riesgo:</span> Pago contra contratación efectiva
                     </p>
                   </div>
