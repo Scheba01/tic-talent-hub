@@ -22,7 +22,7 @@ const Index = () => {
                 <Link to="/servicios-para-empresas">Descubra Nuestros Servicios</Link>
               </Button>
               <Button asChild className="btn-hero">
-                <Link to="/vacantes-y-perfiles">Vea las Vacantes</Link>
+                <Link to="/contacto">Contáctanos</Link>
               </Button>
             </div>
           </div>
