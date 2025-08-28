@@ -4,10 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, Target, Award } from "lucide-react";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="pt-16">
@@ -18,10 +16,7 @@ const Index = () => {
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-8">
               El Talento que Impulsa la Industria TIC
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Conectamos a los líderes del sector de Pruebas, Inspección y Certificación (TIC) con el talento 
-              que necesitan para crecer. Le entregamos una shortlist en 7 días. Garantizado.
-            </p>
+            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">Conectamos a los líderes del sector de Testeo, Inspección y Certificación (TIC) con el talento que necesitan para crecer. Le entregamos una shortlist en 7 días. Garantizado.</p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild className="btn-outline-hero">
                 <Link to="/servicios-para-empresas">Descubra Nuestros Servicios</Link>
@@ -176,8 +171,6 @@ const Index = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
