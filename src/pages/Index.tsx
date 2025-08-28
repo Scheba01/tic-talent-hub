@@ -53,11 +53,11 @@ const Index = () => {
               <Card className="text-center shadow-elegant">
                 <CardHeader>
                   <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <CardTitle className="text-2xl">Garantía de 30 Días</CardTitle>
+                  <CardTitle className="text-2xl">Garantía de 90 Días</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Si el candidato no cumple las expectativas en su primer mes, buscamos un reemplazo sin costo alguno.
+                    Si el candidato no cumple las expectativas en sus primeros tres meses, buscamos un reemplazo sin costo alguno.
                   </p>
                 </CardContent>
               </Card>
