@@ -22,7 +22,7 @@ const Index = () => {
                 <Link to="/servicios-para-empresas">Descubra Nuestros Servicios</Link>
               </Button>
               <Button asChild className="btn-hero">
-                <Link to="/contacto">Contáctanos</Link>
+                <Link to="/vacantes-y-perfiles">Vea las Vacantes</Link>
               </Button>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Index = () => {
                   <div className="flex items-start space-x-4">
                     <Users className="w-8 h-8 text-primary mt-1" />
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-2">+50 Años de Experiencia Combinada</h3>
+                      <h3 className="text-xl font-display font-semibold mb-2">+30 Años de Experiencia Combinada</h3>
                       <p className="text-muted-foreground">
                         Nuestro equipo entiende las necesidades específicas del sector TIC porque proviene de él.
                       </p>
@@ -124,7 +124,7 @@ const Index = () => {
                   Hable con nuestros expertos y descubra cómo podemos acelerar su proceso de contratación.
                 </p>
                 <Button asChild className="btn-hero w-full">
-                  <Link to="/contacto">Contáctanos por WhatsApp</Link>
+                  <Link to="/contacto">Agende una Llamada Estratégica</Link>
                 </Button>
               </div>
             </div>
