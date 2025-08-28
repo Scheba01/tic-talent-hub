@@ -74,7 +74,7 @@ const QuienesSomos = () => {
               ¿Listo para potenciar su equipo?
             </h2>
             <Button asChild className="btn-hero">
-              <Link to="/contacto">Agende una llamada con nosotros</Link>
+              <Link to="/contacto">Escríbenos por WhatsApp</Link>
             </Button>
           </div>
         </section>
