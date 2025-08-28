@@ -202,17 +202,20 @@ const Contacto = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* WhatsApp CTA Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6">
-              ¿Prefiere una Llamada Directa?
+              ¿Prefiere Contactar por WhatsApp?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Programe una llamada estratégica de 30 minutos para discutir sus necesidades específicas de talento.
+              Contáctenos directamente por WhatsApp para una respuesta inmediata y personalizada sobre sus necesidades de talento.
             </p>
-            <Button className="btn-hero">
-              Agendar Llamada
+            <Button 
+              className="btn-hero" 
+              onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
+            >
+              Contactar por WhatsApp
             </Button>
           </div>
         </section>
