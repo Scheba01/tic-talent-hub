@@ -83,53 +83,90 @@ const ServiciosEmpresas = () => {
               </Card>
             </div>
 
-            {/* Guarantee Banner */}
-            <div className="bg-primary/10 border-l-4 border-primary rounded-lg p-6 mb-12">
-              <div className="flex items-center space-x-4">
-                <Shield className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h4 className="text-xl font-display font-semibold mb-2">Garantía Total</h4>
-                  <p className="text-muted-foreground">Si el candidato no es el adecuado, buscamos un reemplazo sin costo durante los primeros 30 días.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Value Proposition */}
-            <div className="text-center mb-8">
-              <p className="text-lg text-muted-foreground mb-8">
-                En 7 días hábiles te presentamos candidatos validados técnica y culturalmente.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 text-left">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-muted-foreground">Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación.</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-muted-foreground">Validación técnica y referencias 360°.</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-muted-foreground">Apoyo en entrevistas, negociación y cierre.</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-muted-foreground">Garantía 90 días: si el candidato no resulta, lo reemplazamos sin costo.</p>
-                </div>
-                <div className="flex items-start space-x-3 md:col-span-2">
-                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-muted-foreground">Pago contra contratación efectiva.</p>
+            {/* Value Proposition - Redesigned */}
+            <div className="bg-gradient-to-br from-primary/5 via-primary/3 to-primary/5 border border-primary/20 rounded-2xl p-8 mb-12 shadow-elegant">
+              {/* Main Promise */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center space-x-3 bg-white/80 px-6 py-3 rounded-full border border-primary/20 mb-6">
+                  <Clock className="w-6 h-6 text-primary" />
+                  <p className="text-xl font-semibold text-primary">
+                    En 7 días hábiles te presentamos candidatos validados técnica y culturalmente
+                  </p>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-lg p-6 mb-6">
-                <p className="text-lg font-semibold text-primary mb-4">
-                  👉 Deja de perder meses buscando. En TIC Select hacemos que tu contratación sea rápida, segura y garantizada.
-                </p>
-                <Button asChild className="btn-hero">
-                  <Link to="/contacto">Quiero mi primer shortlist en 7 días</Link>
-                </Button>
+              {/* Benefits Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-primary mb-2">Especialistas TIC</h5>
+                      <p className="text-sm text-muted-foreground">Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-primary mb-2">Validación Completa</h5>
+                      <p className="text-sm text-muted-foreground">Validación técnica y referencias 360° de todos los candidatos.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-primary mb-2">Apoyo Integral</h5>
+                      <p className="text-sm text-muted-foreground">Apoyo en entrevistas, negociación y cierre del proceso.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-primary mb-2">Pago Seguro</h5>
+                      <p className="text-sm text-muted-foreground">Pago contra contratación efectiva.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Guarantee Banner */}
+              <div className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-xl p-6 mb-8">
+                <div className="flex items-center space-x-4">
+                  <Shield className="w-10 h-10 text-white flex-shrink-0" />
+                  <div>
+                    <h4 className="text-xl font-bold mb-2">Garantía 90 Días</h4>
+                    <p className="text-white/90">Si el candidato no resulta, lo reemplazamos sin costo adicional.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="text-center">
+                <div className="bg-white/80 rounded-xl p-6 border border-primary/20">
+                  <p className="text-lg font-semibold text-primary mb-4">
+                    👉 Deja de perder meses buscando. En TIC Select hacemos que tu contratación sea rápida, segura y garantizada.
+                  </p>
+                  <Button asChild className="btn-hero text-lg px-8 py-3">
+                    <Link to="/contacto">Quiero mi primer shortlist en 7 días</Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
