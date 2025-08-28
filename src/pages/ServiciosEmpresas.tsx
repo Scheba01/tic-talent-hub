@@ -178,102 +178,155 @@ const ServiciosEmpresas = () => {
         {/* Talent Showcase Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-6xl mx-auto">
-            <Card className="shadow-elegant">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <Building className="w-8 h-8 text-primary" />
-                  <CardTitle className="text-3xl font-display">
-                    Nuestro Universo de Talento
-                  </CardTitle>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold mb-4">
+                Para Empresas: Nuestro Universo de Talento
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+                Nuestro mayor diferenciador es nuestra base de datos de talento TIC, viva y en constante actualización. 
+                Este activo estratégico nos permite encontrar perfiles altamente calificados con una velocidad inigualable.
+              </p>
+            </div>
+
+            <div className="space-y-16">
+              {/* Functional Areas */}
+              <div>
+                <h3 className="text-2xl font-display font-bold text-center mb-8">
+                  Áreas Funcionales y Perfiles que Cubrimos
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* Leadership */}
+                  <Card className="shadow-elegant">
+                    <CardContent className="p-6">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Liderazgo Ejecutivo y Estrategia</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Dirección General (CEO, Country Manager, Gerente General)</li>
+                        <li>• Direcciones de Área (COO, CFO, CCO, CTO)</li>
+                        <li>• Directores Regionales y de Unidades de Negocio</li>
+                        <li>• Gerencia de Planificación Estratégica</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Operations */}
+                  <Card className="shadow-elegant">
+                    <CardContent className="p-6">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Operaciones y Proyectos</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Gestión de Proyectos y Operaciones</li>
+                        <li>• Inspección y Auditoría de Campo</li>
+                        <li>• Laboratorio y Análisis Técnico</li>
+                        <li>• Salud, Seguridad y Medio Ambiente (HSE)</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Commercial */}
+                  <Card className="shadow-elegant">
+                    <CardContent className="p-6">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Comercial, Marketing y Desarrollo de Negocios</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Gerentes de Desarrollo de Negocios y KAM</li>
+                        <li>• Jefes y Gerentes Comerciales</li>
+                        <li>• Ejecutivos de Ventas Técnicas</li>
+                        <li>• Gerentes de Marketing y Producto (B2B)</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Innovation */}
+                  <Card className="shadow-elegant">
+                    <CardContent className="p-6">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Innovación, Tecnología y Calidad</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Gerentes de Calidad y Mejora Continua (QA/QC)</li>
+                        <li>• Líderes de Innovación y Desarrollo (I+D)</li>
+                        <li>• Jefes de Proyectos de Transformación Digital</li>
+                        <li>• Gerentes de Certificaciones y Acreditaciones</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Finance */}
+                  <Card className="shadow-elegant">
+                    <CardContent className="p-6">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Finanzas y Administración</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Gerentes de Administración y Finanzas</li>
+                        <li>• Controllers Financieros y Jefes de Control de Gestión</li>
+                        <li>• Jefes de Contabilidad, Tesorería y Adquisiciones</li>
+                        <li>• Analistas de Planificación Financiera (FP&A)</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* HR */}
+                  <Card className="shadow-elegant">
+                    <CardContent className="p-6">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Recursos Humanos y Talento</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Gerentes de RRHH y HR Business Partners (HRBP)</li>
+                        <li>• Jefes de Adquisición de Talento y Reclutamiento</li>
+                        <li>• Especialistas en Desarrollo Organizacional (DO)</li>
+                        <li>• Jefes de Compensaciones y Beneficios</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
                 </div>
-                <p className="text-xl text-muted-foreground">
-                  Nuestro mayor diferenciador es nuestra base de datos de talento TIC, viva y en constante 
-                  actualización. Este activo estratégico nos permite encontrar perfiles altamente calificados 
-                  con una velocidad inigualable.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  
-                  {/* Especialidades */}
-                  <div>
-                    <h3 className="text-xl font-display font-semibold mb-6">Especialidades que Cubrimos</h3>
-                    
-                    <div className="space-y-6">
-                      <div>
-                        <h4 className="font-semibold text-lg mb-3">Técnicos y Operativos</h4>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          <Badge variant="secondary">Auditores ISO 9001, 27001</Badge>
-                          <Badge variant="secondary">Inspectores Minería</Badge>
-                          <Badge variant="secondary">Inspectores Energía</Badge>
-                          <Badge variant="secondary">Inspectores Alimentos</Badge>
-                          <Badge variant="secondary">Analistas de Laboratorio</Badge>
-                          <Badge variant="secondary">Ingenieros</Badge>
-                          <Badge variant="secondary">Prevencionistas de Riesgo</Badge>
-                          <Badge variant="secondary">Calidad y Compliance</Badge>
-                        </div>
-                      </div>
 
-                      <div>
-                        <h4 className="font-semibold text-lg mb-3">Comerciales</h4>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          <Badge variant="secondary">Vendedores Técnicos</Badge>
-                          <Badge variant="secondary">KAMs</Badge>
-                          <Badge variant="secondary">Business Development</Badge>
-                          <Badge variant="secondary">Gerentes Comerciales</Badge>
-                          <Badge variant="secondary">Marketing B2B TIC</Badge>
-                        </div>
-                      </div>
+                {/* Legal Section */}
+                <div className="mt-6">
+                  <Card className="shadow-elegant max-w-md mx-auto">
+                    <CardContent className="p-6 text-center">
+                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Legal y Compliance</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Abogados Corporativos (In-house Counsel)</li>
+                        <li>• Oficiales de Cumplimiento (Compliance Officers)</li>
+                        <li>• Especialistas en Asuntos Regulatorios</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
 
-                      <div>
-                        <h4 className="font-semibold text-lg mb-3">Ejecutivos</h4>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="secondary">Gerentes de Área</Badge>
-                          <Badge variant="secondary">Country Managers</Badge>
-                          <Badge variant="secondary">Directores Regionales LATAM</Badge>
-                          <Badge variant="secondary">Roles C-Level</Badge>
-                        </div>
-                      </div>
-                    </div>
+              {/* Strategic Industries */}
+              <div>
+                <h3 className="text-2xl font-display font-bold text-center mb-8">
+                  Industrias Estratégicas que Servimos
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Energía, Petróleo y Gas</span>
                   </div>
-
-                  {/* Industrias */}
-                  <div>
-                    <h3 className="text-xl font-display font-semibold mb-6">Industrias que Servimos</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Industrial</span>
-                      </div>
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Certificación</span>
-                      </div>
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Inspección</span>
-                      </div>
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Alimentos</span>
-                      </div>
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Medio Ambiente</span>
-                      </div>
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Minería</span>
-                      </div>
-                      <div className="bg-muted/50 rounded-lg p-4 text-center">
-                        <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                        <span className="font-medium">Energía</span>
-                      </div>
-                    </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Minería y Metales</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Medio Ambiente y Sostenibilidad</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Construcción e Infraestructura</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Agricultura y Alimentos</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Manufactura Industrial y Maquinaria</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Transporte y Logística</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Bienes de Consumo y Retail</span>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-center">
+                    <span className="font-medium">Ciencias de la Vida (Farmacéutica y Salud)</span>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </section>
 
