@@ -89,9 +89,7 @@ const ServiciosEmpresas = () => {
                 <Shield className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-display font-semibold mb-2">Garantía Total</h4>
-                  <p className="text-muted-foreground">
-                    Si el candidato no es el adecuado, buscamos un reemplazo sin costo durante los primeros 30 días.
-                  </p>
+                  <p className="text-muted-foreground">Si el candidato no es el adecuado, buscamos un reemplazo sin costo durante los primeros 90 días.</p>
                 </div>
               </div>
             </div>
