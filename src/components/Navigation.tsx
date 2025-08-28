@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +53,26 @@ const Navigation = () => {
             <Button asChild className="btn-hero">
               <Link to="/contacto">Contacto</Link>
             </Button>
+            
+            {/* Language Switcher */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                  <Globe className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="bg-background border border-border">
+                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer">
+                  🇺🇸 English
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer">
+                  🇪🇸 Español
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer">
+                  🇵🇹 Português
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile menu button */}
