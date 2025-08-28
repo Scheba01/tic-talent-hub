@@ -78,9 +78,12 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="font-display font-bold text-xl mb-4 md:mb-0">
-              <span className="text-foreground">TIC</span>
-              <span className="text-primary">SELECT</span>
+            <div className="mb-4 md:mb-0">
+              <img 
+                src="/src/assets/tic-select-logo.png" 
+                alt="TIC SELECT Logo" 
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-muted-foreground text-sm">
               © 2024 TIC SELECT. Todos los derechos reservados.
