@@ -4,10 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users } from "lucide-react";
-
 const ServiciosEmpresas = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="pt-16">
@@ -25,9 +23,7 @@ const ServiciosEmpresas = () => {
           <div className="max-w-6xl mx-auto">
             <Card className="mb-12 shadow-elegant">
               <CardHeader>
-                <CardTitle className="text-3xl font-display">
-                  Recruiting & Headhunting: Su Shortlist en 7 Días
-                </CardTitle>
+                <CardTitle className="text-3xl font-display">Reclutamiento & Headhunting: Su Shortlist en 7 Días</CardTitle>
                 <p className="text-xl text-muted-foreground mt-4">
                   Nuestro proceso está diseñado para una sola cosa: entregarle el talento correcto 
                   en tiempo récord y con total seguridad.
@@ -80,9 +76,7 @@ const ServiciosEmpresas = () => {
             {/* HR Consultancy */}
             <Card className="shadow-elegant">
               <CardHeader>
-                <CardTitle className="text-3xl font-display">
-                  HR Consultancy y Desarrollo
-                </CardTitle>
+                <CardTitle className="text-3xl font-display">HR Consultoria y Desarrollo</CardTitle>
                 <p className="text-xl text-muted-foreground mt-4">
                   Fortalezca su organización desde adentro con nuestra consultoría y programas de coaching.
                 </p>
@@ -125,8 +119,6 @@ const ServiciosEmpresas = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default ServiciosEmpresas;
