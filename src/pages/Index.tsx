@@ -124,7 +124,7 @@ const Index = () => {
                   Hable con nuestros expertos y descubra cómo podemos acelerar su proceso de contratación.
                 </p>
                 <Button asChild className="btn-hero w-full">
-                  <Link to="/contacto">Agende una Llamada Estratégica</Link>
+                  <a href="https://wa.me/+573003423423?text=Hola, me interesa conocer más sobre sus servicios de reclutamiento" target="_blank" rel="noopener noreferrer">Contáctanos por WhatsApp</a>
                 </Button>
               </div>
             </div>
