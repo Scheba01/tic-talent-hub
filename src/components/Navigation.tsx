@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ticSelectLogo from "@/assets/tic-select-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,11 +31,12 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="font-display font-bold text-2xl">
-              <span className="text-foreground">TIC</span>
-              <span className="text-primary">SELECT</span>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
+              alt="TIC SELECT" 
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
