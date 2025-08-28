@@ -9,7 +9,6 @@ import ServiciosEmpresas from "./pages/ServiciosEmpresas";
 import VacantesPerfiles from "./pages/VacantesPerfiles";
 import ProgramaTalentoTIC from "./pages/ProgramaTalentoTIC";
 import RegistroTalento from "./pages/RegistroTalento";
-import Blog from "./pages/Blog";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
 
@@ -28,7 +27,6 @@ const App = () => (
           <Route path="/vacantes-y-perfiles" element={<VacantesPerfiles />} />
           <Route path="/programa-talentotic" element={<ProgramaTalentoTIC />} />
           <Route path="/registro-talento" element={<RegistroTalento />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/contacto" element={<Contacto />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
