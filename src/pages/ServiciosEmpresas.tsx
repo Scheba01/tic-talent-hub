@@ -84,13 +84,52 @@ const ServiciosEmpresas = () => {
             </div>
 
             {/* Guarantee Banner */}
-            <div className="bg-primary/10 border-l-4 border-primary rounded-lg p-6">
+            <div className="bg-primary/10 border-l-4 border-primary rounded-lg p-6 mb-12">
               <div className="flex items-center space-x-4">
                 <Shield className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-display font-semibold mb-2">Garantía Total</h4>
                   <p className="text-muted-foreground">Si el candidato no es el adecuado, buscamos un reemplazo sin costo durante los primeros 30 días.</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Value Proposition */}
+            <div className="text-center mb-8">
+              <p className="text-lg text-muted-foreground mb-8">
+                En 7 días hábiles te presentamos candidatos validados técnica y culturalmente.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 text-left">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación.</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">Validación técnica y referencias 360°.</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">Apoyo en entrevistas, negociación y cierre.</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">Garantía 90 días: si el candidato no resulta, lo reemplazamos sin costo.</p>
+                </div>
+                <div className="flex items-start space-x-3 md:col-span-2">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">Pago contra contratación efectiva.</p>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-lg p-6 mb-6">
+                <p className="text-lg font-semibold text-primary mb-4">
+                  👉 Deja de perder meses buscando. En TIC Select hacemos que tu contratación sea rápida, segura y garantizada.
+                </p>
+                <Button asChild className="btn-hero">
+                  <Link to="/contacto">Quiero mi primer shortlist en 7 días</Link>
+                </Button>
               </div>
             </div>
           </div>
