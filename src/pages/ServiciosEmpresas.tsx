@@ -189,104 +189,140 @@ const ServiciosEmpresas = () => {
             </div>
 
             <div className="space-y-16">
-              {/* Functional Areas */}
+              {/* Profiles Section */}
               <div>
                 <h3 className="text-2xl font-display font-bold text-center mb-8">
-                  Áreas Funcionales y Perfiles que Cubrimos
+                  Perfiles que Cubrimos: Nuestra Doble Expertise
                 </h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {/* Leadership */}
-                  <Card className="shadow-elegant">
-                    <CardContent className="p-6">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Liderazgo Ejecutivo y Estrategia</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Dirección General (CEO, Country Manager, Gerente General)</li>
-                        <li>• Direcciones de Área (COO, CFO, CCO, CTO)</li>
-                        <li>• Directores Regionales y de Unidades de Negocio</li>
-                        <li>• Gerencia de Planificación Estratégica</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                {/* Specialized TIC Profiles */}
+                <div className="mb-12">
+                  <h4 className="text-xl font-display font-semibold text-center mb-8 text-primary">
+                    Perfiles Especializados del Sector TIC
+                  </h4>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {/* Auditors */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Auditores y Especialistas en Normas</h5>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>• Auditores Líderes y Técnicos (ISO 9001, 14001, 45001, 27001, 50001)</li>
+                          <li>• Especialistas en Certificación de Productos y Sistemas</li>
+                          <li>• Auditores de Seguridad Alimentaria (FSSC 22000, BRC, HACCP)</li>
+                          <li>• Expertos en Compliance y Asuntos Regulatorios</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
 
-                  {/* Operations */}
-                  <Card className="shadow-elegant">
-                    <CardContent className="p-6">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Operaciones y Proyectos</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Gestión de Proyectos y Operaciones</li>
-                        <li>• Inspección y Auditoría de Campo</li>
-                        <li>• Laboratorio y Análisis Técnico</li>
-                        <li>• Salud, Seguridad y Medio Ambiente (HSE)</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                    {/* Inspectors */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Inspectores de Campo</h5>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>• Inspectores Especializados (Soldadura Nivel I-II, NDT, API, Izaje)</li>
+                          <li>• Inspectores Técnicos (Eléctricos, Mecánicos, Civiles, Recubrimientos)</li>
+                          <li>• Inspectores de Carga, Marítimos y de Commodities</li>
+                          <li>• Supervisores de Terreno</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
 
-                  {/* Commercial */}
-                  <Card className="shadow-elegant">
-                    <CardContent className="p-6">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Comercial, Marketing y Desarrollo de Negocios</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Gerentes de Desarrollo de Negocios y KAM</li>
-                        <li>• Jefes y Gerentes Comerciales</li>
-                        <li>• Ejecutivos de Ventas Técnicas</li>
-                        <li>• Gerentes de Marketing y Producto (B2B)</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                    {/* Laboratory */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Personal de Laboratorio</h5>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>• Analistas de Laboratorio (Químicos, Microbiológicos, Físico-Químicos)</li>
+                          <li>• Jefes y Supervisores de Laboratorio (ISO/IEC 17025)</li>
+                          <li>• Técnicos de Metrología y Calibración</li>
+                          <li>• Geoquímicos y Analistas de Muestras</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
 
-                  {/* Innovation */}
-                  <Card className="shadow-elegant">
-                    <CardContent className="p-6">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Innovación, Tecnología y Calidad</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Gerentes de Calidad y Mejora Continua (QA/QC)</li>
-                        <li>• Líderes de Innovación y Desarrollo (I+D)</li>
-                        <li>• Jefes de Proyectos de Transformación Digital</li>
-                        <li>• Gerentes de Certificaciones y Acreditaciones</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  {/* Finance */}
-                  <Card className="shadow-elegant">
-                    <CardContent className="p-6">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Finanzas y Administración</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Gerentes de Administración y Finanzas</li>
-                        <li>• Controllers Financieros y Jefes de Control de Gestión</li>
-                        <li>• Jefes de Contabilidad, Tesorería y Adquisiciones</li>
-                        <li>• Analistas de Planificación Financiera (FP&A)</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  {/* HR */}
-                  <Card className="shadow-elegant">
-                    <CardContent className="p-6">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Recursos Humanos y Talento</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Gerentes de RRHH y HR Business Partners (HRBP)</li>
-                        <li>• Jefes de Adquisición de Talento y Reclutamiento</li>
-                        <li>• Especialistas en Desarrollo Organizacional (DO)</li>
-                        <li>• Jefes de Compensaciones y Beneficios</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                    {/* Engineering */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Ingeniería, Calidad y HSE</h5>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>• Ingenieros de Calidad (QA/QC)</li>
+                          <li>• Ingenieros de Proyectos y de Confiabilidad</li>
+                          <li>• Jefes, Supervisores y Expertos en Prevención de Riesgos (HSE / HSEQ)</li>
+                          <li>• Ingenieros Ambientales y Consultores de Sostenibilidad</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
 
-                {/* Legal Section */}
-                <div className="mt-6">
-                  <Card className="shadow-elegant max-w-md mx-auto">
-                    <CardContent className="p-6 text-center">
-                      <h4 className="font-display font-semibold text-lg mb-4 text-primary">Legal y Compliance</h4>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• Abogados Corporativos (In-house Counsel)</li>
-                        <li>• Oficiales de Cumplimiento (Compliance Officers)</li>
-                        <li>• Especialistas en Asuntos Regulatorios</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                {/* Corporate Functional Areas */}
+                <div>
+                  <h4 className="text-xl font-display font-semibold text-center mb-8 text-primary">
+                    Áreas Funcionales y Corporativas
+                  </h4>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Leadership */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Liderazgo Ejecutivo y Estrategia</h5>
+                        <p className="text-sm text-muted-foreground">
+                          CEO, Country Manager, Gerentes Generales, Directores Regionales y de Unidades de Negocio.
+                        </p>
+                      </CardContent>
+                    </Card>
+
+                    {/* Commercial */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Comercial y Desarrollo de Negocios</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Gerentes Comerciales, Key Account Managers (KAM), Ejecutivos de Ventas Técnicas.
+                        </p>
+                      </CardContent>
+                    </Card>
+
+                    {/* Operations */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Operaciones y Proyectos</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Gerentes de Operaciones, Jefes de Proyecto (PMP), Planificadores.
+                        </p>
+                      </CardContent>
+                    </Card>
+
+                    {/* Finance */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Finanzas y Administración</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Gerentes de Finanzas, Controllers, Jefes de Contabilidad y Adquisiciones.
+                        </p>
+                      </CardContent>
+                    </Card>
+
+                    {/* HR */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Recursos Humanos y Talento</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Gerentes de RRHH, HR Business Partners (HRBP), Jefes de Adquisición de Talento.
+                        </p>
+                      </CardContent>
+                    </Card>
+
+                    {/* Technology */}
+                    <Card className="shadow-elegant">
+                      <CardContent className="p-6">
+                        <h5 className="font-display font-semibold text-lg mb-4 text-primary">Tecnología, Innovación y Marketing</h5>
+                        <p className="text-sm text-muted-foreground">
+                          Gerentes de TI, Líderes de Transformación Digital, Gerentes de Marketing B2B.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
               </div>
 
