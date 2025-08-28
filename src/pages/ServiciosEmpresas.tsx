@@ -172,6 +172,158 @@ const ServiciosEmpresas = () => {
           </div>
         </section>
 
+        {/* Section 4: Para Empresas - Nuestro Universo de Talento */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold mb-4">
+                Para Empresas: Nuestro Universo de Talento
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+                Nuestro mayor diferenciador es nuestra base de datos de talento TIC, viva y en constante actualización. Este activo estratégico nos permite encontrar perfiles altamente calificados con una velocidad inigualable.
+              </p>
+            </div>
+
+            {/* Perfiles que Cubrimos */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-display font-bold mb-8 text-center">
+                Perfiles que Cubrimos: Nuestra Doble Expertise
+              </h3>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Perfiles Especializados del Sector TIC */}
+                <Card className="shadow-elegant">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-display font-bold text-primary">
+                      Perfiles Especializados del Sector TIC
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Auditores y Especialistas en Normas:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Auditores Líderes y Técnicos (ISO 9001, 14001, 45001, 27001, 50001, etc.)</li>
+                        <li>• Especialistas en Certificación de Productos y Sistemas</li>
+                        <li>• Auditores de Seguridad Alimentaria (FSSC 22000, BRC, HACCP)</li>
+                        <li>• Expertos en Compliance y Asuntos Regulatorios</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Inspectores de Campo:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Inspectores Especializados (Soldadura Nivel I-II, Ensayos No Destructivos - NDT, API, Izaje)</li>
+                        <li>• Inspectores Técnicos (Eléctricos, Mecánicos, Civiles, Recubrimientos)</li>
+                        <li>• Inspectores de Carga, Marítimos y de Commodities</li>
+                        <li>• Supervisores de Terreno</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Personal de Laboratorio:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Analistas de Laboratorio (Químicos, Microbiológicos, Físico-Químicos)</li>
+                        <li>• Jefes y Supervisores de Laboratorio (Bajo norma ISO/IEC 17025)</li>
+                        <li>• Técnicos de Metrología y Calibración</li>
+                        <li>• Geoquímicos y Analistas de Muestras</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Ingeniería, Calidad y HSE:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Ingenieros de Calidad (QA/QC)</li>
+                        <li>• Ingenieros de Proyectos y de Confiabilidad</li>
+                        <li>• Jefes, Supervisores y Expertos en Prevención de Riesgos (HSE / HSEQ)</li>
+                        <li>• Ingenieros Ambientales y Consultores de Sostenibilidad</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Áreas Funcionales y Corporativas */}
+                <Card className="shadow-elegant">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-display font-bold text-primary">
+                      Áreas Funcionales y Corporativas
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Liderazgo Ejecutivo y Estrategia:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• CEO, Country Manager, Gerentes Generales, Directores Regionales y de Unidades de Negocio</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Comercial y Desarrollo de Negocios:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Gerentes Comerciales, Key Account Managers (KAM), Ejecutivos de Ventas Técnicas</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Operaciones y Proyectos:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Gerentes de Operaciones, Jefes de Proyecto (PMP), Planificadores</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Finanzas y Administración:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Gerentes de Finanzas, Controllers, Jefes de Contabilidad y Adquisiciones</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Recursos Humanos y Talento:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Gerentes de RRHH, HR Business Partners (HRBP), Jefes de Adquisición de Talento</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-primary mb-2">Tecnología, Innovación y Marketing:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                        <li>• Gerentes de TI, Líderes de Transformación Digital, Gerentes de Marketing B2B</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Industrias Estratégicas */}
+            <div>
+              <h3 className="text-2xl font-display font-bold mb-8 text-center">
+                Industrias Estratégicas que Servimos
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  "Energía, Petróleo y Gas",
+                  "Minería y Metales", 
+                  "Medio Ambiente y Sostenibilidad",
+                  "Construcción e Infraestructura",
+                  "Agricultura y Alimentos",
+                  "Manufactura Industrial y Maquinaria",
+                  "Transporte y Logística (Automotriz, Naval, Aeroespacial)",
+                  "Bienes de Consumo y Retail",
+                  "Ciencias de la Vida (Farmacéutica y Salud)"
+                ].map((industry, index) => (
+                  <Card key={index} className="text-center shadow-elegant">
+                    <CardContent className="p-4">
+                      <p className="font-medium text-primary">{industry}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">
