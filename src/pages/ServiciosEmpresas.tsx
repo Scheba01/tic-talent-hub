@@ -383,8 +383,8 @@ const ServiciosEmpresas = () => {
                   "Ciencias de la Vida (Farmacéutica y Salud)"
                 ].map((industry, index) => (
                   <Card key={index} className="text-center shadow-elegant bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 hover:from-primary/10 hover:to-primary/15 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <p className="font-semibold text-primary text-sm">{industry}</p>
+                    <CardContent className="p-6 flex items-center justify-center min-h-[80px]">
+                      <p className="font-semibold text-primary text-sm text-center leading-relaxed">{industry}</p>
                     </CardContent>
                   </Card>
                 ))}
