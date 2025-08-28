@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-
 const Footer = () => {
-  return (
-    <footer className="bg-card border-t border-border">
+  return <footer className="bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Enlaces Rápidos */}
@@ -74,16 +72,7 @@ const Footer = () => {
 
         {/* Programa de Afiliados */}
         <div className="mt-12 pt-8 border-t border-border">
-          <div className="bg-muted/50 rounded-lg p-6">
-            <h4 className="font-display font-semibold text-lg mb-2">Programa de Afiliados</h4>
-            <p className="text-muted-foreground mb-4">
-              ¿Conoces a un profesional de alto calibre o a una empresa que necesite talento? 
-              Recomiéndelos y sea recompensado. Gane $200 USD por un talento contratado y $500 USD por una empresa cliente.
-            </p>
-            <Link to="/contacto" className="text-primary hover:text-primary/80 font-medium">
-              Conozca más →
-            </Link>
-          </div>
+          
         </div>
 
         {/* Bottom bar */}
@@ -99,8 +88,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
