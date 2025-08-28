@@ -95,52 +95,52 @@ const ServiciosEmpresas = () => {
                 </div>
               </div>
 
-              {/* Benefits Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+              {/* Benefits List - Vertical Layout */}
+              <div className="space-y-4 mb-8">
+                <div className="bg-white/80 rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-primary mb-2">Especialistas TIC</h5>
-                      <p className="text-sm text-muted-foreground">Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación.</p>
+                      <h5 className="font-semibold text-foreground mb-2">Especialistas TIC</h5>
+                      <p className="text-foreground/80">Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                <div className="bg-white/80 rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-primary mb-2">Validación Completa</h5>
-                      <p className="text-sm text-muted-foreground">Validación técnica y referencias 360° de todos los candidatos.</p>
+                      <h5 className="font-semibold text-foreground mb-2">Validación Completa</h5>
+                      <p className="text-foreground/80">Validación técnica y referencias 360° de todos los candidatos.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                <div className="bg-white/80 rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-primary mb-2">Apoyo Integral</h5>
-                      <p className="text-sm text-muted-foreground">Apoyo en entrevistas, negociación y cierre del proceso.</p>
+                      <h5 className="font-semibold text-foreground mb-2">Apoyo Integral</h5>
+                      <p className="text-foreground/80">Apoyo en entrevistas, negociación y cierre del proceso.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white/60 rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+                <div className="bg-white/80 rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
                   <div className="flex items-start space-x-4">
                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-primary mb-2">Pago Seguro</h5>
-                      <p className="text-sm text-muted-foreground">Pago contra contratación efectiva.</p>
+                      <h5 className="font-semibold text-foreground mb-2">Pago Seguro</h5>
+                      <p className="text-foreground/80">Pago contra contratación efectiva.</p>
                     </div>
                   </div>
                 </div>
