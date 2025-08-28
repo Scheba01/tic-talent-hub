@@ -57,8 +57,8 @@ const Footer = () => {
             <h3 className="font-display font-semibold text-lg mb-4">Contacto</h3>
             <ul className="space-y-2">
               <li>
-                <a href="mailto:email@ticselect.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  email@ticselect.com
+                <a href="mailto:contacto@ticselect.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  contacto@ticselect.com
                 </a>
               </li>
               <li>
