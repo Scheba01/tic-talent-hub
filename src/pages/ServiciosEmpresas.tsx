@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { CheckCircle, Clock, Shield, Users } from "lucide-react";
+import { CheckCircle, Clock, Shield, Users, BarChart3, TrendingUp, MessageSquare, Target } from "lucide-react";
 const ServiciosEmpresas = () => {
   return <div className="min-h-screen bg-background">
       <Navigation />
@@ -23,7 +23,7 @@ const ServiciosEmpresas = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-display font-bold mb-4">
-                Reclutamiento & Headhunting: Su Shortlist en 7 Días
+                Selección y Búsqueda de Ejecutivos: Su Terna de Candidatos en 7 Días
               </h2>
               <p className="text-xl text-muted-foreground">
                 Nuestro proceso está diseñado para una sola cosa: entregarle el talento correcto en tiempo récord y con total seguridad.
@@ -63,7 +63,7 @@ const ServiciosEmpresas = () => {
                   <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg flex items-center justify-center mx-auto mb-4">
                     3
                   </div>
-                  <h4 className="font-display font-semibold mb-2">Presentación de Shortlist</h4>
+                  <h4 className="font-display font-semibold mb-2">Presentación de Finalistas</h4>
                   <p className="text-sm text-muted-foreground">
                     En 7 días hábiles, le presentamos una selección curada de los mejores perfiles.
                   </p>
@@ -89,7 +89,7 @@ const ServiciosEmpresas = () => {
                 <Shield className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
                   <h4 className="text-xl font-display font-semibold mb-2">Garantía Total</h4>
-                  <p className="text-muted-foreground">Si el candidato no es el adecuado, buscamos un reemplazo sin costo durante los primeros 90 días.</p>
+                  <p className="text-muted-foreground">Si el candidato no es el adecuado, buscamos un reemplazo sin costo durante los primeros 30 días.</p>
                 </div>
               </div>
             </div>
@@ -100,8 +100,10 @@ const ServiciosEmpresas = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold mb-4">HR Consultancy</h2>
-              <p className="text-xl text-muted-foreground">HR Consultoria</p>
+              <h2 className="text-3xl font-display font-bold mb-4">Consultoría en Recursos Humanos</h2>
+              <p className="text-xl text-muted-foreground">
+                Fortalezca las bases de su organización con nuestras soluciones de consultoría estratégica.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -117,7 +119,7 @@ const ServiciosEmpresas = () => {
 
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-6">
-                  <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <BarChart3 className="w-12 h-12 text-primary mx-auto mb-4" />
                   <h4 className="font-display font-semibold mb-4">Diagnóstico de Clima Organizacional</h4>
                   <p className="text-muted-foreground">
                     Medimos y analizamos el ambiente laboral para identificar oportunidades de mejora y aumentar la productividad.
@@ -127,8 +129,8 @@ const ServiciosEmpresas = () => {
 
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-6">
-                  <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Benchmark de Salarios y Estructuras</h4>
+                  <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h4 className="font-display font-semibold mb-4">Análisis Salarial y de Estructuras</h4>
                   <p className="text-muted-foreground">
                     Asegúrese de que sus compensaciones y organigramas sean competitivos en el mercado actual.
                   </p>
@@ -151,8 +153,8 @@ const ServiciosEmpresas = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-8">
-                  <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Soft Skills y Liderazgo</h4>
+                  <MessageSquare className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h4 className="font-display font-semibold mb-4">Habilidades Blandas y Liderazgo</h4>
                   <p className="text-muted-foreground">
                     Programas de coaching ejecutivo y talleres grupales para desarrollar habilidades de comunicación, gestión y liderazgo efectivo.
                   </p>
@@ -161,7 +163,7 @@ const ServiciosEmpresas = () => {
 
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-8">
-                  <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <Target className="w-12 h-12 text-primary mx-auto mb-4" />
                   <h4 className="font-display font-semibold mb-4">Planes de Carrera</h4>
                   <p className="text-muted-foreground">
                     Ayudamos a estructurar rutas de crecimiento claras y motivadoras que impulsen el desarrollo profesional dentro de su empresa.
