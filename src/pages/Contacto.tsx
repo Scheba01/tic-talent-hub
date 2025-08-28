@@ -108,9 +108,10 @@ const Contacto = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="recruiting">Recruiting & Headhunting</SelectItem>
-                          <SelectItem value="consultoria">HR Consultancy</SelectItem>
+                          <SelectItem value="servicios-empresas">Servicios para Empresas</SelectItem>
                           <SelectItem value="programa-talento">Programa TalentoTIC</SelectItem>
-                          <SelectItem value="afiliados">Programa de Afiliados</SelectItem>
+                          <SelectItem value="vacantes-perfiles">Vacantes y Perfiles</SelectItem>
+                          <SelectItem value="consultoria-hr">Consultoría en RRHH</SelectItem>
                           <SelectItem value="otro">Otro</SelectItem>
                         </SelectContent>
                       </Select>
