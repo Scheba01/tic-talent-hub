@@ -56,19 +56,19 @@ const ProgramaTalentoTIC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">+150</div>
-                <div className="text-cyan-600 font-semibold mb-2">Estudiantes</div>
-                <p className="text-gray-600">Participantes activos en el programa</p>
+                <div className="text-4xl font-bold text-blue-600 mb-2">5%</div>
+                <div className="text-cyan-600 font-semibold mb-2">Escasez de Talento TIC</div>
+                <p className="text-gray-600">Tres de cada cuatro empresas en LATAM reportan dificultad para encontrar perfiles especializados.</p>
               </div>
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">25+</div>
-                <div className="text-cyan-600 font-semibold mb-2">Empresas Partners</div>
-                <p className="text-gray-600">Organizaciones comprometidas con el talento</p>
+                <div className="text-4xl font-bold text-blue-600 mb-2">2030</div>
+                <div className="text-cyan-600 font-semibold mb-2">Brecha de 85 millones de profesionales</div>
+                <p className="text-gray-600">El mundo enfrentará un déficit global de talento especializado, impactando directamente a la industria TIC.</p>
               </div>
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">80%</div>
-                <div className="text-cyan-600 font-semibold mb-2">Tasa de Inserción</div>
-                <p className="text-gray-600">Graduados empleados en empresas TIC</p>
+                <div className="text-4xl font-bold text-blue-600 mb-2">+50%</div>
+                <div className="text-cyan-600 font-semibold mb-2">Demanda en Normas y Certificaciones</div>
+                <p className="text-gray-600">Más de la mitad de las compañías en la región requieren personal capacitado en estándares internacionales (ISO, HACCP, GLOBALG.A.P., entre otros).</p>
               </div>
             </div>
           </div>
