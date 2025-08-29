@@ -124,7 +124,7 @@ const Index = () => {
                   Elige la forma que prefieras para contactarnos
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Button asChild className="btn-hero">
+                  <Button asChild variant="outline">
                     <Link to="/contacto">Formulario de Contacto</Link>
                   </Button>
                   <Button

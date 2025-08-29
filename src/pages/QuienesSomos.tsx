@@ -78,7 +78,7 @@ const QuienesSomos = () => {
               Elige la forma que prefieras para contactarnos
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-              <Button asChild className="btn-hero">
+              <Button asChild variant="outline">
                 <Link to="/contacto">Formulario de Contacto</Link>
               </Button>
               <Button

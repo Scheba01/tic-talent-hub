@@ -399,11 +399,13 @@ const ServiciosEmpresas = () => {
             <h2 className="text-3xl font-display font-bold mb-6">
               Optimice su proceso de contratación hoy.
             </h2>
-            <Button asChild className="btn-hero mb-6">
-              <Link to="/contacto">Contáctenos</Link>
-            </Button>
-            <h3 className="text-lg font-display font-semibold mb-4">O contáctanos directamente</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-md mx-auto">
+            <p className="text-lg text-muted-foreground mb-8">
+              Elige la forma que prefieras para contactarnos
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+              <Button asChild variant="outline">
+                <Link to="/contacto">Formulario de Contacto</Link>
+              </Button>
               <Button
                 variant="outline"
                 className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
