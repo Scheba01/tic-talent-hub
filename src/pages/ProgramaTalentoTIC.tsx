@@ -56,7 +56,7 @@ const ProgramaTalentoTIC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">5%</div>
+                <div className="text-4xl font-bold text-blue-600 mb-2">75%</div>
                 <div className="text-cyan-600 font-semibold mb-2">Escasez de Talento TIC</div>
                 <p className="text-gray-600">Tres de cada cuatro empresas en LATAM reportan dificultad para encontrar perfiles especializados.</p>
               </div>
