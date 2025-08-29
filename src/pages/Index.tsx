@@ -158,11 +158,11 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="shadow-elegant">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Recruiting & Headhunting</CardTitle>
+                  <CardTitle className="text-2xl">Selección y Búsqueda de Ejecutivos</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-6">
-                    Encuentre el talento exacto que necesita con nuestra metodología probada y garantía de resultados.
+                    Su terna de candidatos en 7 días. Talento especializado en TIC con metodología probada y garantía de resultados.
                   </p>
                   <Button asChild variant="outline" className="w-full">
                     <Link to="/servicios-para-empresas">Ver Más</Link>
@@ -172,11 +172,11 @@ const Index = () => {
 
               <Card className="shadow-elegant">
                 <CardHeader>
-                  <CardTitle className="text-2xl">HR Consultancy</CardTitle>
+                  <CardTitle className="text-2xl">Consultoría en Recursos Humanos</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-6">
-                    Fortalezca su organización con estrategias de retención y desarrollo de talento.
+                    Fortalezca las bases de su organización con estrategias de retención y desarrollo de talento.
                   </p>
                   <Button asChild variant="outline" className="w-full">
                     <Link to="/servicios-para-empresas">Ver Más</Link>
