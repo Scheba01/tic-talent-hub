@@ -54,14 +54,11 @@ const RegistroTalento = () => {
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
-      autorizaWhatsapp: false,
       paisesReubicacion: [],
       familiasRol: [],
       sectores: [],
       competenciasNormas: [],
       idiomas: [{ idioma: "", nivel: "" }],
-      conflictoInteres: false,
-      prestConsultoria: false,
       autorizacionDatos: false,
       areasInteres: [],
       disponibilidadMentorias: false,
@@ -220,25 +217,6 @@ const RegistroTalento = () => {
                           )}
                         />
 
-                        <FormField
-                          control={form.control}
-                          name="autorizaWhatsapp"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value}
-                                  onCheckedChange={field.onChange}
-                                />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                  ¿Autorizas contacto por WhatsApp?
-                                </FormLabel>
-                              </div>
-                            </FormItem>
-                          )}
-                        />
                       </div>
                     </div>
 
@@ -1147,46 +1125,6 @@ const RegistroTalento = () => {
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">9. Cumplimiento & Elegibilidad</h3>
                       <div className="space-y-4">
-                        <FormField
-                          control={form.control}
-                          name="conflictoInteres"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value}
-                                  onCheckedChange={field.onChange}
-                                />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                  Conflicto de interés actual con OCP/OCI/Lab acreditado
-                                </FormLabel>
-                              </div>
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="prestConsultoria"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value}
-                                  onCheckedChange={field.onChange}
-                                />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                  ¿Prestó consultoría en los últimos 2 años a clientes que audita/inspecciona?
-                                </FormLabel>
-                              </div>
-                            </FormItem>
-                          )}
-                        />
-
                         <FormField
                           control={form.control}
                           name="autorizacionDatos"

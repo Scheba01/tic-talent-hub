@@ -7,7 +7,6 @@ export const registrationSchema = z.object({
   telefono: z.string().min(1, "Teléfono es requerido"),
   pais: z.string().min(1, "País es requerido"),
   ciudad: z.string().min(1, "Ciudad es requerida"),
-  autorizaWhatsapp: z.boolean(),
 
   // Situación laboral & disponibilidad
   situacionActual: z.string().min(1, "Situación actual es requerida"),
@@ -42,8 +41,6 @@ export const registrationSchema = z.object({
   })).min(1, "Debe especificar al menos un idioma"),
 
   // Cumplimiento & elegibilidad
-  conflictoInteres: z.boolean(),
-  prestConsultoria: z.boolean(),
   autorizacionDatos: z.boolean().refine(val => val === true, {
     message: "Debe autorizar el tratamiento de datos"
   }),
