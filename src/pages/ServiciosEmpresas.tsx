@@ -393,6 +393,106 @@ const ServiciosEmpresas = () => {
           </div>
         </section>
 
+        {/* Section 3: Desarrollo & Coaching */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold mb-4">Desarrollo & Coaching</h2>
+              <p className="text-xl text-muted-foreground">
+                Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo especializado en la industria TIC.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="space-y-6">
+                <Card className="shadow-elegant">
+                  <CardHeader>
+                    <CardTitle className="text-xl text-primary">Coaching Ejecutivo</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 text-muted-foreground">
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Desarrollo de habilidades de liderazgo técnico</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Gestión de equipos multidisciplinarios</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Comunicación efectiva con stakeholders técnicos</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Transición a roles de mayor responsabilidad</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="shadow-elegant">
+                  <CardHeader>
+                    <CardTitle className="text-xl text-primary">Programas de Desarrollo</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 text-muted-foreground">
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Planes de carrera personalizados</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Mentoría técnica especializada</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Certificaciones profesionales en TIC</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        <span>Desarrollo de competencias blandas</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
+                <h3 className="text-2xl font-display font-bold mb-6 text-primary">
+                  ¿Por qué nuestro enfoque es diferente?
+                </h3>
+                <div className="space-y-4 text-muted-foreground">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                    <p><strong>Experiencia de campo:</strong> Nuestros coaches provienen de la industria TIC</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                    <p><strong>Metodología probada:</strong> Casos de éxito en organizaciones similares</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                    <p><strong>Seguimiento continuo:</strong> Acompañamiento durante todo el proceso</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                    <p><strong>ROI medible:</strong> Métricas claras de progreso y resultados</p>
+                  </div>
+                </div>
+                
+                <div className="mt-8">
+                  <Button asChild className="btn-hero w-full">
+                    <Link to="/contacto">
+                      🚀 Consulta gratuita sobre desarrollo
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">

@@ -155,7 +155,7 @@ const Index = () => {
             <h2 className="text-4xl font-display font-bold mb-12">
               Nuestros Servicios
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="shadow-elegant">
                 <CardHeader>
                   <CardTitle className="text-2xl">Selección y Búsqueda de Ejecutivos</CardTitle>
@@ -177,6 +177,20 @@ const Index = () => {
                 <CardContent>
                   <p className="text-muted-foreground mb-6">
                     Fortalezca las bases de su organización con estrategias de retención y desarrollo de talento.
+                  </p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/servicios-para-empresas">Ver Más</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-elegant">
+                <CardHeader>
+                  <CardTitle className="text-2xl">Desarrollo & Coaching</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-6">
+                    Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo.
                   </p>
                   <Button asChild variant="outline" className="w-full">
                     <Link to="/servicios-para-empresas">Ver Más</Link>
