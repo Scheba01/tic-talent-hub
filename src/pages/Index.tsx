@@ -121,10 +121,12 @@ const Index = () => {
               <div className="bg-card rounded-lg p-8 shadow-elegant">
                 <h3 className="text-2xl font-display font-bold mb-6">¿Listo para Comenzar?</h3>
                 <p className="text-muted-foreground mb-6">
-                  Hable con nuestros expertos y descubra cómo podemos acelerar su proceso de contratación.
+                  Elige la forma que prefieras para contactarnos
                 </p>
-                <h4 className="text-lg font-display font-semibold mb-4 text-center">O contáctanos directamente</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Button asChild className="btn-hero">
+                    <Link to="/contacto">Formulario de Contacto</Link>
+                  </Button>
                   <Button
                     variant="outline"
                     className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
