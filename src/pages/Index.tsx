@@ -155,44 +155,44 @@ const Index = () => {
             <h2 className="text-4xl font-display font-bold mb-12">
               Nuestros Servicios
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="shadow-elegant">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+              <Card className="shadow-elegant flex flex-col h-full">
                 <CardHeader>
                   <CardTitle className="text-2xl">Selección y Búsqueda de Ejecutivos</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col">
                   <p className="text-muted-foreground mb-6">
                     Su terna de candidatos en 7 días. Talento especializado en TIC con metodología probada y garantía de resultados.
                   </p>
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="outline" className="w-full mt-auto">
                     <Link to="/servicios-para-empresas">Ver Más</Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="shadow-elegant">
+              <Card className="shadow-elegant flex flex-col h-full">
                 <CardHeader>
                   <CardTitle className="text-2xl">Consultoría en Recursos Humanos</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col">
                   <p className="text-muted-foreground mb-6">
                     Fortalezca las bases de su organización con estrategias de retención y desarrollo de talento.
                   </p>
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="outline" className="w-full mt-auto">
                     <Link to="/servicios-para-empresas">Ver Más</Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="shadow-elegant">
+              <Card className="shadow-elegant flex flex-col h-full">
                 <CardHeader>
                   <CardTitle className="text-2xl">Desarrollo & Coaching</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col">
                   <p className="text-muted-foreground mb-6">
                     Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo.
                   </p>
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="outline" className="w-full mt-auto">
                     <Link to="/servicios-para-empresas">Ver Más</Link>
                   </Button>
                 </CardContent>
