@@ -252,7 +252,7 @@ const ProgramaTalentoTIC = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
-                    <span>Contratación de al menos 3 graduados del programa</span>
+                    <span>Contratación de al menos 2 graduados del programa</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
