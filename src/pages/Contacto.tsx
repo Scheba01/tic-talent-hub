@@ -133,6 +133,29 @@ const Contacto = () => {
                       Enviar Mensaje
                     </Button>
                   </form>
+
+                  {/* Alternative Contact Options */}
+                  <div className="mt-8 pt-8 border-t border-border">
+                    <h3 className="text-lg font-display font-semibold mb-4 text-center">O contáctanos directamente</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Button
+                        variant="outline"
+                        className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
+                        onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
+                      >
+                        <Phone className="w-4 h-4 mr-2" />
+                        WhatsApp
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
+                      >
+                        <Mail className="w-4 h-4 mr-2" />
+                        Email Directo
+                      </Button>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
