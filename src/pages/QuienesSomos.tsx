@@ -84,10 +84,12 @@ const QuienesSomos = () => {
               <Button
                 variant="outline"
                 className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700 px-12 py-4"
-                onClick={() => window.location.href = 'https://wa.me/message/IH46LPYOLH4CH1'}
+                asChild
               >
-                <Phone className="w-4 h-4 mr-2" />
-                WhatsApp
+                <a href="https://wa.me/message/IH46LPYOLH4CH1" target="_blank" rel="noopener noreferrer">
+                  <Phone className="w-4 h-4 mr-2" />
+                  WhatsApp
+                </a>
               </Button>
               <Button
                 variant="outline"
