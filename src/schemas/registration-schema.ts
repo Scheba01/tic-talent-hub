@@ -48,6 +48,17 @@ export const registrationSchema = z.object({
     message: "Debe autorizar el tratamiento de datos"
   }),
 
+  // Identidad de cargo (funcional)
+  areaFuncional: z.string().min(1, "Área funcional es requerida"),
+  subarea: z.string().min(1, "Subárea es requerida"),
+  rolCargo: z.string().min(1, "Rol/cargo es requerido"),
+  nivelCargo: z.string().min(1, "Nivel de cargo es requerido"),
+  seniority: z.string().min(1, "Seniority es requerido"),
+  personasCargo: z.string().min(1, "Personas a cargo es requerido"),
+  responsabilidadPL: z.string().min(1, "Responsabilidad P&L es requerida"),
+  alcanceGeografico: z.string().min(1, "Alcance geográfico es requerido"),
+  reportaA: z.string().min(1, "Reporta a es requerido"),
+
   // Documentos
   cv: z.any().optional(),
   certificadosAdicionales: z.any().optional(),
