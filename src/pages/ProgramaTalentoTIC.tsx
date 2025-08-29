@@ -17,27 +17,12 @@ const ProgramaTalentoTIC = () => {
           <div className="relative max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="flex items-center mb-6">
-                  <img 
-                    src="/lovable-uploads/aa173f7b-4df3-46c2-a94d-5be3c0deb921.png" 
-                    alt="TIC Talento Program" 
-                    className="h-12 w-auto mr-4"
-                  />
-                </div>
                 <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
                   Impulsando el futuro del <span className="text-cyan-300">sector TIC</span>
                 </h1>
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
                   El programa crea un puente real entre la academia y la industria, acercando a los jóvenes a proyectos concretos y preparando a las empresas con el talento que necesitan para crecer. Una iniciativa que no solo transforma la formación en experiencia y la experiencia en carrera profesional, sino que también promueve y fortalece el desarrollo de toda la industria TIC en la región.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button asChild className="bg-cyan-400 hover:bg-cyan-300 text-blue-900 font-semibold px-8 py-3">
-                    <Link to="/contacto">Únete al Programa</Link>
-                  </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/20 hover:border-cyan-300 hover:text-cyan-300 px-8 py-3 font-semibold">
-                    Conoce Más
-                  </Button>
-                </div>
               </div>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-transparent rounded-full blur-3xl"></div>
