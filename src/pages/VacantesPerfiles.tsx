@@ -9,7 +9,9 @@ import {
   Users, 
   CheckCircle,
   Bell,
-  Database
+  Database,
+  Phone,
+  Mail
 } from "lucide-react";
 
 const VacantesPerfiles = () => {
@@ -160,12 +162,31 @@ const VacantesPerfiles = () => {
               No dejes que las mejores oportunidades pasen de largo. Únete a nuestra 
               red de profesionales TIC y acelera tu carrera profesional.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button asChild className="btn-hero">
                 <Link to="/registro-talento">Registrarme Gratis</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link to="/contacto">Más Información</Link>
+              </Button>
+            </div>
+            <h3 className="text-lg font-display font-semibold mb-4">O contáctanos directamente</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-md mx-auto">
+              <Button
+                variant="outline"
+                className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
+                onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre las oportunidades laborales de TIC Select', '_blank')}
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                WhatsApp
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre oportunidades laborales', '_blank')}
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                Email Directo
               </Button>
             </div>
           </div>

@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { CheckCircle, Clock, Shield, Users, Target, Award } from "lucide-react";
+import { CheckCircle, Clock, Shield, Users, Target, Award, Phone, Mail } from "lucide-react";
 const Index = () => {
   return <div className="min-h-screen bg-background">
       <Navigation />
@@ -123,9 +123,25 @@ const Index = () => {
                 <p className="text-muted-foreground mb-6">
                   Hable con nuestros expertos y descubra cómo podemos acelerar su proceso de contratación.
                 </p>
-                <Button asChild className="btn-hero w-full">
-                  <a href="https://wa.me/+573003423423?text=Hola, me interesa conocer más sobre sus servicios de reclutamiento" target="_blank" rel="noopener noreferrer">Contáctanos por WhatsApp</a>
-                </Button>
+                <h4 className="text-lg font-display font-semibold mb-4 text-center">O contáctanos directamente</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Button
+                    variant="outline"
+                    className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
+                    onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
+                  >
+                    <Phone className="w-4 h-4 mr-2" />
+                    WhatsApp
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Email Directo
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
