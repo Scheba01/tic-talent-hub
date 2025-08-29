@@ -248,7 +248,7 @@ const ProgramaTalentoTIC = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
-                    <span>Mentorías a mínimo 10 estudiantes por año</span>
+                    <span>Mentorías a mínimo 3 estudiantes por año</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
