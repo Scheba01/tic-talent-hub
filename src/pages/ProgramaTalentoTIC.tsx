@@ -23,6 +23,11 @@ const ProgramaTalentoTIC = () => {
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
                   El programa crea un puente real entre la academia y la industria, acercando a los jóvenes a proyectos concretos y preparando a las empresas con el talento que necesitan para crecer. Una iniciativa que no solo transforma la formación en experiencia y la experiencia en carrera profesional, sino que también promueve y fortalece el desarrollo de toda la industria TIC en la región.
                 </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button asChild className="bg-cyan-400 hover:bg-cyan-300 text-blue-900 font-semibold px-8 py-3">
+                    <Link to="/contacto">Únete al Programa</Link>
+                  </Button>
+                </div>
               </div>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-transparent rounded-full blur-3xl"></div>
