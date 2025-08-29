@@ -25,11 +25,10 @@ const ProgramaTalentoTIC = () => {
                   />
                 </div>
                 <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
-                  Formando la Próxima Generación de <span className="text-cyan-300">Líderes TIC</span>
+                  Fomentando el Talento de la <span className="text-cyan-300">Industria TIC</span>
                 </h1>
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
-                  Conectamos a estudiantes y jóvenes profesionales con las empresas líderes del sector. 
-                  A través de convenios con universidades, creamos un puente directo hacia el talento emergente.
+                  Conectamos universidades, estudiantes y empresas bajo un mismo compromiso: formar, capacitar e incorporar a la próxima generación de expertos en Testing, Inspección y Certificación.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button asChild className="bg-cyan-400 hover:bg-cyan-300 text-blue-900 font-semibold px-8 py-3">
@@ -75,22 +74,45 @@ const ProgramaTalentoTIC = () => {
           </div>
         </section>
 
-        {/* Beneficios */}
+        {/* ¿Qué es TIC Talento? */}
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
-              Beneficios para su Organización
+              ¿Qué es TIC Talento?
+            </h2>
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-lg text-gray-700 mb-6">
+                El programa TIC Talento nace para fomentar los talentos de la industria TIC (Testing, Inspección y Certificación), 
+                anticipando su desarrollo y permitiendo que los jóvenes se adapten temprano a la cultura y exigencias de este sector.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                En América Latina, muchas veces falta talento especializado en TIC. Para garantizar el crecimiento de la industria, 
+                debemos invertir hoy en la formación y vinculación de los futuros profesionales.
+              </p>
+              <p className="text-lg text-gray-700">
+                Por eso, TIC Talento conecta universidades, estudiantes y empresas bajo un mismo compromiso: formar, capacitar e incorporar 
+                a la próxima generación de expertos TIC.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Beneficios para las empresas */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-cyan-50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
+              Beneficios para las Empresas
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Users className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Acceso a Nuevos Talentos</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">Talento Pre-seleccionado</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Conecte con profesionales alineados con su cultura empresarial desde el inicio de sus carreras.
+                    Incorporación de jóvenes previamente seleccionados para ajustarse a sus necesidades.
                   </p>
                 </CardContent>
               </Card>
@@ -98,11 +120,23 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Lightbulb className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Ideas Frescas e Innovación</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">Proyectos con Impacto</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Inyecte nuevas perspectivas y enfoques innovadores a sus procesos y metodologías.
+                    Participación en proyectos donde los alumnos aportan soluciones reales.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <Users2 className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Adaptación Cultural</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Adaptación temprana de futuros profesionales a la cultura de la empresa.
                   </p>
                 </CardContent>
               </Card>
@@ -110,11 +144,94 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Award className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Fortalecimiento de Marca</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">Visibilidad y Posicionamiento</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Refuerce su marca empleadora y demuestre su compromiso ESG con el desarrollo de talento joven.
+                    Visibilidad y posicionamiento como empresa comprometida con el desarrollo de la industria TIC.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <TrendingUp className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Crecimiento Sostenible</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Impulso al crecimiento sostenible del sector mediante la formación de nuevo talento.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Beneficios para los jóvenes */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
+              Beneficios para los Jóvenes
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <GraduationCap className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Experiencia Práctica</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Experiencia práctica en empresas líderes de la industria.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <Lightbulb className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Proyectos Reales</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Participación en proyectos con impacto real.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <Award className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Formación Internacional</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Formación en normas y estándares internacionales.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <Users className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Mentoría Especializada</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Mentoría de profesionales expertos en TIC.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
+                <CardHeader>
+                  <TrendingUp className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
+                  <CardTitle className="text-xl text-blue-700">Inserción Laboral</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Oportunidad concreta de insertarse en un mercado laboral de alta demanda.
                   </p>
                 </CardContent>
               </Card>
@@ -164,68 +281,63 @@ const ProgramaTalentoTIC = () => {
           </div>
         </section>
 
-        {/* Programa Features */}
+        {/* ¿Cómo funciona? */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-display font-bold mb-6 text-blue-800">
-                  Cómo Funciona el Programa
-                </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      1
+            <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
+              ¿Cómo Funciona?
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-lg text-gray-700 mb-8 text-center">
+                El programa está diseñado para que las empresas participen como partners y asuman un rol activo en la formación de nuevos talentos.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
+                  <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Criterios Anuales para Empresas</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
+                      <span className="text-gray-600">Recibir alumnos en pasantías o prácticas profesionales</span>
                     </div>
-                    <div>
-                      <h3 className="font-display font-semibold mb-2 text-blue-700">Convenios Universitarios</h3>
-                      <p className="text-gray-600">
-                        Establecemos alianzas estratégicas con las principales universidades de LATAM.
-                      </p>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
+                      <span className="text-gray-600">Impartir charlas y talleres en universidades</span>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      2
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
+                      <span className="text-gray-600">Participar en programas de formación y diplomados técnicos</span>
                     </div>
-                    <div>
-                      <h3 className="font-display font-semibold mb-2 text-blue-700">Charlas y Webinars</h3>
-                      <p className="text-gray-600">
-                        Organizamos eventos educativos donde expertos de la industria comparten conocimientos.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      3
-                    </div>
-                    <div>
-                      <h3 className="font-display font-semibold mb-2 text-blue-700">Programas de Mentoría</h3>
-                      <p className="text-gray-600">
-                        Conectamos estudiantes destacados con profesionales experimentados para acelerar su desarrollo.
-                      </p>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
+                      <span className="text-gray-600">Dar oportunidad de primer empleo a jóvenes talentos TIC</span>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="bg-white rounded-lg p-8 shadow-xl border border-cyan-100">
-                <GraduationCap className="w-16 h-16 text-cyan-500 mx-auto mb-6" />
-                <h3 className="text-2xl font-display font-bold text-center mb-4 text-blue-800">
-                  Únase como Empresa Partner
-                </h3>
-                <p className="text-gray-600 text-center mb-6">
-                  Sea parte de la formación del futuro de la industria TIC y acceda al mejor talento emergente.
-                </p>
-                <div className="text-center">
-                  <Button asChild className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-8 py-3">
-                    <Link to="/contacto">Conocer Más</Link>
-                  </Button>
+                
+                <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
+                  <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Nuestro Compromiso</h3>
+                  <p className="text-gray-600 mb-4">
+                    Nos encargamos de buscar a los estudiantes adecuados para cada empresa, asegurando que participen en proyectos reales que aporten valor.
+                  </p>
+                  <p className="text-gray-600">
+                    Los estudiantes se adaptan rápidamente a la cultura organizacional, creando una transición fluida del ámbito académico al profesional.
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Nuestra Visión */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-cyan-50">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-display font-bold mb-6 text-blue-800">
+              Nuestra Visión
+            </h2>
+            <p className="text-lg text-gray-700">
+              TIC Talento busca ser el puente entre la academia y la industria, garantizando que cada estudiante no solo aprenda, 
+              sino que también aplique sus conocimientos y construya una carrera en el sector TIC.
+            </p>
           </div>
         </section>
 
@@ -233,10 +345,24 @@ const ProgramaTalentoTIC = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-cyan-50 to-blue-50">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6 text-blue-800">
-              Súmese como empresa partner y construya el futuro hoy.
+              Llamado a la Acción
             </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
+                <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Empresas</h3>
+                <p className="text-gray-600">
+                  Únete como partner de TIC Talento y forma parte del futuro de la industria, desarrollando el talento que tu organización y el sector necesitan.
+                </p>
+              </div>
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
+                <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Estudiantes</h3>
+                <p className="text-gray-600">
+                  Postula al programa y da tus primeros pasos profesionales en un sector que no deja de crecer.
+                </p>
+              </div>
+            </div>
             <p className="text-lg text-gray-600 mb-8">
-              Elige la forma que prefieras para contactarnos
+              👉 Inscríbete aquí - Elige la forma que prefieras para contactarnos
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
               <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 px-12 py-4 text-sm">
