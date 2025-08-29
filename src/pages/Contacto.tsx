@@ -141,7 +141,7 @@ const Contacto = () => {
                       <Button
                         variant="outline"
                         className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
-                        onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
+                        onClick={() => window.open('https://wa.me/56979575372?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
                       >
                         <Phone className="w-4 h-4 mr-2" />
                         WhatsApp
@@ -180,8 +180,8 @@ const Contacto = () => {
                       <Phone className="w-6 h-6 text-primary" />
                       <div>
                         <p className="font-medium">Teléfono</p>
-                        <a href="tel:+56XXXXXXX" className="text-muted-foreground hover:text-primary">
-                          +56 9 XXXX XXXX
+                        <a href="tel:+56979575372" className="text-muted-foreground hover:text-primary">
+                          +56 9 7957 5372
                         </a>
                       </div>
                     </div>
@@ -237,7 +237,7 @@ const Contacto = () => {
             </p>
             <Button 
               className="btn-hero" 
-              onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
+              onClick={() => window.open('https://wa.me/56979575372?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
             >
               Contactar por WhatsApp
             </Button>

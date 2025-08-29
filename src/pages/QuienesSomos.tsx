@@ -82,7 +82,7 @@ const QuienesSomos = () => {
               <Button
                 variant="outline"
                 className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
-                onClick={() => window.open('https://wa.me/56XXXXXXX?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
+                onClick={() => window.open('https://wa.me/56979575372?text=Hola, me interesa conocer más sobre los servicios de TIC Select', '_blank')}
               >
                 <Phone className="w-4 h-4 mr-2" />
                 WhatsApp
