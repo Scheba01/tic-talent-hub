@@ -112,6 +112,7 @@ const Contacto = () => {
                           <SelectItem value="consultoria">Consultoría en RRHH</SelectItem>
                           <SelectItem value="evaluacion-talento">Evaluación de Talento</SelectItem>
                           <SelectItem value="programa-talento">Programa TalentoTIC</SelectItem>
+                          <SelectItem value="busco-empleo">Busco Empleo</SelectItem>
                           <SelectItem value="otro">Otro</SelectItem>
                         </SelectContent>
                       </Select>
