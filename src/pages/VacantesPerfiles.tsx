@@ -180,7 +180,7 @@ const VacantesPerfiles = () => {
               <Button
                 variant="outline"
                 className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700 px-12 py-4"
-                onClick={() => window.open('https://wa.me/56979575372?text=Hola, me interesa conocer más sobre las oportunidades laborales de TIC Select', '_blank')}
+                onClick={() => window.open('https://wa.me/message/IH46LPYOLH4CH1', '_blank')}
               >
                 <Phone className="w-4 h-4 mr-2" />
                 WhatsApp
