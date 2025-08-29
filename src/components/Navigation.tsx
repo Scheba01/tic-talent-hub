@@ -23,7 +23,7 @@ const Navigation = () => {
     { name: "Quiénes Somos", path: "/quienes-somos" },
     { name: "Servicios para Empresas", path: "/servicios-para-empresas" },
     { name: "Empleo", path: "/vacantes-y-perfiles" },
-    { name: "Programa TalentoTIC", path: "/programa-talentotic" },
+    { name: "Programa TIC Talento", path: "/programa-talentotic" },
   ];
 
   return (
