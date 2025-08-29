@@ -155,7 +155,7 @@ const ProgramaTalentoTIC = () => {
                 className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700 px-12 py-4"
                 asChild
               >
-                <a href="https://wa.me/56979575372" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/56979575372">
                   <Phone className="w-4 h-4 mr-2" />
                   WhatsApp
                 </a>
