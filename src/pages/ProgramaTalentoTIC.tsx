@@ -25,7 +25,12 @@ const ProgramaTalentoTIC = () => {
                   />
                 </div>
                 <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
-                  Formando la Próxima Generación de <span className="text-cyan-300">Líderes TIC</span>
+                  Formando la Próxima Generación de <span className="text-cyan-300">Líderes</span>
+                  <img 
+                    src="/lovable-uploads/cde2ecac-14de-4f21-b255-6c178be36999.png" 
+                    alt="TIC Talento" 
+                    className="inline-block h-12 w-auto ml-4 align-middle"
+                  />
                 </h1>
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
                   Conectamos a estudiantes y jóvenes profesionales con las empresas líderes del sector. 
@@ -35,7 +40,7 @@ const ProgramaTalentoTIC = () => {
                   <Button asChild className="bg-cyan-400 hover:bg-cyan-300 text-blue-900 font-semibold px-8 py-3">
                     <Link to="/contacto">Únete al Programa</Link>
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3">
+                  <Button variant="outline" className="border-white text-white hover:bg-white/20 hover:border-cyan-300 hover:text-cyan-300 px-8 py-3 font-semibold">
                     Conoce Más
                   </Button>
                 </div>
@@ -127,9 +132,14 @@ const ProgramaTalentoTIC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-display font-bold mb-6">
-                  Certificación <span className="text-cyan-300">TIC Talento</span>
-                </h2>
+                <div className="flex items-center mb-6">
+                  <h2 className="text-3xl font-display font-bold mr-4">Certificación</h2>
+                  <img 
+                    src="/lovable-uploads/cde2ecac-14de-4f21-b255-6c178be36999.png" 
+                    alt="TIC Talento" 
+                    className="h-8 w-auto"
+                  />
+                </div>
                 <p className="text-blue-100 text-lg mb-6">
                   Las empresas que demuestren un compromiso anual sostenido con el desarrollo de talento 
                   TIC recibirán nuestra prestigiosa Certificación TIC Talento.
