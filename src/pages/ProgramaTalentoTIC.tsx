@@ -147,7 +147,7 @@ const ProgramaTalentoTIC = () => {
               Elige la forma que prefieras para contactarnos
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" className="border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700">
                 <Link to="/contacto">Formulario de Contacto</Link>
               </Button>
               <Button
@@ -160,7 +160,7 @@ const ProgramaTalentoTIC = () => {
               </Button>
               <Button
                 variant="outline"
-                className="w-full"
+                className="w-full border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700"
                 onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
               >
                 <Mail className="w-4 h-4 mr-2" />
