@@ -68,7 +68,7 @@ const ProgramaTalentoTIC = () => {
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
                 <div className="text-4xl font-bold text-blue-600 mb-2">+50%</div>
                 <div className="text-cyan-600 font-semibold mb-2">Demanda en Normas y Certificaciones</div>
-                <p className="text-gray-600">Más de la mitad de las compañías en la región requieren personal capacitado en estándares internacionales (ISO, HACCP, GLOBALG.A.P., entre otros).</p>
+                <p className="text-gray-600">Más de la mitad de las compañías en la región requieren personal capacitado en estándares internacionales (ISO, HACCP, Sustentabilidad, entre otros).</p>
               </div>
             </div>
           </div>
