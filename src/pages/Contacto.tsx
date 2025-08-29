@@ -142,7 +142,7 @@ const Contacto = () => {
                       <Button
                         variant="outline"
                         className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
-                        onClick={() => window.open('https://wa.me/message/IH46LPYOLH4CH1', '_blank')}
+                        onClick={() => window.location.href = 'https://wa.me/message/IH46LPYOLH4CH1'}
                       >
                         <Phone className="w-4 h-4 mr-2" />
                         WhatsApp
