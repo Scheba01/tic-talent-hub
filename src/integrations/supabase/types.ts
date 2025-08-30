@@ -1,0 +1,711 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "13.0.4"
+  }
+  public: {
+    Tables: {
+      candidate_auditoria: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          horas_auditoria: string | null
+          id: string
+          id_irca: string | null
+          normas_auditadas: string[] | null
+          registro_irca: boolean | null
+          tipo_auditor: string[] | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          horas_auditoria?: string | null
+          id?: string
+          id_irca?: string | null
+          normas_auditadas?: string[] | null
+          registro_irca?: boolean | null
+          tipo_auditor?: string[] | null
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          horas_auditoria?: string | null
+          id?: string
+          id_irca?: string | null
+          normas_auditadas?: string[] | null
+          registro_irca?: boolean | null
+          tipo_auditor?: string[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_auditoria_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_cert_personas: {
+        Row: {
+          areas: string[] | null
+          candidate_id: string | null
+          created_at: string
+          experiencia_17024: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          areas?: string[] | null
+          candidate_id?: string | null
+          created_at?: string
+          experiencia_17024?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          areas?: string[] | null
+          candidate_id?: string | null
+          created_at?: string
+          experiencia_17024?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_cert_personas_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_cert_productos: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          experiencia_17065: string | null
+          id: string
+          rol: string | null
+          sectores: string[] | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          experiencia_17065?: string | null
+          id?: string
+          rol?: string | null
+          sectores?: string[] | null
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          experiencia_17065?: string | null
+          id?: string
+          rol?: string | null
+          sectores?: string[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_cert_productos_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_cert_sistemas: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          id: string
+          id_irca: string | null
+          nivel_competencia: string | null
+          normas: string[] | null
+          registro_irca: boolean | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          id_irca?: string | null
+          nivel_competencia?: string | null
+          normas?: string[] | null
+          registro_irca?: boolean | null
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          id_irca?: string | null
+          nivel_competencia?: string | null
+          normas?: string[] | null
+          registro_irca?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_cert_sistemas_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_comercial: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          id: string
+          lineas_dominadas: string[] | null
+          rol: string | null
+          sectores_atendidos: string[] | null
+          ticket_promedio: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          lineas_dominadas?: string[] | null
+          rol?: string | null
+          sectores_atendidos?: string[] | null
+          ticket_promedio?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          lineas_dominadas?: string[] | null
+          rol?: string | null
+          sectores_atendidos?: string[] | null
+          ticket_promedio?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_comercial_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_competencies: {
+        Row: {
+          candidate_id: string | null
+          competencia: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          candidate_id?: string | null
+          competencia: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          candidate_id?: string | null
+          competencia?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_competencies_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_experience: {
+        Row: {
+          candidate_id: string | null
+          cargo: string
+          created_at: string
+          descripcion: string | null
+          empresa: string
+          id: string
+          periodo: string
+        }
+        Insert: {
+          candidate_id?: string | null
+          cargo: string
+          created_at?: string
+          descripcion?: string | null
+          empresa: string
+          id?: string
+          periodo: string
+        }
+        Update: {
+          candidate_id?: string | null
+          cargo?: string
+          created_at?: string
+          descripcion?: string | null
+          empresa?: string
+          id?: string
+          periodo?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_experience_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_inspection: {
+        Row: {
+          areas_inspeccion: string[] | null
+          candidate_id: string | null
+          certificaciones: string[] | null
+          created_at: string
+          experiencia_17020: string | null
+          id: string
+          rol: string | null
+          tipo_organismo: string | null
+        }
+        Insert: {
+          areas_inspeccion?: string[] | null
+          candidate_id?: string | null
+          certificaciones?: string[] | null
+          created_at?: string
+          experiencia_17020?: string | null
+          id?: string
+          rol?: string | null
+          tipo_organismo?: string | null
+        }
+        Update: {
+          areas_inspeccion?: string[] | null
+          candidate_id?: string | null
+          certificaciones?: string[] | null
+          created_at?: string
+          experiencia_17020?: string | null
+          id?: string
+          rol?: string | null
+          tipo_organismo?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_inspection_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_laboratory: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          experiencia_17025: string | null
+          experiencia_auditorias: boolean | null
+          id: string
+          rol: string | null
+          tecnicas_equipos: string[] | null
+          tipos_laboratorio: string[] | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          experiencia_17025?: string | null
+          experiencia_auditorias?: boolean | null
+          id?: string
+          rol?: string | null
+          tecnicas_equipos?: string[] | null
+          tipos_laboratorio?: string[] | null
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          experiencia_17025?: string | null
+          experiencia_auditorias?: boolean | null
+          id?: string
+          rol?: string | null
+          tecnicas_equipos?: string[] | null
+          tipos_laboratorio?: string[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_laboratory_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_languages: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          id: string
+          idioma: string
+          idioma_otro: string | null
+          nivel: string
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          idioma: string
+          idioma_otro?: string | null
+          nivel: string
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          idioma?: string
+          idioma_otro?: string | null
+          nivel?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_languages_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_operaciones: {
+        Row: {
+          areas: string[] | null
+          candidate_id: string | null
+          created_at: string
+          id: string
+          nivel: string | null
+          personas_cargo: string | null
+          presupuesto: string | null
+        }
+        Insert: {
+          areas?: string[] | null
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          nivel?: string | null
+          personas_cargo?: string | null
+          presupuesto?: string | null
+        }
+        Update: {
+          areas?: string[] | null
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          nivel?: string | null
+          personas_cargo?: string | null
+          presupuesto?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_operaciones_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_role_families: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          familia_rol: string
+          familia_rol_otro: string | null
+          id: string
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          familia_rol: string
+          familia_rol_otro?: string | null
+          id?: string
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          familia_rol?: string
+          familia_rol_otro?: string | null
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_role_families_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_sectors: {
+        Row: {
+          candidate_id: string | null
+          created_at: string
+          id: string
+          sector: string
+          sectores_otro: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          sector: string
+          sectores_otro?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          created_at?: string
+          id?: string
+          sector?: string
+          sectores_otro?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_sectors_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidates: {
+        Row: {
+          area_estudio: string
+          area_estudio_otro: string | null
+          autorizacion_datos: boolean
+          certificaciones: string | null
+          certificados_adicionales_url: string | null
+          ciudad: string
+          codigo_otro: string | null
+          codigo_pais: string
+          comentarios: string | null
+          created_at: string
+          cv_url: string | null
+          disponibilidad: string
+          email: string
+          id: string
+          jornada: string
+          linkedin: string | null
+          nivel_maximo: string
+          nombre_completo: string
+          pais: string
+          pais_otro: string | null
+          situacion_actual: string
+          status: string | null
+          sueldo_actual_bruto: string
+          telefono: string
+          updated_at: string
+        }
+        Insert: {
+          area_estudio: string
+          area_estudio_otro?: string | null
+          autorizacion_datos?: boolean
+          certificaciones?: string | null
+          certificados_adicionales_url?: string | null
+          ciudad: string
+          codigo_otro?: string | null
+          codigo_pais: string
+          comentarios?: string | null
+          created_at?: string
+          cv_url?: string | null
+          disponibilidad: string
+          email: string
+          id?: string
+          jornada: string
+          linkedin?: string | null
+          nivel_maximo: string
+          nombre_completo: string
+          pais: string
+          pais_otro?: string | null
+          situacion_actual: string
+          status?: string | null
+          sueldo_actual_bruto: string
+          telefono: string
+          updated_at?: string
+        }
+        Update: {
+          area_estudio?: string
+          area_estudio_otro?: string | null
+          autorizacion_datos?: boolean
+          certificaciones?: string | null
+          certificados_adicionales_url?: string | null
+          ciudad?: string
+          codigo_otro?: string | null
+          codigo_pais?: string
+          comentarios?: string | null
+          created_at?: string
+          cv_url?: string | null
+          disponibilidad?: string
+          email?: string
+          id?: string
+          jornada?: string
+          linkedin?: string | null
+          nivel_maximo?: string
+          nombre_completo?: string
+          pais?: string
+          pais_otro?: string | null
+          situacion_actual?: string
+          status?: string | null
+          sueldo_actual_bruto?: string
+          telefono?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {},
+  },
+} as const
