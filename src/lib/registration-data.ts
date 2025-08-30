@@ -1,3 +1,25 @@
+export const COUNTRY_CODES = [
+  { value: "+54", label: "+54", country: "Argentina" },
+  { value: "+591", label: "+591", country: "Bolivia" },
+  { value: "+55", label: "+55", country: "Brasil" },
+  { value: "+56", label: "+56", country: "Chile" },
+  { value: "+57", label: "+57", country: "Colombia" },
+  { value: "+506", label: "+506", country: "Costa Rica" },
+  { value: "+53", label: "+53", country: "Cuba" },
+  { value: "+593", label: "+593", country: "Ecuador" },
+  { value: "+503", label: "+503", country: "El Salvador" },
+  { value: "+502", label: "+502", country: "Guatemala" },
+  { value: "+504", label: "+504", country: "Honduras" },
+  { value: "+52", label: "+52", country: "México" },
+  { value: "+505", label: "+505", country: "Nicaragua" },
+  { value: "+507", label: "+507", country: "Panamá" },
+  { value: "+595", label: "+595", country: "Paraguay" },
+  { value: "+51", label: "+51", country: "Perú" },
+  { value: "+1809", label: "+1809", country: "República Dominicana" },
+  { value: "+598", label: "+598", country: "Uruguay" },
+  { value: "+58", label: "+58", country: "Venezuela" }
+]
+
 export const PAISES_LATAM = [
   { value: "argentina", label: "Argentina" },
   { value: "bolivia", label: "Bolivia" },

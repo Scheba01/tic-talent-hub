@@ -8,12 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
+import { COUNTRY_CODES } from "@/lib/registration-data";
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
     empresa: "",
+    codigoPais: "+56",
     telefono: "",
     tipoConsulta: "",
     mensaje: ""
@@ -91,12 +93,28 @@ const Contacto = () => {
                       </div>
                       <div>
                         <Label htmlFor="telefono">Teléfono</Label>
-                        <Input
-                          id="telefono"
-                          type="tel"
-                          value={formData.telefono}
-                          onChange={(e) => setFormData({...formData, telefono: e.target.value})}
-                        />
+                        <div className="grid grid-cols-3 gap-2">
+                          <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>
+                            <SelectTrigger>
+                              <SelectValue placeholder="+56" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {COUNTRY_CODES.map(code => (
+                                <SelectItem key={code.value} value={code.value}>
+                                  {code.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <Input
+                            className="col-span-2"
+                            id="telefono"
+                            type="tel"
+                            placeholder="9 1234 5678"
+                            value={formData.telefono}
+                            onChange={(e) => setFormData({...formData, telefono: e.target.value})}
+                          />
+                        </div>
                       </div>
                     </div>
 

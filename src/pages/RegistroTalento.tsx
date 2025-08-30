@@ -12,7 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema, type RegistrationFormData } from "@/schemas/registration-schema";
-import { PAISES_LATAM, FAMILIAS_ROL, TIPOS_LABORATORIO, AREAS_INSPECCION, NORMAS_SISTEMAS, SECTORES_PRODUCTOS, AREAS_PERSONAS, SECTORES_INDUSTRIA, NORMAS_COMPETENCIAS, IDIOMAS, NIVELES_IDIOMA, NIVELES_COMPETENCIA, AREAS_FUNCIONALES, SUBAREAS_POR_AREA, ROLES_POR_SUBAREA, NIVELES_CARGO, SENIORITY_LEVELS, PERSONAS_CARGO, RESPONSABILIDAD_PL, ALCANCE_GEOGRAFICO, REPORTA_A } from "@/lib/registration-data";
+import { PAISES_LATAM, FAMILIAS_ROL, TIPOS_LABORATORIO, AREAS_INSPECCION, NORMAS_SISTEMAS, SECTORES_PRODUCTOS, AREAS_PERSONAS, SECTORES_INDUSTRIA, NORMAS_COMPETENCIAS, IDIOMAS, NIVELES_IDIOMA, NIVELES_COMPETENCIA, AREAS_FUNCIONALES, SUBAREAS_POR_AREA, ROLES_POR_SUBAREA, NIVELES_CARGO, SENIORITY_LEVELS, PERSONAS_CARGO, RESPONSABILIDAD_PL, ALCANCE_GEOGRAFICO, REPORTA_A, COUNTRY_CODES } from "@/lib/registration-data";
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { toast } from "sonner";
@@ -23,6 +23,7 @@ const RegistroTalento = () => {
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
+      codigoPais: "+56",
       familiasRol: [],
       sectores: [],
       competenciasNormas: [""],
@@ -114,15 +115,44 @@ const RegistroTalento = () => {
                               <FormMessage />
                             </FormItem>} />
 
-                        <FormField control={form.control} name="telefono" render={({
-                        field
-                      }) => <FormItem>
-                              <FormLabel>Teléfono (WhatsApp)</FormLabel>
-                              <FormControl>
-                                <Input type="tel" {...field} />
-                              </FormControl>
+                        <div className="grid grid-cols-3 gap-2">
+                          <FormField control={form.control} name="codigoPais" render={({
+                            field
+                          }) => (
+                            <FormItem>
+                              <FormLabel>Código</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="+56" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {COUNTRY_CODES.map(code => (
+                                    <SelectItem key={code.value} value={code.value}>
+                                      {code.label}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
                               <FormMessage />
-                            </FormItem>} />
+                            </FormItem>
+                          )} />
+                          
+                          <div className="col-span-2">
+                            <FormField control={form.control} name="telefono" render={({
+                              field
+                            }) => (
+                              <FormItem>
+                                <FormLabel>Teléfono (WhatsApp)</FormLabel>
+                                <FormControl>
+                                  <Input type="tel" placeholder="9 1234 5678" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )} />
+                          </div>
+                        </div>
 
                         <FormField control={form.control} name="pais" render={({
                         field

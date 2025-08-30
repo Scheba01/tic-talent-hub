@@ -4,6 +4,7 @@ export const registrationSchema = z.object({
   // Datos personales
   nombreCompleto: z.string().min(1, "Nombre completo es requerido"),
   email: z.string().email("Email inválido"),
+  codigoPais: z.string().min(1, "Código de país es requerido"),
   telefono: z.string().min(1, "Teléfono es requerido"),
   pais: z.string().min(1, "País es requerido"),
   paisOtro: z.string().optional(),
