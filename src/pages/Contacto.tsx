@@ -282,7 +282,8 @@ const Contacto = () => {
                         className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
                         asChild
                       >
-                        <a href="https://wa.me/message/IH46LPYOLH4CH1">
+                        <a href="https://wa.me/56979575372?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20TIC%20Select"
+>
                           <Phone className="w-4 h-4 mr-2" />
                           WhatsApp
                         </a>
