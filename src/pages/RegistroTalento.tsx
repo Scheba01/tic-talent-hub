@@ -165,6 +165,18 @@ const RegistroTalento = () => {
                               <FormMessage />
                             </FormItem>} />
 
+                        {form.watch("pais") === "otro" && (
+                          <FormField control={form.control} name="paisOtro" render={({
+                          field
+                        }) => <FormItem>
+                                <FormLabel>Especifica el país</FormLabel>
+                                <FormControl>
+                                  <Input {...field} placeholder="Ingresa el nombre del país" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>} />
+                        )}
+
                         <FormField control={form.control} name="ciudad" render={({
                         field
                       }) => <FormItem>
@@ -574,6 +586,20 @@ const RegistroTalento = () => {
                             <Button type="button" variant="outline" size="sm" onClick={() => removeCompetencia(index)} disabled={form.watch("competenciasNormas")?.length <= 1}>
                               <X className="h-4 w-4" />
                             </Button>
+
+                            {form.watch(`competenciasNormas.${index}.norma`) === "otros" && (
+                              <div className="md:col-span-3">
+                                <FormField control={form.control} name={`competenciasNormas.${index}.normaOtro`} render={({
+                                field
+                              }) => <FormItem>
+                                        <FormLabel>Especifica la norma/esquema</FormLabel>
+                                        <FormControl>
+                                          <Input {...field} placeholder="Ingresa la norma o esquema" />
+                                        </FormControl>
+                                        <FormMessage />
+                                      </FormItem>} />
+                              </div>
+                            )}
                           </div>)}
                         <Button type="button" variant="outline" onClick={addCompetencia}>
                           <Plus className="h-4 w-4 mr-2" />
@@ -633,6 +659,18 @@ const RegistroTalento = () => {
                               </Select>
                               <FormMessage />
                             </FormItem>} />
+
+                        {form.watch("areaEstudio") === "otros" && (
+                          <FormField control={form.control} name="areaEstudioOtro" render={({
+                          field
+                        }) => <FormItem>
+                                <FormLabel>Especifica el área de estudio</FormLabel>
+                                <FormControl>
+                                  <Input {...field} placeholder="Ingresa el área de estudio" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>} />
+                        )}
 
                         <div className="md:col-span-2">
                           <FormField control={form.control} name="certificaciones" render={({
@@ -694,6 +732,20 @@ const RegistroTalento = () => {
                             <Button type="button" variant="outline" size="sm" onClick={() => removeIdioma(index)} disabled={form.watch("idiomas")?.length <= 1}>
                               <X className="h-4 w-4" />
                             </Button>
+
+                            {form.watch(`idiomas.${index}.idioma`) === "otro" && (
+                              <div className="md:col-span-3">
+                                <FormField control={form.control} name={`idiomas.${index}.idiomaOtro`} render={({
+                                field
+                              }) => <FormItem>
+                                        <FormLabel>Especifica el idioma</FormLabel>
+                                        <FormControl>
+                                          <Input {...field} placeholder="Ingresa el idioma" />
+                                        </FormControl>
+                                        <FormMessage />
+                                      </FormItem>} />
+                              </div>
+                            )}
                           </div>)}
                         <Button type="button" variant="outline" onClick={addIdioma}>
                           <Plus className="h-4 w-4 mr-2" />

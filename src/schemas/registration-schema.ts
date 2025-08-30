@@ -6,6 +6,7 @@ export const registrationSchema = z.object({
   email: z.string().email("Email inválido"),
   telefono: z.string().min(1, "Teléfono es requerido"),
   pais: z.string().min(1, "País es requerido"),
+  paisOtro: z.string().optional(),
   ciudad: z.string().min(1, "Ciudad es requerida"),
 
   // Situación laboral & disponibilidad
@@ -23,17 +24,20 @@ export const registrationSchema = z.object({
   // Competencias y normas
   competenciasNormas: z.array(z.object({
     norma: z.string(),
+    normaOtro: z.string().optional(),
     nivel: z.string()
   })),
 
   // Formación académica
   nivelMaximo: z.string().min(1, "Nivel máximo es requerido"),
   areaEstudio: z.string().min(1, "Área de estudio es requerida"),
+  areaEstudioOtro: z.string().optional(),
   certificaciones: z.string(),
 
   // Idiomas
   idiomas: z.array(z.object({
     idioma: z.string().min(1, "Idioma es requerido"),
+    idiomaOtro: z.string().optional(),
     nivel: z.string().min(1, "Nivel es requerido")
   })).min(1, "Debe especificar al menos un idioma"),
 
