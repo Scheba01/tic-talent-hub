@@ -94,9 +94,9 @@ const Contacto = () => {
                       </div>
                       <div>
                         <Label htmlFor="telefono">Teléfono</Label>
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 items-start">
                           <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>
-                            <SelectTrigger className="w-32">
+                            <SelectTrigger className="w-36">
                               <SelectValue placeholder="🇨🇱 +56" />
                             </SelectTrigger>
                             <SelectContent>
@@ -110,7 +110,7 @@ const Contacto = () => {
                           
                           {formData.codigoPais === "otro" && (
                             <Input
-                              className="w-24"
+                              className="w-20"
                               type="text"
                               placeholder="+1"
                               value={formData.codigoOtro}
