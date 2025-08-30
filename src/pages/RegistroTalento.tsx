@@ -346,7 +346,7 @@ const RegistroTalento = () => {
 
                     {/* 4) Familias de rol */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">4. Familias de Rol (elige una o más)</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">4. En qué área tienes experiencia? (elige una o más)</h3>
                       <FormField control={form.control} name="familiasRol" render={({
                       field
                     }) => <FormItem>
