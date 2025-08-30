@@ -96,7 +96,7 @@ const Contacto = () => {
                         <div className="grid grid-cols-3 gap-2">
                           <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>
                             <SelectTrigger>
-                              <SelectValue placeholder="+56" />
+                              <SelectValue placeholder="🇨🇱 +56" />
                             </SelectTrigger>
                             <SelectContent>
                               {COUNTRY_CODES.map(code => (

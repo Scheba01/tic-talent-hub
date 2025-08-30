@@ -125,7 +125,7 @@ const RegistroTalento = () => {
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue placeholder="+56" />
+                                      <SelectValue placeholder="🇨🇱 +56" />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
