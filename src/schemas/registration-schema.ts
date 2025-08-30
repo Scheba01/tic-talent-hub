@@ -23,6 +23,7 @@ export const registrationSchema = z.object({
 
   // Sectores/Industrias
   sectores: z.array(z.string()),
+  sectoresOtro: z.string().optional(),
 
   // Conocimiento y Competencia en Normas & Certificaciones
   competenciasNormas: z.array(z.string().min(1, "Este campo es requerido")),

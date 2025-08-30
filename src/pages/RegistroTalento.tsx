@@ -477,14 +477,30 @@ const RegistroTalento = () => {
                     {/* 5) Sectores/Industrias */}
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">5. Sectores/Industrias</h3>
-                      <FormField control={form.control} name="sectores" render={({
-                      field
-                    }) => <FormItem>
-                            <FormControl>
-                              <MultiSelect options={SECTORES_INDUSTRIA} selected={field.value} onChange={field.onChange} placeholder="Selecciona sectores de interés..." />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>} />
+                      <div className="space-y-4">
+                        <FormField control={form.control} name="sectores" render={({
+                        field
+                      }) => <FormItem>
+                              <FormControl>
+                                <MultiSelect options={SECTORES_INDUSTRIA} selected={field.value} onChange={field.onChange} placeholder="Selecciona sectores de interés..." />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>} />
+
+                        {form.watch("sectores")?.includes("otros") && (
+                          <FormField control={form.control} name="sectoresOtro" render={({
+                            field
+                          }) => (
+                            <FormItem>
+                              <FormLabel>Especifica otros sectores</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Describe otros sectores de interés" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )} />
+                        )}
+                      </div>
                     </div>
 
                     {/* 6) Conocimiento y Competencia en Normas & Certificaciones */}
