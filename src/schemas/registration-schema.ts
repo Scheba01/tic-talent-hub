@@ -11,11 +11,8 @@ export const registrationSchema = z.object({
   // Situación laboral & disponibilidad
   situacionActual: z.string().min(1, "Situación actual es requerida"),
   disponibilidad: z.string().min(1, "Disponibilidad es requerida"),
-  modalidadPreferida: z.string().min(1, "Modalidad preferida es requerida"),
   jornada: z.string().min(1, "Jornada es requerida"),
-  movilidad: z.string().min(1, "Movilidad es requerida"),
-  paisesReubicacion: z.array(z.string()),
-  rangoSalarial: z.string().min(1, "Rango salarial es requerido"),
+  sueldoActualBruto: z.string().min(1, "Sueldo actual bruto es requerido"),
 
   // Familias de rol
   familiasRol: z.array(z.string()).min(1, "Debe seleccionar al menos una familia de rol"),

@@ -54,7 +54,6 @@ const RegistroTalento = () => {
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
-      paisesReubicacion: [],
       familiasRol: [],
       sectores: [],
       competenciasNormas: [],
@@ -71,7 +70,8 @@ const RegistroTalento = () => {
       personasCargo: "",
       responsabilidadPL: "",
       alcanceGeografico: "",
-      reportaA: ""
+      reportaA: "",
+      sueldoActualBruto: ""
     }
   });
 
@@ -274,30 +274,6 @@ const RegistroTalento = () => {
 
                         <FormField
                           control={form.control}
-                          name="modalidadPreferida"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Modalidad preferida</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona modalidad" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="presencial">Presencial</SelectItem>
-                                  <SelectItem value="hibrido">Híbrido</SelectItem>
-                                  <SelectItem value="remoto">Remoto</SelectItem>
-                                  <SelectItem value="indistinto">Indistinto</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
                           name="jornada"
                           render={({ field }) => (
                             <FormItem>
@@ -321,76 +297,21 @@ const RegistroTalento = () => {
 
                         <FormField
                           control={form.control}
-                          name="movilidad"
+                          name="sueldoActualBruto"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Movilidad/traslados</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona movilidad" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="sin-viajes">Sin viajes</SelectItem>
-                                  <SelectItem value="hasta-25">Hasta 25%</SelectItem>
-                                  <SelectItem value="25-50">25–50%</SelectItem>
-                                  <SelectItem value="50-75">50–75%</SelectItem>
-                                  <SelectItem value="mas-75">&gt;75%</SelectItem>
-                                </SelectContent>
-                              </Select>
+                              <FormLabel>Sueldo actual bruto (USD/mes)</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  {...field} 
+                                  type="number"
+                                  placeholder="Ej: 2500"
+                                />
+                              </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
-
-                        <FormField
-                          control={form.control}
-                          name="rangoSalarial"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Rango salarial esperado (USD/mes)</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona rango" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="menos-800">&lt;800</SelectItem>
-                                  <SelectItem value="800-1200">800–1.200</SelectItem>
-                                  <SelectItem value="1200-1800">1.200–1.800</SelectItem>
-                                  <SelectItem value="1800-2500">1.800–2.500</SelectItem>
-                                  <SelectItem value="2500-3500">2.500–3.500</SelectItem>
-                                  <SelectItem value="mas-3500">&gt;3.500</SelectItem>
-                                  <SelectItem value="negociable">Negociable</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <div className="md:col-span-2">
-                          <FormField
-                            control={form.control}
-                            name="paisesReubicacion"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Países a los que estarías dispuesto a reubicarte</FormLabel>
-                                <FormControl>
-                                  <MultiSelect
-                                    options={PAISES_LATAM}
-                                    selected={field.value}
-                                    onChange={field.onChange}
-                                    placeholder="Selecciona países..."
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
                       </div>
                     </div>
 
