@@ -16,6 +16,7 @@ const Contacto = () => {
     email: "",
     empresa: "",
     codigoPais: "+56",
+    codigoOtro: "",
     telefono: "",
     tipoConsulta: "",
     mensaje: ""
@@ -106,6 +107,17 @@ const Contacto = () => {
                               ))}
                             </SelectContent>
                           </Select>
+                          
+                          {formData.codigoPais === "otro" && (
+                            <Input
+                              className="w-24"
+                              type="text"
+                              placeholder="+1"
+                              value={formData.codigoOtro}
+                              onChange={(e) => setFormData({...formData, codigoOtro: e.target.value})}
+                            />
+                          )}
+                          
                           <Input
                             className="flex-1"
                             id="telefono"

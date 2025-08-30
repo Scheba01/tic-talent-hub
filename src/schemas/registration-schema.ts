@@ -6,6 +6,7 @@ export const registrationSchema = z.object({
   email: z.string().email("Email inválido"),
   codigoPais: z.string().min(1, "Código de país es requerido"),
   telefono: z.string().min(1, "Teléfono es requerido"),
+  codigoOtro: z.string().optional(),
   pais: z.string().min(1, "País es requerido"),
   paisOtro: z.string().optional(),
   ciudad: z.string().min(1, "Ciudad es requerida"),

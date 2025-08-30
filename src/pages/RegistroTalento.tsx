@@ -140,6 +140,19 @@ const RegistroTalento = () => {
                               </FormItem>
                             )} />
                             
+                            {form.watch("codigoPais") === "otro" && (
+                              <FormField control={form.control} name="codigoOtro" render={({
+                                field
+                              }) => (
+                                <FormItem className="w-24">
+                                  <FormControl>
+                                    <Input type="text" placeholder="+1" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )} />
+                            )}
+                            
                             <FormField control={form.control} name="telefono" render={({
                               field
                             }) => (
