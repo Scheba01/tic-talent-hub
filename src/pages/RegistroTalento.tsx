@@ -25,7 +25,7 @@ const RegistroTalento = () => {
     defaultValues: {
       familiasRol: [],
       sectores: [],
-      competenciasNormas: [],
+      competenciasNormas: [""],
       idiomas: [{
         idioma: "",
         nivel: ""
@@ -55,14 +55,13 @@ const RegistroTalento = () => {
   };
   const addCompetencia = () => {
     const currentCompetencias = form.getValues("competenciasNormas");
-    form.setValue("competenciasNormas", [...currentCompetencias, {
-      norma: "",
-      nivel: ""
-    }]);
+    form.setValue("competenciasNormas", [...currentCompetencias, ""]);
   };
   const removeCompetencia = (index: number) => {
     const currentCompetencias = form.getValues("competenciasNormas");
-    form.setValue("competenciasNormas", currentCompetencias.filter((_, i) => i !== index));
+    if (currentCompetencias.length > 1) {
+      form.setValue("competenciasNormas", currentCompetencias.filter((_, i) => i !== index));
+    }
   };
   return <div className="min-h-screen bg-background">
       <Navigation />
@@ -429,56 +428,48 @@ const RegistroTalento = () => {
                           </FormItem>} />
                     </div>
 
-                    {/* 6) Competencias y normas */}
+                    {/* 6) Conocimiento y Competencia en Normas & Certificaciones */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">6. Competencias y Normas</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">6. Conocimiento y Competencia en Normas & Certificaciones</h3>
                       <div className="space-y-4">
-                        {form.watch("competenciasNormas")?.map((_, index) => <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                            <FormField control={form.control} name={`competenciasNormas.${index}.norma`} render={({
-                          field
-                        }) => <FormItem>
-                                  <FormLabel>Norma/Esquema</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger>
-                                        <SelectValue placeholder="Selecciona norma" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      {NORMAS_COMPETENCIAS.map(norma => <SelectItem key={norma.value} value={norma.value}>
-                                          {norma.label}
-                                        </SelectItem>)}
-                                    </SelectContent>
-                                  </Select>
+                        {form.watch("competenciasNormas")?.map((_, index) => (
+                          <div key={index} className="space-y-2">
+                            <FormField 
+                              control={form.control} 
+                              name={`competenciasNormas.${index}`} 
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>
+                                    {index === 0 ? "Conocimiento y Competencia en Normas & Certificaciones" : "Otro"}
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Textarea
+                                      placeholder="Escribe tus normas y niveles. Ej.:&#10;ISO 9712 – UT – Nivel II&#10;ASME Sección VIII Div.1 – Inspector&#10;ISO 9001 – Lead Auditor (IRCA)&#10;ISO 14065 – Verificador GEI – ISO 14064-1"
+                                      className="min-h-[120px] resize-none"
+                                      {...field}
+                                    />
+                                  </FormControl>
                                   <FormMessage />
-                                </FormItem>} />
-
-                            <FormField control={form.control} name={`competenciasNormas.${index}.nivel`} render={({
-                          field
-                        }) => <FormItem>
-                                  <FormLabel>Nivel</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger>
-                                        <SelectValue placeholder="Selecciona nivel" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      {NIVELES_COMPETENCIA.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
-                                          {nivel.label}
-                                        </SelectItem>)}
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>} />
-
-                            <Button type="button" variant="outline" size="sm" onClick={() => removeCompetencia(index)} disabled={form.watch("competenciasNormas")?.length <= 1}>
-                              <X className="h-4 w-4" />
-                            </Button>
-                          </div>)}
+                                </FormItem>
+                              )}
+                            />
+                            {index > 0 && (
+                              <Button 
+                                type="button" 
+                                variant="outline" 
+                                size="sm" 
+                                onClick={() => removeCompetencia(index)}
+                                className="w-fit"
+                              >
+                                <X className="h-4 w-4 mr-2" />
+                                Eliminar
+                              </Button>
+                            )}
+                          </div>
+                        ))}
                         <Button type="button" variant="outline" onClick={addCompetencia}>
                           <Plus className="h-4 w-4 mr-2" />
-                          Añadir competencia
+                          Agregar otro
                         </Button>
                       </div>
                     </div>
