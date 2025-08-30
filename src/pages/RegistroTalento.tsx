@@ -31,13 +31,18 @@ const RegistroTalento = () => {
         nivel: ""
       }],
       autorizacionDatos: false,
+      areasInteres: [],
+      disponibilidadMentorias: false,
       comentarios: "",
-      experienciaLaboral: [{
-        empresa: "",
-        cargo: "",
-        periodo: "",
-        descripcion: ""
-      }],
+      areaFuncional: "",
+      subarea: "",
+      rolCargo: "",
+      nivelCargo: "",
+      seniority: "",
+      personasCargo: "",
+      responsabilidadPL: "",
+      alcanceGeografico: "",
+      reportaA: "",
       sueldoActualBruto: ""
     }
   });
@@ -69,23 +74,6 @@ const RegistroTalento = () => {
   const removeCompetencia = (index: number) => {
     const currentCompetencias = form.getValues("competenciasNormas");
     form.setValue("competenciasNormas", currentCompetencias.filter((_, i) => i !== index));
-  };
-
-  const addExperiencia = () => {
-    const currentExperiencia = form.getValues("experienciaLaboral");
-    form.setValue("experienciaLaboral", [...currentExperiencia, {
-      empresa: "",
-      cargo: "",
-      periodo: "",
-      descripcion: ""
-    }]);
-  };
-
-  const removeExperiencia = (index: number) => {
-    const currentExperiencia = form.getValues("experienciaLaboral");
-    if (currentExperiencia.length > 1) {
-      form.setValue("experienciaLaboral", currentExperiencia.filter((_, i) => i !== index));
-    }
   };
   return <div className="min-h-screen bg-background">
       <Navigation />
@@ -255,85 +243,190 @@ const RegistroTalento = () => {
                       </div>
                     </div>
 
-                    {/* 3) Experiencia Profesional */}
+                    {/* 3) Identidad de cargo (funcional) */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">3. Experiencia Profesional</h3>
-                      <div className="space-y-4">
-                        {form.watch("experienciaLaboral")?.map((_, index) => (
-                          <div key={index} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end p-4 border border-border rounded-lg">
-                            <FormField
-                              control={form.control}
-                              name={`experienciaLaboral.${index}.empresa`}
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>Empresa</FormLabel>
-                                  <FormControl>
-                                    <Input {...field} placeholder="Nombre de la empresa" />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
+                      <h3 className="text-xl font-display font-semibold mb-6">3. Identidad de Cargo</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField control={form.control} name="areaFuncional" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Área</FormLabel>
+                              <Select onValueChange={value => {
+                          field.onChange(value);
+                          setSelectedAreaFuncional(value);
+                          setSelectedSubarea("");
+                          form.setValue("subarea", "");
+                          form.setValue("rolCargo", "");
+                        }} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona área funcional" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {AREAS_FUNCIONALES.map(area => <SelectItem key={area.value} value={area.value}>
+                                      {area.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
 
-                            <FormField
-                              control={form.control}
-                              name={`experienciaLaboral.${index}.cargo`}
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>Cargo</FormLabel>
-                                  <FormControl>
-                                    <Input {...field} placeholder="Título del cargo" />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
+                        <FormField control={form.control} name="subarea" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Subárea</FormLabel>
+                              <Select onValueChange={value => {
+                          field.onChange(value);
+                          setSelectedSubarea(value);
+                          form.setValue("rolCargo", "");
+                        }} defaultValue={field.value} disabled={!selectedAreaFuncional}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona subárea" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {selectedAreaFuncional && SUBAREAS_POR_AREA[selectedAreaFuncional]?.map(subarea => <SelectItem key={subarea.value} value={subarea.value}>
+                                      {subarea.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
 
-                            <FormField
-                              control={form.control}
-                              name={`experienciaLaboral.${index}.periodo`}
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>Período</FormLabel>
-                                  <FormControl>
-                                    <Input {...field} placeholder="Ej: 2020-2023" />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
+                        <FormField control={form.control} name="rolCargo" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Rol/Cargo</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value} disabled={!selectedSubarea}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona rol/cargo" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {selectedSubarea && ROLES_POR_SUBAREA[selectedSubarea]?.map(rol => <SelectItem key={rol.value} value={rol.value}>
+                                      {rol.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
 
-                            <Button
-                              type="button"
-                              variant="outline"
-                              size="sm"
-                              onClick={() => removeExperiencia(index)}
-                              disabled={form.watch("experienciaLaboral")?.length <= 1}
-                            >
-                              <X className="h-4 w-4" />
-                            </Button>
+                        <FormField control={form.control} name="nivelCargo" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Nivel de cargo</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona nivel de cargo" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {NIVELES_CARGO.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
+                                      {nivel.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
 
-                            <div className="md:col-span-4">
-                              <FormField
-                                control={form.control}
-                                name={`experienciaLaboral.${index}.descripcion`}
-                                render={({ field }) => (
-                                  <FormItem>
-                                    <FormLabel>Descripción (opcional)</FormLabel>
-                                    <FormControl>
-                                      <Textarea {...field} placeholder="Breve descripción de responsabilidades..." />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                            </div>
-                          </div>
-                        ))}
-                        <Button type="button" variant="outline" onClick={addExperiencia}>
-                          <Plus className="h-4 w-4 mr-2" />
-                          Añadir experiencia laboral
-                        </Button>
+                        <FormField control={form.control} name="seniority" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Seniority</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona seniority" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {SENIORITY_LEVELS.map(seniority => <SelectItem key={seniority.value} value={seniority.value}>
+                                      {seniority.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
+
+                        <FormField control={form.control} name="personasCargo" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Personas a cargo (máx.)</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona personas a cargo" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {PERSONAS_CARGO.map(personas => <SelectItem key={personas.value} value={personas.value}>
+                                      {personas.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
+
+                        <FormField control={form.control} name="responsabilidadPL" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Responsabilidad P&L</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona responsabilidad P&L" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {RESPONSABILIDAD_PL.map(responsabilidad => <SelectItem key={responsabilidad.value} value={responsabilidad.value}>
+                                      {responsabilidad.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
+
+                        <FormField control={form.control} name="alcanceGeografico" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Alcance geográfico</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona alcance geográfico" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {ALCANCE_GEOGRAFICO.map(alcance => <SelectItem key={alcance.value} value={alcance.value}>
+                                      {alcance.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
+
+                        <FormField control={form.control} name="reportaA" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Reporta a</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona a quién reporta" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {REPORTA_A.map(reporta => <SelectItem key={reporta.value} value={reporta.value}>
+                                      {reporta.label}
+                                    </SelectItem>)}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>} />
                       </div>
                     </div>
 
@@ -419,9 +512,7 @@ const RegistroTalento = () => {
                                     <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                                   </FormControl>
                                   <div className="space-y-1 leading-none">
-                                    <FormLabel>
-                                      Experiencia en auditorías internas 17025
-                                    </FormLabel>
+                                    <FormLabel>5. Sectores/Industrias (Eligir uno o mas donde tienes experiencia)</FormLabel>
                                   </div>
                                 </FormItem>} />
                           </div>
@@ -759,6 +850,29 @@ const RegistroTalento = () => {
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">11. Notas y Preferencias</h3>
                       <div className="space-y-6">
+                        <FormField control={form.control} name="areasInteres" render={({
+                        field
+                      }) => <FormItem>
+                              <FormLabel>Áreas de interés prioritarias</FormLabel>
+                              <FormControl>
+                                <MultiSelect options={FAMILIAS_ROL} selected={field.value} onChange={field.onChange} placeholder="Selecciona áreas de interés..." />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>} />
+
+                        <FormField control={form.control} name="disponibilidadMentorias" render={({
+                        field
+                      }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                              <FormControl>
+                                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                              </FormControl>
+                              <div className="space-y-1 leading-none">
+                                <FormLabel>
+                                  Disponibilidad para mentorías / charlas
+                                </FormLabel>
+                              </div>
+                            </FormItem>} />
+
                         <FormField control={form.control} name="comentarios" render={({
                         field
                       }) => <FormItem>
