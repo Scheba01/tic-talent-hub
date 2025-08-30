@@ -94,38 +94,42 @@ const Contacto = () => {
                       </div>
                       <div>
                         <Label htmlFor="telefono">Teléfono</Label>
-                        <div className="flex gap-2 items-start">
-                          <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>
-                            <SelectTrigger className="w-36">
-                              <SelectValue placeholder="🇨🇱 +56" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {COUNTRY_CODES.map(code => (
-                                <SelectItem key={code.value} value={code.value}>
-                                  {code.label}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                        <div className="flex gap-4 items-start">
+                          <div className="min-w-[140px]">
+                            <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="🇨🇱 +56" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {COUNTRY_CODES.map(code => (
+                                  <SelectItem key={code.value} value={code.value}>
+                                    {code.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
                           
                           {formData.codigoPais === "otro" && (
-                            <Input
-                              className="w-20"
-                              type="text"
-                              placeholder="+1"
-                              value={formData.codigoOtro}
-                              onChange={(e) => setFormData({...formData, codigoOtro: e.target.value})}
-                            />
+                            <div className="min-w-[80px]">
+                              <Input
+                                type="text"
+                                placeholder="+1"
+                                value={formData.codigoOtro}
+                                onChange={(e) => setFormData({...formData, codigoOtro: e.target.value})}
+                              />
+                            </div>
                           )}
                           
-                          <Input
-                            className="flex-1"
-                            id="telefono"
-                            type="tel"
-                            placeholder="9 1234 5678"
-                            value={formData.telefono}
-                            onChange={(e) => setFormData({...formData, telefono: e.target.value})}
-                          />
+                          <div className="flex-1">
+                            <Input
+                              id="telefono"
+                              type="tel"
+                              placeholder="9 1234 5678"
+                              value={formData.telefono}
+                              onChange={(e) => setFormData({...formData, telefono: e.target.value})}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
