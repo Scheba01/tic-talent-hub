@@ -70,7 +70,7 @@ const Contacto = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="email">Correo Electrónico</Label>
+                        <Label htmlFor="email">Correo Electrónico <span className="text-red-500">*</span></Label>
                         <Input
                           id="email"
                           type="email"
@@ -95,7 +95,7 @@ const Contacto = () => {
                     </div>
                     
                     <div>
-                      <Label htmlFor="telefono">Teléfono</Label>
+                      <Label htmlFor="telefono">Teléfono <span className="text-red-500">*</span></Label>
                       <div className="flex gap-4 items-start">
                         <div className="min-w-[140px]">
                           <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>

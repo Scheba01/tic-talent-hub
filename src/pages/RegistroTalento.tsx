@@ -108,7 +108,7 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="email" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Email</FormLabel>
+                              <FormLabel>Email <span className="text-red-500">*</span></FormLabel>
                               <FormControl>
                                 <Input type="email" {...field} />
                               </FormControl>
@@ -119,7 +119,7 @@ const RegistroTalento = () => {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <div>
                           <div className="space-y-2">
-                            <Label>Teléfono (WhatsApp)</Label>
+                            <Label>Teléfono (WhatsApp) <span className="text-red-500">*</span></Label>
                             <div className="flex gap-2">
                               <FormField control={form.control} name="codigoPais" render={({
                                 field
