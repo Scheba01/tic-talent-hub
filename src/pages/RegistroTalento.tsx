@@ -583,27 +583,10 @@ const RegistroTalento = () => {
                       </div>
                     </div>
 
-                    {/* 9) Cumplimiento & elegibilidad */}
-                    <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">9. Cumplimiento & Elegibilidad</h3>
-                      <div className="space-y-4">
-                        <FormField control={form.control} name="autorizacionDatos" render={({
-                        field
-                      }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                              <FormControl>
-                                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel className="text-primary font-medium">LinkedIn (Muy recomendado)</FormLabel>
-                              </div>
-                              <FormMessage />
-                            </FormItem>} />
-                      </div>
-                    </div>
 
-                    {/* 10) Documentos */}
+                    {/* 9) Documentos */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">10. Documentos</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">9. Documentos</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField control={form.control} name="cv" render={({
                         field
@@ -639,9 +622,9 @@ const RegistroTalento = () => {
                       </div>
                     </div>
 
-                     {/* 11) Notas y preferencias */}
+                     {/* 10) Notas y preferencias */}
                      <div>
-                       <h3 className="text-xl font-display font-semibold mb-6">11. Notas y Preferencias</h3>
+                       <h3 className="text-xl font-display font-semibold mb-6">10. Notas y Preferencias</h3>
                        <div className="space-y-6">
                          <FormField control={form.control} name="comentarios" render={({
                          field
@@ -654,6 +637,29 @@ const RegistroTalento = () => {
                              </FormItem>} />
                        </div>
                      </div>
+
+                    {/* Privacy Policy */}
+                    <div>
+                      <FormField control={form.control} name="autorizacionDatos" render={({
+                        field
+                      }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                          <FormControl>
+                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                          </FormControl>
+                          <div className="space-y-1 leading-none">
+                            <FormLabel className="text-sm">
+                              Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
+                              <span className="text-primary font-medium">Política de Privacidad</span> y 
+                              autorizo el uso de la información proporcionada para procesos de selección 
+                              y contacto profesional. Mis datos serán utilizados exclusivamente para 
+                              fines de reclutamiento y evaluación de perfiles profesionales.
+                            </FormLabel>
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )} />
+                    </div>
 
                     {/* Submit Button */}
                     <div className="text-center pt-6">
