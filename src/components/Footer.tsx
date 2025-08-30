@@ -49,6 +49,11 @@ const Footer = () => {
                   Programa de Afiliados
                 </a>
               </li>
+              <li>
+                <Link to="/politica-de-privacidad" className="text-muted-foreground hover:text-primary transition-colors">
+                  Política de Privacidad
+                </Link>
+              </li>
             </ul>
           </div>
 
