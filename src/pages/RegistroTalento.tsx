@@ -15,6 +15,7 @@ import { registrationSchema, type RegistrationFormData } from "@/schemas/registr
 import { PAISES_LATAM, FAMILIAS_ROL, TIPOS_LABORATORIO, AREAS_INSPECCION, NORMAS_SISTEMAS, SECTORES_PRODUCTOS, AREAS_PERSONAS, SECTORES_INDUSTRIA, NORMAS_COMPETENCIAS, IDIOMAS, NIVELES_IDIOMA, NIVELES_COMPETENCIA, AREAS_FUNCIONALES, SUBAREAS_POR_AREA, ROLES_POR_SUBAREA, NIVELES_CARGO, SENIORITY_LEVELS, PERSONAS_CARGO, RESPONSABILIDAD_PL, ALCANCE_GEOGRAFICO, REPORTA_A, COUNTRY_CODES } from "@/lib/registration-data";
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 const RegistroTalento = () => {
   const [selectedFamilias, setSelectedFamilias] = useState<string[]>([]);
@@ -725,7 +726,13 @@ const RegistroTalento = () => {
                           <div className="space-y-1 leading-none">
                             <FormLabel className="text-sm">
                               Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
-                              <span className="text-primary font-medium">Política de Privacidad</span> y 
+                              <Link 
+                                to="/politica-de-privacidad" 
+                                target="_blank"
+                                className="text-primary font-medium hover:underline"
+                              >
+                                Política de Privacidad
+                              </Link> y 
                               autorizo el uso de la información proporcionada para procesos de selección 
                               y contacto profesional. Mis datos serán utilizados exclusivamente para 
                               fines de reclutamiento y evaluación de perfiles profesionales.

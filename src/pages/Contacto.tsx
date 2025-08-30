@@ -5,8 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
@@ -21,7 +23,8 @@ const Contacto = () => {
     codigoOtro: "",
     telefono: "",
     tipoConsulta: "",
-    mensaje: ""
+    mensaje: "",
+    aceptaPrivacidad: false
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +32,11 @@ const Contacto = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.aceptaPrivacidad) {
+      toast.error("Debes aceptar la Política de Privacidad para continuar.");
+      return;
+    }
     
     if (!executeRecaptcha) {
       toast.error("reCAPTCHA no está listo. Por favor, intenta nuevamente.");
@@ -80,7 +88,8 @@ const Contacto = () => {
           codigoOtro: "",
           telefono: "",
           tipoConsulta: "",
-          mensaje: ""
+          mensaje: "",
+          aceptaPrivacidad: false
         });
       } else {
         throw new Error("Failed to send message");
@@ -231,7 +240,35 @@ const Contacto = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="btn-hero w-full" disabled={isSubmitting}>
+                    {/* Privacy Policy Consent */}
+                    <div className="flex items-start space-x-3">
+                      <Checkbox
+                        id="aceptaPrivacidad"
+                        checked={formData.aceptaPrivacidad}
+                        onCheckedChange={(checked) => setFormData({...formData, aceptaPrivacidad: checked === true})}
+                        required
+                      />
+                      <div className="grid gap-1.5 leading-none">
+                        <label
+                          htmlFor="aceptaPrivacidad"
+                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
+                          <Link 
+                            to="/politica-de-privacidad" 
+                            target="_blank"
+                            className="text-primary hover:underline"
+                          >
+                            Política de Privacidad
+                          </Link>
+                          {" "}y autorizo el uso de la información proporcionada para procesos de selección y contacto profesional. 
+                          Mis datos serán utilizados exclusivamente para fines de reclutamiento y evaluación de perfiles profesionales. 
+                          <span className="text-red-500 ml-1">*</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <Button type="submit" className="btn-hero w-full" disabled={isSubmitting || !formData.aceptaPrivacidad}>
                       {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                     </Button>
                   </form>

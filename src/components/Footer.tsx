@@ -85,9 +85,20 @@ const Footer = () => {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="text-muted-foreground text-sm">
-              © 2024 TIC SELECT. Todos los derechos reservados.
-            </p>
+            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+              <div className="flex space-x-4 text-sm">
+                <Link to="/politica-de-privacidad" className="text-muted-foreground hover:text-primary transition-colors">
+                  Política de Privacidad
+                </Link>
+                <span className="text-muted-foreground">|</span>
+                <a href="#politica-cookies" className="text-muted-foreground hover:text-primary transition-colors">
+                  Política de Cookies
+                </a>
+              </div>
+              <p className="text-muted-foreground text-sm">
+                © 2024 TIC SELECT. Todos los derechos reservados.
+              </p>
+            </div>
           </div>
         </div>
       </div>
