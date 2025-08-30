@@ -666,7 +666,7 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="cv" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Subir CV (PDF)</FormLabel>
+                              <FormLabel>Subir CV (PDF) <span className="text-red-500">*</span></FormLabel>
                               <FormControl>
                                 <Input type="file" accept=".pdf" />
                               </FormControl>
