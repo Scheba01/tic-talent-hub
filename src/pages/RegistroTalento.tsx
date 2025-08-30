@@ -396,7 +396,7 @@ const RegistroTalento = () => {
 
                     {/* 3) Identidad de cargo (funcional) */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">3. Identidad de Cargo (Funcional)</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">3. Identidad de Cargo</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
