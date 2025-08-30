@@ -3,10 +3,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Phone, Mail } from "lucide-react";
-
 const QuienesSomos = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="pt-16">
@@ -34,11 +32,7 @@ const QuienesSomos = () => {
                 <h2 className="text-2xl font-display font-semibold mb-4">
                   Red de Expertos con Experiencia Real
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Nuestro equipo suma más de 50 años de experiencia combinada. Este conocimiento profundo 
-                  nos permite identificar no solo las habilidades técnicas, sino el ADN cultural que 
-                  garantiza un match perfecto.
-                </p>
+                <p className="text-muted-foreground leading-relaxed">Nuestro equipo suma más de 30 años de experiencia combinada. Este conocimiento profundo nos permite identificar no solo las habilidades técnicas, sino el ADN cultural que garantiza un match perfecto.</p>
               </div>
 
               {/* Universo de Talento */}
@@ -81,21 +75,13 @@ const QuienesSomos = () => {
               <Button asChild variant="outline" className="border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4 text-sm">
                 <Link to="/contacto">Formulario de Contacto</Link>
               </Button>
-              <Button
-                variant="outline"
-                className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700 px-12 py-4"
-                asChild
-              >
+              <Button variant="outline" className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700 px-12 py-4" asChild>
                 <a href="https://wa.me/message/IH46LPYOLH4CH1">
                   <Phone className="w-4 h-4 mr-2" />
                   WhatsApp
                 </a>
               </Button>
-              <Button
-                variant="outline"
-                className="w-full border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4"
-                onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
-              >
+              <Button variant="outline" className="w-full border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4" onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}>
                 <Mail className="w-4 h-4 mr-2" />
                 Email Directo
               </Button>
@@ -105,8 +91,6 @@ const QuienesSomos = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default QuienesSomos;
