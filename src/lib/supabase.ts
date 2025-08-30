@@ -3,8 +3,15 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
+console.log('Supabase URL:', supabaseUrl ? 'Set' : 'Missing')
+console.log('Supabase Key:', supabaseKey ? 'Set' : 'Missing')
+
 if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing Supabase environment variables')
+  console.error('Environment variables status:', {
+    VITE_SUPABASE_URL: supabaseUrl ? 'Available' : 'Missing',
+    VITE_SUPABASE_ANON_KEY: supabaseKey ? 'Available' : 'Missing'
+  })
+  throw new Error('Missing Supabase environment variables. Please ensure Supabase is properly connected to your Lovable project.')
 }
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
