@@ -77,7 +77,7 @@ const PoliticaPrivacidad = () => {
                     <p><strong>Titular:</strong> Tic Select</p>
                     <p><strong>Domicilio:</strong> [Agregar dirección, ciudad y país]</p>
                     <p><strong>Correo de contacto (privacidad):</strong> <a href="mailto:contacto@ticselect.com" className="text-primary hover:underline">contacto@ticselect.com</a></p>
-                    <p><strong>Teléfono:</strong> [opcional]</p>
+                    <p><strong>Teléfono:</strong></p>
                   </div>
                 </div>
 
