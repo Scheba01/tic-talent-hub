@@ -42,16 +42,13 @@ export const registrationSchema = z.object({
     message: "Debe autorizar el tratamiento de datos"
   }),
 
-  // Identidad de cargo (funcional)
-  areaFuncional: z.string().min(1, "Área funcional es requerida"),
-  subarea: z.string().min(1, "Subárea es requerida"),
-  rolCargo: z.string().min(1, "Rol/cargo es requerido"),
-  nivelCargo: z.string().min(1, "Nivel de cargo es requerido"),
-  seniority: z.string().min(1, "Seniority es requerido"),
-  personasCargo: z.string().min(1, "Personas a cargo es requerido"),
-  responsabilidadPL: z.string().min(1, "Responsabilidad P&L es requerida"),
-  alcanceGeografico: z.string().min(1, "Alcance geográfico es requerido"),
-  reportaA: z.string().min(1, "Reporta a es requerido"),
+  // Experiencia profesional
+  experienciaLaboral: z.array(z.object({
+    empresa: z.string().min(1, "Empresa es requerida"),
+    cargo: z.string().min(1, "Cargo es requerido"),
+    periodo: z.string().min(1, "Período es requerido"),
+    descripcion: z.string().optional()
+  })).min(1, "Debe agregar al menos una experiencia laboral"),
 
   // Documentos
   cv: z.any().optional(),
@@ -59,8 +56,6 @@ export const registrationSchema = z.object({
   linkedin: z.string().url().optional().or(z.literal("")),
 
   // Notas y preferencias
-  areasInteres: z.array(z.string()),
-  disponibilidadMentorias: z.boolean(),
   comentarios: z.string().optional(),
 
   // Subformularios condicionales
