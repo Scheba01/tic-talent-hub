@@ -27,13 +27,21 @@ export const FAMILIAS_ROL = [
   { value: "cert-sistemas", label: "Certificación de Sistemas (ISO/IEC 17021-1)" },
   { value: "cert-productos", label: "Certificación de Productos (ISO/IEC 17065)" },
   { value: "cert-personas", label: "Certificación de Personas (ISO/IEC 17024)" },
+  { value: "validacion-verificacion", label: "Validación y Verificación (ISO/IEC 17029 / ISO 14065)" },
   { value: "auditoria", label: "Auditoría (Interno/Lead)" },
   { value: "operaciones", label: "Operaciones / Jefaturas / Gerencias" },
   { value: "comercial", label: "Comercial / KAM / Desarrollo de Negocio" },
-  { value: "ti", label: "TI / Ciberseguridad / Data" },
-  { value: "hse", label: "HSE / Seguridad y Salud" },
-  { value: "calidad", label: "Calidad / Compliance / Aseguramiento" },
-  { value: "formacion", label: "Formación / Instructor Técnico" }
+  { value: "marketing", label: "Marketing" },
+  { value: "rrhh", label: "RRHH" },
+  { value: "finanzas", label: "Finanzas / Control" },
+  { value: "ti", label: "TI / Data" },
+  { value: "hse", label: "HSE / Seguridad" },
+  { value: "legal", label: "Legal / Regulatorio" },
+  { value: "supply-chain", label: "Supply Chain / Compras" },
+  { value: "atencion-cliente", label: "Atención al Cliente / CS" },
+  { value: "pmo", label: "PMO / Proyectos" },
+  { value: "direccion", label: "Dirección / General Management" },
+  { value: "otro", label: "Otro" }
 ]
 
 export const TIPOS_LABORATORIO = [

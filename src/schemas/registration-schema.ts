@@ -17,6 +17,7 @@ export const registrationSchema = z.object({
 
   // Familias de rol
   familiasRol: z.array(z.string()).min(1, "Debe seleccionar al menos una familia de rol"),
+  familiaRolOtro: z.string().optional(),
 
   // Sectores/Industrias
   sectores: z.array(z.string()),
