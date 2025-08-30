@@ -114,7 +114,9 @@ const RegistroTalento = () => {
                               </FormControl>
                               <FormMessage />
                             </FormItem>} />
+                      </div>
 
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <Label>Teléfono (WhatsApp)</Label>
                           <div className="flex gap-2">
@@ -184,8 +186,21 @@ const RegistroTalento = () => {
                               </Select>
                               <FormMessage />
                             </FormItem>} />
+                      </div>
 
-                        <FormField control={form.control} name="ciudad" render={({
+                      {form.watch("pais") === "otro" && (
+                        <FormField control={form.control} name="paisOtro" render={({
+                          field
+                        }) => <FormItem>
+                              <FormLabel>Especifica tu país</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Escribe tu país" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>} />
+                      )}
+
+                      <FormField control={form.control} name="ciudad" render={({
                         field
                       }) => <FormItem>
                               <FormLabel>Ciudad</FormLabel>
@@ -194,8 +209,6 @@ const RegistroTalento = () => {
                               </FormControl>
                               <FormMessage />
                             </FormItem>} />
-
-                      </div>
                     </div>
 
                     {/* 2) Situación laboral & disponibilidad */}
