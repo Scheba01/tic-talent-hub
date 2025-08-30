@@ -55,7 +55,9 @@ export const registrationSchema = z.object({
   })).min(1, "Debe agregar al menos una experiencia laboral"),
 
   // Documentos
-  cv: z.any().optional(),
+  cv: z.any().refine(val => val && val.length > 0, {
+    message: "CV es requerido"
+  }),
   certificadosAdicionales: z.any().optional(),
   linkedin: z.string().url().optional().or(z.literal("")),
 
