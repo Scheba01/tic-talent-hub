@@ -30,8 +30,8 @@ const Contacto = () => {
     setIsSubmitting(true);
     
     try {
-      // Replace with your actual Formspree endpoint
-      const formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
+      // Formspree endpoint configured
+      const formspreeEndpoint = "https://formspree.io/f/xjkewene";
       
       const response = await fetch(formspreeEndpoint, {
         method: "POST",
