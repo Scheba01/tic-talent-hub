@@ -115,42 +115,43 @@ const RegistroTalento = () => {
                               <FormMessage />
                             </FormItem>} />
 
-                        <div className="grid grid-cols-3 gap-2">
-                          <FormField control={form.control} name="codigoPais" render={({
-                            field
-                          }) => (
-                            <FormItem>
-                              <FormLabel>Código</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="+56" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  {COUNTRY_CODES.map(code => (
-                                    <SelectItem key={code.value} value={code.value}>
-                                      {code.label}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )} />
-                          
-                          <div className="col-span-2">
-                            <FormField control={form.control} name="telefono" render={({
+                        <div>
+                          <Label>Teléfono (WhatsApp)</Label>
+                          <div className="grid grid-cols-3 gap-2">
+                            <FormField control={form.control} name="codigoPais" render={({
                               field
                             }) => (
                               <FormItem>
-                                <FormLabel>Teléfono (WhatsApp)</FormLabel>
-                                <FormControl>
-                                  <Input type="tel" placeholder="9 1234 5678" {...field} />
-                                </FormControl>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="+56" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {COUNTRY_CODES.map(code => (
+                                      <SelectItem key={code.value} value={code.value}>
+                                        {code.label}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
                                 <FormMessage />
                               </FormItem>
                             )} />
+                            
+                            <div className="col-span-2">
+                              <FormField control={form.control} name="telefono" render={({
+                                field
+                              }) => (
+                                <FormItem>
+                                  <FormControl>
+                                    <Input type="tel" placeholder="9 1234 5678" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )} />
+                            </div>
                           </div>
                         </div>
 
