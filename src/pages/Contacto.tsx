@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
-import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
 
 const Contacto = () => {
@@ -31,41 +30,46 @@ const Contacto = () => {
     setIsSubmitting(true);
     
     try {
-      // EmailJS configuration
-      const templateParams = {
-        from_name: formData.nombre,
-        from_email: formData.email,
-        empresa: formData.empresa,
-        telefono: `${formData.codigoPais === "otro" ? formData.codigoOtro : formData.codigoPais} ${formData.telefono}`,
-        tipo_consulta: formData.tipoConsulta,
-        message: formData.mensaje,
-        to_email: 'contacto@ticselect.com'
-      };
-
-      // Replace these with your actual EmailJS credentials
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // You'll need to configure this
-        'YOUR_TEMPLATE_ID', // You'll need to configure this
-        templateParams,
-        'YOUR_PUBLIC_KEY' // You'll need to configure this
-      );
-
-      toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.");
+      // Replace with your actual Formspree endpoint
+      const formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
       
-      // Reset form
-      setFormData({
-        nombre: "",
-        email: "",
-        empresa: "",
-        codigoPais: "+56",
-        codigoOtro: "",
-        telefono: "",
-        tipoConsulta: "",
-        mensaje: ""
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          email: formData.email,
+          empresa: formData.empresa,
+          telefono: `${formData.codigoPais === "otro" ? formData.codigoOtro : formData.codigoPais} ${formData.telefono}`,
+          tipoConsulta: formData.tipoConsulta,
+          mensaje: formData.mensaje,
+          _replyto: formData.email,
+          _subject: `Nueva consulta de ${formData.nombre} - ${formData.tipoConsulta}`
+        }),
       });
+
+      if (response.ok) {
+        toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.");
+        
+        // Reset form
+        setFormData({
+          nombre: "",
+          email: "",
+          empresa: "",
+          codigoPais: "+56",
+          codigoOtro: "",
+          telefono: "",
+          tipoConsulta: "",
+          mensaje: ""
+        });
+      } else {
+        throw new Error("Failed to send message");
+      }
       
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error sending message:', error);
       toast.error("Error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.");
     } finally {
       setIsSubmitting(false);
