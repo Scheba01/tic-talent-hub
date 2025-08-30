@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,11 @@ import ticSelectLogo from "@/assets/tic-select-logo.png";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const isActive = (path: string) => {
     return location.pathname === path;
