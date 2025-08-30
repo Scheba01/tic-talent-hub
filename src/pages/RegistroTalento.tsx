@@ -526,17 +526,6 @@ const RegistroTalento = () => {
                               <FormMessage />
                             </FormItem>} />
 
-                        <div className="md:col-span-2">
-                          <FormField control={form.control} name="certificaciones" render={({
-                          field
-                        }) => <FormItem>
-                                <FormLabel>Certificaciones relevantes (separadas por coma)</FormLabel>
-                                <FormControl>
-                                  <Textarea {...field} placeholder="ISO 9001 Lead Auditor, PMP, CISSP..." />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>} />
-                        </div>
                       </div>
                     </div>
 

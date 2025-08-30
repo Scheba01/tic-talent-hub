@@ -29,7 +29,7 @@ export const registrationSchema = z.object({
   nivelMaximo: z.string().min(1, "Nivel máximo es requerido"),
   areaEstudio: z.string().min(1, "Área de estudio es requerida"),
   areaEstudioOtro: z.string().optional(),
-  certificaciones: z.string(),
+  certificaciones: z.string().optional(),
 
   // Idiomas
   idiomas: z.array(z.object({
