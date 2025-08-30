@@ -118,74 +118,78 @@ const RegistroTalento = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <div>
-                          <Label>Teléfono (WhatsApp)</Label>
-                          <div className="flex gap-2">
-                            <FormField control={form.control} name="codigoPais" render={({
-                              field
-                            }) => (
-                              <FormItem className="w-32">
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="🇨🇱 +56" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    {COUNTRY_CODES.map(code => (
-                                      <SelectItem key={code.value} value={code.value}>
-                                        {code.label}
-                                      </SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )} />
-                            
-                            {form.watch("codigoPais") === "otro" && (
-                              <FormField control={form.control} name="codigoOtro" render={({
+                          <div className="space-y-2">
+                            <Label>Teléfono (WhatsApp)</Label>
+                            <div className="flex gap-2">
+                              <FormField control={form.control} name="codigoPais" render={({
                                 field
                               }) => (
-                                <FormItem className="w-24">
+                                <FormItem className="w-32">
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <FormControl>
+                                      <SelectTrigger>
+                                        <SelectValue placeholder="🇨🇱 +56" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      {COUNTRY_CODES.map(code => (
+                                        <SelectItem key={code.value} value={code.value}>
+                                          {code.label}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )} />
+                              
+                              {form.watch("codigoPais") === "otro" && (
+                                <FormField control={form.control} name="codigoOtro" render={({
+                                  field
+                                }) => (
+                                  <FormItem className="w-24">
+                                    <FormControl>
+                                      <Input type="text" placeholder="+1" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )} />
+                              )}
+                              
+                              <FormField control={form.control} name="telefono" render={({
+                                field
+                              }) => (
+                                <FormItem className="flex-1">
                                   <FormControl>
-                                    <Input type="text" placeholder="+1" {...field} />
+                                    <Input type="tel" placeholder="9 1234 5678" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
                               )} />
-                            )}
-                            
-                            <FormField control={form.control} name="telefono" render={({
-                              field
-                            }) => (
-                              <FormItem className="flex-1">
-                                <FormControl>
-                                  <Input type="tel" placeholder="9 1234 5678" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )} />
+                            </div>
                           </div>
                         </div>
 
-                        <FormField control={form.control} name="pais" render={({
-                        field
-                      }) => <FormItem>
-                              <FormLabel>País de residencia</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona tu país" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  {PAISES_LATAM.map(pais => <SelectItem key={pais.value} value={pais.value}>
-                                      {pais.label}
-                                    </SelectItem>)}
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>} />
+                        <div>
+                          <FormField control={form.control} name="pais" render={({
+                          field
+                        }) => <FormItem>
+                                <FormLabel>País de residencia</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona tu país" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {PAISES_LATAM.map(pais => <SelectItem key={pais.value} value={pais.value}>
+                                        {pais.label}
+                                      </SelectItem>)}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
                       </div>
 
                       {form.watch("pais") === "otro" && (
