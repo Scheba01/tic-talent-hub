@@ -51,7 +51,13 @@ const Contacto = () => {
       });
 
       if (response.ok) {
-        toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.");
+        toast.success("✅ Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.", {
+          style: {
+            background: '#10B981',
+            color: 'white',
+            border: '1px solid #059669',
+          }
+        });
         
         // Reset form
         setFormData({
