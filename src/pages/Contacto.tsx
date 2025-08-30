@@ -9,6 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
+import emailjs from '@emailjs/browser';
+import { toast } from "sonner";
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -22,10 +24,52 @@ const Contacto = () => {
     mensaje: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulario de contacto enviado:", formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+    
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        from_name: formData.nombre,
+        from_email: formData.email,
+        empresa: formData.empresa,
+        telefono: `${formData.codigoPais === "otro" ? formData.codigoOtro : formData.codigoPais} ${formData.telefono}`,
+        tipo_consulta: formData.tipoConsulta,
+        message: formData.mensaje,
+        to_email: 'contacto@ticselect.com'
+      };
+
+      // Replace these with your actual EmailJS credentials
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // You'll need to configure this
+        'YOUR_TEMPLATE_ID', // You'll need to configure this
+        templateParams,
+        'YOUR_PUBLIC_KEY' // You'll need to configure this
+      );
+
+      toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.");
+      
+      // Reset form
+      setFormData({
+        nombre: "",
+        email: "",
+        empresa: "",
+        codigoPais: "+56",
+        codigoOtro: "",
+        telefono: "",
+        tipoConsulta: "",
+        mensaje: ""
+      });
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error("Error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -165,8 +209,8 @@ const Contacto = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="btn-hero w-full">
-                      Enviar Mensaje
+                    <Button type="submit" className="btn-hero w-full" disabled={isSubmitting}>
+                      {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                     </Button>
                   </form>
 
