@@ -143,6 +143,27 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
     // Insert specialization data based on selected role families
     await insertSpecializationData(candidateId, data)
 
+    // Send confirmation email
+    try {
+      const emailResponse = await supabase.functions.invoke('send-confirmation-email', {
+        body: {
+          name: data.nombreCompleto,
+          email: data.email,
+          telefono: data.telefono,
+          familiasRol: data.familiasRol
+        }
+      })
+
+      if (emailResponse.error) {
+        console.warn('Failed to send confirmation email:', emailResponse.error)
+      } else {
+        console.log('Confirmation email sent successfully')
+      }
+    } catch (emailError) {
+      console.warn('Error sending confirmation email:', emailError)
+      // Don't fail the registration if email fails
+    }
+
     return {
       candidateId,
       success: true,
