@@ -117,11 +117,11 @@ const RegistroTalento = () => {
 
                         <div>
                           <Label>Teléfono (WhatsApp)</Label>
-                          <div className="grid grid-cols-3 gap-2">
+                          <div className="flex gap-2">
                             <FormField control={form.control} name="codigoPais" render={({
                               field
                             }) => (
-                              <FormItem>
+                              <FormItem className="w-32">
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
@@ -140,18 +140,16 @@ const RegistroTalento = () => {
                               </FormItem>
                             )} />
                             
-                            <div className="col-span-2">
-                              <FormField control={form.control} name="telefono" render={({
-                                field
-                              }) => (
-                                <FormItem>
-                                  <FormControl>
-                                    <Input type="tel" placeholder="9 1234 5678" {...field} />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )} />
-                            </div>
+                            <FormField control={form.control} name="telefono" render={({
+                              field
+                            }) => (
+                              <FormItem className="flex-1">
+                                <FormControl>
+                                  <Input type="tel" placeholder="9 1234 5678" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )} />
                           </div>
                         </div>
 
