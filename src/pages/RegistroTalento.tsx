@@ -17,6 +17,7 @@ import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { submitCandidate } from "@/lib/candidate-service";
 const RegistroTalento = () => {
   const [selectedFamilias, setSelectedFamilias] = useState<string[]>([]);
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
@@ -38,9 +39,22 @@ const RegistroTalento = () => {
     }
   });
   const watchedFamilias = form.watch("familiasRol");
-  const onSubmit = (data: RegistrationFormData) => {
-    console.log("Formulario enviado:", data);
-    toast.success("Registro completado exitosamente");
+  const onSubmit = async (data: RegistrationFormData) => {
+    try {
+      toast.loading("Enviando registro...", { id: "submit-form" });
+      
+      const result = await submitCandidate(data);
+      
+      if (result.success) {
+        toast.success("¡Registro completado exitosamente! Te contactaremos pronto.", { id: "submit-form" });
+        form.reset();
+      } else {
+        toast.error(result.message || "Error al enviar el registro", { id: "submit-form" });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Error inesperado. Por favor intenta nuevamente.", { id: "submit-form" });
+    }
   };
   const addIdioma = () => {
     const currentIdiomas = form.getValues("idiomas");
