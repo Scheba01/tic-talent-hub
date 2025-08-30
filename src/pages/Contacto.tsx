@@ -253,7 +253,7 @@ const Contacto = () => {
                       <Button
                         variant="outline"
                         className="w-full"
-                        onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
+                        onClick={() => window.open('mailto:contacto@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
                       >
                         <Mail className="w-4 h-4 mr-2" />
                         Email Directo
@@ -274,8 +274,8 @@ const Contacto = () => {
                       <Mail className="w-6 h-6 text-primary" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <a href="mailto:email@ticselect.com" className="text-muted-foreground hover:text-primary">
-                          email@ticselect.com
+                        <a href="mailto:contacto@ticselect.com" className="text-muted-foreground hover:text-primary">
+                          contacto@ticselect.com
                         </a>
                       </div>
                     </div>
