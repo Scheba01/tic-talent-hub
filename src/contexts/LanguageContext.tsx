@@ -105,6 +105,24 @@ const translations = {
     'nav.logout': 'Cerrar Sesión',
     'nav.talent_registration': 'Registro de Talento',
 
+    // Services Section (Homepage)
+    'services.title': 'Nuestros Servicios',
+    'services.executive_search.title': 'Búsqueda Ejecutiva',
+    'services.executive_search.desc': 'Identificamos y atraemos a los líderes que tu empresa necesita para crecer.',
+    'services.hr_consulting.title': 'Consultoría en RRHH',
+    'services.hr_consulting.desc': 'Optimizamos tus procesos de recursos humanos con estrategias personalizadas.',
+    'services.coaching.title': 'Coaching & Desarrollo',
+    'services.coaching.desc': 'Desarrollamos el potencial de tus equipos y líderes para maximizar el rendimiento.',
+    'services.see_more': 'Ver Más',
+
+    // Footer
+    'footer.quick_links': 'Enlaces Rápidos',
+    'footer.community': 'Comunidad',
+    'footer.contact': 'Contacto',
+    'footer.privacy_policy': 'Política de Privacidad',
+    'footer.cookies_policy': 'Política de Cookies',
+    'footer.all_rights': '© 2024 TIC Select. Todos los derechos reservados.',
+
     // Hero Section
     'hero.title': 'El Talento que Impulsa la Industria TIC',
     'hero.subtitle': 'Conectamos líderes del sector de Pruebas, Inspección y Certificación (TIC) con el talento que necesitan para crecer. Entregamos una shortlist en 7 días. Garantizado.',
@@ -134,6 +152,7 @@ const translations = {
     'why.whatsapp': 'WhatsApp',
     'why.direct_email': 'Email Directo',
 
+
     // About Page
     'about.title': 'TIC Select nació de la industria para servir a la industria',
     'about.subtitle': 'Entendemos profundamente las necesidades específicas del sector Testing, Inspection & Certification porque venimos de él.',
@@ -153,6 +172,7 @@ const translations = {
     'about.full_coverage.desc': 'Desde auditores especializados hasta directores regionales, cubrimos todos los niveles y áreas funcionales.',
     'about.cta.title': '¿Listo para encontrar tu próximo talento clave?',
     'about.cta.subtitle': 'Trabajemos juntos para impulsar el crecimiento de tu empresa',
+
 
     // Services Page
     'services_page.title': 'Servicios para Empresas',
@@ -391,6 +411,24 @@ const translations = {
     'why.contact_form': 'Contact Form',
     'why.whatsapp': 'WhatsApp',
     'why.direct_email': 'Direct Email',
+
+    // Services Section (Homepage)
+    'services.title': 'Our Services',
+    'services.executive_search.title': 'Executive Search',
+    'services.executive_search.desc': 'We identify and attract the leaders your company needs to grow.',
+    'services.hr_consulting.title': 'HR Consulting',
+    'services.hr_consulting.desc': 'We optimize your HR processes with personalized strategies.',
+    'services.coaching.title': 'Coaching & Development',
+    'services.coaching.desc': 'We develop the potential of your teams and leaders to maximize performance.',
+    'services.see_more': 'See More',
+
+    // Footer
+    'footer.quick_links': 'Quick Links',
+    'footer.community': 'Community',
+    'footer.contact': 'Contact',
+    'footer.privacy_policy': 'Privacy Policy',
+    'footer.cookies_policy': 'Cookies Policy',
+    'footer.all_rights': '© 2024 TIC Select. All rights reserved.',
 
     // About Page
     'about.title': 'TIC Select was born from the industry to serve the industry',
@@ -643,6 +681,24 @@ const translations = {
     'why.contact_form': 'Formulário de Contato',
     'why.whatsapp': 'WhatsApp',
     'why.direct_email': 'Email Direto',
+
+    // Services Section (Homepage - Portuguese)
+    'services.title': 'Nossos Serviços',
+    'services.executive_search.title': 'Busca Executiva',
+    'services.executive_search.desc': 'Identificamos e atraímos os líderes que sua empresa precisa para crescer.',
+    'services.hr_consulting.title': 'Consultoria em RH',
+    'services.hr_consulting.desc': 'Otimizamos seus processos de recursos humanos com estratégias personalizadas.',
+    'services.coaching.title': 'Coaching & Desenvolvimento',
+    'services.coaching.desc': 'Desenvolvemos o potencial de suas equipes e líderes para maximizar o desempenho.',
+    'services.see_more': 'Ver Mais',
+
+    // Footer (Portuguese)
+    'footer.quick_links': 'Links Rápidos',
+    'footer.community': 'Comunidade',
+    'footer.contact': 'Contato',
+    'footer.privacy_policy': 'Política de Privacidade',
+    'footer.cookies_policy': 'Política de Cookies',
+    'footer.all_rights': '© 2024 TIC Select. Todos os direitos reservados.',
 
     // About Page (Portuguese)
     'about.seo.title': 'Sobre Nós | TIC Select - Líderes em Talento TIC',
