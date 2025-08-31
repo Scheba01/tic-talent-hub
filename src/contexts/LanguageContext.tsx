@@ -47,26 +47,42 @@ export const seoTranslations = {
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguage] = useState<Language>(() => {
+    // Immediately check URL and force Spanish for Spanish paths
+    const path = window.location.pathname;
+    if (path.includes('quienes-somos') || 
+        path.includes('servicios-para-empresas') || 
+        path.includes('vacantes-y-perfiles') || 
+        path.includes('programa-talentotic') || 
+        path.includes('programa-afiliados')) {
+      return 'es';
+    }
+    return 'es'; // Default to Spanish
+  });
 
   useEffect(() => {
     // Check if we're on a specific language URL path
     const path = window.location.pathname;
     let initialLanguage: Language = 'es'; // Default to Spanish
     
-    // Override with saved language preference, but respect URL context
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
-      initialLanguage = savedLanguage;
-    }
-    
     // Force Spanish for Spanish URLs to ensure correct content
-    if (path.includes('quienes-somos') || path.includes('servicios-para-empresas') || path.includes('vacantes-y-perfiles') || path.includes('programa-talentotic') || path.includes('programa-afiliados')) {
+    if (path.includes('quienes-somos') || 
+        path.includes('servicios-para-empresas') || 
+        path.includes('vacantes-y-perfiles') || 
+        path.includes('programa-talentotic') || 
+        path.includes('programa-afiliados')) {
       initialLanguage = 'es';
+      localStorage.setItem('language', 'es'); // Force save Spanish
+    } else {
+      // Only use saved language for other paths
+      const savedLanguage = localStorage.getItem('language') as Language;
+      if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
+        initialLanguage = savedLanguage;
+      }
     }
     
     setLanguage(initialLanguage);
-  }, []);
+  }, [window.location.pathname]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
@@ -94,7 +110,15 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const t = (key: string): string => {
-    return translations[language]?.[key] || translations['es'][key] || key;
+    // Force Spanish for Spanish URL paths, regardless of localStorage
+    const path = window.location.pathname;
+    const currentLang = (path.includes('quienes-somos') || 
+                        path.includes('servicios-para-empresas') || 
+                        path.includes('vacantes-y-perfiles') || 
+                        path.includes('programa-talentotic') || 
+                        path.includes('programa-afiliados')) ? 'es' : language;
+    
+    return translations[currentLang]?.[key] || translations['es'][key] || key;
   };
 
   return (
