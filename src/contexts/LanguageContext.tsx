@@ -190,6 +190,15 @@ const translations = {
     'jobs.cta.subtitle': 'Únete a nuestra red de profesionales y descubre oportunidades exclusivas',
     'jobs.cta.register': 'Registrarse en la Red',
     'jobs.cta.contact': 'Contactar Consultor',
+    'jobs.how_it_works': '¿Cómo Funciona?',
+    'jobs.step1.title': 'Regístrate',
+    'jobs.step1.desc': 'Completa tu perfil profesional con tu experiencia y habilidades TIC.',
+    'jobs.step2.title': 'Validación',
+    'jobs.step2.desc': 'Nuestro equipo valida tu perfil y lo incluye en nuestra base de datos.',
+    'jobs.step3.title': 'Matching',
+    'jobs.step3.desc': 'Te conectamos con oportunidades que se ajusten a tu perfil y objetivos.',
+    'jobs.step4.title': 'Oportunidades',
+    'jobs.step4.desc': 'Recibe ofertas laborales y noticias relevantes de la industria TIC.',
 
     // Promise Section
     'promise.title': 'Contratación Estratégica, Sin Riesgos',
