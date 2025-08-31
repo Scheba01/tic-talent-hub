@@ -45,9 +45,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#programa-afiliados" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/programa-afiliados" className="text-muted-foreground hover:text-primary transition-colors">
                   Programa de Afiliados
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/politica-de-privacidad" className="text-muted-foreground hover:text-primary transition-colors">
