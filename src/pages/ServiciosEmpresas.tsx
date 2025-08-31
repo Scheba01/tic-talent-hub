@@ -104,7 +104,7 @@ const ServiciosEmpresas = () => {
                   <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-lg text-foreground font-medium leading-relaxed">
-                      <span className="font-semibold">Especialistas TIC:</span> Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación
+                      {t('services_page.benefit1')}
                     </p>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const ServiciosEmpresas = () => {
                   <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-lg text-foreground font-medium leading-relaxed">
-                      <span className="font-semibold">Validación 360°:</span> Evaluación técnica completa y referencias verificadas
+                      {t('services_page.benefit2')}
                     </p>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ const ServiciosEmpresas = () => {
                   <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-lg text-foreground font-medium leading-relaxed">
-                      <span className="font-semibold">Apoyo integral:</span> Acompañamiento en entrevistas, negociación y cierre
+                      {t('services_page.benefit3')}
                     </p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ const ServiciosEmpresas = () => {
                   <CheckCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-lg text-foreground font-medium leading-relaxed">
-                      <span className="font-semibold">Sin riesgo:</span> Pago contra contratación efectiva
+                      {t('services_page.benefit4')}
                     </p>
                   </div>
                 </div>

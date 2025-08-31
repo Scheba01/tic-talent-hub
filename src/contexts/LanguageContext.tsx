@@ -159,6 +159,10 @@ const translations: Record<Language, Record<string, string>> = {
     'services_page.talent_universe.title': 'Para Empresas: Nuestro Universo de Talento',
     'services_page.talent_universe.desc': 'Nuestro mayor diferenciador es nuestra base de datos de talento TIC, viva y en constante actualización. Este activo estratégico nos permite encontrar perfiles altamente calificados con una velocidad inigualable.',
     'services_page.promise': 'En 7 días hábiles te presentamos candidatos validados técnica y culturalmente',
+    'services_page.benefit1': 'Especialistas TIC: Auditores, Inspectores, Comerciales, KAMs y Ejecutivos especializados en Testing, Inspección y Certificación',
+    'services_page.benefit2': 'Validación 360°: Evaluación técnica completa y referencias verificadas',
+    'services_page.benefit3': 'Apoyo integral: Acompañamiento en entrevistas, negociación y cierre',
+    'services_page.benefit4': 'Sin riesgo: Pago contra contratación efectiva',
 
     // About Us
     'about.title': 'Nacimos de la Industria para Servir a la Industria',
@@ -325,6 +329,10 @@ const translations: Record<Language, Record<string, string>> = {
     'services_page.talent_universe.title': 'For Companies: Our Talent Universe',
     'services_page.talent_universe.desc': 'Our biggest differentiator is our TIC talent database, alive and constantly updated. This strategic asset allows us to find highly qualified profiles with unmatched speed.',
     'services_page.promise': 'In 7 business days we present you with technically and culturally validated candidates',
+    'services_page.benefit1': 'TIC Specialists: Auditors, Inspectors, Sales, KAMs and Executives specialized in Testing, Inspection and Certification',
+    'services_page.benefit2': '360° Validation: Complete technical evaluation and verified references',
+    'services_page.benefit3': 'Comprehensive support: Assistance in interviews, negotiation and closing',
+    'services_page.benefit4': 'No risk: Payment upon effective hiring',
 
     // About Us
     'about.title': 'Born from the Industry to Serve the Industry',
