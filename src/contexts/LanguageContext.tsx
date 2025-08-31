@@ -199,6 +199,16 @@ const translations = {
     'jobs.step3.desc': 'Te conectamos con oportunidades que se ajusten a tu perfil y objetivos.',
     'jobs.step4.title': 'Oportunidades',
     'jobs.step4.desc': 'Recibe ofertas laborales y noticias relevantes de la industria TIC.',
+    'jobs.network_advantages': 'Ventajas de Nuestra Red',
+    'jobs.advantage1': 'Acceso prioritario a oportunidades exclusivas del sector TIC',
+    'jobs.advantage2': 'Networking con profesionales y líderes de la industria',
+    'jobs.advantage3': 'Información privilegiada sobre tendencias y salarios del mercado',
+    'jobs.advantage4': 'Sin compromiso: Puedes desactivar las notificaciones cuando quieras',
+    'jobs.join_professionals': 'Únete a +15,000 Profesionales',
+    'jobs.join_community': 'Forma parte de la comunidad TIC más grande de LATAM y accede a oportunidades exclusivas.',
+    'jobs.start_now': 'Comenzar Ahora',
+    'jobs.register_free': 'Registro Gratuito',
+    'jobs.more_info': 'Más Información',
 
     // Promise Section
     'promise.title': 'Contratación Estratégica, Sin Riesgos',
@@ -312,11 +322,6 @@ const translations = {
     'development.continuous_monitoring': 'Seguimiento continuo: Acompañamiento durante todo el proceso',
     'development.measurable_roi': 'ROI medible: Métricas claras de progreso y resultados',
     'development.free_consultation': '🚀 Consulta gratuita sobre desarrollo',
-
-    'jobs.advantage4': 'Sin compromiso: Puedes desactivar las notificaciones cuando quieras.',
-    'jobs.join_professionals': 'Únete a Cientos de Profesionales TIC',
-    'jobs.join_community': 'Forma parte de una comunidad exclusiva de talentos TIC que ya están aprovechando las mejores oportunidades del mercado.',
-    'jobs.start_now': 'Comenzar Ahora',
 
     // TIC Talent Program
     'program.title': 'Impulsando el futuro del sector TIC',
