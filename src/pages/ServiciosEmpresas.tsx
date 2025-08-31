@@ -180,9 +180,9 @@ const ServiciosEmpresas = () => {
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-6">
                   <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Estrategias de Retención de Talento</h4>
+                  <h4 className="font-display font-semibold mb-4">{t('services_page.hr_retention.title')}</h4>
                   <p className="text-muted-foreground">
-                    Diseñamos e implementamos planes para fidelizar a sus empleados clave y reducir la rotación.
+                    {t('services_page.hr_retention.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -190,9 +190,9 @@ const ServiciosEmpresas = () => {
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-6">
                   <BarChart3 className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Diagnóstico de Clima Organizacional</h4>
+                  <h4 className="font-display font-semibold mb-4">{t('services_page.hr_climate.title')}</h4>
                   <p className="text-muted-foreground">
-                    Medimos y analizamos el ambiente laboral para identificar oportunidades de mejora y aumentar la productividad.
+                    {t('services_page.hr_climate.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -200,9 +200,9 @@ const ServiciosEmpresas = () => {
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-6">
                   <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Análisis Salarial y de Estructuras</h4>
+                  <h4 className="font-display font-semibold mb-4">{t('services_page.hr_salary.title')}</h4>
                   <p className="text-muted-foreground">
-                    Asegúrese de que sus compensaciones y organigramas sean competitivos en el mercado actual.
+                    {t('services_page.hr_salary.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -224,9 +224,9 @@ const ServiciosEmpresas = () => {
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-8">
                   <MessageSquare className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Habilidades Blandas y Liderazgo</h4>
+                  <h4 className="font-display font-semibold mb-4">{t('services_page.coaching_skills.title')}</h4>
                   <p className="text-muted-foreground">
-                    Programas de coaching ejecutivo y talleres grupales para desarrollar habilidades de comunicación, gestión y liderazgo efectivo.
+                    {t('services_page.coaching_skills.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -234,9 +234,9 @@ const ServiciosEmpresas = () => {
               <Card className="text-center shadow-elegant">
                 <CardContent className="p-8">
                   <Target className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold mb-4">Planes de Carrera</h4>
+                  <h4 className="font-display font-semibold mb-4">{t('services_page.coaching_career.title')}</h4>
                   <p className="text-muted-foreground">
-                    Ayudamos a estructurar rutas de crecimiento claras y motivadoras que impulsen el desarrollo profesional dentro de su empresa.
+                    {t('services_page.coaching_career.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -500,14 +500,14 @@ const ServiciosEmpresas = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6">
-              Optimice su proceso de contratación hoy.
+              {t('about.cta.title')}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Elige la forma que prefieras para contactarnos
+              {t('about.cta.subtitle')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
               <Button asChild variant="outline" className="border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4 text-sm">
-                <Link to="/contacto">Formulario de Contacto</Link>
+                <Link to="/contacto">{t('why.contact_form')}</Link>
               </Button>
               <Button
                 variant="outline"
@@ -516,7 +516,7 @@ const ServiciosEmpresas = () => {
               >
                 <a href="https://wa.me/message/IH46LPYOLH4CH1">
                   <Phone className="w-4 h-4 mr-2" />
-                  WhatsApp
+                  {t('why.whatsapp')}
                 </a>
               </Button>
               <Button
@@ -525,7 +525,7 @@ const ServiciosEmpresas = () => {
                 onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
               >
                 <Mail className="w-4 h-4 mr-2" />
-                Email Directo
+                {t('why.direct_email')}
               </Button>
             </div>
           </div>
