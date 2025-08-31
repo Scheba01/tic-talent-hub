@@ -38,7 +38,7 @@ const Auth = () => {
     
     setLoading(true);
     try {
-      const redirectUrl = `${window.location.origin}/`;
+      const redirectUrl = `${window.location.origin}/registro-talento`;
       
       const { error } = await supabase.auth.signUp({
         email,
