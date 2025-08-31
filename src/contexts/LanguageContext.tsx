@@ -226,6 +226,34 @@ const translations: Record<Language, Record<string, string>> = {
     'program.what_is.title': '¿Qué es TIC Talento?',
     'program.benefits_companies': 'Beneficios para las Empresas',
     'program.benefits_youth': 'Beneficios para los Jóvenes',
+
+    // Profiles Section
+    'profiles_covered.title': 'Perfiles que Cubrimos: Nuestra Doble Expertise',
+    'profiles_covered.ict_specialized': 'Perfiles Especializados del Sector TIC',
+    'profiles_covered.functional_corporate': 'Áreas Funcionales y Corporativas',
+    'profiles_covered.strategic_industries': 'Industrias Estratégicas que Servimos',
+    'profiles_covered.auditors': 'Auditores y Especialistas en Normas:',
+    'profiles_covered.inspectors': 'Inspectores de Campo:',
+    'profiles_covered.lab': 'Personal de Laboratorio:',
+    'profiles_covered.engineering': 'Ingeniería, Calidad y HSE:',
+    'profiles_covered.executive': 'Liderazgo Ejecutivo y Estrategia:',
+    'profiles_covered.commercial': 'Comercial y Desarrollo de Negocios:',
+    'profiles_covered.operations': 'Operaciones y Proyectos:',
+    'profiles_covered.finance': 'Finanzas y Administración:',
+    'profiles_covered.hr': 'Recursos Humanos y Talento:',
+    'profiles_covered.tech': 'Tecnología, Innovación y Marketing:',
+
+    // Development & Coaching
+    'development.title': 'Desarrollo & Coaching',
+    'development.subtitle': 'Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo especializado en la industria TIC.',
+    'development.executive_coaching': 'Coaching Ejecutivo',
+    'development.programs': 'Programas de Desarrollo',
+    'development.why_different': '¿Por qué nuestro enfoque es diferente?',
+    'development.field_experience': 'Experiencia de campo: Nuestros coaches provienen de la industria TIC',
+    'development.proven_methodology': 'Metodología probada: Casos de éxito en organizaciones similares',
+    'development.continuous_monitoring': 'Seguimiento continuo: Acompañamiento durante todo el proceso',
+    'development.measurable_roi': 'ROI medible: Métricas claras de progreso y resultados',
+    'development.free_consultation': '🚀 Consulta gratuita sobre desarrollo',
   },
 
   en: {
@@ -406,6 +434,34 @@ const translations: Record<Language, Record<string, string>> = {
     'program.what_is.title': 'What is TIC Talent?',
     'program.benefits_companies': 'Benefits for Companies',
     'program.benefits_youth': 'Benefits for Youth',
+
+    // Profiles Section
+    'profiles_covered.title': 'Profiles We Cover: Our Double Expertise',
+    'profiles_covered.ict_specialized': 'Specialized ICT Sector Profiles',
+    'profiles_covered.functional_corporate': 'Functional and Corporate Areas',
+    'profiles_covered.strategic_industries': 'Strategic Industries We Serve',
+    'profiles_covered.auditors': 'Auditors and Standards Specialists:',
+    'profiles_covered.inspectors': 'Field Inspectors:',
+    'profiles_covered.lab': 'Laboratory Personnel:',
+    'profiles_covered.engineering': 'Engineering, Quality and HSE:',
+    'profiles_covered.executive': 'Executive Leadership and Strategy:',
+    'profiles_covered.commercial': 'Commercial and Business Development:',
+    'profiles_covered.operations': 'Operations and Projects:',
+    'profiles_covered.finance': 'Finance and Administration:',
+    'profiles_covered.hr': 'Human Resources and Talent:',
+    'profiles_covered.tech': 'Technology, Innovation and Marketing:',
+
+    // Development & Coaching
+    'development.title': 'Development & Coaching',
+    'development.subtitle': 'We enhance your teams\' skills with personalized development programs and executive coaching specialized in the ICT industry.',
+    'development.executive_coaching': 'Executive Coaching',
+    'development.programs': 'Development Programs',
+    'development.why_different': 'Why is our approach different?',
+    'development.field_experience': 'Field experience: Our coaches come from the ICT industry',
+    'development.proven_methodology': 'Proven methodology: Success stories in similar organizations',
+    'development.continuous_monitoring': 'Continuous monitoring: Support throughout the entire process',
+    'development.measurable_roi': 'Measurable ROI: Clear metrics of progress and results',
+    'development.free_consultation': '🚀 Free development consultation',
   },
 
   pt: {
@@ -586,5 +642,33 @@ const translations: Record<Language, Record<string, string>> = {
     'program.what_is.title': 'O que é TIC Talento?',
     'program.benefits_companies': 'Benefícios para as Empresas',
     'program.benefits_youth': 'Benefícios para os Jovens',
+
+    // Profiles Section
+    'profiles_covered.title': 'Perfis que Cobrimos: Nossa Dupla Expertise',
+    'profiles_covered.ict_specialized': 'Perfis Especializados do Setor TIC',
+    'profiles_covered.functional_corporate': 'Áreas Funcionais e Corporativas',
+    'profiles_covered.strategic_industries': 'Indústrias Estratégicas que Atendemos',
+    'profiles_covered.auditors': 'Auditores e Especialistas em Normas:',
+    'profiles_covered.inspectors': 'Inspetores de Campo:',
+    'profiles_covered.lab': 'Pessoal de Laboratório:',
+    'profiles_covered.engineering': 'Engenharia, Qualidade e HSE:',
+    'profiles_covered.executive': 'Liderança Executiva e Estratégia:',
+    'profiles_covered.commercial': 'Comercial e Desenvolvimento de Negócios:',
+    'profiles_covered.operations': 'Operações e Projetos:',
+    'profiles_covered.finance': 'Finanças e Administração:',
+    'profiles_covered.hr': 'Recursos Humanos e Talentos:',
+    'profiles_covered.tech': 'Tecnologia, Inovação e Marketing:',
+
+    // Development & Coaching
+    'development.title': 'Desenvolvimento & Coaching',
+    'development.subtitle': 'Potencializamos as habilidades de suas equipes com programas de desenvolvimento personalizados e coaching executivo especializado na indústria TIC.',
+    'development.executive_coaching': 'Coaching Executivo',
+    'development.programs': 'Programas de Desenvolvimento',
+    'development.why_different': 'Por que nossa abordagem é diferente?',
+    'development.field_experience': 'Experiência de campo: Nossos coaches vêm da indústria TIC',
+    'development.proven_methodology': 'Metodologia comprovada: Casos de sucesso em organizações similares',
+    'development.continuous_monitoring': 'Acompanhamento contínuo: Suporte durante todo o processo',
+    'development.measurable_roi': 'ROI mensurável: Métricas claras de progresso e resultados',
+    'development.free_consultation': '🚀 Consulta gratuita sobre desenvolvimento',
   },
 };

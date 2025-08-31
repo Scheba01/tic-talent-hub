@@ -259,7 +259,7 @@ const ServiciosEmpresas = () => {
             {/* Perfiles que Cubrimos */}
             <div className="mb-16">
               <h3 className="text-2xl font-display font-bold mb-8 text-center">
-                Perfiles que Cubrimos: Nuestra Doble Expertise
+                {t('profiles_covered.title')}
               </h3>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -267,47 +267,47 @@ const ServiciosEmpresas = () => {
                 <Card className="shadow-elegant">
                   <CardHeader>
                     <CardTitle className="text-xl font-display font-bold text-primary">
-                      Perfiles Especializados del Sector TIC
+                      {t('profiles_covered.ict_specialized')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Auditores y Especialistas en Normas:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.auditors')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Auditores Líderes y Técnicos (ISO 9001, 14001, 45001, 27001, 50001, etc.)</li>
-                        <li>• Especialistas en Certificación de Productos y Sistemas</li>
-                        <li>• Auditores de Seguridad Alimentaria (FSSC 22000, BRC, HACCP)</li>
-                        <li>• Expertos en Compliance y Asuntos Regulatorios</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Lead and Technical Auditors (ISO 9001, 14001, 45001, 27001, 50001, etc.)' : t('nav.home') === 'Início' ? 'Auditores Líderes e Técnicos (ISO 9001, 14001, 45001, 27001, 50001, etc.)' : 'Auditores Líderes y Técnicos (ISO 9001, 14001, 45001, 27001, 50001, etc.)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Product and System Certification Specialists' : t('nav.home') === 'Início' ? 'Especialistas em Certificação de Produtos e Sistemas' : 'Especialistas en Certificación de Productos y Sistemas'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Food Safety Auditors (FSSC 22000, BRC, HACCP)' : t('nav.home') === 'Início' ? 'Auditores de Segurança Alimentar (FSSC 22000, BRC, HACCP)' : 'Auditores de Seguridad Alimentaria (FSSC 22000, BRC, HACCP)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Compliance and Regulatory Affairs Experts' : t('nav.home') === 'Início' ? 'Especialistas em Compliance e Assuntos Regulatórios' : 'Expertos en Compliance y Asuntos Regulatorios'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Inspectores de Campo:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.inspectors')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Inspectores Especializados (Soldadura Nivel I-II, Ensayos No Destructivos - NDT, API, Izaje)</li>
-                        <li>• Inspectores Técnicos (Eléctricos, Mecánicos, Civiles, Recubrimientos)</li>
-                        <li>• Inspectores de Carga, Marítimos y de Commodities</li>
-                        <li>• Supervisores de Terreno</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Specialized Inspectors (Welding Level I-II, Non-Destructive Testing - NDT, API, Lifting)' : t('nav.home') === 'Início' ? 'Inspetores Especializados (Soldagem Nível I-II, Ensaios Não Destrutivos - NDT, API, Içamento)' : 'Inspectores Especializados (Soldadura Nivel I-II, Ensayos No Destructivos - NDT, API, Izaje)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Technical Inspectors (Electrical, Mechanical, Civil, Coatings)' : t('nav.home') === 'Início' ? 'Inspetores Técnicos (Elétricos, Mecânicos, Civis, Revestimentos)' : 'Inspectores Técnicos (Eléctricos, Mecánicos, Civiles, Recubrimientos)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Cargo, Maritime and Commodity Inspectors' : t('nav.home') === 'Início' ? 'Inspetores de Carga, Marítimos e de Commodities' : 'Inspectores de Carga, Marítimos y de Commodities'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Field Supervisors' : t('nav.home') === 'Início' ? 'Supervisores de Campo' : 'Supervisores de Terreno'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Personal de Laboratorio:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.lab')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Analistas de Laboratorio (Químicos, Microbiológicos, Físico-Químicos)</li>
-                        <li>• Jefes y Supervisores de Laboratorio (Bajo norma ISO/IEC 17025)</li>
-                        <li>• Técnicos de Metrología y Calibración</li>
-                        <li>• Geoquímicos y Analistas de Muestras</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Laboratory Analysts (Chemical, Microbiological, Physical-Chemical)' : t('nav.home') === 'Início' ? 'Analistas de Laboratório (Químicos, Microbiológicos, Físico-Químicos)' : 'Analistas de Laboratorio (Químicos, Microbiológicos, Físico-Químicos)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Laboratory Managers and Supervisors (Under ISO/IEC 17025 standard)' : t('nav.home') === 'Início' ? 'Chefes e Supervisores de Laboratório (Sob norma ISO/IEC 17025)' : 'Jefes y Supervisores de Laboratorio (Bajo norma ISO/IEC 17025)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Metrology and Calibration Technicians' : t('nav.home') === 'Início' ? 'Técnicos de Metrologia e Calibração' : 'Técnicos de Metrología y Calibración'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Geochemists and Sample Analysts' : t('nav.home') === 'Início' ? 'Geoquímicos e Analistas de Amostras' : 'Geoquímicos y Analistas de Muestras'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Ingeniería, Calidad y HSE:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.engineering')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Ingenieros de Calidad (QA/QC)</li>
-                        <li>• Ingenieros de Proyectos y de Confiabilidad</li>
-                        <li>• Jefes, Supervisores y Expertos en Prevención de Riesgos (HSE / HSEQ)</li>
-                        <li>• Ingenieros Ambientales y Consultores de Sostenibilidad</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Quality Engineers (QA/QC)' : t('nav.home') === 'Início' ? 'Engenheiros de Qualidade (QA/QC)' : 'Ingenieros de Calidad (QA/QC)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Project and Reliability Engineers' : t('nav.home') === 'Início' ? 'Engenheiros de Projetos e de Confiabilidade' : 'Ingenieros de Proyectos y de Confiabilidad'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Risk Prevention Managers, Supervisors and Experts (HSE / HSEQ)' : t('nav.home') === 'Início' ? 'Chefes, Supervisores e Especialistas em Prevenção de Riscos (HSE / HSEQ)' : 'Jefes, Supervisores y Expertos en Prevención de Riesgos (HSE / HSEQ)'}</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Environmental Engineers and Sustainability Consultants' : t('nav.home') === 'Início' ? 'Engenheiros Ambientais e Consultores de Sustentabilidade' : 'Ingenieros Ambientales y Consultores de Sostenibilidad'}</li>
                       </ul>
                     </div>
                   </CardContent>
@@ -317,49 +317,49 @@ const ServiciosEmpresas = () => {
                 <Card className="shadow-elegant">
                   <CardHeader>
                     <CardTitle className="text-xl font-display font-bold text-primary">
-                      Áreas Funcionales y Corporativas
+                      {t('profiles_covered.functional_corporate')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Liderazgo Ejecutivo y Estrategia:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.executive')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• CEO, Country Manager, Gerentes Generales, Directores Regionales y de Unidades de Negocio</li>
+                        <li>• {t('nav.home') === 'Home' ? 'CEO, Country Manager, General Managers, Regional Directors and Business Unit Directors' : t('nav.home') === 'Início' ? 'CEO, Country Manager, Gerentes Gerais, Diretores Regionais e de Unidades de Negócio' : 'CEO, Country Manager, Gerentes Generales, Directores Regionales y de Unidades de Negocio'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Comercial y Desarrollo de Negocios:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.commercial')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Gerentes Comerciales, Key Account Managers (KAM), Ejecutivos de Ventas Técnicas</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Commercial Managers, Key Account Managers (KAM), Technical Sales Executives' : t('nav.home') === 'Início' ? 'Gerentes Comerciais, Key Account Managers (KAM), Executivos de Vendas Técnicas' : 'Gerentes Comerciales, Key Account Managers (KAM), Ejecutivos de Ventas Técnicas'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Operaciones y Proyectos:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.operations')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Gerentes de Operaciones, Jefes de Proyecto (PMP), Planificadores</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Operations Managers, Project Managers (PMP), Planners' : t('nav.home') === 'Início' ? 'Gerentes de Operações, Chefes de Projeto (PMP), Planejadores' : 'Gerentes de Operaciones, Jefes de Proyecto (PMP), Planificadores'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Finanzas y Administración:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.finance')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Gerentes de Finanzas, Controllers, Jefes de Contabilidad y Adquisiciones</li>
+                        <li>• {t('nav.home') === 'Home' ? 'Finance Managers, Controllers, Accounting and Procurement Managers' : t('nav.home') === 'Início' ? 'Gerentes de Finanças, Controllers, Chefes de Contabilidade e Aquisições' : 'Gerentes de Finanzas, Controllers, Jefes de Contabilidad y Adquisiciones'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Recursos Humanos y Talento:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.hr')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Gerentes de RRHH, HR Business Partners (HRBP), Jefes de Adquisición de Talento</li>
+                        <li>• {t('nav.home') === 'Home' ? 'HR Managers, HR Business Partners (HRBP), Talent Acquisition Managers' : t('nav.home') === 'Início' ? 'Gerentes de RH, HR Business Partners (HRBP), Chefes de Aquisição de Talentos' : 'Gerentes de RRHH, HR Business Partners (HRBP), Jefes de Adquisición de Talento'}</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-primary mb-2">Tecnología, Innovación y Marketing:</h4>
+                      <h4 className="font-semibold text-primary mb-2">{t('profiles_covered.tech')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                        <li>• Gerentes de TI, Líderes de Transformación Digital, Gerentes de Marketing B2B</li>
+                        <li>• {t('nav.home') === 'Home' ? 'IT Managers, Digital Transformation Leaders, B2B Marketing Managers' : t('nav.home') === 'Início' ? 'Gerentes de TI, Líderes de Transformação Digital, Gerentes de Marketing B2B' : 'Gerentes de TI, Líderes de Transformación Digital, Gerentes de Marketing B2B'}</li>
                       </ul>
                     </div>
                   </CardContent>
@@ -370,11 +370,31 @@ const ServiciosEmpresas = () => {
             {/* Industrias Estratégicas */}
             <div>
               <h3 className="text-2xl font-display font-bold mb-8 text-center">
-                Industrias Estratégicas que Servimos
+                {t('profiles_covered.strategic_industries')}
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
+                {(t('nav.home') === 'Home' ? [
+                  "Energy, Oil and Gas",
+                  "Mining and Metals", 
+                  "Environment and Sustainability",
+                  "Construction and Infrastructure",
+                  "Agriculture and Food",
+                  "Industrial Manufacturing and Machinery",
+                  "Transportation and Logistics (Automotive, Naval, Aerospace)",
+                  "Consumer Goods and Retail",
+                  "Life Sciences (Pharmaceutical and Health)"
+                ] : t('nav.home') === 'Início' ? [
+                  "Energia, Petróleo e Gás",
+                  "Mineração e Metais", 
+                  "Meio Ambiente e Sustentabilidade",
+                  "Construção e Infraestrutura",
+                  "Agricultura e Alimentos",
+                  "Manufatura Industrial e Maquinário",
+                  "Transporte e Logística (Automotivo, Naval, Aeroespacial)",
+                  "Bens de Consumo e Varejo",
+                  "Ciências da Vida (Farmacêutica e Saúde)"
+                ] : [
                   "Energía, Petróleo y Gas",
                   "Minería y Metales", 
                   "Medio Ambiente y Sostenibilidad",
@@ -384,7 +404,7 @@ const ServiciosEmpresas = () => {
                   "Transporte y Logística (Automotriz, Naval, Aeroespacial)",
                   "Bienes de Consumo y Retail",
                   "Ciencias de la Vida (Farmacéutica y Salud)"
-                ].map((industry, index) => (
+                ]).map((industry, index) => (
                   <Card key={index} className="shadow-elegant bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 hover:from-primary/10 hover:to-primary/15 transition-all duration-300">
                     <CardContent className="p-6 h-24 flex items-center justify-center">
                       <p className="font-semibold text-primary text-center leading-tight text-base">{industry}</p>
@@ -400,9 +420,9 @@ const ServiciosEmpresas = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold mb-4">Desarrollo & Coaching</h2>
+              <h2 className="text-3xl font-display font-bold mb-4">{t('development.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo especializado en la industria TIC.
+                {t('development.subtitle')}
               </p>
             </div>
 
@@ -410,25 +430,25 @@ const ServiciosEmpresas = () => {
               <div className="space-y-6">
                 <Card className="shadow-elegant">
                   <CardHeader>
-                    <CardTitle className="text-xl text-primary">Coaching Ejecutivo</CardTitle>
+                    <CardTitle className="text-xl text-primary">{t('development.executive_coaching')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3 text-muted-foreground">
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Desarrollo de habilidades de liderazgo técnico</span>
+                        <span>{t('nav.home') === 'Home' ? 'Technical leadership skills development' : t('nav.home') === 'Início' ? 'Desenvolvimento de habilidades de liderança técnica' : 'Desarrollo de habilidades de liderazgo técnico'}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Gestión de equipos multidisciplinarios</span>
+                        <span>{t('nav.home') === 'Home' ? 'Multidisciplinary team management' : t('nav.home') === 'Início' ? 'Gestão de equipes multidisciplinares' : 'Gestión de equipos multidisciplinarios'}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Comunicación efectiva con stakeholders técnicos</span>
+                        <span>{t('nav.home') === 'Home' ? 'Effective communication with technical stakeholders' : t('nav.home') === 'Início' ? 'Comunicação efetiva com stakeholders técnicos' : 'Comunicación efectiva con stakeholders técnicos'}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Transición a roles de mayor responsabilidad</span>
+                        <span>{t('nav.home') === 'Home' ? 'Transition to roles with greater responsibility' : t('nav.home') === 'Início' ? 'Transição para funções de maior responsabilidade' : 'Transición a roles de mayor responsabilidad'}</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -436,25 +456,25 @@ const ServiciosEmpresas = () => {
 
                 <Card className="shadow-elegant">
                   <CardHeader>
-                    <CardTitle className="text-xl text-primary">Programas de Desarrollo</CardTitle>
+                    <CardTitle className="text-xl text-primary">{t('development.programs')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3 text-muted-foreground">
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Planes de carrera personalizados</span>
+                        <span>{t('nav.home') === 'Home' ? 'Personalized career plans' : t('nav.home') === 'Início' ? 'Planos de carreira personalizados' : 'Planes de carrera personalizados'}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Mentoría técnica especializada</span>
+                        <span>{t('nav.home') === 'Home' ? 'Specialized technical mentoring' : t('nav.home') === 'Início' ? 'Mentoria técnica especializada' : 'Mentoría técnica especializada'}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Certificaciones profesionales en TIC</span>
+                        <span>{t('nav.home') === 'Home' ? 'ICT professional certifications' : t('nav.home') === 'Início' ? 'Certificações profissionais em TIC' : 'Certificaciones profesionales en TIC'}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                        <span>Desarrollo de competencias blandas</span>
+                        <span>{t('nav.home') === 'Home' ? 'Soft skills development' : t('nav.home') === 'Início' ? 'Desenvolvimento de competências comportamentais' : 'Desarrollo de competencias blandas'}</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -463,31 +483,31 @@ const ServiciosEmpresas = () => {
 
               <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
                 <h3 className="text-2xl font-display font-bold mb-6 text-primary">
-                  ¿Por qué nuestro enfoque es diferente?
+                  {t('development.why_different')}
                 </h3>
                 <div className="space-y-4 text-muted-foreground">
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p><strong>Experiencia de campo:</strong> Nuestros coaches provienen de la industria TIC</p>
+                    <p><strong>{t('nav.home') === 'Home' ? 'Field experience:' : t('nav.home') === 'Início' ? 'Experiência de campo:' : 'Experiencia de campo:'}</strong> {t('development.field_experience').split(': ')[1]}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p><strong>Metodología probada:</strong> Casos de éxito en organizaciones similares</p>
+                    <p><strong>{t('nav.home') === 'Home' ? 'Proven methodology:' : t('nav.home') === 'Início' ? 'Metodologia comprovada:' : 'Metodología probada:'}</strong> {t('development.proven_methodology').split(': ')[1]}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p><strong>Seguimiento continuo:</strong> Acompañamiento durante todo el proceso</p>
+                    <p><strong>{t('nav.home') === 'Home' ? 'Continuous monitoring:' : t('nav.home') === 'Início' ? 'Acompanhamento contínuo:' : 'Seguimiento continuo:'}</strong> {t('development.continuous_monitoring').split(': ')[1]}</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p><strong>ROI medible:</strong> Métricas claras de progreso y resultados</p>
+                    <p><strong>{t('nav.home') === 'Home' ? 'Measurable ROI:' : t('nav.home') === 'Início' ? 'ROI mensurável:' : 'ROI medible:'}</strong> {t('development.measurable_roi').split(': ')[1]}</p>
                   </div>
                 </div>
                 
                 <div className="mt-8">
                   <Button asChild className="btn-hero w-full">
                     <Link to="/contacto">
-                      🚀 Consulta gratuita sobre desarrollo
+                      {t('development.free_consultation')}
                     </Link>
                   </Button>
                 </div>
