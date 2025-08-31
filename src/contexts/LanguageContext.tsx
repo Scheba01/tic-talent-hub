@@ -162,7 +162,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Us
     'about.title': 'Nacimos de la Industria para Servir a la Industria',
-    'about.subtitle': 'No somos reclutadores tradicionales. Somos TIC Talent, una red de expertos forjados en el corazón de la industria de Pruebas, Inspección y Certificación. Entendemos sus desafíos porque los hemos vivido. Hablamos su idioma porque es el nuestro.',
+    'about.subtitle': 'Expertos TIC',
     'about.experts.title': 'Red de Expertos con Experiencia Real',
     'about.experts.desc': 'Nuestro equipo suma más de 30 años de experiencia combinada. Este conocimiento profundo nos permite identificar no solo las habilidades técnicas, sino el ADN cultural que garantiza un match perfecto.',
     'about.talent_universe.title': 'Un Universo de Talento a su Alcance',
@@ -328,7 +328,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Us
     'about.title': 'Born from the Industry to Serve the Industry',
-    'about.subtitle': 'We are not traditional recruiters. We are TIC Talent, a network of experts forged in the heart of the Testing, Inspection and Certification industry. We understand your challenges because we have lived them. We speak your language because it is ours.',
+    'about.subtitle': 'TIC Experts',
     'about.experts.title': 'Network of Experts with Real Experience',
     'about.experts.desc': 'Our team has more than 30 years of combined experience. This deep knowledge allows us to identify not only technical skills, but the cultural DNA that guarantees a perfect match.',
     'about.talent_universe.title': 'A Universe of Talent at Your Reach',
@@ -493,7 +493,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Us
     'about.title': 'Nascemos da Indústria para Servir a Indústria',
-    'about.subtitle': 'Não somos recrutadores tradicionais. Somos TIC Talent, uma rede de especialistas forjada no coração da indústria de Testes, Inspeção e Certificação. Entendemos seus desafios porque os vivemos. Falamos sua linguagem porque é a nossa.',
+    'about.subtitle': 'Especialistas TIC',
     'about.experts.title': 'Rede de Especialistas com Experiência Real',
     'about.experts.desc': 'Nossa equipe soma mais de 30 anos de experiência combinada. Este conhecimento profundo nos permite identificar não apenas as habilidades técnicas, mas o DNA cultural que garante um match perfeito.',
     'about.talent_universe.title': 'Um Universo de Talentos ao Seu Alcance',
