@@ -4,10 +4,25 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { GraduationCap, Users, Lightbulb, Award, Phone, Mail, CheckCircle, TrendingUp, Users2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 
 const ProgramaTalentoTIC = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{t('programaTalentoTIC.title')}</title>
+        <meta name="description" content={t('programaTalentoTIC.description')} />
+        <meta name="keywords" content={t('programaTalentoTIC.keywords')} />
+        <meta property="og:title" content={t('programaTalentoTIC.title')} />
+        <meta property="og:description" content={t('programaTalentoTIC.description')} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('programaTalentoTIC.title')} />
+        <meta name="twitter:description" content={t('programaTalentoTIC.description')} />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">
@@ -17,15 +32,13 @@ const ProgramaTalentoTIC = () => {
           <div className="relative max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
-                  Impulsando el futuro del <span className="text-cyan-300">sector TIC</span>
-                </h1>
+                <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight" dangerouslySetInnerHTML={{__html: t('programaTalentoTIC.hero.heading')}} />
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
-                  El programa crea un puente real entre la academia y la industria, acercando a los jóvenes a proyectos concretos y preparando a las empresas con el talento que necesitan para crecer. Una iniciativa que no solo transforma la formación en experiencia y la experiencia en carrera profesional, sino que también promueve y fortalece el desarrollo de toda la industria TIC en la región.
+                  {t('programaTalentoTIC.hero.subheading')}
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button asChild className="bg-cyan-400 hover:bg-cyan-300 text-blue-900 font-semibold px-8 py-3">
-                    <Link to="/contacto">Únete al Programa</Link>
+                    <Link to="/contacto">{t('programaTalentoTIC.hero.cta')}</Link>
                   </Button>
                 </div>
               </div>
@@ -46,19 +59,19 @@ const ProgramaTalentoTIC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">75%</div>
-                <div className="text-cyan-600 font-semibold mb-2">Escasez de Talento TIC</div>
-                <p className="text-gray-600">Tres de cada cuatro empresas en LATAM reportan dificultad para encontrar perfiles especializados.</p>
+                <div className="text-4xl font-bold text-blue-600 mb-2">{t('programaTalentoTIC.statistics.shortage.value')}</div>
+                <div className="text-cyan-600 font-semibold mb-2">{t('programaTalentoTIC.statistics.shortage.title')}</div>
+                <p className="text-gray-600">{t('programaTalentoTIC.statistics.shortage.description')}</p>
               </div>
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">2030</div>
-                <div className="text-cyan-600 font-semibold mb-2">Brecha de 85 millones de profesionales</div>
-                <p className="text-gray-600">El mundo enfrentará un déficit global de talento especializado, impactando directamente a la industria TIC.</p>
+                <div className="text-4xl font-bold text-blue-600 mb-2">{t('programaTalentoTIC.statistics.gap.value')}</div>
+                <div className="text-cyan-600 font-semibold mb-2">{t('programaTalentoTIC.statistics.gap.title')}</div>
+                <p className="text-gray-600">{t('programaTalentoTIC.statistics.gap.description')}</p>
               </div>
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">+50%</div>
-                <div className="text-cyan-600 font-semibold mb-2">Demanda en Normas y Certificaciones</div>
-                <p className="text-gray-600">Más de la mitad de las compañías en la región requieren personal capacitado en estándares internacionales (ISO, HACCP, Sustentabilidad, entre otros).</p>
+                <div className="text-4xl font-bold text-blue-600 mb-2">{t('programaTalentoTIC.statistics.demand.value')}</div>
+                <div className="text-cyan-600 font-semibold mb-2">{t('programaTalentoTIC.statistics.demand.title')}</div>
+                <p className="text-gray-600">{t('programaTalentoTIC.statistics.demand.description')}</p>
               </div>
             </div>
           </div>
@@ -68,20 +81,17 @@ const ProgramaTalentoTIC = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
-              ¿Qué es TIC Talento?
+              {t('programaTalentoTIC.whatIs.title')}
             </h2>
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-lg text-gray-700 mb-6">
-                El programa TIC Talento nace para fomentar los talentos de la industria TIC (Testing, Inspección y Certificación), 
-                anticipando su desarrollo y permitiendo que los jóvenes se adapten temprano a la cultura y exigencias de este sector.
+                {t('programaTalentoTIC.whatIs.description1')}
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                En América Latina, muchas veces falta talento especializado en TIC. Para garantizar el crecimiento de la industria, 
-                debemos invertir hoy en la formación y vinculación de los futuros profesionales.
+                {t('programaTalentoTIC.whatIs.description2')}
               </p>
               <p className="text-lg text-gray-700">
-                Por eso, TIC Talento conecta universidades, estudiantes y empresas bajo un mismo compromiso: formar, capacitar e incorporar 
-                a la próxima generación de expertos TIC.
+                {t('programaTalentoTIC.whatIs.description3')}
               </p>
             </div>
           </div>
@@ -91,18 +101,18 @@ const ProgramaTalentoTIC = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-cyan-50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
-              Beneficios para las Empresas
+              {t('programaTalentoTIC.benefitsCompanies.title')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Users className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Talento Pre-seleccionado</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsCompanies.preselectedTalent.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Incorporación de jóvenes previamente seleccionados para ajustarse a sus necesidades.
+                    {t('programaTalentoTIC.benefitsCompanies.preselectedTalent.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -110,11 +120,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Lightbulb className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Proyectos con Impacto</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsCompanies.impactProjects.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Participación en proyectos donde los alumnos aportan soluciones reales.
+                    {t('programaTalentoTIC.benefitsCompanies.impactProjects.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -122,11 +132,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Users2 className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Adaptación Cultural</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsCompanies.culturalAdaptation.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Adaptación temprana de futuros profesionales a la cultura de la empresa.
+                    {t('programaTalentoTIC.benefitsCompanies.culturalAdaptation.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -134,11 +144,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Award className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Visibilidad y Posicionamiento</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsCompanies.visibility.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Visibilidad y posicionamiento como empresa comprometida con el desarrollo de la industria TIC.
+                    {t('programaTalentoTIC.benefitsCompanies.visibility.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -146,11 +156,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <TrendingUp className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Crecimiento Sostenible</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsCompanies.sustainableGrowth.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Impulso al crecimiento sostenible del sector mediante la formación de nuevo talento.
+                    {t('programaTalentoTIC.benefitsCompanies.sustainableGrowth.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -162,18 +172,18 @@ const ProgramaTalentoTIC = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
-              Beneficios para los Jóvenes
+              {t('programaTalentoTIC.benefitsYoung.title')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <GraduationCap className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Experiencia Práctica</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsYoung.practicalExperience.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Experiencia práctica en empresas líderes de la industria.
+                    {t('programaTalentoTIC.benefitsYoung.practicalExperience.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -181,11 +191,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Lightbulb className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Proyectos Reales</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsYoung.realProjects.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Participación en proyectos con impacto real.
+                    {t('programaTalentoTIC.benefitsYoung.realProjects.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -193,11 +203,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Award className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Formación Internacional</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsYoung.internationalTraining.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Formación en normas y estándares internacionales.
+                    {t('programaTalentoTIC.benefitsYoung.internationalTraining.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -205,11 +215,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <Users className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Mentoría Especializada</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsYoung.specializedMentoring.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Mentoría de profesionales expertos en TIC.
+                    {t('programaTalentoTIC.benefitsYoung.specializedMentoring.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -217,11 +227,11 @@ const ProgramaTalentoTIC = () => {
               <Card className="border border-cyan-200 hover:shadow-xl transition-all duration-300 text-center">
                 <CardHeader>
                   <TrendingUp className="w-12 h-12 text-cyan-500 mx-auto mb-4" />
-                  <CardTitle className="text-xl text-blue-700">Inserción Laboral</CardTitle>
+                  <CardTitle className="text-xl text-blue-700">{t('programaTalentoTIC.benefitsYoung.jobInsertion.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Oportunidad concreta de insertarse en un mercado laboral de alta demanda.
+                    {t('programaTalentoTIC.benefitsYoung.jobInsertion.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -234,29 +244,26 @@ const ProgramaTalentoTIC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-display font-bold mb-6">
-                  Certificación <span className="text-cyan-300">TIC Talento</span>
-                </h2>
+                <h2 className="text-3xl font-display font-bold mb-6" dangerouslySetInnerHTML={{__html: t('programaTalentoTIC.certification.title')}} />
                 <p className="text-blue-100 text-lg mb-6">
-                  Las empresas que demuestren un compromiso anual sostenido con el desarrollo de talento 
-                  TIC recibirán nuestra prestigiosa Certificación TIC Talento.
+                  {t('programaTalentoTIC.certification.description')}
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
-                    <span>Participación en al menos 6 charlas/webinars anuales</span>
+                    <span>{t('programaTalentoTIC.certification.requirements.talks')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
-                    <span>Mentorías a mínimo 3 estudiantes por año</span>
+                    <span>{t('programaTalentoTIC.certification.requirements.mentoring')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
-                    <span>Contratación de al menos 2 graduados del programa</span>
+                    <span>{t('programaTalentoTIC.certification.requirements.hiring')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-6 h-6 text-cyan-300 flex-shrink-0" />
-                    <span>Participación en eventos de networking estudiantil</span>
+                    <span>{t('programaTalentoTIC.certification.requirements.networking')}</span>
                   </div>
                 </div>
               </div>
@@ -275,42 +282,42 @@ const ProgramaTalentoTIC = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12 text-blue-800">
-              ¿Cómo Funciona?
+              {t('programaTalentoTIC.howItWorks.title')}
             </h2>
             <div className="max-w-4xl mx-auto">
               <p className="text-lg text-gray-700 mb-8 text-center">
-                El programa está diseñado para que las empresas participen como partners y asuman un rol activo en la formación de nuevos talentos.
+                {t('programaTalentoTIC.howItWorks.description')}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
-                  <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Criterios Anuales para Empresas</h3>
+                  <h3 className="text-xl font-display font-bold mb-4 text-blue-700">{t('programaTalentoTIC.howItWorks.companyCriteria.title')}</h3>
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
-                      <span className="text-gray-600">Recibir alumnos en pasantías o prácticas profesionales</span>
+                      <span className="text-gray-600">{t('programaTalentoTIC.howItWorks.companyCriteria.internships')}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
-                      <span className="text-gray-600">Impartir charlas y talleres en universidades</span>
+                      <span className="text-gray-600">{t('programaTalentoTIC.howItWorks.companyCriteria.talks')}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
-                      <span className="text-gray-600">Participar en programas de formación y diplomados técnicos</span>
+                      <span className="text-gray-600">{t('programaTalentoTIC.howItWorks.companyCriteria.training')}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-cyan-500 flex-shrink-0" />
-                      <span className="text-gray-600">Dar oportunidad de primer empleo a jóvenes talentos TIC</span>
+                      <span className="text-gray-600">{t('programaTalentoTIC.howItWorks.companyCriteria.employment')}</span>
                     </div>
                   </div>
                 </div>
                 
                 <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
-                  <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Nuestro Compromiso</h3>
+                  <h3 className="text-xl font-display font-bold mb-4 text-blue-700">{t('programaTalentoTIC.howItWorks.ourCommitment.title')}</h3>
                   <p className="text-gray-600 mb-4">
-                    Nos encargamos de buscar a los estudiantes adecuados para cada empresa, asegurando que participen en proyectos reales que aporten valor.
+                    {t('programaTalentoTIC.howItWorks.ourCommitment.description1')}
                   </p>
                   <p className="text-gray-600">
-                    Los estudiantes se adaptan rápidamente a la cultura organizacional, creando una transición fluida del ámbito académico al profesional.
+                    {t('programaTalentoTIC.howItWorks.ourCommitment.description2')}
                   </p>
                 </div>
               </div>
@@ -322,11 +329,10 @@ const ProgramaTalentoTIC = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-cyan-50">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6 text-blue-800">
-              Nuestra Visión
+              {t('programaTalentoTIC.vision.title')}
             </h2>
             <p className="text-lg text-gray-700">
-              TIC Talento busca ser el puente entre la academia y la industria, garantizando que cada estudiante no solo aprenda, 
-              sino que también aplique sus conocimientos y construya una carrera en el sector TIC.
+              {t('programaTalentoTIC.vision.description')}
             </p>
           </div>
         </section>
@@ -335,28 +341,31 @@ const ProgramaTalentoTIC = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-cyan-50 to-blue-50">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6 text-blue-800">
-              Llamado a la Acción
+              {t('programaTalentoTIC.cta.title')}
             </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              {t('programaTalentoTIC.cta.description')}
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
-                <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Empresas</h3>
+                <h3 className="text-xl font-display font-bold mb-4 text-blue-700">{t('programaTalentoTIC.cta.companies.title')}</h3>
                 <p className="text-gray-600">
-                  Únete como partner de TIC Talento y forma parte del futuro de la industria, desarrollando el talento que tu organización y el sector necesitan.
+                  {t('programaTalentoTIC.cta.companies.description')}
                 </p>
               </div>
               <div className="bg-white rounded-lg p-8 shadow-lg border border-cyan-100">
-                <h3 className="text-xl font-display font-bold mb-4 text-blue-700">Estudiantes</h3>
+                <h3 className="text-xl font-display font-bold mb-4 text-blue-700">{t('programaTalentoTIC.cta.students.title')}</h3>
                 <p className="text-gray-600">
-                  Postula al programa y da tus primeros pasos profesionales en un sector que no deja de crecer.
+                  {t('programaTalentoTIC.cta.students.description')}
                 </p>
               </div>
             </div>
             <p className="text-lg text-gray-600 mb-8">
-              👉 Inscríbete aquí - Elige la forma que prefieras para contactarnos
+              {t('programaTalentoTIC.cta.contact.signupHere')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
               <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 px-12 py-4 text-sm">
-                <Link to="/contacto">Formulario de Contacto</Link>
+                <Link to="/contacto">{t('programaTalentoTIC.cta.contact.form')}</Link>
               </Button>
               <Button
                 variant="outline"
@@ -365,7 +374,7 @@ const ProgramaTalentoTIC = () => {
               >
                 <a href="https://wa.me/message/IH46LPYOLH4CH1">
                   <Phone className="w-4 h-4 mr-2" />
-                  WhatsApp
+                  {t('programaTalentoTIC.cta.contact.whatsapp')}
                 </a>
               </Button>
               <Button
@@ -374,13 +383,13 @@ const ProgramaTalentoTIC = () => {
                 onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre Programa TIC Talento', '_blank')}
               >
                 <Mail className="w-4 h-4 mr-2" />
-                Email Directo
+                {t('programaTalentoTIC.cta.contact.email')}
               </Button>
             </div>
             
             {/* Subtle TIC Select attribution */}
             <div className="mt-12 flex items-center justify-center space-x-2 text-sm text-gray-500">
-              <span>Programa desarrollado por</span>
+              <span>{t('programaTalentoTIC.cta.contact.developedBy')}</span>
               <img 
                 src="/lovable-uploads/42d7e844-a2f7-47e6-9cbc-b08fab2c11e2.png" 
                 alt="TIC Select" 
