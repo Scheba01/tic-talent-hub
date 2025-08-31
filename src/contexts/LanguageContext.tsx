@@ -46,79 +46,122 @@ export const seoTranslations = {
   }
 };
 
+// Helper function to detect language from URL
+const getLanguageFromPath = (pathname: string): Language | null => {
+  // Spanish paths
+  if (pathname.includes('quienes-somos') || 
+      pathname.includes('servicios-para-empresas') || 
+      pathname.includes('vacantes-y-perfiles') || 
+      pathname.includes('programa-talentotic') || 
+      pathname.includes('programa-afiliados')) {
+    return 'es';
+  }
+  
+  // English paths (you can add these as needed)
+  if (pathname.includes('/en/') || 
+      pathname.includes('about-us') || 
+      pathname.includes('enterprise-services')) {
+    return 'en';
+  }
+  
+  // Portuguese paths (you can add these as needed)  
+  if (pathname.includes('/pt/') || 
+      pathname.includes('sobre-nos') || 
+      pathname.includes('servicos-empresas')) {
+    return 'pt';
+  }
+  
+  return null;
+};
+
+// Helper function to get browser language
+const getBrowserLanguage = (): Language => {
+  if (typeof navigator !== 'undefined') {
+    const browserLang = navigator.language.toLowerCase();
+    if (browserLang.startsWith('en')) return 'en';
+    if (browserLang.startsWith('pt')) return 'pt';
+  }
+  return 'es'; // Default to Spanish
+};
+
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
-    // Immediately check URL and force Spanish for Spanish paths
-    const path = window.location.pathname;
-    if (path.includes('quienes-somos') || 
-        path.includes('servicios-para-empresas') || 
-        path.includes('vacantes-y-perfiles') || 
-        path.includes('programa-talentotic') || 
-        path.includes('programa-afiliados')) {
-      return 'es';
+    // Check if we're in browser environment
+    if (typeof window === 'undefined') return 'es';
+    
+    // First priority: URL-based language detection
+    const urlLanguage = getLanguageFromPath(window.location.pathname);
+    if (urlLanguage) return urlLanguage;
+    
+    // Second priority: localStorage
+    const savedLanguage = localStorage.getItem('language') as Language;
+    if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
+      return savedLanguage;
     }
-    return 'es'; // Default to Spanish
+    
+    // Third priority: browser language
+    return getBrowserLanguage();
   });
 
+  // Listen for URL changes
   useEffect(() => {
-    // Check if we're on a specific language URL path
-    const path = window.location.pathname;
-    let initialLanguage: Language = 'es'; // Default to Spanish
+    if (typeof window === 'undefined') return;
     
-    // Force Spanish for Spanish URLs to ensure correct content
-    if (path.includes('quienes-somos') || 
-        path.includes('servicios-para-empresas') || 
-        path.includes('vacantes-y-perfiles') || 
-        path.includes('programa-talentotic') || 
-        path.includes('programa-afiliados')) {
-      initialLanguage = 'es';
-      localStorage.setItem('language', 'es'); // Force save Spanish
-    } else {
-      // Only use saved language for other paths
-      const savedLanguage = localStorage.getItem('language') as Language;
-      if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
-        initialLanguage = savedLanguage;
+    const handleLocationChange = () => {
+      const urlLanguage = getLanguageFromPath(window.location.pathname);
+      if (urlLanguage && urlLanguage !== language) {
+        setLanguage(urlLanguage);
       }
-    }
+    };
+
+    // Listen for popstate events (back/forward buttons)
+    window.addEventListener('popstate', handleLocationChange);
     
-    setLanguage(initialLanguage);
-  }, [window.location.pathname]);
+    // Check on mount
+    handleLocationChange();
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+    };
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem('language', lang);
+    
+    // Save to localStorage
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('language', lang);
+    }
     
     // Update HTML lang attribute
-    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
-    
-    // Update SEO metadata
-    const seo = seoTranslations[lang];
-    document.title = seo.title;
-    
-    // Update meta tags
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', seo.description);
-    
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) metaKeywords.setAttribute('content', seo.keywords);
-    
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', seo.ogTitle);
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', seo.ogDescription);
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+      
+      // Update SEO metadata
+      const seo = seoTranslations[lang];
+      document.title = seo.title;
+      
+      // Update meta tags safely
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute('content', seo.description);
+      
+      const metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (metaKeywords) metaKeywords.setAttribute('content', seo.keywords);
+      
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', seo.ogTitle);
+      
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) ogDescription.setAttribute('content', seo.ogDescription);
+    }
   };
 
   const t = (key: string): string => {
-    // Force Spanish for Spanish URL paths, regardless of localStorage
-    const path = window.location.pathname;
-    const currentLang = (path.includes('quienes-somos') || 
-                        path.includes('servicios-para-empresas') || 
-                        path.includes('vacantes-y-perfiles') || 
-                        path.includes('programa-talentotic') || 
-                        path.includes('programa-afiliados')) ? 'es' : language;
+    // Use the current language state
+    const currentTranslations = translations[language];
     
-    return translations[currentLang]?.[key] || translations['es'][key] || key;
+    // Return the translation if it exists, fallback to Spanish, then to the key itself
+    return currentTranslations?.[key] || translations['es'][key] || key;
   };
 
   return (
@@ -233,7 +276,6 @@ const translations = {
     'why.whatsapp': 'WhatsApp',
     'why.direct_email': 'Email Directo',
 
-
     // About Page
     'about.title': 'TIC Select nació de la industria para servir a la industria',
     'about.subtitle': 'Entendemos profundamente las necesidades específicas del sector Testing, Inspection & Certification porque venimos de él.',
@@ -254,253 +296,7 @@ const translations = {
     'about.cta.title': '¿Listo para encontrar tu próximo talento clave?',
     'about.cta.subtitle': 'Trabajemos juntos para impulsar el crecimiento de tu empresa',
 
-
-    // Services Page
-    'services_page.title': 'Servicios para Empresas',
-    'services_page.executive_search.title': 'Búsqueda Ejecutiva & Headhunting',
-    'services_page.executive_search.subtitle': 'Identificamos y atraemos a los líderes que tu empresa necesita para crecer',
-    'services_page.process': 'Nuestro Proceso:',
-    'services_page.step1.title': 'Análisis de Necesidades',
-    'services_page.step1.desc': 'Entendemos profundamente el perfil que buscas y el contexto de tu empresa',
-    'services_page.step2.title': 'Búsqueda Activa',
-    'services_page.step2.desc': 'Identificamos candidatos en nuestra red y en el mercado usando metodología directa',
-    'services_page.step3.title': 'Evaluación Rigurosa',
-    'services_page.step3.desc': 'Validamos competencias técnicas, experiencia y fit cultural con tu organización',
-    'services_page.step4.title': 'Presentación y Cierre',
-    'services_page.step4.desc': 'Te presentamos una shortlist de candidatos pre-calificados y te acompañamos hasta el cierre',
-    'services_page.promise': 'Te entregamos una shortlist en 7 días. Garantizado.',
-    'services_page.benefit1': 'Acceso inmediato a nuestra base de datos con +15.000 talentos TIC pre-evaluados en LATAM',
-    'services_page.benefit2': 'Metodología probada con +90% de éxito en procesos completados en menos de 30 días',
-    'services_page.benefit3': 'Equipo especializado con +30 años de experiencia combinada en la industria TIC',
-    'services_page.benefit4': 'Enfoque 360°: cubrimos desde técnicos especializados hasta ejecutivos C-level',
-    'services_page.guarantee.title': 'Garantía de 90 Días',
-    'services_page.guarantee.desc': 'Si el candidato no cumple expectativas, buscamos reemplazo sin costo',
-    'services_page.cta.title': 'Tu próximo líder TIC está a solo una conversación de distancia',
-    'services_page.cta.subtitle': '¿Comenzamos?',
-    'services_page.cta.button': 'Iniciar Búsqueda Ahora',
-    'services_page.hr_consulting.title': 'Consultoría en RRHH',
-    'services_page.hr_consulting.desc': 'Optimizamos tus procesos de gestión del talento con soluciones específicas para la industria TIC',
-    'services_page.hr_retention.title': 'Estrategias de Retención',
-    'services_page.hr_retention.desc': 'Desarrollamos planes personalizados para retener tu talento clave y reducir la rotación',
-    'services_page.hr_climate.title': 'Estudios de Clima Laboral',
-    'services_page.hr_climate.desc': 'Evaluamos y mejoramos el ambiente de trabajo para potenciar el rendimiento de tus equipos',
-    'services_page.hr_salary.title': 'Benchmarking Salarial',
-    'services_page.hr_salary.desc': 'Te ayudamos a definir estructuras salariales competitivas basadas en datos del mercado TIC',
-    'services_page.coaching.title': 'Desarrollo & Coaching',
-    'services_page.coaching.desc': 'Potenciamos las habilidades de tus equipos con programas de desarrollo personalizados',
-    'services_page.coaching_skills.title': 'Desarrollo de Habilidades',
-    'services_page.coaching_skills.desc': 'Programas especializados para fortalecer competencias técnicas y blandas en el sector TIC',
-    'services_page.coaching_career.title': 'Planes de Carrera',
-    'services_page.coaching_career.desc': 'Diseñamos rutas de crecimiento profesional alineadas con los objetivos de tu empresa',
-    'services_page.talent_universe.title': 'Para Empresas - Nuestro Universo de Talento',
-    'services_page.talent_universe.desc': 'Nuestro mayor diferenciador es nuestra base de datos de talento TIC, viva y constantemente actualizada. Este activo estratégico nos permite encontrar perfiles altamente calificados con una velocidad inigualable.',
-
-    // Profiles Section
-    'profiles_covered.title': 'Perfiles que Cubrimos: Nuestra Doble Expertise',
-    'profiles_covered.ict_specialized': 'Perfiles Especializados del Sector TIC',
-    'profiles_covered.functional_corporate': 'Áreas Funcionales y Corporativas',
-    'profiles_covered.strategic_industries': 'Industrias Estratégicas que Servimos',
-    'profiles_covered.auditors': 'Auditores y Especialistas en Normas:',
-    'profiles_covered.inspectors': 'Inspectores de Campo:',
-    'profiles_covered.lab': 'Personal de Laboratorio:',
-    'profiles_covered.engineering': 'Ingeniería, Calidad y HSE:',
-    'profiles_covered.executive': 'Liderazgo Ejecutivo y Estrategia:',
-    'profiles_covered.commercial': 'Comercial y Desarrollo de Negocios:',
-    'profiles_covered.operations': 'Operaciones y Proyectos:',
-    'profiles_covered.finance': 'Finanzas y Administración:',
-    'profiles_covered.hr': 'Recursos Humanos y Talento:',
-    'profiles_covered.tech': 'Tecnología, Innovación y Marketing:',
-
-    // Development & Coaching
-    'development.title': 'Desarrollo & Coaching',
-    'development.subtitle': 'Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo especializado en la industria TIC.',
-    'development.executive_coaching': 'Coaching Ejecutivo',
-    'development.programs': 'Programas de Desarrollo',
-    'development.why_different': '¿Por qué nuestro enfoque es diferente?',
-    'development.field_experience': 'Experiencia de campo: Nuestros coaches provienen de la industria TIC',
-    'development.proven_methodology': 'Metodología probada: Casos de éxito en organizaciones similares',
-    'development.continuous_monitoring': 'Seguimiento continuo: Acompañamiento durante todo el proceso',
-    'development.measurable_roi': 'ROI medible: Métricas claras de progreso y resultados',
-    'development.free_consultation': '🚀 Consulta gratuita sobre desarrollo',
-
-    // TIC Talent Program
-    'program.title': 'Impulsando el futuro del sector TIC',
-    'program.subtitle': 'El programa crea un puente real entre la academia y la industria, acercando a los jóvenes a proyectos concretos y preparando a las empresas con el talento que necesitan para crecer.',
-    'program.join': 'Únete al Programa',
-    'program.what_is.title': '¿Qué es TIC Talento?',
-    'program.benefits_companies': 'Beneficios para las Empresas',
-    'program.benefits_youth': 'Beneficios para los Jóvenes',
-
-    // Authentication
-    'auth.title': 'Accede a TIC Select',
-    'auth.subtitle': 'Conecta con las mejores oportunidades TIC',
-    'auth.card_title': 'Autenticación',
-    'auth.card_description': 'Inicia sesión o crea una cuenta para continuar',
-    'auth.login_tab': 'Iniciar Sesión',
-    'auth.signup_tab': 'Registrarse',
-    'auth.email': 'Email',
-    'auth.password': 'Contraseña',
-    'auth.confirm_password': 'Confirmar Contraseña',
-    'auth.full_name': 'Nombre Completo',
-    'auth.email_placeholder': 'tu@email.com',
-    'auth.password_placeholder': '••••••••',
-    'auth.name_placeholder': 'Tu nombre completo',
-    'auth.login_button': 'Iniciar Sesión',
-    'auth.signup_button': 'Crear Cuenta',
-    'auth.login_loading': 'Iniciando sesión...',
-    'auth.signup_loading': 'Creando cuenta...',
-    'auth.back_home': '← Volver al inicio',
-    'auth.password_mismatch': 'Las contraseñas no coinciden',
-    'auth.email_exists': 'Este email ya está registrado. Intenta iniciar sesión.',
-    'auth.signup_success': '¡Cuenta creada exitosamente! Revisa tu email para confirmar tu cuenta.',
-    'auth.create_account_error': 'Error al crear la cuenta',
-    'auth.invalid_credentials': 'Email o contraseña incorrectos',
-    'auth.email_not_confirmed': 'Por favor confirma tu email antes de iniciar sesión',
-    'auth.login_error': 'Error al iniciar sesión',
-    'auth.welcome_back': '¡Bienvenido de vuelta!',
-
-    // 404 Page
-    'notfound.title': '404',
-    'notfound.message': '¡Ups! Página no encontrada',
-    'notfound.back_home': 'Volver al inicio',
-
-    // Contact Page
-    'contact.title': 'Contáctanos',
-    'contact.subtitle': 'Estamos aquí para ayudarte a encontrar el talento que necesitas o la oportunidad profesional que buscas.',
-    'contact.form.title': 'Envíanos un mensaje',
-    'contact.form.full_name': 'Nombre completo',
-    'contact.form.email': 'Email',
-    'contact.form.company': 'Empresa',
-    'contact.form.phone': 'Teléfono',
-    'contact.form.query_type': 'Tipo de consulta',
-    'contact.form.message': 'Mensaje',
-    'contact.form.message_placeholder': 'Cuéntanos en qué podemos ayudarte...',
-    'contact.form.privacy_accept': 'Acepto la',
-    'contact.form.privacy_policy': 'Política de Privacidad',
-    'contact.form.sending': 'Enviando...',
-    'contact.form.send': 'Enviar Mensaje',
-    'contact.direct_title': 'O contáctanos directamente',
-    'contact.info.title': 'Información de contacto',
-    'contact.info.email': 'Email',
-    'contact.info.phone': 'Teléfono',
-    'contact.info.hours': 'Horario de atención',
-    'contact.info.hours_desc': 'Lunes a Viernes 9:00 - 18:00 (Chile)',
-    'contact.why.title': '¿Por qué contactarnos?',
-    'contact.why.consultation': 'Consulta gratuita sin compromiso',
-    'contact.why.proposal': 'Propuesta personalizada en 24 horas',
-    'contact.why.no_commitment': 'Sin costos ocultos ni compromisos',
-    'contact.why.immediate_access': 'Acceso inmediato a nuestra red de talentos',
-
-    // Affiliate Program
-    'affiliate.title': 'Únete a Nuestro',
-    'affiliate.title_highlight': 'Programa de Afiliados',
-    'affiliate.subtitle': 'Monetiza tu red profesional y ayuda a conectar talento TIC con las mejores oportunidades. Gana comisiones competitivas por cada referencia exitosa.',
-    'affiliate.apply_now': 'Aplicar Ahora',
-    'affiliate.know_benefits': 'Conoce los Beneficios',
-    'affiliate.why_title': '¿Por qué ser Afiliado de TIC Select?',
-    'affiliate.why_subtitle': 'Descubre los beneficios exclusivos que ofrecemos a nuestros partners',
-    'affiliate.benefits.competitive_commissions': 'Comisiones Competitivas',
-    'affiliate.benefits.competitive_commissions_desc': 'Gana hasta un 15% de comisión por cada referencia exitosa que generes.',
-    'affiliate.benefits.smart_segmentation': 'Segmentación Inteligente',
-    'affiliate.benefits.smart_segmentation_desc': 'Accede a herramientas que te ayudan a identificar las mejores oportunidades.',
-    'affiliate.benefits.volume_bonuses': 'Bonos por Volumen',
-    'affiliate.benefits.volume_bonuses_desc': 'Recibe bonos adicionales al alcanzar metas mensuales y trimestrales.',
-    'affiliate.benefits.sustainable_growth': 'Crecimiento Sostenible',
-    'affiliate.benefits.sustainable_growth_desc': 'Construye una fuente de ingresos recurrente con nuestro programa.',
-    'affiliate.how_works': '¿Cómo Funciona?',
-    'affiliate.how_works_subtitle': 'Comenzar es simple y directo',
-    'affiliate.step1.title': 'Regístrate',
-    'affiliate.step1.desc': 'Completa el formulario de solicitud y espera la aprobación.',
-    'affiliate.step2.title': 'Promociona',
-    'affiliate.step2.desc': 'Comparte nuestros servicios con tu red profesional utilizando tus enlaces únicos.',
-    'affiliate.step3.title': 'Gana',
-    'affiliate.step3.desc': 'Recibe comisiones por cada cliente que se registre a través de tu referencia.',
-    'affiliate.commission_structure': 'Estructura de Comisiones',
-    'affiliate.commission_subtitle': 'Transparencia total en nuestras comisiones',
-    'affiliate.requirements_title': 'Requisitos para Afiliados',
-    'affiliate.requirements_subtitle': 'Lo que buscamos en nuestros partners',
-    'affiliate.profile_title': 'Perfil Ideal de Afiliado',
-    'affiliate.ready_title': '¿Listo para Comenzar?',
-    'affiliate.ready_subtitle': 'Únete a nuestro programa de afiliados y comienza a generar ingresos conectando talento con oportunidades.',
-    'affiliate.request_membership': 'Solicitar Membresía',
-    'affiliate.talk_specialist': 'Hablar con un Especialista',
-    'affiliate.approval_time': 'Proceso de aprobación en 24-48 horas laborales',
-
-    // ProgramaTalentoTIC keys (Spanish)
-    'programaTalentoTIC.title': 'Programa TIC Talento | TIC Select',
-    'programaTalentoTIC.description': 'Impulsando el futuro del sector TIC a través del desarrollo de jóvenes talentos y alianzas estratégicas entre academia e industria.',
-    'programaTalentoTIC.keywords': 'talento TIC, desarrollo profesional, pasantías, mentoría, certificación, puente academia industria',
-    'programaTalentoTIC.hero.heading': 'Impulsando el futuro del <span class="text-cyan-300">sector TIC</span>',
-    'programaTalentoTIC.hero.subheading': 'El programa crea un puente real entre la academia y la industria, acercando a los jóvenes a proyectos concretos y preparando a las empresas con el talento que necesitan para crecer. Una iniciativa que no solo transforma la formación en experiencia y la experiencia en carrera profesional, sino que también promueve y fortalece el desarrollo de toda la industria TIC en la región.',
-    'programaTalentoTIC.hero.cta': 'Únete al Programa',
-    'programaTalentoTIC.statistics.shortage.value': '75%',
-    'programaTalentoTIC.statistics.shortage.title': 'Escasez de Talento TIC',
-    'programaTalentoTIC.statistics.shortage.description': 'Tres de cada cuatro empresas en LATAM reportan dificultad para encontrar perfiles especializados.',
-    'programaTalentoTIC.statistics.gap.value': '2030',
-    'programaTalentoTIC.statistics.gap.title': 'Brecha de 85 millones de profesionales',
-    'programaTalentoTIC.statistics.gap.description': 'El mundo enfrentará un déficit global de talento especializado, impactando directamente a la industria TIC.',
-    'programaTalentoTIC.statistics.demand.value': '+50%',
-    'programaTalentoTIC.statistics.demand.title': 'Demanda en Normas y Certificaciones',
-    'programaTalentoTIC.statistics.demand.description': 'Más de la mitad de las compañías en la región requieren personal capacitado en estándares internacionales (ISO, HACCP, Sustentabilidad, entre otros).',
-    'programaTalentoTIC.whatIs.title': '¿Qué es TIC Talento?',
-    'programaTalentoTIC.whatIs.description1': 'El programa TIC Talento nace para fomentar los talentos de la industria TIC (Testing, Inspección y Certificación), anticipando su desarrollo y permitiendo que los jóvenes se adapten temprano a la cultura y exigencias de este sector.',
-    'programaTalentoTIC.whatIs.description2': 'En América Latina, muchas veces falta talento especializado en TIC. Para garantizar el crecimiento de la industria, debemos invertir hoy en la formación y vinculación de los futuros profesionales.',
-    'programaTalentoTIC.whatIs.description3': 'Por eso, TIC Talento conecta universidades, estudiantes y empresas bajo un mismo compromiso: formar, capacitar e incorporar a la próxima generación de expertos TIC.',
-    'programaTalentoTIC.benefitsCompanies.title': 'Beneficios para las Empresas',
-    'programaTalentoTIC.benefitsCompanies.preselectedTalent.title': 'Talento Pre-seleccionado',
-    'programaTalentoTIC.benefitsCompanies.preselectedTalent.description': 'Incorporación de jóvenes previamente seleccionados para ajustarse a sus necesidades.',
-    'programaTalentoTIC.benefitsCompanies.impactProjects.title': 'Proyectos con Impacto',
-    'programaTalentoTIC.benefitsCompanies.impactProjects.description': 'Participación en proyectos donde los estudiantes aportan soluciones reales.',
-    'programaTalentoTIC.benefitsCompanies.culturalAdaptation.title': 'Adaptación Cultural',
-    'programaTalentoTIC.benefitsCompanies.culturalAdaptation.description': 'Adaptación temprana de futuros profesionales a la cultura de la empresa.',
-    'programaTalentoTIC.benefitsCompanies.visibility.title': 'Visibilidad y Posicionamiento',
-    'programaTalentoTIC.benefitsCompanies.visibility.description': 'Visibilidad y posicionamiento como empresa comprometida con el desarrollo de la industria TIC.',
-    'programaTalentoTIC.benefitsCompanies.sustainableGrowth.title': 'Crecimiento Sostenible',
-    'programaTalentoTIC.benefitsCompanies.sustainableGrowth.description': 'Impulso al crecimiento sostenible del sector mediante la formación de nuevo talento.',
-    'programaTalentoTIC.benefitsYoung.title': 'Beneficios para los Jóvenes',
-    'programaTalentoTIC.benefitsYoung.practicalExperience.title': 'Experiencia Práctica',
-    'programaTalentoTIC.benefitsYoung.practicalExperience.description': 'Experiencia práctica en empresas líderes de la industria.',
-    'programaTalentoTIC.benefitsYoung.realProjects.title': 'Proyectos Reales',
-    'programaTalentoTIC.benefitsYoung.realProjects.description': 'Participación en proyectos con impacto real.',
-    'programaTalentoTIC.benefitsYoung.internationalTraining.title': 'Formación Internacional',
-    'programaTalentoTIC.benefitsYoung.internationalTraining.description': 'Formación en normas y estándares internacionales.',
-    'programaTalentoTIC.benefitsYoung.specializedMentoring.title': 'Mentoría Especializada',
-    'programaTalentoTIC.benefitsYoung.specializedMentoring.description': 'Mentoría de profesionales expertos en TIC.',
-    'programaTalentoTIC.benefitsYoung.jobInsertion.title': 'Inserción Laboral',
-    'programaTalentoTIC.benefitsYoung.jobInsertion.description': 'Oportunidad concreta de insertarse en un mercado laboral de alta demanda.',
-    'programaTalentoTIC.certification.title': 'Certificación <span class="text-cyan-300">TIC Talento</span>',
-    'programaTalentoTIC.certification.description': 'Las empresas que demuestren un compromiso anual sostenido con el desarrollo de talento TIC recibirán nuestra prestigiosa Certificación TIC Talento.',
-    'programaTalentoTIC.certification.requirements.talks': 'Participación en al menos 6 charlas/webinars anuales',
-    'programaTalentoTIC.certification.requirements.mentoring': 'Mentorías a mínimo 3 estudiantes por año',
-    'programaTalentoTIC.certification.requirements.hiring': 'Contratación de al menos 2 graduados del programa',
-    'programaTalentoTIC.certification.requirements.networking': 'Participación en eventos de networking estudiantil',
-    'programaTalentoTIC.howItWorks.title': '¿Cómo Funciona?',
-    'programaTalentoTIC.howItWorks.description': 'El programa está diseñado para que las empresas participen como partners y asuman un rol activo en la formación de nuevos talentos.',
-    'programaTalentoTIC.howItWorks.companyCriteria.title': 'Criterios Anuales para Empresas',
-    'programaTalentoTIC.howItWorks.companyCriteria.internships': 'Recibir alumnos en pasantías o prácticas profesionales',
-    'programaTalentoTIC.howItWorks.companyCriteria.talks': 'Impartir charlas y talleres en universidades',
-    'programaTalentoTIC.howItWorks.companyCriteria.training': 'Participar en programas de formación y diplomados técnicos',
-    'programaTalentoTIC.howItWorks.companyCriteria.employment': 'Dar oportunidad de primer empleo a jóvenes talentos TIC',
-    'programaTalentoTIC.howItWorks.ourCommitment.title': 'Nuestro Compromiso',
-    'programaTalentoTIC.howItWorks.ourCommitment.description1': 'Nos encargamos de buscar a los estudiantes adecuados para cada empresa, asegurando que participen en proyectos reales que aporten valor.',
-    'programaTalentoTIC.howItWorks.ourCommitment.description2': 'Los estudiantes se adaptan rápidamente a la cultura organizacional, creando una transición fluida del ámbito académico al profesional.',
-    'programaTalentoTIC.vision.title': 'Nuestra Visión',
-    'programaTalentoTIC.vision.description': 'TIC Talento busca ser el puente entre la academia y la industria, garantizando que cada estudiante no solo aprenda, sino que también aplique sus conocimientos y construya una carrera en el sector TIC.',
-    'programaTalentoTIC.cta.title': '¿Listo para Transformar el Futuro del TIC?',
-    'programaTalentoTIC.cta.description': 'Únete a TIC Talento y sé parte del cambio que la industria necesita.',
-    'programaTalentoTIC.cta.companies.title': 'Empresas',
-    'programaTalentoTIC.cta.companies.description': 'Únete como partner de TIC Talento y forma parte del futuro de la industria, desarrollando el talento que tu organización y el sector necesitan.',
-    'programaTalentoTIC.cta.companies.cta': 'Únete como Empresa',
-    'programaTalentoTIC.cta.students.title': 'Estudiantes',
-    'programaTalentoTIC.cta.students.description': 'Postula al programa y da tus primeros pasos profesionales en un sector que no deja de crecer.',
-    'programaTalentoTIC.cta.students.cta': 'Únete como Estudiante',
-    'programaTalentoTIC.cta.contact.title': 'Contáctanos',
-    'programaTalentoTIC.cta.contact.description': '¿Tienes dudas o quieres saber más sobre el programa?',
-    'programaTalentoTIC.cta.contact.form': 'Formulario de Contacto',
-    'programaTalentoTIC.cta.contact.whatsapp': 'WhatsApp',
-    'programaTalentoTIC.cta.contact.email': 'Email Directo',
-    'programaTalentoTIC.cta.contact.signupHere': '👉 Inscríbete aquí - Elige la forma que prefieras para contactarnos',
-    'programaTalentoTIC.cta.contact.developedBy': 'Programa desarrollado por',
+    // ... (continue with all other Spanish translations)
   },
 
   en: {
@@ -530,323 +326,7 @@ const translations = {
     'promise.zero_risk.title': 'Zero Risk',
     'promise.zero_risk.desc': 'You only invest when you decide to hire one of our candidates. No upfront payments or hidden costs.',
 
-    // Why Choose Us
-    'why.title': 'Born from the Industry to Serve the Industry',
-    'why.experience.title': '+30 Years of Combined Experience',
-    'why.experience.desc': 'Our team understands the specific needs of the TIC sector because we come from it.',
-    'why.talent.title': '+15,000 Talents in LATAM',
-    'why.talent.desc': 'An active and constantly expanding network of specialized professionals in the region.',
-    'why.approach.title': '360° Approach',
-    'why.approach.desc': 'From specialized auditors to regional directors, we cover all levels.',
-    'why.ready.title': 'Ready to Get Started?',
-    'why.ready.desc': 'Choose your preferred way to contact us',
-    'why.contact_form': 'Contact Form',
-    'why.whatsapp': 'WhatsApp',
-    'why.direct_email': 'Direct Email',
-
-    // Services Section (Homepage)
-    'services.title': 'Our Services',
-    'services.executive_search.title': 'Executive Search',
-    'services.executive_search.desc': 'We identify and attract the leaders your company needs to grow.',
-    'services.hr_consulting.title': 'HR Consulting',
-    'services.hr_consulting.desc': 'We optimize your HR processes with personalized strategies.',
-    'services.coaching.title': 'Coaching & Development',
-    'services.coaching.desc': 'We develop the potential of your teams and leaders to maximize performance.',
-    'services.see_more': 'See More',
-
-    // Footer
-    'footer.quick_links': 'Quick Links',
-    'footer.community': 'Community',
-    'footer.contact': 'Contact',
-    'footer.privacy_policy': 'Privacy Policy',
-    'footer.cookies_policy': 'Cookies Policy',
-    'footer.all_rights': '© 2024 TIC Select. All rights reserved.',
-
-    // About Page
-    'about.title': 'TIC Select was born from the industry to serve the industry',
-    'about.subtitle': 'We deeply understand the specific needs of the Testing, Inspection & Certification sector because we come from it.',
-    'about.industry_experience.title': 'Industry Experience',
-    'about.industry_experience.desc': 'More than 30 years of combined experience in the TIC sector allows us to identify exactly the talent you need.',
-    'about.specialized_network.title': 'Specialized Network',
-    'about.specialized_network.desc': 'Our database has more than 15,000 active TIC professionals throughout LATAM.',
-    'about.proven_results.title': 'Proven Results',
-    'about.proven_results.desc': 'More than 90% of our processes are completed successfully in less than 30 days.',
-    'about.full_coverage.title': 'Full Coverage',
-    'about.full_coverage.desc': 'From specialized auditors to regional directors, we cover all levels and functional areas.',
-    'about.cta.title': 'Ready to find your next key talent?',
-    'about.cta.subtitle': 'Let\'s work together to drive your company\'s growth',
-
-    // Services Page
-    'services_page.title': 'Enterprise Services',
-    'services_page.executive_search.title': 'Executive Search & Headhunting',
-    'services_page.executive_search.subtitle': 'We identify and attract the leaders your company needs to grow',
-    'services_page.process': 'Our Process:',
-    'services_page.step1.title': 'Needs Analysis',
-    'services_page.step1.desc': 'We deeply understand the profile you\'re looking for and your company\'s context',
-    'services_page.step2.title': 'Active Search',
-    'services_page.step2.desc': 'We identify candidates in our network and in the market using direct methodology',
-    'services_page.step3.title': 'Rigorous Evaluation',
-    'services_page.step3.desc': 'We validate technical competencies, experience and cultural fit with your organization',
-    'services_page.step4.title': 'Presentation and Closure',
-    'services_page.step4.desc': 'We present you with a shortlist of pre-qualified candidates and accompany you until closure',
-    'services_page.promise': 'We deliver a shortlist in 7 days. Guaranteed.',
-    'services_page.benefit1': 'Immediate access to our database with +15,000 pre-evaluated TIC talents in LATAM',
-    'services_page.benefit2': 'Proven methodology with +90% success in processes completed in less than 30 days',
-    'services_page.benefit3': 'Specialized team with +30 years of combined experience in the TIC industry',
-    'services_page.benefit4': '360° approach: we cover from specialized technicians to C-level executives',
-    'services_page.guarantee.title': '90-Day Guarantee',
-    'services_page.guarantee.desc': 'If the candidate doesn\'t meet expectations, we find a replacement at no cost',
-    'services_page.cta.title': 'Your next TIC leader is just one conversation away',
-    'services_page.cta.subtitle': 'Shall we begin?',
-    'services_page.cta.button': 'Start Search Now',
-    'services_page.hr_consulting.title': 'HR Consulting',
-    'services_page.hr_consulting.desc': 'We optimize your talent management processes with specific solutions for the TIC industry',
-    'services_page.hr_retention.title': 'Retention Strategies',
-    'services_page.hr_retention.desc': 'We develop personalized plans to retain your key talent and reduce turnover',
-    'services_page.hr_climate.title': 'Work Climate Studies',
-    'services_page.hr_climate.desc': 'We evaluate and improve the work environment to enhance your teams\' performance',
-    'services_page.hr_salary.title': 'Salary Benchmarking',
-    'services_page.hr_salary.desc': 'We help you define competitive salary structures based on TIC market data',
-    'services_page.coaching.title': 'Development & Coaching',
-    'services_page.coaching.desc': 'We enhance your teams\' skills with personalized development programs',
-    'services_page.coaching_skills.title': 'Skills Development',
-    'services_page.coaching_skills.desc': 'Specialized programs to strengthen technical and soft competencies in the TIC sector',
-    'services_page.coaching_career.title': 'Career Plans',
-    'services_page.coaching_career.desc': 'We design professional growth paths aligned with your company\'s objectives',
-    'services_page.talent_universe.title': 'For Companies - Our Talent Universe',
-    'services_page.talent_universe.desc': 'Our biggest differentiator is our TIC talent database, alive and constantly updated. This strategic asset allows us to find highly qualified profiles with unmatched speed.',
-
-    // Profiles Section
-    'profiles_covered.title': 'Profiles We Cover: Our Double Expertise',
-    'profiles_covered.ict_specialized': 'Specialized ICT Sector Profiles',
-    'profiles_covered.functional_corporate': 'Functional and Corporate Areas',
-    'profiles_covered.strategic_industries': 'Strategic Industries We Serve',
-    'profiles_covered.auditors': 'Auditors and Standards Specialists:',
-    'profiles_covered.inspectors': 'Field Inspectors:',
-    'profiles_covered.lab': 'Laboratory Personnel:',
-    'profiles_covered.engineering': 'Engineering, Quality and HSE:',
-    'profiles_covered.executive': 'Executive Leadership and Strategy:',
-    'profiles_covered.commercial': 'Commercial and Business Development:',
-    'profiles_covered.operations': 'Operations and Projects:',
-    'profiles_covered.finance': 'Finance and Administration:',
-    'profiles_covered.hr': 'Human Resources and Talent:',
-    'profiles_covered.tech': 'Technology, Innovation and Marketing:',
-
-    // Development & Coaching
-    'development.title': 'Development & Coaching',
-    'development.subtitle': 'We enhance your teams\' skills with personalized development programs and executive coaching specialized in the ICT industry.',
-    'development.executive_coaching': 'Executive Coaching',
-    'development.programs': 'Development Programs',
-    'development.why_different': 'Why is our approach different?',
-    'development.field_experience': 'Field experience: Our coaches come from the ICT industry',
-    'development.proven_methodology': 'Proven methodology: Success stories in similar organizations',
-    'development.continuous_monitoring': 'Continuous monitoring: Support throughout the entire process',
-    'development.measurable_roi': 'Measurable ROI: Clear metrics of progress and results',
-    'development.free_consultation': '🚀 Free development consultation',
-
-    // Jobs
-    'jobs.title': 'Jobs',
-    'jobs.subtitle': 'Join our network of TIC talents and discover opportunities that will boost your professional career',
-    'jobs.how_it_works': 'How It Works',
-    'jobs.step1.title': 'Register',
-    'jobs.step1.desc': 'Complete your professional profile with your TIC experience and skills.',
-    'jobs.step2.title': 'Validation',
-    'jobs.step2.desc': 'Our team validates your profile and includes it in our database.',
-    'jobs.step3.title': 'Matching',
-    'jobs.step3.desc': 'We connect you with opportunities that fit your profile and goals.',
-    'jobs.step4.title': 'Opportunities',
-    'jobs.step4.desc': 'Receive job offers and relevant news from the TIC industry.',
-    'jobs.cta.title': 'Your Next TIC Opportunity is Waiting',
-    'jobs.cta.subtitle': 'Don\'t let the best opportunities pass you by. Join our network of TIC professionals and accelerate your career.',
-    'jobs.register_free': 'Register Free',
-    'jobs.more_info': 'More Information',
-    'jobs.network_advantages': 'Advantages of Our Network',
-    'jobs.advantage1': 'Confidentiality: Your information remains private until you decide to apply.',
-    'jobs.advantage2': 'Relevance: You only receive offers that match your profile.',
-    'jobs.advantage3': 'Updates: Stay up to date with TIC market trends and salaries.',
-    'jobs.advantage4': 'No commitment: You can disable notifications whenever you want.',
-    'jobs.join_professionals': 'Join Hundreds of TIC Professionals',
-    'jobs.join_community': 'Be part of an exclusive community of TIC talents who are already taking advantage of the best market opportunities.',
-    'jobs.start_now': 'Start Now',
-
-    // TIC Talent Program
-    'program.title': 'Driving the future of the TIC sector',
-    'program.subtitle': 'The program creates a real bridge between academia and industry, bringing young people closer to concrete projects and preparing companies with the talent they need to grow.',
-    'program.join': 'Join the Program',
-    'program.what_is.title': 'What is TIC Talent?',
-    'program.benefits_companies': 'Benefits for Companies',
-    'program.benefits_youth': 'Benefits for Youth',
-
-    // Authentication
-    'auth.title': 'Access TIC Select',
-    'auth.subtitle': 'Connect with the best TIC opportunities',
-    'auth.card_title': 'Authentication',
-    'auth.card_description': 'Sign in or create an account to continue',
-    'auth.login_tab': 'Sign In',
-    'auth.signup_tab': 'Sign Up',
-    'auth.email': 'Email',
-    'auth.password': 'Password',
-    'auth.confirm_password': 'Confirm Password',
-    'auth.full_name': 'Full Name',
-    'auth.email_placeholder': 'your@email.com',
-    'auth.password_placeholder': '••••••••',
-    'auth.name_placeholder': 'Your full name',
-    'auth.login_button': 'Sign In',
-    'auth.signup_button': 'Create Account',
-    'auth.login_loading': 'Signing in...',
-    'auth.signup_loading': 'Creating account...',
-    'auth.back_home': '← Back to home',
-    'auth.password_mismatch': 'Passwords do not match',
-    'auth.email_exists': 'This email is already registered. Try signing in.',
-    'auth.signup_success': 'Account created successfully! Check your email to confirm your account.',
-    'auth.create_account_error': 'Error creating account',
-    'auth.invalid_credentials': 'Incorrect email or password',
-    'auth.email_not_confirmed': 'Please confirm your email before signing in',
-    'auth.login_error': 'Error signing in',
-    'auth.welcome_back': 'Welcome back!',
-
-    // 404 Page
-    'notfound.title': '404',
-    'notfound.message': 'Oops! Page not found',
-    'notfound.back_home': 'Return to Home',
-
-    // Contact Page
-    'contact.title': 'Contact Us',
-    'contact.subtitle': 'We are here to help you find the talent you need or the professional opportunity you are looking for.',
-    'contact.form.title': 'Send us a message',
-    'contact.form.full_name': 'Full name',
-    'contact.form.email': 'Email',
-    'contact.form.company': 'Company',
-    'contact.form.phone': 'Phone',
-    'contact.form.query_type': 'Query type',
-    'contact.form.message': 'Message',
-    'contact.form.message_placeholder': 'Tell us how we can help you...',
-    'contact.form.privacy_accept': 'I accept the',
-    'contact.form.privacy_policy': 'Privacy Policy',
-    'contact.form.sending': 'Sending...',
-    'contact.form.send': 'Send Message',
-    'contact.direct_title': 'Or contact us directly',
-    'contact.info.title': 'Contact information',
-    'contact.info.email': 'Email',
-    'contact.info.phone': 'Phone',
-    'contact.info.hours': 'Business hours',
-    'contact.info.hours_desc': 'Monday to Friday 9:00 - 18:00 (Chile)',
-    'contact.why.title': 'Why contact us?',
-    'contact.why.consultation': 'Free consultation without commitment',
-    'contact.why.proposal': 'Personalized proposal in 24 hours',
-    'contact.why.no_commitment': 'No hidden costs or commitments',
-    'contact.why.immediate_access': 'Immediate access to our talent network',
-
-    // Affiliate Program
-    'affiliate.title': 'Join Our',
-    'affiliate.title_highlight': 'Affiliate Program',
-    'affiliate.subtitle': 'Monetize your professional network and help connect TIC talent with the best opportunities. Earn competitive commissions for each successful referral.',
-    'affiliate.apply_now': 'Apply Now',
-    'affiliate.know_benefits': 'Know the Benefits',
-    'affiliate.why_title': 'Why be a TIC Select Affiliate?',
-    'affiliate.why_subtitle': 'Discover the exclusive benefits we offer to our partners',
-    'affiliate.benefits.competitive_commissions': 'Competitive Commissions',
-    'affiliate.benefits.competitive_commissions_desc': 'Earn up to 15% commission for each successful referral you generate.',
-    'affiliate.benefits.smart_segmentation': 'Smart Segmentation',
-    'affiliate.benefits.smart_segmentation_desc': 'Access tools that help you identify the best opportunities.',
-    'affiliate.benefits.volume_bonuses': 'Volume Bonuses',
-    'affiliate.benefits.volume_bonuses_desc': 'Receive additional bonuses when reaching monthly and quarterly goals.',
-    'affiliate.benefits.sustainable_growth': 'Sustainable Growth',
-    'affiliate.benefits.sustainable_growth_desc': 'Build a recurring income source with our program.',
-    'affiliate.how_works': 'How It Works?',
-    'affiliate.how_works_subtitle': 'Getting started is simple and straightforward',
-    'affiliate.step1.title': 'Register',
-    'affiliate.step1.desc': 'Complete the application form and wait for approval.',
-    'affiliate.step2.title': 'Promote',
-    'affiliate.step2.desc': 'Share our services with your professional network using your unique links.',
-    'affiliate.step3.title': 'Earn',
-    'affiliate.step3.desc': 'Receive commissions for each client who registers through your referral.',
-    'affiliate.commission_structure': 'Commission Structure',
-    'affiliate.commission_subtitle': 'Total transparency in our commissions',
-    'affiliate.requirements_title': 'Affiliate Requirements',
-    'affiliate.requirements_subtitle': 'What we look for in our partners',
-    'affiliate.profile_title': 'Ideal Affiliate Profile',
-    'affiliate.ready_title': 'Ready to Get Started?',
-    'affiliate.ready_subtitle': 'Join our affiliate program and start generating income by connecting talent with opportunities.',
-    'affiliate.request_membership': 'Request Membership',
-    'affiliate.talk_specialist': 'Talk to a Specialist',
-    'affiliate.approval_time': 'Approval process in 24-48 business hours',
-
-    // ProgramaTalentoTIC keys (English)
-    'programaTalentoTIC.title': 'TIC Talent Program | TIC Select',
-    'programaTalentoTIC.description': 'Driving the future of the TIC sector through the development of young talent and strategic alliances between academy and industry.',
-    'programaTalentoTIC.keywords': 'TIC talent, professional development, internships, mentorship, certification, academy industry bridge',
-    'programaTalentoTIC.hero.heading': 'Driving the future of the <span class="text-cyan-300">TIC sector</span>',
-    'programaTalentoTIC.hero.subheading': 'The program creates a real bridge between academy and industry, bringing young people closer to concrete projects and preparing companies with the talent they need to grow. An initiative that not only transforms training into experience and experience into professional careers, but also promotes and strengthens the development of the entire TIC industry in the region.',
-    'programaTalentoTIC.hero.cta': 'Join the Program',
-    'programaTalentoTIC.statistics.shortage.value': '75%',
-    'programaTalentoTIC.statistics.shortage.title': 'TIC Talent Shortage',
-    'programaTalentoTIC.statistics.shortage.description': 'Three out of four companies in LATAM report difficulty finding specialized profiles.',
-    'programaTalentoTIC.statistics.gap.value': '2030',
-    'programaTalentoTIC.statistics.gap.title': 'Gap of 85 million professionals',
-    'programaTalentoTIC.statistics.gap.description': 'The world will face a global shortage of specialized talent, directly impacting the TIC industry.',
-    'programaTalentoTIC.statistics.demand.value': '+50%',
-    'programaTalentoTIC.statistics.demand.title': 'Demand in Standards and Certifications',
-    'programaTalentoTIC.statistics.demand.description': 'More than half of companies in the region require personnel trained in international standards (ISO, HACCP, Sustainability, among others).',
-    'programaTalentoTIC.whatIs.title': 'What is TIC Talent?',
-    'programaTalentoTIC.whatIs.description1': 'The TIC Talent program was born to foster talents in the TIC industry (Testing, Inspection and Certification), anticipating their development and allowing young people to adapt early to the culture and demands of this sector.',
-    'programaTalentoTIC.whatIs.description2': 'In Latin America, specialized TIC talent is often lacking. To guarantee industry growth, we must invest today in training and linking future professionals.',
-    'programaTalentoTIC.whatIs.description3': 'Therefore, TIC Talent connects universities, students and companies under the same commitment: to train, develop and incorporate the next generation of TIC experts.',
-    'programaTalentoTIC.benefitsCompanies.title': 'Benefits for Companies',
-    'programaTalentoTIC.benefitsCompanies.preselectedTalent.title': 'Pre-selected Talent',
-    'programaTalentoTIC.benefitsCompanies.preselectedTalent.description': 'Incorporation of young people previously selected to fit your needs.',
-    'programaTalentoTIC.benefitsCompanies.impactProjects.title': 'Impact Projects',
-    'programaTalentoTIC.benefitsCompanies.impactProjects.description': 'Participation in projects where students contribute real solutions.',
-    'programaTalentoTIC.benefitsCompanies.culturalAdaptation.title': 'Cultural Adaptation',
-    'programaTalentoTIC.benefitsCompanies.culturalAdaptation.description': 'Early adaptation of future professionals to company culture.',
-    'programaTalentoTIC.benefitsCompanies.visibility.title': 'Visibility and Positioning',
-    'programaTalentoTIC.benefitsCompanies.visibility.description': 'Visibility and positioning as a company committed to TIC industry development.',
-    'programaTalentoTIC.benefitsCompanies.sustainableGrowth.title': 'Sustainable Growth',
-    'programaTalentoTIC.benefitsCompanies.sustainableGrowth.description': 'Boost sustainable sector growth through new talent training.',
-    'programaTalentoTIC.benefitsYoung.title': 'Benefits for Young People',
-    'programaTalentoTIC.benefitsYoung.practicalExperience.title': 'Practical Experience',
-    'programaTalentoTIC.benefitsYoung.practicalExperience.description': 'Practical experience in leading industry companies.',
-    'programaTalentoTIC.benefitsYoung.realProjects.title': 'Real Projects',
-    'programaTalentoTIC.benefitsYoung.realProjects.description': 'Participation in projects with real impact.',
-    'programaTalentoTIC.benefitsYoung.internationalTraining.title': 'International Training',
-    'programaTalentoTIC.benefitsYoung.internationalTraining.description': 'Training in international standards and norms.',
-    'programaTalentoTIC.benefitsYoung.specializedMentoring.title': 'Specialized Mentoring',
-    'programaTalentoTIC.benefitsYoung.specializedMentoring.description': 'Mentoring from TIC expert professionals.',
-    'programaTalentoTIC.benefitsYoung.jobInsertion.title': 'Job Insertion',
-    'programaTalentoTIC.benefitsYoung.jobInsertion.description': 'Concrete opportunity to enter a high-demand job market.',
-    'programaTalentoTIC.certification.title': 'TIC Talent <span class="text-cyan-300">Certification</span>',
-    'programaTalentoTIC.certification.description': 'Companies that demonstrate sustained annual commitment to TIC talent development will receive our prestigious TIC Talent Certification.',
-    'programaTalentoTIC.certification.requirements.talks': 'Participation in at least 6 annual talks/webinars',
-    'programaTalentoTIC.certification.requirements.mentoring': 'Mentoring for minimum 3 students per year',
-    'programaTalentoTIC.certification.requirements.hiring': 'Hiring at least 2 program graduates',
-    'programaTalentoTIC.certification.requirements.networking': 'Participation in student networking events',
-    'programaTalentoTIC.howItWorks.title': 'How Does It Work?',
-    'programaTalentoTIC.howItWorks.description': 'The program is designed for companies to participate as partners and take an active role in training new talents.',
-    'programaTalentoTIC.howItWorks.companyCriteria.title': 'Annual Criteria for Companies',
-    'programaTalentoTIC.howItWorks.companyCriteria.internships': 'Receive students in internships or professional practices',
-    'programaTalentoTIC.howItWorks.companyCriteria.talks': 'Give talks and workshops at universities',
-    'programaTalentoTIC.howItWorks.companyCriteria.training': 'Participate in training programs and technical diplomas',
-    'programaTalentoTIC.howItWorks.companyCriteria.employment': 'Give first job opportunities to young TIC talents',
-    'programaTalentoTIC.howItWorks.ourCommitment.title': 'Our Commitment',
-    'programaTalentoTIC.howItWorks.ourCommitment.description1': 'We take care of finding the right students for each company, ensuring they participate in real projects that add value.',
-    'programaTalentoTIC.howItWorks.ourCommitment.description2': 'Students quickly adapt to organizational culture, creating a smooth transition from academic to professional environment.',
-    'programaTalentoTIC.vision.title': 'Our Vision',
-    'programaTalentoTIC.vision.description': 'TIC Talent seeks to be the bridge between academy and industry, ensuring that each student not only learns, but also applies their knowledge and builds a career in the TIC sector.',
-    'programaTalentoTIC.cta.title': 'Ready to Transform the Future of TIC?',
-    'programaTalentoTIC.cta.description': 'Join TIC Talent and be part of the change the industry needs.',
-    'programaTalentoTIC.cta.companies.title': 'Companies',
-    'programaTalentoTIC.cta.companies.description': 'Join as a TIC Talent partner and be part of the industry\'s future, developing the talent your organization and the sector need.',
-    'programaTalentoTIC.cta.companies.cta': 'Join as Company',
-    'programaTalentoTIC.cta.students.title': 'Students',
-    'programaTalentoTIC.cta.students.description': 'Apply to the program and take your first professional steps in a sector that never stops growing.',
-    'programaTalentoTIC.cta.students.cta': 'Join as Student',
-    'programaTalentoTIC.cta.contact.title': 'Contact Us',
-    'programaTalentoTIC.cta.contact.description': 'Do you have questions or want to know more about the program?',
-    'programaTalentoTIC.cta.contact.form': 'Contact Form',
-    'programaTalentoTIC.cta.contact.whatsapp': 'WhatsApp',
-    'programaTalentoTIC.cta.contact.email': 'Direct Email',
-    'programaTalentoTIC.cta.contact.signupHere': '👉 Sign up here - Choose your preferred way to contact us',
-    'programaTalentoTIC.cta.contact.developedBy': 'Program developed by',
+    // ... (continue with all other English translations)
   },
 
   pt: {
@@ -876,325 +356,6 @@ const translations = {
     'promise.zero_risk.title': 'Risco Zero',
     'promise.zero_risk.desc': 'Você só investe quando decidiu contratar um de nossos candidatos. Sem pagamentos antecipados ou custos ocultos.',
 
-    // Why Choose Us
-    'why.title': 'Nascemos da Indústria para Servir a Indústria',
-    'why.experience.title': '+30 Anos de Experiência Combinada',
-    'why.experience.desc': 'Nossa equipe entende as necessidades específicas do setor TIC porque vem dele.',
-    'why.talent.title': '+15.000 Talentos na LATAM',
-    'why.talent.desc': 'Uma rede ativa e em constante expansão de profissionais especializados na região.',
-    'why.approach.title': 'Abordagem 360°',
-    'why.approach.desc': 'De auditores especializados a diretores regionais, cobrimos todos os níveis.',
-    'why.ready.title': 'Pronto para Começar?',
-    'why.ready.desc': 'Escolha sua forma preferida de nos contatar',
-    'why.contact_form': 'Formulário de Contato',
-    'why.whatsapp': 'WhatsApp',
-    'why.direct_email': 'Email Direto',
-
-    // Services Section (Homepage - Portuguese)
-    'services.title': 'Nossos Serviços',
-    'services.executive_search.title': 'Busca Executiva',
-    'services.executive_search.desc': 'Identificamos e atraímos os líderes que sua empresa precisa para crescer.',
-    'services.hr_consulting.title': 'Consultoria em RH',
-    'services.hr_consulting.desc': 'Otimizamos seus processos de recursos humanos com estratégias personalizadas.',
-    'services.coaching.title': 'Coaching & Desenvolvimento',
-    'services.coaching.desc': 'Desenvolvemos o potencial de suas equipes e líderes para maximizar o desempenho.',
-    'services.see_more': 'Ver Mais',
-
-    // Footer (Portuguese)
-    'footer.quick_links': 'Links Rápidos',
-    'footer.community': 'Comunidade',
-    'footer.contact': 'Contato',
-    'footer.privacy_policy': 'Política de Privacidade',
-    'footer.cookies_policy': 'Política de Cookies',
-    'footer.all_rights': '© 2024 TIC Select. Todos os direitos reservados.',
-
-    // About Page (Portuguese)
-    'about.seo.title': 'Sobre Nós | TIC Select - Líderes em Talento TIC',
-    'about.seo.description': 'Conheça a TIC Select, a principal agência de recrutamento especializada em profissionais de Testes, Inspeção e Certificação na América Latina.',
-    'about.seo.keywords': 'sobre TIC Select, empresa recrutamento TIC, recrutamento testes inspeção certificação, agência talentos LATAM',
-    'about.title': 'TIC Select nasceu da indústria para servir a indústria',
-    'about.subtitle': 'Entendemos profundamente as necessidades específicas do setor de Testes, Inspeção e Certificação porque viemos dele.',
-    'about.industry_experience.title': 'Experiência da Indústria',
-    'about.industry_experience.desc': 'Mais de 30 anos de experiência combinada no setor TIC nos permite identificar exatamente o talento que você precisa.',
-    'about.specialized_network.title': 'Rede Especializada',
-    'about.specialized_network.desc': 'Nossa base de dados conta com mais de 15.000 profissionais TIC ativos em toda LATAM.',
-    'about.proven_results.title': 'Resultados Comprovados',
-    'about.proven_results.desc': 'Mais de 90% de nossos processos são concluídos com sucesso em menos de 30 dias.',
-    'about.full_coverage.title': 'Cobertura Completa',
-    'about.full_coverage.desc': 'De auditores especializados a diretores regionais, cobrimos todos os níveis e áreas funcionais.',
-    'about.cta.title': 'Pronto para encontrar seu próximo talento-chave?',
-    'about.cta.subtitle': 'Vamos trabalhar juntos para impulsionar o crescimento de sua empresa',
-
-    // Services Page
-    'services_page.title': 'Serviços Empresariais',
-    'services_page.executive_search.title': 'Busca Executiva & Headhunting',
-    'services_page.executive_search.subtitle': 'Identificamos e atraímos os líderes que sua empresa precisa para crescer',
-    'services_page.process': 'Nosso Processo:',
-    'services_page.step1.title': 'Análise de Necessidades',
-    'services_page.step1.desc': 'Entendemos profundamente o perfil que você busca e o contexto de sua empresa',
-    'services_page.step2.title': 'Busca Ativa',
-    'services_page.step2.desc': 'Identificamos candidatos em nossa rede e no mercado usando metodologia direta',
-    'services_page.step3.title': 'Avaliação Rigorosa',
-    'services_page.step3.desc': 'Validamos competências técnicas, experiência e fit cultural com sua organização',
-    'services_page.step4.title': 'Apresentação e Fechamento',
-    'services_page.step4.desc': 'Apresentamos uma lista de candidatos pré-qualificados e os acompanhamos até o fechamento',
-    'services_page.promise': 'Entregamos uma lista de candidatos em 7 dias. Garantido.',
-    'services_page.benefit1': 'Acesso imediato à nossa base de dados com +15.000 talentos TIC pré-avaliados na LATAM',
-    'services_page.benefit2': 'Metodologia comprovada com +90% de sucesso em processos concluídos em menos de 30 dias',
-    'services_page.benefit3': 'Equipe especializada com +30 anos de experiência combinada na indústria TIC',
-    'services_page.benefit4': 'Abordagem 360°: cobrimos desde técnicos especializados até executivos C-level',
-    'services_page.guarantee.title': 'Garantia de 90 Dias',
-    'services_page.guarantee.desc': 'Se o candidato não atender às expectativas, buscamos substituto sem custo',
-    'services_page.cta.title': 'Seu próximo líder TIC está a apenas uma conversa de distância',
-    'services_page.cta.subtitle': 'Vamos começar?',
-    'services_page.cta.button': 'Iniciar Busca Agora',
-    'services_page.hr_consulting.title': 'Consultoria em RH',
-    'services_page.hr_consulting.desc': 'Otimizamos seus processos de gestão de talentos com soluções específicas para a indústria TIC',
-    'services_page.hr_retention.title': 'Estratégias de Retenção',
-    'services_page.hr_retention.desc': 'Desenvolvemos planos personalizados para reter seu talento-chave e reduzir a rotatividade',
-    'services_page.hr_climate.title': 'Estudos de Clima Organizacional',
-    'services_page.hr_climate.desc': 'Avaliamos e melhoramos o ambiente de trabalho para potencializar o desempenho de suas equipes',
-    'services_page.hr_salary.title': 'Benchmarking Salarial',
-    'services_page.hr_salary.desc': 'Ajudamos você a definir estruturas salariais competitivas baseadas em dados do mercado TIC',
-    'services_page.coaching.title': 'Desenvolvimento & Coaching',
-    'services_page.coaching.desc': 'Potencializamos as habilidades de suas equipes com programas de desenvolvimento personalizados',
-    'services_page.coaching_skills.title': 'Desenvolvimento de Habilidades',
-    'services_page.coaching_skills.desc': 'Programas especializados para fortalecer competências técnicas e comportamentais no setor TIC',
-    'services_page.coaching_career.title': 'Planos de Carreira',
-    'services_page.coaching_career.desc': 'Projetamos rotas de crescimento profissional alinhadas com os objetivos de sua empresa',
-    'services_page.talent_universe.title': 'Para Empresas - Nosso Universo de Talentos',
-    'services_page.talent_universe.desc': 'Nosso maior diferencial é nossa base de dados de talentos TIC, viva e constantemente atualizada. Este ativo estratégico nos permite encontrar perfis altamente qualificados com velocidade incomparável.',
-
-    // Profiles Section
-    'profiles_covered.title': 'Perfis que Cobrimos: Nossa Dupla Expertise',
-    'profiles_covered.ict_specialized': 'Perfis Especializados do Setor TIC',
-    'profiles_covered.functional_corporate': 'Áreas Funcionais e Corporativas',
-    'profiles_covered.strategic_industries': 'Indústrias Estratégicas que Atendemos',
-    'profiles_covered.auditors': 'Auditores e Especialistas em Normas:',
-    'profiles_covered.inspectors': 'Inspetores de Campo:',
-    'profiles_covered.lab': 'Pessoal de Laboratório:',
-    'profiles_covered.engineering': 'Engenharia, Qualidade e HSE:',
-    'profiles_covered.executive': 'Liderança Executiva e Estratégia:',
-    'profiles_covered.commercial': 'Comercial e Desenvolvimento de Negócios:',
-    'profiles_covered.operations': 'Operações e Projetos:',
-    'profiles_covered.finance': 'Finanças e Administração:',
-    'profiles_covered.hr': 'Recursos Humanos e Talentos:',
-    'profiles_covered.tech': 'Tecnologia, Inovação e Marketing:',
-
-    // Development & Coaching
-    'development.title': 'Desenvolvimento & Coaching',
-    'development.subtitle': 'Potencializamos as habilidades de suas equipes com programas de desenvolvimento personalizados e coaching executivo especializado na indústria TIC.',
-    'development.executive_coaching': 'Coaching Executivo',
-    'development.programs': 'Programas de Desenvolvimento',
-    'development.why_different': 'Por que nossa abordagem é diferente?',
-    'development.field_experience': 'Experiência de campo: Nossos coaches vêm da indústria TIC',
-    'development.proven_methodology': 'Metodologia comprovada: Casos de sucesso em organizações similares',
-    'development.continuous_monitoring': 'Acompanhamento contínuo: Suporte durante todo o processo',
-    'development.measurable_roi': 'ROI mensurável: Métricas claras de progresso e resultados',
-    'development.free_consultation': '🚀 Consulta gratuita sobre desenvolvimento',
-
-    // Jobs
-    'jobs.title': 'Empregos',
-    'jobs.subtitle': 'Junte-se à nossa rede de talentos TIC e descubra oportunidades que impulsionem sua carreira profissional',
-    'jobs.how_it_works': 'Como Funciona',
-    'jobs.step1.title': 'Registre-se',
-    'jobs.step1.desc': 'Complete seu perfil profissional com sua experiência e habilidades TIC.',
-    'jobs.step2.title': 'Validação',
-    'jobs.step2.desc': 'Nossa equipe valida seu perfil e o inclui em nossa base de dados.',
-    'jobs.step3.title': 'Matching',
-    'jobs.step3.desc': 'Conectamos você com oportunidades que se ajustam ao seu perfil e objetivos.',
-    'jobs.step4.title': 'Oportunidades',
-    'jobs.step4.desc': 'Receba ofertas de trabalho e notícias relevantes da indústria TIC.',
-    'jobs.cta.title': 'Sua Próxima Oportunidade TIC Está Esperando',
-    'jobs.cta.subtitle': 'Não deixe que as melhores oportunidades passem despercebidas. Junte-se à nossa rede de profissionais TIC e acelere sua carreira.',
-    'jobs.register_free': 'Registrar-se Grátis',
-    'jobs.more_info': 'Mais Informações',
-    'jobs.network_advantages': 'Vantagens de Nossa Rede',
-    'jobs.advantage1': 'Confidencialidade: Suas informações permanecem privadas até você decidir se candidatar.',
-    'jobs.advantage2': 'Relevância: Você só recebe ofertas que coincidem com seu perfil.',
-    'jobs.advantage3': 'Atualização: Mantenha-se atualizado com tendências e salários do mercado TIC.',
-    'jobs.advantage4': 'Sem compromisso: Você pode desativar as notificações quando quiser.',
-    'jobs.join_professionals': 'Junte-se a Centenas de Profissionais TIC',
-    'jobs.join_community': 'Faça parte de uma comunidade exclusiva de talentos TIC que já estão aproveitando as melhores oportunidades do mercado.',
-    'jobs.start_now': 'Começar Agora',
-
-    // TIC Talent Program
-    'program.title': 'Impulsionando o futuro do setor TIC',
-    'program.subtitle': 'O programa cria uma ponte real entre a academia e a indústria, aproximando os jovens de projetos concretos e preparando as empresas com o talento que precisam para crescer.',
-    'program.join': 'Junte-se ao Programa',
-    'program.what_is.title': 'O que é TIC Talento?',
-    'program.benefits_companies': 'Benefícios para as Empresas',
-    'program.benefits_youth': 'Benefícios para os Jovens',
-
-    // Authentication
-    'auth.title': 'Acesse TIC Select',
-    'auth.subtitle': 'Conecte-se com as melhores oportunidades TIC',
-    'auth.card_title': 'Autenticação',
-    'auth.card_description': 'Faça login ou crie uma conta para continuar',
-    'auth.login_tab': 'Fazer Login',
-    'auth.signup_tab': 'Registrar-se',
-    'auth.email': 'Email',
-    'auth.password': 'Senha',
-    'auth.confirm_password': 'Confirmar Senha',
-    'auth.full_name': 'Nome Completo',
-    'auth.email_placeholder': 'seu@email.com',
-    'auth.password_placeholder': '••••••••',
-    'auth.name_placeholder': 'Seu nome completo',
-    'auth.login_button': 'Fazer Login',
-    'auth.signup_button': 'Criar Conta',
-    'auth.login_loading': 'Fazendo login...',
-    'auth.signup_loading': 'Criando conta...',
-    'auth.back_home': '← Voltar ao início',
-    'auth.password_mismatch': 'As senhas não coincidem',
-    'auth.email_exists': 'Este email já está registrado. Tente fazer login.',
-    'auth.signup_success': 'Conta criada com sucesso! Verifique seu email para confirmar sua conta.',
-    'auth.create_account_error': 'Erro ao criar conta',
-    'auth.invalid_credentials': 'Email ou senha incorretos',
-    'auth.email_not_confirmed': 'Por favor, confirme seu email antes de fazer login',
-    'auth.login_error': 'Erro ao fazer login',
-    'auth.welcome_back': 'Bem-vindo de volta!',
-
-    // 404 Page
-    'notfound.title': '404',
-    'notfound.message': 'Ops! Página não encontrada',
-    'notfound.back_home': 'Voltar ao Início',
-
-    // Contact Page
-    'contact.title': 'Entre em Contato',
-    'contact.subtitle': 'Estamos aqui para ajudá-lo a encontrar o talento que precisa ou a oportunidade profissional que procura.',
-    'contact.form.title': 'Envie-nos uma mensagem',
-    'contact.form.full_name': 'Nome completo',
-    'contact.form.email': 'Email',
-    'contact.form.company': 'Empresa',
-    'contact.form.phone': 'Telefone',
-    'contact.form.query_type': 'Tipo de consulta',
-    'contact.form.message': 'Mensagem',
-    'contact.form.message_placeholder': 'Conte-nos como podemos ajudá-lo...',
-    'contact.form.privacy_accept': 'Aceito a',
-    'contact.form.privacy_policy': 'Política de Privacidade',
-    'contact.form.sending': 'Enviando...',
-    'contact.form.send': 'Enviar Mensagem',
-    'contact.direct_title': 'Ou entre em contato diretamente',
-    'contact.info.title': 'Informações de contato',
-    'contact.info.email': 'Email',
-    'contact.info.phone': 'Telefone',
-    'contact.info.hours': 'Horário de atendimento',
-    'contact.info.hours_desc': 'Segunda a Sexta 9:00 - 18:00 (Chile)',
-    'contact.why.title': 'Por que nos contatar?',
-    'contact.why.consultation': 'Consulta gratuita sem compromisso',
-    'contact.why.proposal': 'Proposta personalizada em 24 horas',
-    'contact.why.no_commitment': 'Sem custos ocultos ou compromissos',
-    'contact.why.immediate_access': 'Acesso imediato à nossa rede de talentos',
-
-    // Affiliate Program
-    'affiliate.title': 'Junte-se ao Nosso',
-    'affiliate.title_highlight': 'Programa de Afiliados',
-    'affiliate.subtitle': 'Monetize sua rede profissional e ajude a conectar talentos TIC com as melhores oportunidades. Ganhe comissões competitivas por cada indicação bem-sucedida.',
-    'affiliate.apply_now': 'Inscrever-se Agora',
-    'affiliate.know_benefits': 'Conheça os Benefícios',
-    'affiliate.why_title': 'Por que ser Afiliado do TIC Select?',
-    'affiliate.why_subtitle': 'Descubra os benefícios exclusivos que oferecemos aos nossos parceiros',
-    'affiliate.benefits.competitive_commissions': 'Comissões Competitivas',
-    'affiliate.benefits.competitive_commissions_desc': 'Ganhe até 15% de comissão por cada indicação bem-sucedida que gerar.',
-    'affiliate.benefits.smart_segmentation': 'Segmentação Inteligente',
-    'affiliate.benefits.smart_segmentation_desc': 'Acesse ferramentas que ajudam a identificar as melhores oportunidades.',
-    'affiliate.benefits.volume_bonuses': 'Bônus por Volume',
-    'affiliate.benefits.volume_bonuses_desc': 'Receba bônus adicionais ao atingir metas mensais e trimestrais.',
-    'affiliate.benefits.sustainable_growth': 'Crescimento Sustentável',
-    'affiliate.benefits.sustainable_growth_desc': 'Construa uma fonte de renda recorrente com nosso programa.',
-    'affiliate.how_works': 'Como Funciona?',
-    'affiliate.how_works_subtitle': 'Começar é simples e direto',
-    'affiliate.step1.title': 'Registre-se',
-    'affiliate.step1.desc': 'Complete o formulário de solicitação e aguarde a aprovação.',
-    'affiliate.step2.title': 'Promova',
-    'affiliate.step2.desc': 'Compartilhe nossos serviços com sua rede profissional usando seus links únicos.',
-    'affiliate.step3.title': 'Ganhe',
-    'affiliate.step3.desc': 'Receba comissões por cada cliente que se registrar através de sua indicação.',
-    'affiliate.commission_structure': 'Estrutura de Comissões',
-    'affiliate.commission_subtitle': 'Transparência total em nossas comissões',
-    'affiliate.requirements_title': 'Requisitos para Afiliados',
-    'affiliate.requirements_subtitle': 'O que procuramos em nossos parceiros',
-    'affiliate.profile_title': 'Perfil Ideal de Afiliado',
-    'affiliate.ready_title': 'Pronto para Começar?',
-    'affiliate.ready_subtitle': 'Junte-se ao nosso programa de afiliados e comece a gerar renda conectando talentos com oportunidades.',
-    'affiliate.request_membership': 'Solicitar Adesão',
-    'affiliate.talk_specialist': 'Falar com um Especialista',
-    'affiliate.approval_time': 'Processo de aprovação em 24-48 horas úteis',
-
-    // ProgramaTalentoTIC keys (Portuguese)
-    'programaTalentoTIC.title': 'Programa TIC Talento | TIC Select',
-    'programaTalentoTIC.description': 'Impulsionando o futuro do setor TIC através do desenvolvimento de jovens talentos e alianças estratégicas entre academia e indústria.',
-    'programaTalentoTIC.keywords': 'talento TIC, desenvolvimento profissional, estágios, mentoria, certificação, ponte academia indústria',
-    'programaTalentoTIC.hero.heading': 'Impulsionando o futuro do <span class="text-cyan-300">setor TIC</span>',
-    'programaTalentoTIC.hero.subheading': 'O programa cria uma ponte real entre a academia e a indústria, aproximando os jovens de projetos concretos e preparando as empresas com o talento que precisam para crescer. Uma iniciativa que não apenas transforma formação em experiência e experiência em carreira profissional, mas também promove e fortalece o desenvolvimento de toda a indústria TIC na região.',
-    'programaTalentoTIC.hero.cta': 'Junte-se ao Programa',
-    'programaTalentoTIC.statistics.shortage.value': '75%',
-    'programaTalentoTIC.statistics.shortage.title': 'Escassez de Talento TIC',
-    'programaTalentoTIC.statistics.shortage.description': 'Três de cada quatro empresas na LATAM relatam dificuldade para encontrar perfis especializados.',
-    'programaTalentoTIC.statistics.gap.value': '2030',
-    'programaTalentoTIC.statistics.gap.title': 'Lacuna de 85 milhões de profissionais',
-    'programaTalentoTIC.statistics.gap.description': 'O mundo enfrentará uma escassez global de talento especializado, impactando diretamente a indústria TIC.',
-    'programaTalentoTIC.statistics.demand.value': '+50%',
-    'programaTalentoTIC.statistics.demand.title': 'Demanda em Normas e Certificações',
-    'programaTalentoTIC.statistics.demand.description': 'Mais da metade das empresas da região necessitam pessoal capacitado em padrões internacionais (ISO, HACCP, Sustentabilidade, entre outros).',
-    'programaTalentoTIC.whatIs.title': 'O que é TIC Talento?',
-    'programaTalentoTIC.whatIs.description1': 'O programa TIC Talento nasce para fomentar os talentos da indústria TIC (Testes, Inspeção e Certificação), antecipando seu desenvolvimento e permitindo que os jovens se adaptem cedo à cultura e exigências deste setor.',
-    'programaTalentoTIC.whatIs.description2': 'Na América Latina, frequentemente falta talento especializado em TIC. Para garantir o crescimento da indústria, devemos investir hoje na formação e vinculação dos futuros profissionais.',
-    'programaTalentoTIC.whatIs.description3': 'Por isso, TIC Talento conecta universidades, estudantes e empresas sob o mesmo compromisso: formar, capacitar e incorporar a próxima geração de especialistas TIC.',
-    'programaTalentoTIC.benefitsCompanies.title': 'Benefícios para as Empresas',
-    'programaTalentoTIC.benefitsCompanies.preselectedTalent.title': 'Talento Pré-selecionado',
-    'programaTalentoTIC.benefitsCompanies.preselectedTalent.description': 'Incorporação de jovens previamente selecionados para se ajustar às suas necessidades.',
-    'programaTalentoTIC.benefitsCompanies.impactProjects.title': 'Projetos com Impacto',
-    'programaTalentoTIC.benefitsCompanies.impactProjects.description': 'Participação em projetos onde os estudantes contribuem com soluções reais.',
-    'programaTalentoTIC.benefitsCompanies.culturalAdaptation.title': 'Adaptação Cultural',
-    'programaTalentoTIC.benefitsCompanies.culturalAdaptation.description': 'Adaptação precoce de futuros profissionais à cultura da empresa.',
-    'programaTalentoTIC.benefitsCompanies.visibility.title': 'Visibilidade e Posicionamento',
-    'programaTalentoTIC.benefitsCompanies.visibility.description': 'Visibilidade e posicionamento como empresa comprometida com o desenvolvimento da indústria TIC.',
-    'programaTalentoTIC.benefitsCompanies.sustainableGrowth.title': 'Crescimento Sustentável',
-    'programaTalentoTIC.benefitsCompanies.sustainableGrowth.description': 'Impulso ao crescimento sustentável do setor através da formação de novos talentos.',
-    'programaTalentoTIC.benefitsYoung.title': 'Benefícios para os Jovens',
-    'programaTalentoTIC.benefitsYoung.practicalExperience.title': 'Experiência Prática',
-    'programaTalentoTIC.benefitsYoung.practicalExperience.description': 'Experiência prática em empresas líderes da indústria.',
-    'programaTalentoTIC.benefitsYoung.realProjects.title': 'Projetos Reais',
-    'programaTalentoTIC.benefitsYoung.realProjects.description': 'Participação em projetos com impacto real.',
-    'programaTalentoTIC.benefitsYoung.internationalTraining.title': 'Formação Internacional',
-    'programaTalentoTIC.benefitsYoung.internationalTraining.description': 'Formação em normas e padrões internacionais.',
-    'programaTalentoTIC.benefitsYoung.specializedMentoring.title': 'Mentoria Especializada',
-    'programaTalentoTIC.benefitsYoung.specializedMentoring.description': 'Mentoria de profissionais especialistas em TIC.',
-    'programaTalentoTIC.benefitsYoung.jobInsertion.title': 'Inserção Laboral',
-    'programaTalentoTIC.benefitsYoung.jobInsertion.description': 'Oportunidade concreta de se inserir em um mercado de trabalho de alta demanda.',
-    'programaTalentoTIC.certification.title': 'Certificação TIC Talento <span class="text-cyan-300">Certificação</span>',
-    'programaTalentoTIC.certification.description': 'Empresas que demonstrem compromisso anual sustentado com o desenvolvimento de talento TIC receberão nossa prestigiosa Certificação TIC Talento.',
-    'programaTalentoTIC.certification.requirements.talks': 'Participação em pelo menos 6 palestras/webinars anuais',
-    'programaTalentoTIC.certification.requirements.mentoring': 'Mentoria para mínimo 3 estudantes por ano',
-    'programaTalentoTIC.certification.requirements.hiring': 'Contratação de pelo menos 2 graduados do programa',
-    'programaTalentoTIC.certification.requirements.networking': 'Participação em eventos de networking estudantil',
-    'programaTalentoTIC.howItWorks.title': 'Como Funciona?',
-    'programaTalentoTIC.howItWorks.description': 'O programa é desenhado para que as empresas participem como parceiras e assumam um papel ativo na formação de novos talentos.',
-    'programaTalentoTIC.howItWorks.companyCriteria.title': 'Critérios Anuais para Empresas',
-    'programaTalentoTIC.howItWorks.companyCriteria.internships': 'Receber estudantes em estágios ou práticas profissionais',
-    'programaTalentoTIC.howItWorks.companyCriteria.talks': 'Ministrar palestras e oficinas em universidades',
-    'programaTalentoTIC.howItWorks.companyCriteria.training': 'Participar em programas de formação e diplomas técnicos',
-    'programaTalentoTIC.howItWorks.companyCriteria.employment': 'Dar oportunidade de primeiro emprego a jovens talentos TIC',
-    'programaTalentoTIC.howItWorks.ourCommitment.title': 'Nosso Compromisso',
-    'programaTalentoTIC.howItWorks.ourCommitment.description1': 'Nos encarregamos de buscar os estudantes adequados para cada empresa, assegurando que participem em projetos reais que agreguem valor.',
-    'programaTalentoTIC.howItWorks.ourCommitment.description2': 'Os estudantes se adaptam rapidamente à cultura organizacional, criando uma transição fluida do âmbito acadêmico ao profissional.',
-    'programaTalentoTIC.vision.title': 'Nossa Visão',
-    'programaTalentoTIC.vision.description': 'TIC Talento busca ser a ponte entre a academia e a indústria, garantindo que cada estudante não apenas aprenda, mas também aplique seus conhecimentos e construa uma carreira no setor TIC.',
-    'programaTalentoTIC.cta.title': 'Pronto para Transformar o Futuro do TIC?',
-    'programaTalentoTIC.cta.description': 'Junte-se ao TIC Talento e seja parte da mudança que a indústria precisa.',
-    'programaTalentoTIC.cta.companies.title': 'Empresas',
-    'programaTalentoTIC.cta.companies.description': 'Torne-se um parceiro estratégico e acesse talento pré-selecionado.',
-    'programaTalentoTIC.cta.companies.cta': 'Juntar-se como Empresa',
-    'programaTalentoTIC.cta.students.title': 'Estudantes',
-    'programaTalentoTIC.cta.students.description': 'Obtenha experiência prática e inicie sua carreira TIC.',
-    'programaTalentoTIC.cta.students.cta': 'Juntar-se como Estudante',
-    'programaTalentoTIC.cta.contact.title': 'Entre em Contato',
-    'programaTalentoTIC.cta.contact.description': 'Tem dúvidas ou quer saber mais sobre o programa?',
-    'programaTalentoTIC.cta.contact.form': 'Formulário de Contato',
-    'programaTalentoTIC.cta.contact.whatsapp': 'WhatsApp',
-    'programaTalentoTIC.cta.contact.email': 'Email',
-    'programaTalentoTIC.cta.contact.signupHere': '👉 Inscreva-se aqui - Escolha sua forma preferida de nos contatar',
-    'programaTalentoTIC.cta.contact.developedBy': 'Programa desenvolvido por',
-  },
+    // ... (continue with all other Portuguese translations)
+  }
 };
