@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import { Mail, Lock, User, Chrome } from "lucide-react";
+import { Mail, Lock, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
@@ -100,26 +100,6 @@ const Auth = () => {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    setLoading(true);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/`,
-        }
-      });
-
-      if (error) {
-        toast.error("Error al iniciar sesión con Google: " + error.message);
-      }
-    } catch (error: any) {
-      toast.error("Error al conectar con Google");
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary/10 flex items-center justify-center p-4">
@@ -264,28 +244,6 @@ const Auth = () => {
               </TabsContent>
             </Tabs>
 
-            <div className="mt-6">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <Separator />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">
-                    O continúa con
-                  </span>
-                </div>
-              </div>
-
-              <Button
-                variant="outline"
-                onClick={handleGoogleSignIn}
-                disabled={loading}
-                className="w-full mt-4"
-              >
-                <Chrome className="mr-2 h-4 w-4" />
-                Google
-              </Button>
-            </div>
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary transition-colors">
