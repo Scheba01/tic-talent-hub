@@ -42,9 +42,9 @@ const ServiciosEmpresas = () => {
                   <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg flex items-center justify-center mx-auto mb-4">
                     1
                   </div>
-                  <h4 className="font-display font-semibold mb-2">Definición Estratégica</h4>
+                  <h4 className="font-display font-semibold mb-2">{t('services_page.step1.title')}</h4>
                   <p className="text-sm text-muted-foreground">
-                    Entendemos a fondo sus necesidades de negocio para definir el perfil ideal.
+                    {t('services_page.step1.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -54,9 +54,9 @@ const ServiciosEmpresas = () => {
                   <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg flex items-center justify-center mx-auto mb-4">
                     2
                   </div>
-                  <h4 className="font-display font-semibold mb-2">Búsqueda y Validación</h4>
+                  <h4 className="font-display font-semibold mb-2">{t('services_page.step2.title')}</h4>
                   <p className="text-sm text-muted-foreground">
-                    Activamos nuestra base de datos, realizamos tests técnicos y validamos referencias 360.
+                    {t('services_page.step2.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -66,9 +66,9 @@ const ServiciosEmpresas = () => {
                   <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg flex items-center justify-center mx-auto mb-4">
                     3
                   </div>
-                  <h4 className="font-display font-semibold mb-2">Presentación de Finalistas</h4>
+                  <h4 className="font-display font-semibold mb-2">{t('services_page.step3.title')}</h4>
                   <p className="text-sm text-muted-foreground">
-                    En 7 días hábiles, le presentamos una selección curada de los mejores perfiles.
+                    {t('services_page.step3.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -78,9 +78,9 @@ const ServiciosEmpresas = () => {
                   <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg flex items-center justify-center mx-auto mb-4">
                     4
                   </div>
-                  <h4 className="font-display font-semibold mb-2">Coordinación y Cierre</h4>
+                  <h4 className="font-display font-semibold mb-2">{t('services_page.step4.title')}</h4>
                   <p className="text-sm text-muted-foreground">
-                    Gestionamos todo el proceso de entrevistas hasta la contratación exitosa.
+                    {t('services_page.step4.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -94,7 +94,7 @@ const ServiciosEmpresas = () => {
                   <Clock className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-2xl font-display font-bold text-foreground mb-4">
-                  En 7 días hábiles te presentamos candidatos validados técnica y culturalmente
+                  {t('services_page.promise')}
                 </h3>
               </div>
 
@@ -142,8 +142,8 @@ const ServiciosEmpresas = () => {
                 <div className="flex items-center justify-center space-x-4">
                   <Shield className="w-12 h-12 text-white" />
                   <div className="text-center">
-                    <h4 className="text-2xl font-bold mb-2">Garantía 90 Días</h4>
-                    <p className="text-lg text-white/90">Si el candidato no resulta, lo reemplazamos sin costo</p>
+                    <h4 className="text-2xl font-bold mb-2">{t('services_page.guarantee.title')}</h4>
+                    <p className="text-lg text-white/90">{t('services_page.guarantee.desc')}</p>
                   </div>
                 </div>
               </div>
@@ -152,12 +152,12 @@ const ServiciosEmpresas = () => {
               <div className="text-center">
                 <div className="bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20 rounded-xl p-6">
                   <p className="text-xl font-bold text-primary mb-6">
-                    💡 Deja de perder meses buscando<br/>
-                    <span className="text-2xl">En TIC Select hacemos que tu contratación sea rápida, segura y garantizada</span>
+                    💡 {t('services_page.cta.title')}<br/>
+                    <span className="text-2xl">{t('services_page.cta.subtitle')}</span>
                   </p>
                   <Button asChild size="lg" className="btn-hero text-xl px-12 py-4 h-auto">
                     <Link to="/contacto">
-                      🚀 Quiero mi primer shortlist en 7 días
+                      🚀 {t('services_page.cta.button')}
                     </Link>
                   </Button>
                 </div>
@@ -170,9 +170,9 @@ const ServiciosEmpresas = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold mb-4">Consultoría en Recursos Humanos</h2>
+              <h2 className="text-3xl font-display font-bold mb-4">{t('services_page.hr_consulting.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Fortalezca las bases de su organización con nuestras soluciones de consultoría estratégica.
+                {t('services_page.hr_consulting.desc')}
               </p>
             </div>
 
@@ -214,9 +214,9 @@ const ServiciosEmpresas = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold mb-4">Desarrollo & Coaching</h2>
+              <h2 className="text-3xl font-display font-bold mb-4">{t('services_page.coaching.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Potenciamos las habilidades de sus equipos para convertirlos en los líderes del mañana.
+                {t('services_page.coaching.desc')}
               </p>
             </div>
 
@@ -249,10 +249,10 @@ const ServiciosEmpresas = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-display font-bold mb-4">
-                Para Empresas: Nuestro Universo de Talento
+                {t('services_page.talent_universe.title')}
               </h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-                Nuestro mayor diferenciador es nuestra base de datos de talento TIC, viva y en constante actualización. Este activo estratégico nos permite encontrar perfiles altamente calificados con una velocidad inigualable.
+                {t('services_page.talent_universe.desc')}
               </p>
             </div>
 
