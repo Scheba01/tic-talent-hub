@@ -1,8 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -17,13 +15,26 @@ interface ConfirmationEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  console.log("Function started, method:", req.method);
+  
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    // Check if RESEND_API_KEY is available
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    console.log("RESEND_API_KEY available:", !!resendApiKey);
+    
+    if (!resendApiKey) {
+      throw new Error("RESEND_API_KEY not configured");
+    }
+
+    const resend = new Resend(resendApiKey);
+    
     const { name, email, telefono, familiasRol }: ConfirmationEmailRequest = await req.json();
+    console.log(`Processing email request for: ${email}, name: ${name}`);
 
     console.log(`Sending confirmation email to: ${email} for ${name}`);
 
