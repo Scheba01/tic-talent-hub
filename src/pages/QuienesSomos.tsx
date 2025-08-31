@@ -31,31 +31,28 @@ const QuienesSomos = () => {
               {/* Red de Expertos */}
               <div className="bg-card rounded-lg p-8 shadow-elegant">
                 <h2 className="text-2xl font-display font-semibold mb-4">
-                  Red de Expertos con Experiencia Real
+                  {t('about.experts.title')}
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">Nuestro equipo suma más de 30 años de experiencia combinada. Este conocimiento profundo nos permite identificar no solo las habilidades técnicas, sino el ADN cultural que garantiza un match perfecto.</p>
+                <p className="text-muted-foreground leading-relaxed">{t('about.experts.desc')}</p>
               </div>
 
               {/* Universo de Talento */}
               <div className="bg-card rounded-lg p-8 shadow-elegant">
                 <h2 className="text-2xl font-display font-semibold mb-4">
-                  Un Universo de Talento a su Alcance
+                  {t('about.talent_universe.title')}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Gestionamos una red propia y en constante expansión con más de 15,000 talentos 
-                  especializados en LATAM. No empezamos de cero; activamos nuestra red para entregar 
-                  resultados con una velocidad y precisión inigualables.
+                  {t('about.talent_universe.desc')}
                 </p>
               </div>
 
               {/* Enfoque 360° */}
               <div className="bg-card rounded-lg p-8 shadow-elegant">
                 <h2 className="text-2xl font-display font-semibold mb-4">
-                  Enfoque 360°
+                  {t('about.approach.title')}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Desde un auditor especializado hasta un Director Regional, entendemos las 
-                  necesidades de cada nivel organizacional.
+                  {t('about.approach.desc')}
                 </p>
               </div>
 
@@ -67,24 +64,24 @@ const QuienesSomos = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6">
-              ¿Listo para potenciar su equipo?
+              {t('about.cta.title')}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Elige la forma que prefieras para contactarnos
+              {t('about.cta.subtitle')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
               <Button asChild variant="outline" className="border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4 text-sm">
-                <Link to="/contacto">Formulario de Contacto</Link>
+                <Link to="/contacto">{t('why.contact_form')}</Link>
               </Button>
               <Button variant="outline" className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700 px-12 py-4" asChild>
                 <a href="https://wa.me/message/IH46LPYOLH4CH1">
                   <Phone className="w-4 h-4 mr-2" />
-                  WhatsApp
+                  {t('why.whatsapp')}
                 </a>
               </Button>
               <Button variant="outline" className="w-full border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4" onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}>
                 <Mail className="w-4 h-4 mr-2" />
-                Email Directo
+                {t('why.direct_email')}
               </Button>
             </div>
           </div>
