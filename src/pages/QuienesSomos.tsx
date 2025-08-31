@@ -4,10 +4,24 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 
 const QuienesSomos = () => {
   const { t } = useLanguage();
-  return <div className="min-h-screen bg-background">
+  
+  return (
+    <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{t('about.seo.title')}</title>
+        <meta name="description" content={t('about.seo.description')} />
+        <meta name="keywords" content={t('about.seo.keywords')} />
+        <meta property="og:title" content={t('about.seo.title')} />
+        <meta property="og:description" content={t('about.seo.description')} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('about.seo.title')} />
+        <meta name="twitter:description" content={t('about.seo.description')} />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">
@@ -89,6 +103,8 @@ const QuienesSomos = () => {
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default QuienesSomos;

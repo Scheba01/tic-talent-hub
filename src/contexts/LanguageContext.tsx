@@ -638,7 +638,10 @@ const translations = {
     'why.whatsapp': 'WhatsApp',
     'why.direct_email': 'Email Direto',
 
-    // About Page
+    // About Page (Portuguese)
+    'about.seo.title': 'Sobre Nós | TIC Select - Líderes em Talento TIC',
+    'about.seo.description': 'Conheça a TIC Select, a principal agência de recrutamento especializada em profissionais de Testes, Inspeção e Certificação na América Latina.',
+    'about.seo.keywords': 'sobre TIC Select, empresa recrutamento TIC, recrutamento testes inspeção certificação, agência talentos LATAM',
     'about.title': 'TIC Select nasceu da indústria para servir a indústria',
     'about.subtitle': 'Entendemos profundamente as necessidades específicas do setor de Testes, Inspeção e Certificação porque viemos dele.',
     'about.industry_experience.title': 'Experiência da Indústria',
