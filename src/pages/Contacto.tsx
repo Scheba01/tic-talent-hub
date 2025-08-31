@@ -11,7 +11,6 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -31,7 +30,6 @@ const Contacto = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,20 +39,9 @@ const Contacto = () => {
       return;
     }
     
-    if (!executeRecaptcha) {
-      console.log("reCAPTCHA not ready, proceeding without verification");
-      // Proceed without reCAPTCHA for now to avoid blocking form submission
-      setIsSubmitting(true);
-    } else {
-      setIsSubmitting(true);
-    }
+    setIsSubmitting(true);
     
     try {
-      // Get reCAPTCHA token if available
-      let recaptchaToken = '';
-      if (executeRecaptcha) {
-        recaptchaToken = await executeRecaptcha('contact_form');
-      }
       
       // Formspree endpoint configured
       const formspreeEndpoint = "https://formspree.io/f/xjkewene";
@@ -72,8 +59,7 @@ const Contacto = () => {
           tipoConsulta: formData.tipoConsulta,
           mensaje: formData.mensaje,
           _replyto: formData.email,
-          _subject: `Nueva consulta de ${formData.nombre} - ${formData.tipoConsulta}`,
-          ...(recaptchaToken && { 'g-recaptcha-response': recaptchaToken })
+          _subject: `Nueva consulta de ${formData.nombre} - ${formData.tipoConsulta}`
         }),
       });
 
