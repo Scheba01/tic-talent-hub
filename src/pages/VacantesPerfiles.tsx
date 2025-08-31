@@ -41,7 +41,7 @@ const VacantesPerfiles = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12">
-              ¿Por qué registrarse con TIC Select?
+              {t('jobs.why_register')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -50,11 +50,10 @@ const VacantesPerfiles = () => {
                 <CardContent className="p-8 text-center">
                   <Database className="w-12 h-12 text-primary mx-auto mb-6" />
                   <h3 className="text-xl font-display font-semibold mb-4">
-                    Base de Datos Especializada
+                    {t('jobs.benefit1.title')}
                   </h3>
                   <p className="text-muted-foreground">
-                    Forma parte de nuestra exclusiva base de datos de talento TIC, 
-                    donde empresas líderes buscan perfiles como el tuyo.
+                    {t('jobs.benefit1.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -64,11 +63,10 @@ const VacantesPerfiles = () => {
                 <CardContent className="p-8 text-center">
                   <Bell className="w-12 h-12 text-primary mx-auto mb-6" />
                   <h3 className="text-xl font-display font-semibold mb-4">
-                    Ofertas Exclusivas
+                    {t('jobs.benefit2.title')}
                   </h3>
                   <p className="text-muted-foreground">
-                    Recibe ofertas laborales antes que nadie, directamente 
-                    relacionadas con tu perfil y experiencia.
+                    {t('jobs.benefit2.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -78,11 +76,10 @@ const VacantesPerfiles = () => {
                 <CardContent className="p-8 text-center">
                   <TrendingUp className="w-12 h-12 text-primary mx-auto mb-6" />
                   <h3 className="text-xl font-display font-semibold mb-4">
-                    Noticias de la Industria
+                    {t('jobs.benefit3.title')}
                   </h3>
                   <p className="text-muted-foreground">
-                    Mantente actualizado con las últimas tendencias, 
-                    tecnologías y oportunidades del sector TIC.
+                    {t('jobs.benefit3.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -94,7 +91,7 @@ const VacantesPerfiles = () => {
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center mb-12">
-              Cómo Funciona
+              {t('jobs.how_it_works')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -104,10 +101,10 @@ const VacantesPerfiles = () => {
                   1
                 </div>
                 <h3 className="text-lg font-display font-semibold mb-3">
-                  Regístrate
+                  {t('jobs.step1.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Completa tu perfil profesional con tu experiencia y habilidades TIC.
+                  {t('jobs.step1.desc')}
                 </p>
               </div>
 
@@ -117,10 +114,10 @@ const VacantesPerfiles = () => {
                   2
                 </div>
                 <h3 className="text-lg font-display font-semibold mb-3">
-                  Validación
+                  {t('jobs.step2.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Nuestro equipo valida tu perfil y lo incluye en nuestra base de datos.
+                  {t('jobs.step2.desc')}
                 </p>
               </div>
 
@@ -130,10 +127,10 @@ const VacantesPerfiles = () => {
                   3
                 </div>
                 <h3 className="text-lg font-display font-semibold mb-3">
-                  Matching
+                  {t('jobs.step3.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Te conectamos con oportunidades que se ajusten a tu perfil y objetivos.
+                  {t('jobs.step3.desc')}
                 </p>
               </div>
 
@@ -143,10 +140,10 @@ const VacantesPerfiles = () => {
                   4
                 </div>
                 <h3 className="text-lg font-display font-semibold mb-3">
-                  Oportunidades
+                  {t('jobs.step4.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Recibe ofertas laborales y noticias relevantes de la industria TIC.
+                  {t('jobs.step4.desc')}
                 </p>
               </div>
             </div>
@@ -157,26 +154,25 @@ const VacantesPerfiles = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display font-bold mb-6">
-              Tu Próxima Oportunidad TIC Te Está Esperando
+              {t('jobs.cta.title')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              No dejes que las mejores oportunidades pasen de largo. Únete a nuestra 
-              red de profesionales TIC y acelera tu carrera profesional.
+              {t('jobs.cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button asChild className="btn-hero">
-                <Link to="/registro-talento">Registrarme Gratis</Link>
+                <Link to="/registro-talento">{t('jobs.register_free')}</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link to="/contacto">Más Información</Link>
+                <Link to="/contacto">{t('jobs.more_info')}</Link>
               </Button>
             </div>
             <p className="text-lg text-muted-foreground mb-8">
-              Elige la forma que prefieras para contactarnos
+              {t('why.ready.desc')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
               <Button asChild variant="outline" className="border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4 text-sm">
-                <Link to="/contacto">Formulario de Contacto</Link>
+                <Link to="/contacto">{t('why.contact_form')}</Link>
               </Button>
               <Button
                 variant="outline"
@@ -185,7 +181,7 @@ const VacantesPerfiles = () => {
               >
                 <a href="https://wa.me/message/IH46LPYOLH4CH1">
                   <Phone className="w-4 h-4 mr-2" />
-                  WhatsApp
+                  {t('why.whatsapp')}
                 </a>
               </Button>
               <Button
@@ -194,7 +190,7 @@ const VacantesPerfiles = () => {
                 onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre oportunidades laborales', '_blank')}
               >
                 <Mail className="w-4 h-4 mr-2" />
-                Email Directo
+                {t('why.direct_email')}
               </Button>
             </div>
           </div>
@@ -206,31 +202,31 @@ const VacantesPerfiles = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-display font-bold mb-6">
-                  Ventajas de Nuestra Red
+                  {t('jobs.network_advantages')}
                 </h2>
                 <ul className="space-y-4">
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">
-                      <strong>Confidencialidad:</strong> Tu información permanece privada hasta que decidas postular.
+                      {t('jobs.advantage1')}
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">
-                      <strong>Relevancia:</strong> Solo recibes ofertas que coinciden con tu perfil.
+                      {t('jobs.advantage2')}
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">
-                      <strong>Actualización:</strong> Mantente al día con tendencias y salarios del mercado TIC.
+                      {t('jobs.advantage3')}
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">
-                      <strong>Sin compromiso:</strong> Puedes desactivar las notificaciones cuando quieras.
+                      {t('jobs.advantage4')}
                     </span>
                   </li>
                 </ul>
@@ -240,14 +236,13 @@ const VacantesPerfiles = () => {
                 <CardContent className="p-8">
                   <Users className="w-16 h-16 text-primary mb-6" />
                   <h3 className="text-2xl font-display font-bold mb-4">
-                    Únete a Cientos de Profesionales TIC
+                    {t('jobs.join_professionals')}
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Forma parte de una comunidad exclusiva de talentos TIC que ya 
-                    están aprovechando las mejores oportunidades del mercado.
+                    {t('jobs.join_community')}
                   </p>
                   <Button asChild className="w-full">
-                    <Link to="/registro-talento">Comenzar Ahora</Link>
+                    <Link to="/registro-talento">{t('jobs.start_now')}</Link>
                   </Button>
                 </CardContent>
               </Card>
