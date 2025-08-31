@@ -42,15 +42,19 @@ const Contacto = () => {
     }
     
     if (!executeRecaptcha) {
-      toast.error("reCAPTCHA no está listo. Por favor, intenta nuevamente.");
-      return;
+      console.log("reCAPTCHA not ready, proceeding without verification");
+      // Proceed without reCAPTCHA for now to avoid blocking form submission
+      setIsSubmitting(true);
+    } else {
+      setIsSubmitting(true);
     }
     
-    setIsSubmitting(true);
-    
     try {
-      // Get reCAPTCHA token
-      const recaptchaToken = await executeRecaptcha('contact_form');
+      // Get reCAPTCHA token if available
+      let recaptchaToken = '';
+      if (executeRecaptcha) {
+        recaptchaToken = await executeRecaptcha('contact_form');
+      }
       
       // Formspree endpoint configured
       const formspreeEndpoint = "https://formspree.io/f/xjkewene";
@@ -69,7 +73,7 @@ const Contacto = () => {
           mensaje: formData.mensaje,
           _replyto: formData.email,
           _subject: `Nueva consulta de ${formData.nombre} - ${formData.tipoConsulta}`,
-          'g-recaptcha-response': recaptchaToken
+          ...(recaptchaToken && { 'g-recaptcha-response': recaptchaToken })
         }),
       });
 
