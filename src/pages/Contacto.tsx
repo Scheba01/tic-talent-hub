@@ -13,7 +13,7 @@ import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from "sonner";
-import EmailTest from "@/components/EmailTest";
+
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -372,10 +372,6 @@ const Contacto = () => {
           </div>
         </section>
 
-        {/* Email Test Section - Only visible in development */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-muted/30">
-          <EmailTest />
-        </section>
 
       </main>
 
