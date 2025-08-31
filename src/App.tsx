@@ -11,7 +11,7 @@ import ProgramaTalentoTIC from "./pages/ProgramaTalentoTIC";
 import RegistroTalento from "./pages/RegistroTalento";
 import Contacto from "./pages/Contacto";
 import PoliticaPrivacidad from "./pages/PoliticaPrivacidad";
-import Blog from "./pages/Blog";
+
 import ProgramaAfiliados from "./pages/ProgramaAfiliados";
 import NotFound from "./pages/NotFound";
 
@@ -31,7 +31,7 @@ const App = () => (
            <Route path="/programa-talentotic" element={<ProgramaTalentoTIC />} />
            <Route path="/registro-talento" element={<RegistroTalento />} />
             <Route path="/contacto" element={<Contacto />} />
-            <Route path="/blog" element={<Blog />} />
+            
             <Route path="/programa-afiliados" element={<ProgramaAfiliados />} />
             <Route path="/politica-de-privacidad" element={<PoliticaPrivacidad />} />
            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -24,7 +24,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/vacantes-y-perfiles" className="text-muted-foreground hover:text-primary transition-colors">
-                  Vacantes y Perfiles
+                  Empleo
                 </Link>
               </li>
             </ul>
@@ -37,11 +37,6 @@ const Footer = () => {
               <li>
                 <Link to="/programa-talentotic" className="text-muted-foreground hover:text-primary transition-colors">
                   Programa TalentoTIC
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog
                 </Link>
               </li>
               <li>
