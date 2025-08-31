@@ -4,7 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, Target, Award, Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 const Index = () => {
+  const { t } = useLanguage();
+
   return <div className="min-h-screen bg-background">
       <Navigation />
       
@@ -14,15 +17,17 @@ const Index = () => {
           <div className="absolute inset-0 gradient-hero"></div>
           <div className="relative max-w-6xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-8">
-              El Talento que Impulsa la Industria TIC
+              {t('hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">Conectamos a los líderes del sector de Testeo, Inspección y Certificación (TIC) con el talento que necesitan para crecer. Le entregamos una shortlist en 7 días. Garantizado.</p>
+            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+              {t('hero.subtitle')}
+            </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild className="btn-outline-hero">
-                <Link to="/servicios-para-empresas">Descubra Nuestros Servicios</Link>
+                <Link to="/servicios-para-empresas">{t('hero.discover_services')}</Link>
               </Button>
               <Button asChild className="btn-hero">
-                <Link to="/contacto">Contáctanos</Link>
+                <Link to="/contacto">{t('hero.contact_us')}</Link>
               </Button>
             </div>
           </div>
@@ -33,7 +38,7 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-display font-bold mb-6">
-                Contratación Estratégica, Sin Riesgos
+                {t('promise.title')}
               </h2>
             </div>
             
@@ -41,11 +46,11 @@ const Index = () => {
               <Card className="text-center shadow-elegant">
                 <CardHeader>
                   <Clock className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <CardTitle className="text-2xl">Shortlist en 7 Días</CardTitle>
+                  <CardTitle className="text-2xl">{t('promise.shortlist.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Nuestra base de datos de talento pre-evaluado nos permite actuar con una agilidad que nadie más puede ofrecer.
+                    {t('promise.shortlist.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -53,11 +58,11 @@ const Index = () => {
               <Card className="text-center shadow-elegant">
                 <CardHeader>
                   <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <CardTitle className="text-2xl">Garantía de 90 Días</CardTitle>
+                  <CardTitle className="text-2xl">{t('promise.guarantee.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Si el candidato no cumple las expectativas en sus primeros tres meses, buscamos un reemplazo sin costo alguno.
+                    {t('promise.guarantee.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -65,11 +70,11 @@ const Index = () => {
               <Card className="text-center shadow-elegant">
                 <CardHeader>
                   <Target className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <CardTitle className="text-2xl">Riesgo Cero</CardTitle>
+                  <CardTitle className="text-2xl">{t('promise.zero_risk.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Usted solo invierte cuando ha decidido contratar a uno de nuestros candidatos. Sin anticipos ni costos ocultos.
+                    {t('promise.zero_risk.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -83,15 +88,15 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-4xl font-display font-bold mb-8">
-                  Nacimos de la Industria para Servir a la Industria
+                  {t('why.title')}
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <Users className="w-8 h-8 text-primary mt-1" />
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-2">+30 Años de Experiencia Combinada</h3>
+                      <h3 className="text-xl font-display font-semibold mb-2">{t('why.experience.title')}</h3>
                       <p className="text-muted-foreground">
-                        Nuestro equipo entiende las necesidades específicas del sector TIC porque proviene de él.
+                        {t('why.experience.desc')}
                       </p>
                     </div>
                   </div>
@@ -99,9 +104,9 @@ const Index = () => {
                   <div className="flex items-start space-x-4">
                     <Award className="w-8 h-8 text-primary mt-1" />
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-2">+15,000 Talentos en LATAM</h3>
+                      <h3 className="text-xl font-display font-semibold mb-2">{t('why.talent.title')}</h3>
                       <p className="text-muted-foreground">
-                        Una red activa y en constante expansión de profesionales especializados en la región.
+                        {t('why.talent.desc')}
                       </p>
                     </div>
                   </div>
@@ -109,9 +114,9 @@ const Index = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-8 h-8 text-primary mt-1" />
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-2">Enfoque 360°</h3>
+                      <h3 className="text-xl font-display font-semibold mb-2">{t('why.approach.title')}</h3>
                       <p className="text-muted-foreground">
-                        Desde auditores especializados hasta directores regionales, cubrimos todos los niveles.
+                        {t('why.approach.desc')}
                       </p>
                     </div>
                   </div>
@@ -119,13 +124,13 @@ const Index = () => {
               </div>
               
               <div className="bg-card rounded-lg p-8 shadow-elegant">
-                <h3 className="text-2xl font-display font-bold mb-6">¿Listo para Comenzar?</h3>
+                <h3 className="text-2xl font-display font-bold mb-6">{t('why.ready.title')}</h3>
                 <p className="text-muted-foreground mb-6">
-                  Elige la forma que prefieras para contactarnos
+                  {t('why.ready.desc')}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Button asChild variant="outline" className="border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4 text-xs">
-                    <Link to="/contacto">Formulario de Contacto</Link>
+                    <Link to="/contacto">{t('why.contact_form')}</Link>
                   </Button>
               <Button
                 variant="outline"
@@ -134,7 +139,7 @@ const Index = () => {
               >
                 <a href="https://wa.me/message/IH46LPYOLH4CH1">
                   <Phone className="w-4 h-4 mr-2" />
-                  WhatsApp
+                  {t('why.whatsapp')}
                 </a>
               </Button>
                   <Button
@@ -143,7 +148,7 @@ const Index = () => {
                     onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
                   >
                     <Mail className="w-4 h-4 mr-2" />
-                    Email Directo
+                    {t('why.direct_email')}
                   </Button>
                 </div>
               </div>
@@ -155,47 +160,47 @@ const Index = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-4xl font-display font-bold mb-12">
-              Nuestros Servicios
+              {t('services.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
               <Card className="shadow-elegant flex flex-col h-full">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Selección y Búsqueda de Ejecutivos</CardTitle>
+                  <CardTitle className="text-2xl">{t('services.executive_search.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
                   <p className="text-muted-foreground mb-6">
-                    Su terna de candidatos en 7 días. Talento especializado en TIC con metodología probada y garantía de resultados.
+                    {t('services.executive_search.desc')}
                   </p>
                   <Button asChild variant="outline" className="w-full mt-auto">
-                    <Link to="/servicios-para-empresas">Ver Más</Link>
+                    <Link to="/servicios-para-empresas">{t('services.see_more')}</Link>
                   </Button>
                 </CardContent>
               </Card>
 
               <Card className="shadow-elegant flex flex-col h-full">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Consultoría en Recursos Humanos</CardTitle>
+                  <CardTitle className="text-2xl">{t('services.hr_consulting.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
                   <p className="text-muted-foreground mb-6">
-                    Fortalezca las bases de su organización con estrategias de retención y desarrollo de talento.
+                    {t('services.hr_consulting.desc')}
                   </p>
                   <Button asChild variant="outline" className="w-full mt-auto">
-                    <Link to="/servicios-para-empresas">Ver Más</Link>
+                    <Link to="/servicios-para-empresas">{t('services.see_more')}</Link>
                   </Button>
                 </CardContent>
               </Card>
 
               <Card className="shadow-elegant flex flex-col h-full">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Desarrollo & Coaching</CardTitle>
+                  <CardTitle className="text-2xl">{t('services.coaching.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
                   <p className="text-muted-foreground mb-6">
-                    Potenciamos las habilidades de sus equipos con programas de desarrollo personalizados y coaching ejecutivo.
+                    {t('services.coaching.desc')}
                   </p>
                   <Button asChild variant="outline" className="w-full mt-auto">
-                    <Link to="/servicios-para-empresas">Ver Más</Link>
+                    <Link to="/servicios-para-empresas">{t('services.see_more')}</Link>
                   </Button>
                 </CardContent>
               </Card>

@@ -13,9 +13,11 @@ import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 
 const Contacto = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -113,11 +115,10 @@ const Contacto = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Contacto
+              {t('contact.title')}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              ¿Listo para encontrar el talento que su empresa necesita? Hablemos sobre cómo podemos ayudarle 
-              a alcanzar sus objetivos de contratación.
+              {t('contact.subtitle')}
             </p>
           </div>
         </section>
@@ -130,13 +131,13 @@ const Contacto = () => {
               {/* Contact Form */}
               <Card className="shadow-elegant">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-display">Envíanos un Mensaje</CardTitle>
+                  <CardTitle className="text-2xl font-display">{t('contact.form.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="nombre">Nombre Completo</Label>
+                        <Label htmlFor="nombre">{t('contact.form.full_name')}</Label>
                         <Input
                           id="nombre"
                           type="text"
@@ -146,7 +147,7 @@ const Contacto = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="email">Correo Electrónico <span className="text-red-500">*</span></Label>
+                        <Label htmlFor="email">{t('contact.form.email')} <span className="text-red-500">*</span></Label>
                         <Input
                           id="email"
                           type="email"
@@ -159,7 +160,7 @@ const Contacto = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="empresa">Empresa</Label>
+                        <Label htmlFor="empresa">{t('contact.form.company')}</Label>
                         <Input
                           id="empresa"
                           type="text"
@@ -171,7 +172,7 @@ const Contacto = () => {
                     </div>
                     
                     <div>
-                      <Label htmlFor="telefono">Teléfono <span className="text-red-500">*</span></Label>
+                      <Label htmlFor="telefono">{t('contact.form.phone')} <span className="text-red-500">*</span></Label>
                       <div className="flex gap-4 items-start">
                         <div className="min-w-[140px]">
                           <Select value={formData.codigoPais} onValueChange={(value) => setFormData({...formData, codigoPais: value})}>
@@ -212,7 +213,7 @@ const Contacto = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="tipoConsulta">Tipo de Consulta</Label>
+                      <Label htmlFor="tipoConsulta">{t('contact.form.query_type')}</Label>
                       <Select value={formData.tipoConsulta} onValueChange={(value) => setFormData({...formData, tipoConsulta: value})}>
                         <SelectTrigger>
                           <SelectValue placeholder="Selecciona el tipo de consulta" />
@@ -230,12 +231,12 @@ const Contacto = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="mensaje">Mensaje</Label>
+                      <Label htmlFor="mensaje">{t('contact.form.message')}</Label>
                       <Textarea
                         id="mensaje"
                         value={formData.mensaje}
                         onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
-                        placeholder="Cuéntanos sobre tus necesidades de talento..."
+                        placeholder={t('contact.form.message_placeholder')}
                         rows={6}
                         required
                       />
@@ -254,13 +255,13 @@ const Contacto = () => {
                           htmlFor="aceptaPrivacidad"
                           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                          Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
+                          {t('contact.form.privacy_accept')}{" "}
                           <Link 
                             to="/politica-de-privacidad" 
                             target="_blank"
                             className="text-primary hover:underline"
                           >
-                            Política de Privacidad
+                            {t('contact.form.privacy_policy')}
                           </Link>
                           {" "}y autorizo el uso de la información proporcionada para procesos de selección y contacto profesional. 
                           Mis datos serán utilizados exclusivamente para fines de reclutamiento y evaluación de perfiles profesionales. 
@@ -270,13 +271,13 @@ const Contacto = () => {
                     </div>
 
                     <Button type="submit" className="btn-hero w-full" disabled={isSubmitting || !formData.aceptaPrivacidad}>
-                      {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+                      {isSubmitting ? t('contact.form.sending') : t('contact.form.send')}
                     </Button>
                   </form>
 
                   {/* Alternative Contact Options */}
                   <div className="mt-8 pt-8 border-t border-border">
-                    <h3 className="text-lg font-display font-semibold mb-4 text-center">O contáctanos directamente</h3>
+                    <h3 className="text-lg font-display font-semibold mb-4 text-center">{t('contact.direct_title')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Button
                         variant="outline"
@@ -289,7 +290,7 @@ const Contacto = () => {
                           rel="noopener noreferrer"
                         >
                           <Phone className="w-4 h-4 mr-2" />
-                          WhatsApp
+                          {t('why.whatsapp')}
                         </a>
                       </Button>
                       <Button
@@ -298,7 +299,7 @@ const Contacto = () => {
                         onClick={() => window.open('mailto:contacto@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
                       >
                         <Mail className="w-4 h-4 mr-2" />
-                        Email Directo
+                        {t('why.direct_email')}
                       </Button>
                     </div>
                   </div>
@@ -309,13 +310,13 @@ const Contacto = () => {
               <div className="space-y-8">
                 <Card className="shadow-elegant">
                   <CardHeader>
-                    <CardTitle className="text-2xl font-display">Información de Contacto</CardTitle>
+                    <CardTitle className="text-2xl font-display">{t('contact.info.title')}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="flex items-center space-x-4">
                       <Mail className="w-6 h-6 text-primary" />
                       <div>
-                        <p className="font-medium">Email</p>
+                        <p className="font-medium">{t('contact.info.email')}</p>
                         <a href="mailto:contacto@ticselect.com" className="text-muted-foreground hover:text-primary">
                           contacto@ticselect.com
                         </a>
@@ -325,7 +326,7 @@ const Contacto = () => {
                     <div className="flex items-center space-x-4">
                       <Phone className="w-6 h-6 text-primary" />
                       <div>
-                        <p className="font-medium">Teléfono</p>
+                        <p className="font-medium">{t('contact.info.phone')}</p>
                         <a href="tel:+56979575372" className="text-muted-foreground hover:text-primary">
                           +56 9 7957 5372
                         </a>
@@ -335,8 +336,8 @@ const Contacto = () => {
                     <div className="flex items-center space-x-4">
                       <Clock className="w-6 h-6 text-primary" />
                       <div>
-                        <p className="font-medium">Horario de Atención</p>
-                        <p className="text-muted-foreground">Lunes a Viernes, 9:00 - 18:00 (UTC-3)</p>
+                        <p className="font-medium">{t('contact.info.hours')}</p>
+                        <p className="text-muted-foreground">{t('contact.info.hours_desc')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -344,25 +345,25 @@ const Contacto = () => {
 
                 <Card className="shadow-elegant">
                   <CardHeader>
-                    <CardTitle className="text-xl font-display">¿Por qué Contactarnos?</CardTitle>
+                    <CardTitle className="text-xl font-display">{t('contact.why.title')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-3 text-muted-foreground">
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-primary rounded-full mt-2"></span>
-                        <span>Consultoría gratuita sobre sus necesidades de talento</span>
+                        <span>{t('contact.why.consultation')}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-primary rounded-full mt-2"></span>
-                        <span>Propuesta personalizada en 24 horas</span>
+                        <span>{t('contact.why.proposal')}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-primary rounded-full mt-2"></span>
-                        <span>Sin compromisos ni costos ocultos</span>
+                        <span>{t('contact.why.no_commitment')}</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-primary rounded-full mt-2"></span>
-                        <span>Acceso inmediato a nuestra red de talento</span>
+                        <span>{t('contact.why.immediate_access')}</span>
                       </li>
                     </ul>
                   </CardContent>

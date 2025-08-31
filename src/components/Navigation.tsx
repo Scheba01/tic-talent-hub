@@ -10,12 +10,14 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/hooks/useAuth";
+import { useLanguage } from "@/contexts/LanguageContext";
 import ticSelectLogo from "@/assets/tic-select-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { user, profile, signOut } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
 
   // Scroll to top when route changes
   useEffect(() => {
@@ -27,11 +29,11 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: "Inicio", path: "/" },
-    { name: "Quiénes Somos", path: "/quienes-somos" },
-    { name: "Servicios para Empresas", path: "/servicios-para-empresas" },
-    { name: "Empleo", path: "/vacantes-y-perfiles" },
-    { name: "Programa TIC Talento", path: "/programa-talentotic" },
+    { name: t('nav.home'), path: "/" },
+    { name: t('nav.about'), path: "/quienes-somos" },
+    { name: t('nav.services'), path: "/servicios-para-empresas" },
+    { name: t('nav.jobs'), path: "/vacantes-y-perfiles" },
+    { name: t('nav.talent_program'), path: "/programa-talentotic" },
   ];
 
   return (
@@ -61,7 +63,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button asChild className="btn-hero">
-              <Link to="/contacto">Contacto</Link>
+              <Link to="/contacto">{t('nav.contact')}</Link>
             </Button>
             
             {/* Auth Section */}
@@ -79,7 +81,7 @@ const Navigation = () => {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link to="/registro-talento" className="w-full cursor-pointer">
-                      Registro Talento
+                      {t('nav.talent_registration')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -88,13 +90,13 @@ const Navigation = () => {
                     className="hover:bg-destructive/10 hover:text-destructive cursor-pointer"
                   >
                     <LogOut className="h-4 w-4 mr-2" />
-                    Cerrar Sesión
+                    {t('nav.logout')}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <Button asChild variant="outline">
-                <Link to="/auth">Iniciar Sesión</Link>
+                <Link to="/auth">{t('nav.login')}</Link>
               </Button>
             )}
             
@@ -106,14 +108,23 @@ const Navigation = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="bg-background border border-border">
-                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer">
+                <DropdownMenuItem 
+                  className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                  onClick={() => setLanguage('en')}
+                >
                   🇺🇸 English
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer">
+                <DropdownMenuItem 
+                  className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                  onClick={() => setLanguage('es')}
+                >
                   🇪🇸 Español
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer">
-                  🇵🇹 Português
+                <DropdownMenuItem 
+                  className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                  onClick={() => setLanguage('pt')}
+                >
+                  🇧🇷 Português
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -150,7 +161,7 @@ const Navigation = () => {
               <div className="px-3 py-2">
                 <Button asChild className="btn-hero w-full">
                   <Link to="/contacto" onClick={() => setIsOpen(false)}>
-                    Contacto
+                    {t('nav.contact')}
                   </Link>
                 </Button>
               </div>
@@ -162,7 +173,7 @@ const Navigation = () => {
                     </div>
                     <Button asChild variant="outline" className="w-full">
                       <Link to="/registro-talento" onClick={() => setIsOpen(false)}>
-                        Registro Talento
+                        {t('nav.talent_registration')}
                       </Link>
                     </Button>
                     <Button 
@@ -174,13 +185,13 @@ const Navigation = () => {
                       className="w-full"
                     >
                       <LogOut className="h-4 w-4 mr-2" />
-                      Cerrar Sesión
+                      {t('nav.logout')}
                     </Button>
                   </div>
                 ) : (
                   <Button asChild variant="outline" className="w-full">
                     <Link to="/auth" onClick={() => setIsOpen(false)}>
-                      Iniciar Sesión
+                      {t('nav.login')}
                     </Link>
                   </Button>
                 )}

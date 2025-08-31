@@ -1,30 +1,33 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 const Footer = () => {
+  const { t } = useLanguage();
   return <footer className="bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Enlaces Rápidos */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4">Enlaces Rápidos</h3>
+            <h3 className="font-display font-semibold text-lg mb-4">{t('footer.quick_links')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
-                  Inicio
+                  {t('nav.home')}
                 </Link>
               </li>
               <li>
                 <Link to="/quienes-somos" className="text-muted-foreground hover:text-primary transition-colors">
-                  Quiénes Somos
+                  {t('nav.about')}
                 </Link>
               </li>
               <li>
                 <Link to="/servicios-para-empresas" className="text-muted-foreground hover:text-primary transition-colors">
-                  Servicios para Empresas
+                  {t('nav.services')}
                 </Link>
               </li>
               <li>
                 <Link to="/vacantes-y-perfiles" className="text-muted-foreground hover:text-primary transition-colors">
-                  Empleo
+                  {t('nav.jobs')}
                 </Link>
               </li>
             </ul>
@@ -32,11 +35,11 @@ const Footer = () => {
 
           {/* Comunidad */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4">Comunidad</h3>
+            <h3 className="font-display font-semibold text-lg mb-4">{t('footer.community')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/programa-talentotic" className="text-muted-foreground hover:text-primary transition-colors">
-                  Programa TalentoTIC
+                  {t('nav.talent_program')}
                 </Link>
               </li>
               <li>
@@ -46,7 +49,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/politica-de-privacidad" className="text-muted-foreground hover:text-primary transition-colors">
-                  Política de Privacidad
+                  {t('footer.privacy_policy')}
                 </Link>
               </li>
             </ul>
@@ -54,7 +57,7 @@ const Footer = () => {
 
           {/* Contacto */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4">Contacto</h3>
+            <h3 className="font-display font-semibold text-lg mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="mailto:contacto@ticselect.com" className="text-muted-foreground hover:text-primary transition-colors">
@@ -88,15 +91,15 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <div className="flex space-x-4 text-sm">
                 <Link to="/politica-de-privacidad" className="text-muted-foreground hover:text-primary transition-colors">
-                  Política de Privacidad
+                  {t('footer.privacy_policy')}
                 </Link>
                 <span className="text-muted-foreground">|</span>
                 <a href="#politica-cookies" className="text-muted-foreground hover:text-primary transition-colors">
-                  Política de Cookies
+                  {t('footer.cookies_policy')}
                 </a>
               </div>
               <p className="text-muted-foreground text-sm">
-                © 2024 TIC SELECT. Todos los derechos reservados.
+                {t('footer.all_rights')}
               </p>
             </div>
           </div>
