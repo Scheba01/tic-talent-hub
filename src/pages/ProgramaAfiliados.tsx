@@ -4,77 +4,79 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, DollarSign, Target, Gift, Award, Handshake, TrendingUp, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProgramaAfiliados = () => {
+  const { t } = useLanguage();
   const benefits = [
     {
       icon: DollarSign,
-      title: "Comisiones Competitivas",
-      description: "Gana hasta un 15% de comisión por cada referencia exitosa que generes."
+      title: t('affiliate.benefits.competitive_commissions'),
+      description: t('affiliate.benefits.competitive_commissions_desc')
     },
     {
       icon: Target,
-      title: "Segmentación Inteligente",
-      description: "Accede a herramientas que te ayudan a identificar las mejores oportunidades."
+      title: t('affiliate.benefits.smart_segmentation'),
+      description: t('affiliate.benefits.smart_segmentation_desc')
     },
     {
       icon: Award,
-      title: "Bonos por Volumen",
-      description: "Recibe bonos adicionales al alcanzar metas mensuales y trimestrales."
+      title: t('affiliate.benefits.volume_bonuses'),
+      description: t('affiliate.benefits.volume_bonuses_desc')
     },
     {
       icon: TrendingUp,
-      title: "Crecimiento Sostenible",
-      description: "Construye una fuente de ingresos recurrente con nuestro programa."
+      title: t('affiliate.benefits.sustainable_growth'),
+      description: t('affiliate.benefits.sustainable_growth_desc')
     }
   ];
 
   const howItWorks = [
     {
       step: "1",
-      title: "Regístrate",
-      description: "Completa el formulario de solicitud y espera la aprobación."
+      title: t('affiliate.step1.title'),
+      description: t('affiliate.step1.desc')
     },
     {
       step: "2",
-      title: "Promociona",
-      description: "Comparte nuestros servicios con tu red profesional utilizando tus enlaces únicos."
+      title: t('affiliate.step2.title'),
+      description: t('affiliate.step2.desc')
     },
     {
       step: "3",
-      title: "Gana",
-      description: "Recibe comisiones por cada cliente que se registre a través de tu referencia."
+      title: t('affiliate.step3.title'),
+      description: t('affiliate.step3.desc')
     }
   ];
 
   const requirements = [
-    "Experiencia en el sector TIC o recursos humanos",
-    "Red profesional activa en LinkedIn u otras plataformas",
-    "Capacidad para generar al menos 5 referencias mensuales",
-    "Conocimiento del mercado laboral chileno",
-    "Excelentes habilidades de comunicación"
+    t('nav.home') === 'Home' ? "Experience in the TIC sector or human resources" : t('nav.home') === 'Início' ? "Experiência no setor TIC ou recursos humanos" : "Experiencia en el sector TIC o recursos humanos",
+    t('nav.home') === 'Home' ? "Active professional network on LinkedIn or other platforms" : t('nav.home') === 'Início' ? "Rede profissional ativa no LinkedIn ou outras plataformas" : "Red profesional activa en LinkedIn u otras plataformas",
+    t('nav.home') === 'Home' ? "Ability to generate at least 5 monthly referrals" : t('nav.home') === 'Início' ? "Capacidade de gerar pelo menos 5 indicações mensais" : "Capacidad para generar al menos 5 referencias mensuales",
+    t('nav.home') === 'Home' ? "Knowledge of the Chilean labor market" : t('nav.home') === 'Início' ? "Conhecimento do mercado de trabalho chileno" : "Conocimiento del mercado laboral chileno",
+    t('nav.home') === 'Home' ? "Excellent communication skills" : t('nav.home') === 'Início' ? "Excelentes habilidades de comunicação" : "Excelentes habilidades de comunicación"
   ];
 
   const commissionStructure = [
     {
-      type: "Registro Candidato",
+      type: t('nav.home') === 'Home' ? "Candidate Registration" : t('nav.home') === 'Início' ? "Registro de Candidato" : "Registro Candidato",
       commission: "5%",
-      description: "Por cada profesional TIC que se registre exitosamente"
+      description: t('nav.home') === 'Home' ? "For each TIC professional who successfully registers" : t('nav.home') === 'Início' ? "Por cada profissional TIC que se registrar com sucesso" : "Por cada profesional TIC que se registre exitosamente"
     },
     {
-      type: "Colocación Exitosa",
+      type: t('nav.home') === 'Home' ? "Successful Placement" : t('nav.home') === 'Início' ? "Colocação Bem-sucedida" : "Colocación Exitosa",
       commission: "15%",
-      description: "Cuando un candidato referido es contratado por una empresa"
+      description: t('nav.home') === 'Home' ? "When a referred candidate is hired by a company" : t('nav.home') === 'Início' ? "Quando um candidato indicado é contratado por uma empresa" : "Cuando un candidato referido es contratado por una empresa"
     },
     {
-      type: "Cliente Empresa",
+      type: t('nav.home') === 'Home' ? "Company Client" : t('nav.home') === 'Início' ? "Cliente Empresa" : "Cliente Empresa",
       commission: "10%",
-      description: "Por cada empresa nueva que contrate nuestros servicios"
+      description: t('nav.home') === 'Home' ? "For each new company that hires our services" : t('nav.home') === 'Início' ? "Por cada nova empresa que contratar nossos serviços" : "Por cada empresa nueva que contrate nuestros servicios"
     },
     {
-      type: "Bono Volumen",
-      commission: "Extra 5%",
-      description: "Al superar 10 colocaciones exitosas en un trimestre"
+      type: t('nav.home') === 'Home' ? "Volume Bonus" : t('nav.home') === 'Início' ? "Bônus de Volume" : "Bono Volumen",
+      commission: t('nav.home') === 'Home' ? "Extra 5%" : t('nav.home') === 'Início' ? "5% Extra" : "Extra 5%",
+      description: t('nav.home') === 'Home' ? "When exceeding 10 successful placements in a quarter" : t('nav.home') === 'Início' ? "Ao superar 10 colocações bem-sucedidas em um trimestre" : "Al superar 10 colocaciones exitosas en un trimestre"
     }
   ];
 
@@ -87,23 +89,22 @@ const ProgramaAfiliados = () => {
         <section className="relative bg-gradient-to-br from-primary/5 via-background to-primary/10 py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <Badge className="mb-4">Programa de Afiliados</Badge>
+              <Badge className="mb-4">{t('nav.home') === 'Home' ? 'Affiliate Program' : t('nav.home') === 'Início' ? 'Programa de Afiliados' : 'Programa de Afiliados'}</Badge>
               <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6">
-                Únete a Nuestro
-                <span className="text-primary block">Programa de Afiliados</span>
+                {t('affiliate.title')}
+                <span className="text-primary block">{t('affiliate.title_highlight')}</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-                Monetiza tu red profesional y ayuda a conectar talento TIC con las mejores oportunidades. 
-                Gana comisiones competitivas por cada referencia exitosa.
+                {t('affiliate.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
                   <Handshake className="mr-2 h-5 w-5" />
-                  Aplicar Ahora
+                  {t('affiliate.apply_now')}
                 </Button>
                 <Button size="lg" variant="outline">
                   <Gift className="mr-2 h-5 w-5" />
-                  Conoce los Beneficios
+                  {t('affiliate.know_benefits')}
                 </Button>
               </div>
             </div>
@@ -115,10 +116,10 @@ const ProgramaAfiliados = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                ¿Por qué ser Afiliado de TIC Select?
+                {t('affiliate.why_title')}
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Descubre los beneficios exclusivos que ofrecemos a nuestros partners
+                {t('affiliate.why_subtitle')}
               </p>
             </div>
 
@@ -145,10 +146,10 @@ const ProgramaAfiliados = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                ¿Cómo Funciona?
+                {t('affiliate.how_works')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Comenzar es simple y directo
+                {t('affiliate.how_works_subtitle')}
               </p>
             </div>
 
@@ -176,10 +177,10 @@ const ProgramaAfiliados = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Estructura de Comisiones
+                {t('affiliate.commission_structure')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Transparencia total en nuestras comisiones
+                {t('affiliate.commission_subtitle')}
               </p>
             </div>
 
@@ -204,10 +205,10 @@ const ProgramaAfiliados = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Requisitos para Afiliados
+                {t('affiliate.requirements_title')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Lo que buscamos en nuestros partners
+                {t('affiliate.requirements_subtitle')}
               </p>
             </div>
 
@@ -215,7 +216,7 @@ const ProgramaAfiliados = () => {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Users className="mr-2 h-5 w-5 text-primary" />
-                  Perfil Ideal de Afiliado
+                  {t('affiliate.profile_title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -238,22 +239,22 @@ const ProgramaAfiliados = () => {
             <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <CardContent className="p-8">
                 <h2 className="text-3xl font-display font-bold mb-4">
-                  ¿Listo para Comenzar?
+                  {t('affiliate.ready_title')}
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8">
-                  Únete a nuestro programa de afiliados y comienza a generar ingresos conectando talento con oportunidades.
+                  {t('affiliate.ready_subtitle')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
                     <Handshake className="mr-2 h-5 w-5" />
-                    Solicitar Membresía
+                    {t('affiliate.request_membership')}
                   </Button>
                   <Button size="lg" variant="outline">
-                    Hablar con un Especialista
+                    {t('affiliate.talk_specialist')}
                   </Button>
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
-                  Proceso de aprobación en 24-48 horas laborales
+                  {t('affiliate.approval_time')}
                 </p>
               </CardContent>
             </Card>

@@ -35,7 +35,7 @@ const Contacto = () => {
     e.preventDefault();
     
     if (!formData.aceptaPrivacidad) {
-      toast.error("Debes aceptar la Política de Privacidad para continuar.");
+      toast.error(t('nav.home') === 'Home' ? "You must accept the Privacy Policy to continue." : t('nav.home') === 'Início' ? "Você deve aceitar a Política de Privacidade para continuar." : "Debes aceptar la Política de Privacidad para continuar.");
       return;
     }
     
@@ -64,7 +64,7 @@ const Contacto = () => {
       });
 
       if (response.ok) {
-        toast.success("✅ Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.", {
+        toast.success(t('nav.home') === 'Home' ? "✅ Message sent successfully. We will contact you soon." : t('nav.home') === 'Início' ? "✅ Mensagem enviada com sucesso. Entraremos em contato em breve." : "✅ Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.", {
           style: {
             background: '#10B981',
             color: 'white',
@@ -90,7 +90,7 @@ const Contacto = () => {
       
     } catch (error) {
       console.error('Error sending message:', error);
-      toast.error("Error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.");
+      toast.error(t('nav.home') === 'Home' ? "Error sending message. Please try again or contact us directly." : t('nav.home') === 'Início' ? "Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente." : "Error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.");
     } finally {
       setIsSubmitting(false);
     }

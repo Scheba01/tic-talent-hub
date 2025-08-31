@@ -113,9 +113,9 @@ export function MultiSelect({
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
         <Command className={className}>
-          <CommandInput placeholder="Buscar..." onKeyDown={handleKeyDown} />
+          <CommandInput placeholder={placeholder === "Buscar..." ? "Buscar..." : placeholder === "Search..." ? "Search..." : "Pesquisar..."} onKeyDown={handleKeyDown} />
           <CommandList>
-            <CommandEmpty>Sin resultados.</CommandEmpty>
+            <CommandEmpty>{placeholder === "Buscar..." ? "Sin resultados." : placeholder === "Search..." ? "No results." : "Sem resultados."}</CommandEmpty>
             <CommandGroup className="max-h-64 overflow-auto">
               {selectables.map((option) => (
                 <CommandItem
