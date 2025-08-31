@@ -50,10 +50,22 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [language, setLanguage] = useState<Language>('es');
 
   useEffect(() => {
+    // Check if we're on a specific language URL path
+    const path = window.location.pathname;
+    let initialLanguage: Language = 'es'; // Default to Spanish
+    
+    // Override with saved language preference, but respect URL context
     const savedLanguage = localStorage.getItem('language') as Language;
     if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
-      setLanguage(savedLanguage);
+      initialLanguage = savedLanguage;
     }
+    
+    // Force Spanish for Spanish URLs to ensure correct content
+    if (path.includes('quienes-somos') || path.includes('servicios-para-empresas') || path.includes('vacantes-y-perfiles') || path.includes('programa-talentotic') || path.includes('programa-afiliados')) {
+      initialLanguage = 'es';
+    }
+    
+    setLanguage(initialLanguage);
   }, []);
 
   const handleSetLanguage = (lang: Language) => {
