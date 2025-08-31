@@ -13,8 +13,10 @@ import {
   Phone,
   Mail
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const VacantesPerfiles = () => {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -24,14 +26,13 @@ const VacantesPerfiles = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Busco Empleo en TIC
+              {t('jobs.title')}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              Si vienes de la Industria TIC, te favorece registrarte con nosotros para estar en nuestra 
-              base de datos de talentos. Te mandaremos noticias sobre la industria y ofertas exclusivas.
+              {t('jobs.subtitle')}
             </p>
             <Button asChild className="btn-hero">
-              <Link to="/registro-talento">Registrarme Ahora</Link>
+              <Link to="/registro-talento">{t('jobs.register_now')}</Link>
             </Button>
           </div>
         </section>

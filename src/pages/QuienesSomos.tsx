@@ -3,7 +3,10 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 const QuienesSomos = () => {
+  const { t } = useLanguage();
   return <div className="min-h-screen bg-background">
       <Navigation />
       
@@ -12,12 +15,10 @@ const QuienesSomos = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Nacimos de la Industria para Servir a la Industria
+              {t('about.title')}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              No somos reclutadores tradicionales. Somos TIC Talent, una red de expertos forjados en el corazón 
-              de la industria de Pruebas, Inspección y Certificación. Entendemos sus desafíos porque los hemos vivido. 
-              Hablamos su idioma porque es el nuestro.
+              {t('about.subtitle')}
             </p>
           </div>
         </section>

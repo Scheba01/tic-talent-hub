@@ -4,7 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, BarChart3, TrendingUp, MessageSquare, Target, Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 const ServiciosEmpresas = () => {
+  const { t } = useLanguage();
   return <div className="min-h-screen bg-background">
       <Navigation />
       
@@ -13,7 +16,7 @@ const ServiciosEmpresas = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Soluciones de Talento que Generan Resultados
+              {t('services_page.title')}
             </h1>
           </div>
         </section>
@@ -23,14 +26,14 @@ const ServiciosEmpresas = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-display font-bold mb-4">
-                Selección y Búsqueda de Ejecutivos: Su Terna de Candidatos en 7 Días
+                {t('services_page.executive_search.title')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Nuestro proceso está diseñado para una sola cosa: entregarle el talento correcto en tiempo récord y con total seguridad.
+                {t('services_page.executive_search.subtitle')}
               </p>
             </div>
 
-            <h3 className="text-xl font-display font-semibold mb-8 text-center">Nuestro Proceso</h3>
+            <h3 className="text-xl font-display font-semibold mb-8 text-center">{t('services_page.process')}</h3>
             
             {/* Process Steps */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
