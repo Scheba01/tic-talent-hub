@@ -16,6 +16,7 @@ interface ConfirmationEmailRequest {
 
 const handler = async (req: Request): Promise<Response> => {
   console.log("Function started, method:", req.method);
+  console.log("Timestamp:", new Date().toISOString());
   
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
