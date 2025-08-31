@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/hooks/useAuth";
 import ticSelectLogo from "@/assets/tic-select-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, profile, signOut } = useAuth();
 
   // Scroll to top when route changes
   useEffect(() => {
@@ -60,6 +63,40 @@ const Navigation = () => {
             <Button asChild className="btn-hero">
               <Link to="/contacto">Contacto</Link>
             </Button>
+            
+            {/* Auth Section */}
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                    <User className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-background border border-border">
+                  <DropdownMenuItem disabled className="font-medium">
+                    {profile?.nombre_completo || user.email}
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/registro-talento" className="w-full cursor-pointer">
+                      Registro Talento
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem 
+                    onClick={signOut}
+                    className="hover:bg-destructive/10 hover:text-destructive cursor-pointer"
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Cerrar Sesión
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button asChild variant="outline">
+                <Link to="/auth">Iniciar Sesión</Link>
+              </Button>
+            )}
             
             {/* Language Switcher */}
             <DropdownMenu>
@@ -116,6 +153,37 @@ const Navigation = () => {
                     Contacto
                   </Link>
                 </Button>
+              </div>
+              <div className="px-3 py-2">
+                {user ? (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground px-3 py-1">
+                      {profile?.nombre_completo || user.email}
+                    </div>
+                    <Button asChild variant="outline" className="w-full">
+                      <Link to="/registro-talento" onClick={() => setIsOpen(false)}>
+                        Registro Talento
+                      </Link>
+                    </Button>
+                    <Button 
+                      onClick={() => {
+                        setIsOpen(false);
+                        signOut();
+                      }}
+                      variant="outline" 
+                      className="w-full"
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Cerrar Sesión
+                    </Button>
+                  </div>
+                ) : (
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      Iniciar Sesión
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
           </div>

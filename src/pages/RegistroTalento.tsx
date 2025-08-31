@@ -13,18 +13,23 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema, type RegistrationFormData } from "@/schemas/registration-schema";
 import { PAISES_LATAM, FAMILIAS_ROL, TIPOS_LABORATORIO, AREAS_INSPECCION, NORMAS_SISTEMAS, SECTORES_PRODUCTOS, AREAS_PERSONAS, SECTORES_INDUSTRIA, NORMAS_COMPETENCIAS, IDIOMAS, NIVELES_IDIOMA, NIVELES_COMPETENCIA, AREAS_FUNCIONALES, SUBAREAS_POR_AREA, ROLES_POR_SUBAREA, NIVELES_CARGO, SENIORITY_LEVELS, PERSONAS_CARGO, RESPONSABILIDAD_PL, ALCANCE_GEOGRAFICO, REPORTA_A, COUNTRY_CODES } from "@/lib/registration-data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Plus, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { submitCandidate } from "@/lib/candidate-service";
+import { useAuth } from "@/hooks/useAuth";
+
 const RegistroTalento = () => {
   const [selectedFamilias, setSelectedFamilias] = useState<string[]>([]);
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
   const [selectedSubarea, setSelectedSubarea] = useState<string>("");
+  const { user, profile } = useAuth();
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
+      nombreCompleto: "",
+      email: "",
       codigoPais: "+56",
       familiasRol: [],
       sectores: [],
@@ -38,6 +43,14 @@ const RegistroTalento = () => {
       comentarios: ""
     }
   });
+
+  // Pre-fill form with user data when available
+  useEffect(() => {
+    if (user && profile) {
+      form.setValue("nombreCompleto", profile.nombre_completo || "");
+      form.setValue("email", user.email || "");
+    }
+  }, [user, profile, form]);
   const watchedFamilias = form.watch("familiasRol");
   const onSubmit = async (data: RegistrationFormData) => {
     try {

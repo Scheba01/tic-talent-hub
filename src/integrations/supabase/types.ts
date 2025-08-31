@@ -514,6 +514,7 @@ export type Database = {
           sueldo_actual_bruto: string
           telefono: string
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           area_estudio: string
@@ -541,6 +542,7 @@ export type Database = {
           sueldo_actual_bruto: string
           telefono: string
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           area_estudio?: string
@@ -568,6 +570,37 @@ export type Database = {
           sueldo_actual_bruto?: string
           telefono?: string
           updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          id: string
+          nombre_completo: string | null
+          telefono: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          nombre_completo?: string | null
+          telefono?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          nombre_completo?: string | null
+          telefono?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }

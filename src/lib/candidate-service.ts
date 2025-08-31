@@ -1,4 +1,5 @@
-import { supabase, uploadFile } from './supabase'
+import { supabase } from '@/integrations/supabase/client'
+import { uploadFile } from './supabase'
 import type { RegistrationFormData } from '@/schemas/registration-schema'
 
 export interface CandidateSubmission {
@@ -9,6 +10,11 @@ export interface CandidateSubmission {
 
 export const submitCandidate = async (data: RegistrationFormData): Promise<CandidateSubmission> => {
   try {
+    // Get current user
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError || !user) {
+      throw new Error('Usuario no autenticado');
+    }
     // Upload files first
     let cvUrl: string | undefined
     let certificadosUrl: string | undefined
@@ -29,6 +35,7 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
     const { data: candidate, error: candidateError } = await supabase
       .from('candidates')
       .insert({
+        user_id: user.id,  // Link to authenticated user
         nombre_completo: data.nombreCompleto,
         email: data.email,
         codigo_pais: data.codigoPais,
