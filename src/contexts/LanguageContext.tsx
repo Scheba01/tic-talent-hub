@@ -137,6 +137,12 @@ const translations = {
     // About Page
     'about.title': 'TIC Select nació de la industria para servir a la industria',
     'about.subtitle': 'Entendemos profundamente las necesidades específicas del sector Testing, Inspection & Certification porque venimos de él.',
+    'about.experts.title': 'Red de Expertos',
+    'about.experts.desc': 'Nuestro equipo entiende las necesidades específicas del sector TIC porque viene de él.',
+    'about.talent_universe.title': 'Universo de Talento',
+    'about.talent_universe.desc': 'Una red activa y en constante expansión de profesionales especializados en la región.',
+    'about.approach.title': 'Enfoque 360°',
+    'about.approach.desc': 'Desde auditores especializados hasta directores regionales, cubrimos todos los niveles.',
     'about.industry_experience.title': 'Experiencia de la Industria',
     'about.industry_experience.desc': 'Más de 30 años de experiencia combinada en el sector TIC nos permite identificar exactamente el talento que necesitas.',
     'about.specialized_network.title': 'Red Especializada',
