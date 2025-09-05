@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Mail, Lock, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Auth = () => {
@@ -18,8 +18,12 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nombreCompleto, setNombreCompleto] = useState("");
   const [showPasswordReset, setShowPasswordReset] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [isResetMode, setIsResetMode] = useState(false);
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     // Check if user is already logged in
@@ -30,7 +34,21 @@ const Auth = () => {
       }
     };
     checkUser();
-  }, [navigate]);
+
+    // Check if this is a password reset link
+    const access_token = searchParams.get('access_token');
+    const refresh_token = searchParams.get('refresh_token');
+    const type = searchParams.get('type');
+    
+    if (access_token && refresh_token && type === 'recovery') {
+      setIsResetMode(true);
+      // Set the session from the URL params
+      supabase.auth.setSession({
+        access_token,
+        refresh_token,
+      });
+    }
+  }, [navigate, searchParams]);
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,6 +121,39 @@ const Auth = () => {
     }
   };
 
+  const handleUpdatePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPassword !== confirmNewPassword) {
+      toast.error(t('auth.password_mismatch'));
+      return;
+    }
+    
+    if (newPassword.length < 6) {
+      toast.error(t('auth.password_min_length'));
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword
+      });
+
+      if (error) {
+        toast.error(error.message);
+      } else {
+        toast.success(t('auth.password_updated'));
+        setIsResetMode(false);
+        navigate("/");
+      }
+    } catch (error: any) {
+      toast.error(t('auth.password_update_error'));
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handlePasswordReset = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) {
@@ -152,171 +203,217 @@ const Auth = () => {
 
         <Card>
           <CardHeader className="text-center pb-4">
-            <CardTitle>{t('auth.card_title')}</CardTitle>
+            <CardTitle>
+              {isResetMode ? t('auth.reset_password_title') : t('auth.card_title')}
+            </CardTitle>
             <CardDescription>
-              {t('auth.card_description')}
+              {isResetMode ? t('auth.reset_password_description') : t('auth.card_description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="login" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="login" data-value="login">{t('auth.login_tab')}</TabsTrigger>
-                <TabsTrigger value="signup">{t('auth.signup_tab')}</TabsTrigger>
-              </TabsList>
+            {isResetMode ? (
+              // Password Reset Form
+              <form onSubmit={handleUpdatePassword} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="new-password">{t('auth.new_password')}</Label>
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                    <Input
+                      id="new-password"
+                      type="password"
+                      placeholder={t('auth.password_placeholder')}
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      className="pl-10"
+                      required
+                      minLength={6}
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="confirm-new-password">{t('auth.confirm_new_password')}</Label>
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                    <Input
+                      id="confirm-new-password"
+                      type="password"
+                      placeholder={t('auth.password_placeholder')}
+                      value={confirmNewPassword}
+                      onChange={(e) => setConfirmNewPassword(e.target.value)}
+                      className="pl-10"
+                      required
+                      minLength={6}
+                    />
+                  </div>
+                </div>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? t('auth.updating') : t('auth.update_password')}
+                </Button>
+              </form>
+            ) : (
+              // Regular Login/Signup Tabs
+              <>
+                <Tabs defaultValue="login" className="w-full">
+                  <TabsList className="grid w-full grid-cols-2 mb-6">
+                    <TabsTrigger value="login" data-value="login">{t('auth.login_tab')}</TabsTrigger>
+                    <TabsTrigger value="signup">{t('auth.signup_tab')}</TabsTrigger>
+                  </TabsList>
 
-              <TabsContent value="login">
-                <form onSubmit={handleSignIn} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="login-email">{t('auth.email')}</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="login-email"
-                        type="email"
-                        placeholder={t('auth.email_placeholder')}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="login-password">{t('auth.password')}</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="login-password"
-                        type="password"
-                        placeholder={t('auth.password_placeholder')}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="pl-10"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={() => setShowPasswordReset(true)}
-                      className="text-sm text-primary hover:text-primary/80 transition-colors"
-                    >
-                      {t('auth.forgot_password')}
-                    </button>
-                  </div>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? t('auth.login_loading') : t('auth.login_button')}
-                  </Button>
-                </form>
-              </TabsContent>
+                  <TabsContent value="login">
+                    <form onSubmit={handleSignIn} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="login-email">{t('auth.email')}</Label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="login-email"
+                            type="email"
+                            placeholder={t('auth.email_placeholder')}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="pl-10"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="login-password">{t('auth.password')}</Label>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="login-password"
+                            type="password"
+                            placeholder={t('auth.password_placeholder')}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="pl-10"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <button
+                          type="button"
+                          onClick={() => setShowPasswordReset(true)}
+                          className="text-sm text-primary hover:text-primary/80 transition-colors"
+                        >
+                          {t('auth.forgot_password')}
+                        </button>
+                      </div>
+                      <Button type="submit" className="w-full" disabled={loading}>
+                        {loading ? t('auth.login_loading') : t('auth.login_button')}
+                      </Button>
+                    </form>
+                  </TabsContent>
 
-              <TabsContent value="signup">
-                <form onSubmit={handleSignUp} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-name">{t('auth.full_name')}</Label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="signup-name"
-                        type="text"
-                        placeholder={t('auth.name_placeholder')}
-                        value={nombreCompleto}
-                        onChange={(e) => setNombreCompleto(e.target.value)}
-                        className="pl-10"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-email">{t('auth.email')}</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="signup-email"
-                        type="email"
-                        placeholder={t('auth.email_placeholder')}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-password">{t('auth.password')}</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="signup-password"
-                        type="password"
-                        placeholder={t('auth.password_placeholder')}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="pl-10"
-                        required
-                        minLength={6}
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="confirm-password">{t('auth.confirm_password')}</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="confirm-password"
-                        type="password"
-                        placeholder={t('auth.password_placeholder')}
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="pl-10"
-                        required
-                        minLength={6}
-                      />
-                    </div>
-                  </div>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? t('auth.signup_loading') : t('auth.signup_button')}
-                  </Button>
-                </form>
-              </TabsContent>
-            </Tabs>
+                  <TabsContent value="signup">
+                    <form onSubmit={handleSignUp} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="signup-name">{t('auth.full_name')}</Label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="signup-name"
+                            type="text"
+                            placeholder={t('auth.name_placeholder')}
+                            value={nombreCompleto}
+                            onChange={(e) => setNombreCompleto(e.target.value)}
+                            className="pl-10"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="signup-email">{t('auth.email')}</Label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="signup-email"
+                            type="email"
+                            placeholder={t('auth.email_placeholder')}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="pl-10"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="signup-password">{t('auth.password')}</Label>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="signup-password"
+                            type="password"
+                            placeholder={t('auth.password_placeholder')}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="pl-10"
+                            required
+                            minLength={6}
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="confirm-password">{t('auth.confirm_password')}</Label>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="confirm-password"
+                            type="password"
+                            placeholder={t('auth.password_placeholder')}
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            className="pl-10"
+                            required
+                            minLength={6}
+                          />
+                        </div>
+                      </div>
+                      <Button type="submit" className="w-full" disabled={loading}>
+                        {loading ? t('auth.signup_loading') : t('auth.signup_button')}
+                      </Button>
+                    </form>
+                  </TabsContent>
+                </Tabs>
 
-            {/* Password Reset Modal */}
-            {showPasswordReset && (
-              <div className="mt-6 p-4 border rounded-lg bg-muted/50">
-                <h3 className="text-lg font-semibold mb-4">{t('auth.reset_password_title')}</h3>
-                <form onSubmit={handlePasswordReset} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="reset-email">{t('auth.email')}</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                      <Input
-                        id="reset-email"
-                        type="email"
-                        placeholder={t('auth.email_placeholder')}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10"
-                        required
-                      />
-                    </div>
+                {/* Password Reset Modal */}
+                {showPasswordReset && (
+                  <div className="mt-6 p-4 border rounded-lg bg-muted/50">
+                    <h3 className="text-lg font-semibold mb-4">{t('auth.reset_password_title')}</h3>
+                    <form onSubmit={handlePasswordReset} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="reset-email">{t('auth.email')}</Label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                          <Input
+                            id="reset-email"
+                            type="email"
+                            placeholder={t('auth.email_placeholder')}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="pl-10"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button type="submit" disabled={loading} className="flex-1">
+                          {loading ? t('auth.sending') : t('auth.send_reset_link')}
+                        </Button>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setShowPasswordReset(false)}
+                          className="flex-1"
+                        >
+                          {t('auth.cancel')}
+                        </Button>
+                      </div>
+                    </form>
                   </div>
-                  <div className="flex gap-2">
-                    <Button type="submit" disabled={loading} className="flex-1">
-                      {loading ? t('auth.sending') : t('auth.send_reset_link')}
-                    </Button>
-                    <Button 
-                      type="button" 
-                      variant="outline" 
-                      onClick={() => setShowPasswordReset(false)}
-                      className="flex-1"
-                    >
-                      {t('auth.cancel')}
-                    </Button>
-                  </div>
-                </form>
-              </div>
+                )}
+              </>
             )}
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
