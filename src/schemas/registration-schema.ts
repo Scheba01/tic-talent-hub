@@ -137,6 +137,25 @@ export const registrationSchema = z.object({
     areas: z.array(z.string()),
     presupuesto: z.string(),
     personasCargo: z.string()
+  }).optional(),
+
+  marketing: z.object({
+    rol: z.string(),
+    experiencia: z.string()
+  }).optional(),
+
+  rrhh: z.object({
+    rol: z.string(),
+    experiencia: z.string()
+  }).optional(),
+
+  finanzas: z.object({
+    rol: z.string(),
+    experiencia: z.string()
+  }).optional(),
+
+  todosTransversal: z.object({
+    comentarios: z.string().optional()
   }).optional()
 })
 

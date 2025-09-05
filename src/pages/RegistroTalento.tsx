@@ -710,6 +710,577 @@ const RegistroTalento = () => {
                         </div>
                       </div>}
 
+                    {form.watch("familiasRol")?.some(f => f.area === "cert-sistemas") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Certificación de Sistemas (ISO/IEC 17021-1)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="certSistemas.normas" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Normas de sistemas</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect options={NORMAS_SISTEMAS} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona normas de sistemas..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                          
+                          <FormField control={form.control} name="certSistemas.nivelCompetencia" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Nivel de competencia</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona nivel" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {NIVELES_COMPETENCIA.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
+                                        {nivel.label}
+                                      </SelectItem>)}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <div className="flex items-center space-x-2">
+                            <FormField control={form.control} name="certSistemas.registroIRCA" render={({
+                              field
+                            }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                                  <FormControl>
+                                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                  </FormControl>
+                                  <div className="space-y-1 leading-none">
+                                    <FormLabel>¿Tienes registro IRCA?</FormLabel>
+                                  </div>
+                                </FormItem>} />
+                                
+                            {form.watch("certSistemas.registroIRCA") && (
+                              <FormField control={form.control} name="certSistemas.idIRCA" render={({
+                                field
+                              }) => <FormItem>
+                                      <FormControl>
+                                        <Input {...field} placeholder="ID IRCA" />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>} />
+                            )}
+                          </div>
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "cert-productos") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Certificación de Productos (ISO/IEC 17065)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="certProductos.sectores" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Sectores de productos</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect options={SECTORES_PRODUCTOS} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona sectores de productos..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                          
+                          <FormField control={form.control} name="certProductos.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Rol</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="evaluador">Evaluador</SelectItem>
+                                    <SelectItem value="revisor">Revisor técnico</SelectItem>
+                                    <SelectItem value="coordinador">Coordinador</SelectItem>
+                                    <SelectItem value="jefe">Jefe de certificación</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="certProductos.experiencia17065" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Experiencia 17065</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="sin-experiencia">Sin experiencia</SelectItem>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "cert-personas") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Certificación de Personas (ISO/IEC 17024)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="certPersonas.areas" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Áreas de certificación de personas</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect options={AREAS_PERSONAS} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona áreas de personas..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                          
+                          <FormField control={form.control} name="certPersonas.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Rol</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="evaluador">Evaluador</SelectItem>
+                                    <SelectItem value="revisor">Revisor técnico</SelectItem>
+                                    <SelectItem value="coordinador">Coordinador</SelectItem>
+                                    <SelectItem value="jefe">Jefe de certificación</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="certPersonas.experiencia17024" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Experiencia 17024</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="sin-experiencia">Sin experiencia</SelectItem>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "auditoria") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Auditoría (Interno/Lead)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="auditoria.tipoAuditor" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Tipo de auditor</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect 
+                                      options={[
+                                        { value: "interno", label: "Auditor interno" },
+                                        { value: "lead", label: "Lead auditor" },
+                                        { value: "jefe", label: "Jefe de auditores" }
+                                      ]} 
+                                      selected={field.value || []} 
+                                      onChange={field.onChange} 
+                                      placeholder="Selecciona tipo de auditor..." 
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                          
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="auditoria.normasAuditadas" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Normas que auditas</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect options={NORMAS_SISTEMAS} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona normas auditadas..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <FormField control={form.control} name="auditoria.horasAuditoria" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Horas de auditoría</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona horas" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="0-50">0-50 horas</SelectItem>
+                                    <SelectItem value="51-100">51-100 horas</SelectItem>
+                                    <SelectItem value="101-200">101-200 horas</SelectItem>
+                                    <SelectItem value="201-500">201-500 horas</SelectItem>
+                                    <SelectItem value="500-mas">500+ horas</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <div className="flex items-center space-x-2">
+                            <FormField control={form.control} name="auditoria.registroIRCA" render={({
+                              field
+                            }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                                  <FormControl>
+                                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                  </FormControl>
+                                  <div className="space-y-1 leading-none">
+                                    <FormLabel>¿Tienes registro IRCA?</FormLabel>
+                                  </div>
+                                </FormItem>} />
+                                
+                            {form.watch("auditoria.registroIRCA") && (
+                              <FormField control={form.control} name="auditoria.idIRCA" render={({
+                                field
+                              }) => <FormItem>
+                                      <FormControl>
+                                        <Input {...field} placeholder="ID IRCA" />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>} />
+                            )}
+                          </div>
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "operaciones") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Operaciones / Jefaturas / Gerencias</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="operaciones.nivel" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Nivel de cargo</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona nivel" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {NIVELES_CARGO.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
+                                        {nivel.label}
+                                      </SelectItem>)}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="operaciones.areas" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Áreas funcionales</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect options={AREAS_FUNCIONALES} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona áreas funcionales..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <FormField control={form.control} name="operaciones.presupuesto" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Presupuesto anual gestionado</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rango" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="0-100k">0-100k USD</SelectItem>
+                                    <SelectItem value="100k-500k">100k-500k USD</SelectItem>
+                                    <SelectItem value="500k-1m">500k-1M USD</SelectItem>
+                                    <SelectItem value="1m-5m">1M-5M USD</SelectItem>
+                                    <SelectItem value="5m-mas">5M+ USD</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="operaciones.personasCargo" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Personas a cargo</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona cantidad" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {PERSONAS_CARGO.map(cantidad => <SelectItem key={cantidad.value} value={cantidad.value}>
+                                        {cantidad.label}
+                                      </SelectItem>)}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "comercial") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Comercial / KAM / Desarrollo de Negocio</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="comercial.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Rol comercial</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="vendedor">Vendedor</SelectItem>
+                                    <SelectItem value="kam">Key Account Manager</SelectItem>
+                                    <SelectItem value="desarrollo">Desarrollo de negocio</SelectItem>
+                                    <SelectItem value="gerente">Gerente comercial</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="comercial.lineasDominadas" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Líneas de servicio dominadas</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect 
+                                      options={[
+                                        { value: "laboratorio", label: "Laboratorio" },
+                                        { value: "inspeccion", label: "Inspección" },
+                                        { value: "certificacion", label: "Certificación" },
+                                        { value: "consultoria", label: "Consultoría" },
+                                        { value: "formacion", label: "Formación" }
+                                      ]} 
+                                      selected={field.value || []} 
+                                      onChange={field.onChange} 
+                                      placeholder="Selecciona líneas de servicio..." 
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <FormField control={form.control} name="comercial.ticketPromedio" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Ticket promedio gestionado</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rango" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="0-5k">0-5k USD</SelectItem>
+                                    <SelectItem value="5k-25k">5k-25k USD</SelectItem>
+                                    <SelectItem value="25k-100k">25k-100k USD</SelectItem>
+                                    <SelectItem value="100k-500k">100k-500k USD</SelectItem>
+                                    <SelectItem value="500k-mas">500k+ USD</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="comercial.sectoresAtendidos" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Sectores atendidos</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect options={SECTORES_INDUSTRIA} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona sectores atendidos..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "marketing") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Marketing</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="marketing.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Rol en marketing</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="especialista">Especialista en marketing</SelectItem>
+                                    <SelectItem value="digital">Marketing digital</SelectItem>
+                                    <SelectItem value="contenido">Marketing de contenido</SelectItem>
+                                    <SelectItem value="coordinador">Coordinador</SelectItem>
+                                    <SelectItem value="gerente">Gerente de marketing</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="marketing.experiencia" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Años de experiencia</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "rrhh") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">RRHH</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="rrhh.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Rol en RRHH</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="generalista">Generalista RRHH</SelectItem>
+                                    <SelectItem value="reclutamiento">Reclutamiento y selección</SelectItem>
+                                    <SelectItem value="formacion">Formación y desarrollo</SelectItem>
+                                    <SelectItem value="compensacion">Compensación y beneficios</SelectItem>
+                                    <SelectItem value="coordinador">Coordinador</SelectItem>
+                                    <SelectItem value="gerente">Gerente de RRHH</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="rrhh.experiencia" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Años de experiencia</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "finanzas") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Finanzas / Control</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="finanzas.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Rol en finanzas</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="analista">Analista financiero</SelectItem>
+                                    <SelectItem value="contador">Contador</SelectItem>
+                                    <SelectItem value="control">Control de gestión</SelectItem>
+                                    <SelectItem value="tesoreria">Tesorería</SelectItem>
+                                    <SelectItem value="coordinador">Coordinador</SelectItem>
+                                    <SelectItem value="gerente">Gerente financiero</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="finanzas.experiencia" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Años de experiencia</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "todos-transversal") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Todos - Transversal</h4>
+                        <div className="grid grid-cols-1 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="todosTransversal.comentarios" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Describe tu experiencia transversal</FormLabel>
+                                <FormControl>
+                                  <Textarea {...field} placeholder="Describe tu experiencia que abarca múltiples áreas o aspectos transversales..." />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>} />
+                        </div>
+                      </div>}
+
                     {/* Continue with other conditional subforms... */}
                     
                     {/* 5) Sectores/Industrias */}
