@@ -727,7 +727,7 @@ const RegistroTalento = () => {
                           <FormField control={form.control} name="linkedin" render={({
                           field
                         }) => <FormItem>
-                                <FormLabel>LinkedIn</FormLabel>
+                                <FormLabel>LinkedIn (Muy recomendado)</FormLabel>
                                 <FormControl>
                                   <Input type="url" placeholder="https://linkedin.com/in/tu-perfil" {...field} />
                                 </FormControl>
