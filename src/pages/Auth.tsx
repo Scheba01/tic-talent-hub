@@ -30,7 +30,7 @@ const Auth = () => {
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        navigate("/");
+        navigate("/registro-talento");
       }
     };
     checkUser();
@@ -150,7 +150,7 @@ const Auth = () => {
         }
       } else {
         toast.success(t('auth.welcome_back'));
-        navigate("/");
+        navigate("/registro-talento");
       }
     } catch (error: any) {
       toast.error(t('auth.login_error'));
@@ -183,7 +183,7 @@ const Auth = () => {
       } else {
         toast.success(t('auth.password_updated'));
         setIsResetMode(false);
-        navigate("/");
+        navigate("/registro-talento");
       }
     } catch (error: any) {
       toast.error(t('auth.password_update_error'));
