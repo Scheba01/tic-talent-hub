@@ -85,19 +85,23 @@ const getBrowserLanguage = (): Language => {
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window === 'undefined') return 'es';
-    const fromUrl = getLanguageFromPath(getCurrentRoute());
-    if (fromUrl) return fromUrl;
     const saved = localStorage.getItem('language') as Language | null;
     if (saved && ['es','en','pt'].includes(saved)) return saved;
+    const fromUrl = getLanguageFromPath(getCurrentRoute());
+    if (fromUrl) return fromUrl;
     return getBrowserLanguage();
   });
+  const [userSelectedLanguage, setUserSelectedLanguage] = useState<boolean>(false);
 
   // Listen for SPA navigation events (back/forward, hash changes, push/replaceState)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const notify = () => {
-      const urlLanguage = getLanguageFromPath(getCurrentRoute());
-      if (urlLanguage && urlLanguage !== language) setLanguage(urlLanguage);
+      // Only change language based on URL if user hasn't manually selected one
+      if (!userSelectedLanguage) {
+        const urlLanguage = getLanguageFromPath(getCurrentRoute());
+        if (urlLanguage && urlLanguage !== language) setLanguage(urlLanguage);
+      }
     };
     window.addEventListener('popstate', notify);
     window.addEventListener('hashchange', notify);
@@ -118,7 +122,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       window.removeEventListener('hashchange', notify);
       window.removeEventListener('locationchange', notify);
     };
-  }, [language]);
+  }, [language, userSelectedLanguage]);
 
   // Apply <html lang> and SEO/meta whenever language changes
   useEffect(() => {
@@ -144,6 +148,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
+    setUserSelectedLanguage(true);
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('language', lang);
     }
