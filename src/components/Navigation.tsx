@@ -28,12 +28,35 @@ const Navigation = () => {
     return location.pathname === path;
   };
 
+  const getLocalizedPath = (basePath: string) => {
+    switch (language) {
+      case 'en':
+        return {
+          '/quienes-somos': '/about-us',
+          '/servicios-para-empresas': '/enterprise-services', 
+          '/vacantes-y-perfiles': '/jobs-profiles',
+          '/programa-talentotic': '/tic-talent-program',
+          '/contacto': '/contact'
+        }[basePath] || basePath;
+      case 'pt':
+        return {
+          '/quienes-somos': '/sobre-nos',
+          '/servicios-para-empresas': '/servicos-empresas',
+          '/vacantes-y-perfiles': '/vagas-perfis',
+          '/programa-talentotic': '/programa-talento-tic',
+          '/contacto': '/contato'
+        }[basePath] || basePath;
+      default:
+        return basePath;
+    }
+  };
+
   const navItems = [
     { name: t('nav.home'), path: "/" },
-    { name: t('nav.about'), path: "/quienes-somos" },
-    { name: t('nav.services'), path: "/servicios-para-empresas" },
-    { name: t('nav.jobs'), path: "/vacantes-y-perfiles" },
-    { name: t('nav.talent_program'), path: "/programa-talentotic" },
+    { name: t('nav.about'), path: getLocalizedPath("/quienes-somos") },
+    { name: t('nav.services'), path: getLocalizedPath("/servicios-para-empresas") },
+    { name: t('nav.jobs'), path: getLocalizedPath("/vacantes-y-perfiles") },
+    { name: t('nav.talent_program'), path: getLocalizedPath("/programa-talentotic") },
   ];
 
   return (
@@ -63,7 +86,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button asChild className="btn-hero">
-              <Link to="/contacto">{t('nav.contact')}</Link>
+              <Link to={getLocalizedPath("/contacto")}>{t('nav.contact')}</Link>
             </Button>
             
             {/* Auth Section */}
@@ -160,7 +183,7 @@ const Navigation = () => {
               ))}
               <div className="px-3 py-2">
                 <Button asChild className="btn-hero w-full">
-                  <Link to="/contacto" onClick={() => setIsOpen(false)}>
+                  <Link to={getLocalizedPath("/contacto")} onClick={() => setIsOpen(false)}>
                     {t('nav.contact')}
                   </Link>
                 </Button>
