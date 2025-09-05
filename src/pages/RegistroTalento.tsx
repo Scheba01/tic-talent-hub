@@ -384,23 +384,8 @@ const RegistroTalento = () => {
                                       <FormMessage />
                                      </FormItem>} />
                               )}
-
-                            {/* Campo de comentarios */}
-                            <FormField control={form.control} name={`familiasRol.${index}.comentarios`} render={({
-                              field
-                            }) => <FormItem>
-                                    <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
-                                    <FormControl>
-                                      <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en esta área..." />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>} />
                           </div>
                         ))}
-                        <Button type="button" variant="outline" onClick={addAreaExperiencia}>
-                          <Plus className="h-4 w-4 mr-2" />
-                          Añadir área de experiencia
-                        </Button>
                        </div>
                     </div>
 
@@ -502,6 +487,13 @@ const RegistroTalento = () => {
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>} />
+                          </div>
+                          
+                          <div className="md:col-span-2">
+                            <Button type="button" variant="outline" onClick={addAreaExperiencia}>
+                              <Plus className="h-4 w-4 mr-2" />
+                              Añadir área de experiencia
+                            </Button>
                           </div>
                         </div>
                       </div>}
