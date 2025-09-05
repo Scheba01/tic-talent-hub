@@ -208,6 +208,7 @@ export const NIVELES_IDIOMA = [
 export const NIVELES_COMPETENCIA = [
   { value: "conocimiento", label: "Conocimiento" },
   { value: "operativo", label: "Operativo" },
+  { value: "implementador", label: "Implementador" },
   { value: "auditor-interno", label: "Auditor Interno" },
   { value: "auditor-lider", label: "Auditor Líder" },
   { value: "experto-tecnico", label: "Experto técnico" },

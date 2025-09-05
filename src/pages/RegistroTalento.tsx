@@ -1372,7 +1372,15 @@ const RegistroTalento = () => {
                         </div>
                       </div>}
 
-                    {/* Continue with other conditional subforms... */}
+                     {/* Continue with other conditional subforms... */}
+                     
+                     {/* Add Experience Area Button */}
+                     <div className="flex justify-center">
+                       <Button type="button" variant="outline" onClick={addAreaExperiencia}>
+                         <Plus className="h-4 w-4 mr-2" />
+                         Añadir área de experiencia
+                       </Button>
+                     </div>
                     
                     {/* 5) Sectores/Industrias */}
                     <div>
