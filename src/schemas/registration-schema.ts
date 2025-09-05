@@ -73,7 +73,7 @@ export const registrationSchema = z.object({
     rol: z.string(),
     tecnicasEquipos: z.array(z.string()),
     experiencia17025: z.string(),
-    experienciaAuditorias: z.boolean()
+    comentarios: z.string().optional()
   }).optional(),
 
   inspeccion: z.object({

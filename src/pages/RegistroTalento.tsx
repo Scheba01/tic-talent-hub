@@ -382,26 +382,15 @@ const RegistroTalento = () => {
                                         <Input {...field} placeholder="Ingresa el área de experiencia" />
                                       </FormControl>
                                       <FormMessage />
-                                    </FormItem>} />
-                            )}
-
-                            {/* Campo de comentarios */}
-                            <FormField control={form.control} name={`familiasRol.${index}.comentarios`} render={({
-                              field
-                            }) => <FormItem>
-                                    <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
-                                    <FormControl>
-                                      <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en esta área..." />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>} />
+                                     </FormItem>} />
+                             )}
                           </div>
                         ))}
                         <Button type="button" variant="outline" onClick={addAreaExperiencia}>
                           <Plus className="h-4 w-4 mr-2" />
                           Añadir área de experiencia
                         </Button>
-                      </div>
+                       </div>
                     </div>
 
                     {/* Subformularios condicionales */}
@@ -466,15 +455,14 @@ const RegistroTalento = () => {
                               </FormItem>} />
 
                           <div className="md:col-span-2">
-                            <FormField control={form.control} name="laboratorio.experienciaAuditorias" render={({
-                          field
-                        }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                            <FormField control={form.control} name="laboratorio.comentarios" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
                                   <FormControl>
-                                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                    <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en laboratorio..." />
                                   </FormControl>
-                                  <div className="space-y-1 leading-none">
-                                    <FormLabel>Experiencia en auditorías de acreditación</FormLabel>
-                                  </div>
+                                  <FormMessage />
                                 </FormItem>} />
                           </div>
                         </div>

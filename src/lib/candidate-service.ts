@@ -199,7 +199,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
         rol: data.laboratorio.rol,
         tecnicas_equipos: data.laboratorio.tecnicasEquipos || [],
         experiencia_17025: data.laboratorio.experiencia17025,
-        experiencia_auditorias: data.laboratorio.experienciaAuditorias || false
+        comentarios: data.laboratorio.comentarios
       }))
     )
   }
