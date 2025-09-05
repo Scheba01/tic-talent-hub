@@ -40,7 +40,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log(`Sending confirmation email to: ${email} for ${name}`);
 
     const emailResponse = await resend.emails.send({
-      from: "Contact@ticselect.com",
+      from: "TIC Select <Contact@ticselect.com>",
       to: [email],
       subject: "¡Registro exitoso en TIC Select!",
       html: `
