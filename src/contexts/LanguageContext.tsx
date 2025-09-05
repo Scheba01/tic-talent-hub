@@ -498,7 +498,15 @@ const translations: Record<Language, Record<string,string>> = {
     'why.ready.desc': 'Choose your preferred way to contact us',
     'why.contact_form': 'Contact Form',
     'why.whatsapp': 'WhatsApp',
-    'why.direct_email': 'Direct Email'
+    'why.direct_email': 'Direct Email',
+    'services.title': 'Our Services',
+    'services.executive_search.title': 'Executive Search',
+    'services.executive_search.desc': 'We identify and attract the leaders your company needs to grow.',
+    'services.hr_consulting.title': 'HR Consulting',
+    'services.hr_consulting.desc': 'We optimize your human resources processes with personalized strategies.',
+    'services.coaching.title': 'Coaching & Development',
+    'services.coaching.desc': 'We develop the potential of your teams and leaders to maximize performance.',
+    'services.see_more': 'See More'
   },
   pt: {
     'nav.home': 'Início',
