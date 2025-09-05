@@ -21,6 +21,7 @@ import { submitCandidate } from "@/lib/candidate-service";
 import { useAuth } from "@/hooks/useAuth";
 
 const RegistroTalento = () => {
+  console.log("RegistroTalento component loaded"); // Debug log
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
   const [selectedSubarea, setSelectedSubarea] = useState<string>("");
   const { user, profile } = useAuth();
