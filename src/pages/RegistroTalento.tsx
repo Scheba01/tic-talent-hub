@@ -1278,6 +1278,97 @@ const RegistroTalento = () => {
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>} />
+                         </div>
+                      </div>}
+
+                    {form.watch("familiasRol")?.some(f => f.area === "consultoria") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Consultoría / Asesoría</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="consultoria.rol" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Tipo de consultoría</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona tipo" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="estrategica">Consultoría estratégica</SelectItem>
+                                    <SelectItem value="implementacion">Implementación de sistemas</SelectItem>
+                                    <SelectItem value="auditoria-consultoria">Auditoría y consultoría</SelectItem>
+                                    <SelectItem value="mejora-procesos">Mejora de procesos</SelectItem>
+                                    <SelectItem value="formacion">Formación y capacitación</SelectItem>
+                                    <SelectItem value="compliance">Compliance y regulatorio</SelectItem>
+                                    <SelectItem value="especializda">Consultoría especializada</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="consultoria.experiencia" render={({
+                            field
+                          }) => <FormItem>
+                                <FormLabel>Años de experiencia</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="sin-experiencia">Sin experiencia</SelectItem>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="consultoria.areas" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Áreas de especialización</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect 
+                                      options={[
+                                        { value: "iso-9001", label: "ISO 9001" },
+                                        { value: "iso-14001", label: "ISO 14001" },
+                                        { value: "iso-45001", label: "ISO 45001" },
+                                        { value: "iso-27001", label: "ISO 27001" },
+                                        { value: "iso-22000", label: "ISO 22000" },
+                                        { value: "iso-17025", label: "ISO/IEC 17025" },
+                                        { value: "iso-17020", label: "ISO/IEC 17020" },
+                                        { value: "iso-17021", label: "ISO/IEC 17021" },
+                                        { value: "lean-six-sigma", label: "Lean Six Sigma" },
+                                        { value: "transformacion-digital", label: "Transformación digital" },
+                                        { value: "gestion-riesgos", label: "Gestión de riesgos" },
+                                        { value: "otros", label: "Otros" }
+                                      ]} 
+                                      selected={field.value || []} 
+                                      onChange={field.onChange} 
+                                      placeholder="Selecciona áreas..." 
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="consultoria.comentarios" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Describe tu experiencia en consultoría</FormLabel>
+                                  <FormControl>
+                                    <Textarea {...field} placeholder="Describe tu experiencia en consultoría, proyectos destacados, metodologías utilizadas..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
                         </div>
                       </div>}
 

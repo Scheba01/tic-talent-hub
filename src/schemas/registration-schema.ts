@@ -156,6 +156,13 @@ export const registrationSchema = z.object({
 
   todosTransversal: z.object({
     comentarios: z.string().optional()
+  }).optional(),
+
+  consultoria: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    areas: z.array(z.string()),
+    comentarios: z.string().optional()
   }).optional()
 })
 
