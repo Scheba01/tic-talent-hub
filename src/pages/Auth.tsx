@@ -17,6 +17,7 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nombreCompleto, setNombreCompleto] = useState("");
+  const [showPasswordReset, setShowPasswordReset] = useState(false);
   const navigate = useNavigate();
   const { t } = useLanguage();
 
@@ -102,6 +103,33 @@ const Auth = () => {
     }
   };
 
+  const handlePasswordReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast.error(t('auth.email_required'));
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth`,
+      });
+
+      if (error) {
+        toast.error(error.message);
+      } else {
+        toast.success(t('auth.password_reset_sent'));
+        setShowPasswordReset(false);
+      }
+    } catch (error: any) {
+      toast.error(t('auth.password_reset_error'));
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary/10 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -167,6 +195,15 @@ const Auth = () => {
                         required
                       />
                     </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setShowPasswordReset(true)}
+                      className="text-sm text-primary hover:text-primary/80 transition-colors"
+                    >
+                      {t('auth.forgot_password')}
+                    </button>
                   </div>
                   <Button type="submit" className="w-full" disabled={loading}>
                     {loading ? t('auth.login_loading') : t('auth.login_button')}
@@ -244,6 +281,43 @@ const Auth = () => {
                 </form>
               </TabsContent>
             </Tabs>
+
+            {/* Password Reset Modal */}
+            {showPasswordReset && (
+              <div className="mt-6 p-4 border rounded-lg bg-muted/50">
+                <h3 className="text-lg font-semibold mb-4">{t('auth.reset_password_title')}</h3>
+                <form onSubmit={handlePasswordReset} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="reset-email">{t('auth.email')}</Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                      <Input
+                        id="reset-email"
+                        type="email"
+                        placeholder={t('auth.email_placeholder')}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="pl-10"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button type="submit" disabled={loading} className="flex-1">
+                      {loading ? t('auth.sending') : t('auth.send_reset_link')}
+                    </Button>
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      onClick={() => setShowPasswordReset(false)}
+                      className="flex-1"
+                    >
+                      {t('auth.cancel')}
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            )}
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary transition-colors">

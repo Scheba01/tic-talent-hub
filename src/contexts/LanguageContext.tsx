@@ -319,6 +319,14 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.email_not_confirmed': 'Debes confirmar tu email antes de iniciar sesión',
     'auth.welcome_back': '¡Bienvenido de vuelta!',
     'auth.login_error': 'Error al iniciar sesión. Inténtalo de nuevo.',
+    'auth.forgot_password': '¿Olvidaste tu contraseña?',
+    'auth.reset_password_title': 'Restablecer Contraseña',
+    'auth.email_required': 'El email es requerido',
+    'auth.password_reset_sent': 'Enlace de restablecimiento enviado a tu email',
+    'auth.password_reset_error': 'Error al enviar email de restablecimiento',
+    'auth.send_reset_link': 'Enviar Enlace',
+    'auth.sending': 'Enviando...',
+    'auth.cancel': 'Cancelar',
     // Profiles Covered Keys
     'profiles_covered.title': 'Perfiles que Cubrimos',
     'profiles_covered.ict_specialized': 'Perfiles Especializados del Sector TIC',
@@ -769,7 +777,15 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.invalid_credentials': 'Invalid email or password',
     'auth.email_not_confirmed': 'Please confirm your email before signing in',
     'auth.welcome_back': 'Welcome back!',
-    'auth.login_error': 'Error signing in. Please try again.'
+    'auth.login_error': 'Error signing in. Please try again.',
+    'auth.forgot_password': 'Forgot password?',
+    'auth.reset_password_title': 'Reset Password',
+    'auth.email_required': 'Email is required',
+    'auth.password_reset_sent': 'Password reset link sent to your email',
+    'auth.password_reset_error': 'Error sending password reset email',
+    'auth.send_reset_link': 'Send Reset Link',
+    'auth.sending': 'Sending...',
+    'auth.cancel': 'Cancel'
   },
   pt: {
     'nav.home': 'Início',
@@ -1061,6 +1077,14 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.invalid_credentials': 'Email ou senha inválidos',
     'auth.email_not_confirmed': 'Confirme seu email antes de entrar',
     'auth.welcome_back': 'Bem-vindo de volta!',
-    'auth.login_error': 'Erro ao entrar. Tente novamente.'
+    'auth.login_error': 'Erro ao entrar. Tente novamente.',
+    'auth.forgot_password': 'Esqueceu a senha?',
+    'auth.reset_password_title': 'Redefinir Senha',
+    'auth.email_required': 'Email é obrigatório',
+    'auth.password_reset_sent': 'Link de redefinição enviado para seu email',
+    'auth.password_reset_error': 'Erro ao enviar email de redefinição',
+    'auth.send_reset_link': 'Enviar Link',
+    'auth.sending': 'Enviando...',
+    'auth.cancel': 'Cancelar'
   }
 };
