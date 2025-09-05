@@ -437,7 +437,8 @@ const translations: Record<Language, Record<string,string>> = {
     'programaTalentoTIC.cta.contact.contact': 'Contacto',
     'programaTalentoTIC.cta.contact.whatsapp': 'WhatsApp',
     'programaTalentoTIC.cta.contact.email': 'Email',
-    'programaTalentoTIC.cta.contact.developedBy': 'Desarrollado por'
+    'programaTalentoTIC.cta.contact.developedBy': 'Desarrollado por',
+    'programaTalentoTIC.cta.contact.form': 'Formulario'
   },
   en: {
     'nav.home': 'Home',
