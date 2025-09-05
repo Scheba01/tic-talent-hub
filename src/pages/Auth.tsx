@@ -82,9 +82,9 @@ const Auth = () => {
     
     setLoading(true);
     try {
-      const redirectUrl = `${window.location.origin}/registro-talento`;
+      const redirectUrl = `${window.location.origin}/auth`;
       
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -96,16 +96,32 @@ const Auth = () => {
       });
 
       if (error) {
-        if (error.message.includes("already been registered")) {
-          toast.error(t('auth.email_exists'));
+        if (error.message.includes("already been registered") || 
+            error.message.includes("User already registered") ||
+            error.message.includes("already exists")) {
+          toast.error(t('auth.email_already_registered'));
+        } else if (error.message.includes("Password should be")) {
+          toast.error(t('auth.password_requirements'));
         } else {
           toast.error(error.message);
         }
       } else {
-        toast.success(t('auth.signup_success'));
-        // Switch to login tab
-        const loginTab = document.querySelector('[data-value="login"]') as HTMLElement;
-        loginTab?.click();
+        // Check if user was created or already exists
+        if (data.user && data.user.email_confirmed_at) {
+          // User already exists and is confirmed
+          toast.error(t('auth.email_already_registered'));
+        } else if (data.user && !data.user.email_confirmed_at) {
+          // New user created, needs confirmation
+          toast.success(t('auth.signup_success'));
+          // Switch to login tab
+          const loginTab = document.querySelector('[data-value="login"]') as HTMLElement;
+          loginTab?.click();
+        } else {
+          // Fallback success message
+          toast.success(t('auth.signup_success'));
+          const loginTab = document.querySelector('[data-value="login"]') as HTMLElement;
+          loginTab?.click();
+        }
       }
     } catch (error: any) {
       toast.error(t('auth.create_account_error'));
