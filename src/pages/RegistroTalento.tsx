@@ -612,55 +612,85 @@ const RegistroTalento = () => {
                             </FormItem>} />
 
                       </div>
+
+                      {/* Campo condicional para "Otros" en área de estudio */}
+                      {form.watch("areaEstudio") === "otros" && (
+                        <FormField control={form.control} name="areaEstudioOtro" render={({
+                          field
+                        }) => <FormItem>
+                                <FormLabel>Especifica otra área de estudio</FormLabel>
+                                <FormControl>
+                                  <Input {...field} placeholder="Ingresa el área de estudio" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>} />
+                      )}
                     </div>
 
                     {/* 8) Idiomas */}
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">8. Idiomas</h3>
                       <div className="space-y-4">
-                        {form.watch("idiomas")?.map((_, index) => <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                            <FormField control={form.control} name={`idiomas.${index}.idioma`} render={({
-                          field
-                        }) => <FormItem>
-                                  <FormLabel>Idioma</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger>
-                                        <SelectValue placeholder="Selecciona idioma" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      {IDIOMAS.map(idioma => <SelectItem key={idioma.value} value={idioma.value}>
-                                          {idioma.label}
-                                        </SelectItem>)}
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>} />
+                        {form.watch("idiomas")?.map((_, index) => (
+                          <div key={index} className="space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                              <FormField control={form.control} name={`idiomas.${index}.idioma`} render={({
+                                field
+                              }) => <FormItem>
+                                        <FormLabel>Idioma</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                          <FormControl>
+                                            <SelectTrigger>
+                                              <SelectValue placeholder="Selecciona idioma" />
+                                            </SelectTrigger>
+                                          </FormControl>
+                                          <SelectContent>
+                                            {IDIOMAS.map(idioma => <SelectItem key={idioma.value} value={idioma.value}>
+                                                {idioma.label}
+                                              </SelectItem>)}
+                                          </SelectContent>
+                                        </Select>
+                                        <FormMessage />
+                                      </FormItem>} />
 
-                            <FormField control={form.control} name={`idiomas.${index}.nivel`} render={({
-                          field
-                        }) => <FormItem>
-                                  <FormLabel>Nivel</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger>
-                                        <SelectValue placeholder="Selecciona nivel" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      {NIVELES_IDIOMA.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
-                                          {nivel.label}
-                                        </SelectItem>)}
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>} />
+                              <FormField control={form.control} name={`idiomas.${index}.nivel`} render={({
+                                field
+                              }) => <FormItem>
+                                        <FormLabel>Nivel</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                          <FormControl>
+                                            <SelectTrigger>
+                                              <SelectValue placeholder="Selecciona nivel" />
+                                            </SelectTrigger>
+                                          </FormControl>
+                                          <SelectContent>
+                                            {NIVELES_IDIOMA.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
+                                                {nivel.label}
+                                              </SelectItem>)}
+                                          </SelectContent>
+                                        </Select>
+                                        <FormMessage />
+                                      </FormItem>} />
 
-                            <Button type="button" variant="outline" size="sm" onClick={() => removeIdioma(index)} disabled={form.watch("idiomas")?.length <= 1}>
-                              <X className="h-4 w-4" />
-                            </Button>
-                          </div>)}
+                              <Button type="button" variant="outline" size="sm" onClick={() => removeIdioma(index)} disabled={form.watch("idiomas")?.length <= 1}>
+                                <X className="h-4 w-4" />
+                              </Button>
+                            </div>
+                            
+                            {/* Campo condicional para "Otro" idioma */}
+                            {form.watch(`idiomas.${index}.idioma`) === "otro" && (
+                              <FormField control={form.control} name={`idiomas.${index}.idiomaOtro`} render={({
+                                field
+                              }) => <FormItem>
+                                      <FormLabel>Especifica otro idioma</FormLabel>
+                                      <FormControl>
+                                        <Input {...field} placeholder="Ingresa el idioma" />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>} />
+                            )}
+                          </div>
+                        ))}
                         <Button type="button" variant="outline" onClick={addIdioma}>
                           <Plus className="h-4 w-4 mr-2" />
                           Añadir idioma
