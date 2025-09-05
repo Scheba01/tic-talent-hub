@@ -86,16 +86,6 @@ const RegistroTalento = () => {
       form.setValue("idiomas", currentIdiomas.filter((_, i) => i !== index));
     }
   };
-  const addCompetencia = () => {
-    const currentCompetencias = form.getValues("competenciasNormas");
-    form.setValue("competenciasNormas", [...currentCompetencias, ""]);
-  };
-  const removeCompetencia = (index: number) => {
-    const currentCompetencias = form.getValues("competenciasNormas");
-    if (currentCompetencias.length > 1) {
-      form.setValue("competenciasNormas", currentCompetencias.filter((_, i) => i !== index));
-    }
-  };
   return <div className="min-h-screen bg-background">
       <Navigation />
       
@@ -550,47 +540,23 @@ const RegistroTalento = () => {
                     {/* 6) Conocimiento y Competencia en Normas & Certificaciones */}
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">6. Conocimiento y Competencia en Normas & Certificaciones</h3>
-                      <div className="space-y-4">
-                        {form.watch("competenciasNormas")?.map((_, index) => (
-                          <div key={index} className="space-y-2">
-                            <FormField 
-                              control={form.control} 
-                              name={`competenciasNormas.${index}`} 
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>
-                                    {index === 0 ? "Conocimiento y Competencia en Normas & Certificaciones" : "Otro"}
-                                  </FormLabel>
-                                  <FormControl>
-                                    <Textarea
-                                      placeholder="Escribe tus normas y niveles. Ej.:&#10;ISO 9712 – UT – Nivel II&#10;ASME Sección VIII Div.1 – Inspector&#10;ISO 9001 – Lead Auditor (IRCA)&#10;ISO 14065 – Verificador GEI – ISO 14064-1"
-                                      className="min-h-[120px] resize-none"
-                                      {...field}
-                                    />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                            {index > 0 && (
-                              <Button 
-                                type="button" 
-                                variant="outline" 
-                                size="sm" 
-                                onClick={() => removeCompetencia(index)}
-                                className="w-fit"
-                              >
-                                <X className="h-4 w-4 mr-2" />
-                                Eliminar
-                              </Button>
-                            )}
-                          </div>
-                        ))}
-                        <Button type="button" variant="outline" onClick={addCompetencia}>
-                          <Plus className="h-4 w-4 mr-2" />
-                          Agregar otro
-                        </Button>
-                      </div>
+                      <FormField 
+                        control={form.control} 
+                        name="competenciasNormas.0" 
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Conocimiento y Competencia en Normas & Certificaciones</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Escribe tus normas y niveles. Ej.:&#10;ISO 9712 – UT – Nivel II&#10;ASME Sección VIII Div.1 – Inspector&#10;ISO 9001 – Lead Auditor (IRCA)&#10;ISO 14065 – Verificador GEI – ISO 14064-1"
+                                className="min-h-[120px] resize-none"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
 
                     {/* 7) Formación académica */}
