@@ -428,8 +428,16 @@ const translations: Record<Language, Record<string,string>> = {
     'programaTalentoTIC.vision.description': 'Crear un ecosistema sostenible donde el talento joven pueda desarrollarse profesionalmente mientras contribuye al crecimiento de la industria TIC, estableciendo las bases para una fuerza laboral más preparada y competitiva.',
     'programaTalentoTIC.cta.title': '¿Listo para Ser Parte del Cambio?',
     'programaTalentoTIC.cta.subtitle': 'Únete a TIC Talento y contribuye al futuro de la industria',
-    'programaTalentoTIC.cta.companies': 'Para Empresas',
-    'programaTalentoTIC.cta.students': 'Para Estudiantes'
+    'programaTalentoTIC.cta.description': 'Conectamos empresas con jóvenes talentos en tecnología',
+    'programaTalentoTIC.cta.companies.title': 'Para Empresas',
+    'programaTalentoTIC.cta.companies.description': 'Accede a talentos frescos y capacitados en las últimas tecnologías',
+    'programaTalentoTIC.cta.students.title': 'Para Estudiantes',
+    'programaTalentoTIC.cta.students.description': 'Desarrolla tus habilidades y conecta con oportunidades reales',
+    'programaTalentoTIC.cta.contact.signupHere': 'Regístrate aquí',
+    'programaTalentoTIC.cta.contact.contact': 'Contacto',
+    'programaTalentoTIC.cta.contact.whatsapp': 'WhatsApp',
+    'programaTalentoTIC.cta.contact.email': 'Email',
+    'programaTalentoTIC.cta.contact.developedBy': 'Desarrollado por'
   },
   en: {
     'nav.home': 'Home',
