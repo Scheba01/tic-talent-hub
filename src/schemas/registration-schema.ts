@@ -33,6 +33,7 @@ export const registrationSchema = z.object({
 
   // Formación académica
   nivelMaximo: z.string().min(1, "Nivel máximo es requerido"),
+  nivelMaximoOtro: z.string().optional(),
   areaEstudio: z.string().min(1, "Área de estudio es requerida"),
   areaEstudioOtro: z.string().optional(),
   certificaciones: z.string().optional(),
@@ -70,7 +71,9 @@ export const registrationSchema = z.object({
   // Subformularios condicionales
   laboratorio: z.object({
     tiposLaboratorio: z.array(z.string()),
+    tiposLaboratorioOtro: z.string().optional(),
     rol: z.string(),
+    rolOtro: z.string().optional(),
     tecnicasEquipos: z.array(z.string()),
     experiencia17025: z.string(),
     comentarios: z.string().optional()
@@ -79,9 +82,12 @@ export const registrationSchema = z.object({
   inspeccion: z.object({
     tipoOrganismo: z.string(),
     areasInspeccion: z.array(z.string()),
+    areasInspeccionOtro: z.string().optional(),
     rol: z.string(),
+    rolOtro: z.string().optional(),
     certificaciones: z.array(z.string()),
-    experiencia17020: z.string()
+    experiencia17020: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   certSistemas: z.object({

@@ -406,7 +406,20 @@ const RegistroTalento = () => {
                                     <MultiSelect options={TIPOS_LABORATORIO} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona tipos de laboratorio..." />
                                   </FormControl>
                                   <FormMessage />
-                                </FormItem>} />
+                                 </FormItem>} />
+                                 
+                            {/* Campo condicional para "Otros" tipos de laboratorio */}
+                            {form.watch("laboratorio.tiposLaboratorio")?.includes("otros") && (
+                              <FormField control={form.control} name="laboratorio.tiposLaboratorioOtro" render={({
+                                field
+                              }) => <FormItem>
+                                      <FormLabel>Especifica otros tipos de laboratorio</FormLabel>
+                                      <FormControl>
+                                        <Input {...field} placeholder="Describe otros tipos de laboratorio" />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>} />
+                            )}
                           </div>
                           
                           <FormField control={form.control} name="laboratorio.rol" render={({
@@ -425,13 +438,27 @@ const RegistroTalento = () => {
                                     <SelectItem value="coordinador">Coordinador</SelectItem>
                                     <SelectItem value="jefe">Jefe de laboratorio</SelectItem>
                                     <SelectItem value="responsable">Responsable técnico</SelectItem>
-                                    <SelectItem value="metrologo">Metrólogo</SelectItem>
-                                    <SelectItem value="tecnico">Técnico de calibración</SelectItem>
-                                    <SelectItem value="evaluador">Evaluador interno</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>} />
+                                     <SelectItem value="metrologo">Metrólogo</SelectItem>
+                                     <SelectItem value="tecnico">Técnico de calibración</SelectItem>
+                                     <SelectItem value="evaluador">Evaluador interno</SelectItem>
+                                     <SelectItem value="otro">Otro</SelectItem>
+                                   </SelectContent>
+                                 </Select>
+                                 <FormMessage />
+                               </FormItem>} />
+
+                          {/* Campo condicional para "Otro" rol laboratorio */}
+                          {form.watch("laboratorio.rol") === "otro" && (
+                            <FormField control={form.control} name="laboratorio.rolOtro" render={({
+                              field
+                            }) => <FormItem>
+                                    <FormLabel>Especifica otro rol</FormLabel>
+                                    <FormControl>
+                                      <Input {...field} placeholder="Describe tu rol" />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>} />
+                          )}
 
                           <FormField control={form.control} name="laboratorio.experiencia17025" render={({
                         field
@@ -506,12 +533,26 @@ const RegistroTalento = () => {
                                     <SelectItem value="inspector">Inspector</SelectItem>
                                     <SelectItem value="inspector-senior">Inspector Senior</SelectItem>
                                     <SelectItem value="supervisor">Supervisor</SelectItem>
-                                    <SelectItem value="jefe">Jefe de inspección</SelectItem>
-                                    <SelectItem value="coordinador">Coordinador técnico</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>} />
+                                     <SelectItem value="jefe">Jefe de inspección</SelectItem>
+                                     <SelectItem value="coordinador">Coordinador técnico</SelectItem>
+                                     <SelectItem value="otro">Otro</SelectItem>
+                                   </SelectContent>
+                                 </Select>
+                                 <FormMessage />
+                               </FormItem>} />
+
+                          {/* Campo condicional para "Otro" rol inspección */}
+                          {form.watch("inspeccion.rol") === "otro" && (
+                            <FormField control={form.control} name="inspeccion.rolOtro" render={({
+                              field
+                            }) => <FormItem>
+                                    <FormLabel>Especifica otro rol</FormLabel>
+                                    <FormControl>
+                                      <Input {...field} placeholder="Describe tu rol" />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>} />
+                          )}
 
                           <FormField control={form.control} name="inspeccion.experiencia17020" render={({
                         field
@@ -541,6 +582,31 @@ const RegistroTalento = () => {
                                   <FormLabel>Áreas de inspección</FormLabel>
                                   <FormControl>
                                     <MultiSelect options={AREAS_INSPECCION} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona áreas de inspección..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                 </FormItem>} />
+                                 
+                            {/* Campo condicional para "Otros" áreas de inspección */}
+                            {form.watch("inspeccion.areasInspeccion")?.includes("otros") && (
+                              <FormField control={form.control} name="inspeccion.areasInspeccionOtro" render={({
+                                field
+                              }) => <FormItem>
+                                      <FormLabel>Especifica otras áreas de inspección</FormLabel>
+                                      <FormControl>
+                                        <Input {...field} placeholder="Describe otras áreas de inspección" />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>} />
+                             )}
+                          </div>
+                          
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="inspeccion.comentarios" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                  <FormControl>
+                                    <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en inspección..." />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>} />
@@ -619,13 +685,27 @@ const RegistroTalento = () => {
                                   <SelectItem value="tecnico">Técnico</SelectItem>
                                   <SelectItem value="tecnologo">Tecnólogo</SelectItem>
                                   <SelectItem value="universitario">Universitario</SelectItem>
-                                  <SelectItem value="postgrado">Postgrado</SelectItem>
-                                  <SelectItem value="mba-doctorado">MBA/Doctorado</SelectItem>
-                                  <SelectItem value="en-curso">En curso</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>} />
+                                   <SelectItem value="postgrado">Postgrado</SelectItem>
+                                   <SelectItem value="mba-doctorado">MBA/Doctorado</SelectItem>
+                                   <SelectItem value="en-curso">En curso</SelectItem>
+                                   <SelectItem value="otro">Otro</SelectItem>
+                                 </SelectContent>
+                               </Select>
+                               <FormMessage />
+                             </FormItem>} />
+                             
+                        {/* Campo condicional para "Otro" nivel máximo */}
+                        {form.watch("nivelMaximo") === "otro" && (
+                          <FormField control={form.control} name="nivelMaximoOtro" render={({
+                            field
+                          }) => <FormItem>
+                                  <FormLabel>Especifica otro nivel académico</FormLabel>
+                                  <FormControl>
+                                    <Input {...field} placeholder="Describe tu nivel académico" />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                        )}
 
                         <FormField control={form.control} name="areaEstudio" render={({
                         field
