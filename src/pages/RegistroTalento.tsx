@@ -765,10 +765,22 @@ const RegistroTalento = () => {
                                       </FormControl>
                                       <FormMessage />
                                     </FormItem>} />
-                            )}
-                          </div>
-                        </div>
-                      </div>}
+                             )}
+                           </div>
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="certSistemas.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en certificación de sistemas..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "cert-productos") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Certificación de Productos (ISO/IEC 17065)</h4>
@@ -824,9 +836,21 @@ const RegistroTalento = () => {
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
-                              </FormItem>} />
-                        </div>
-                      </div>}
+                               </FormItem>} />
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="certProductos.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en certificación de productos..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "cert-personas") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Certificación de Personas (ISO/IEC 17024)</h4>
@@ -882,9 +906,21 @@ const RegistroTalento = () => {
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
-                              </FormItem>} />
-                        </div>
-                      </div>}
+                               </FormItem>} />
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="certPersonas.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en certificación de personas..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "auditoria") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Auditoría (Interno/Lead)</h4>
@@ -964,10 +1000,22 @@ const RegistroTalento = () => {
                                       </FormControl>
                                       <FormMessage />
                                     </FormItem>} />
-                            )}
-                          </div>
-                        </div>
-                      </div>}
+                             )}
+                           </div>
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="auditoria.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en auditoría..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "operaciones") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Operaciones / Jefaturas / Gerencias</h4>
@@ -1041,9 +1089,21 @@ const RegistroTalento = () => {
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
-                              </FormItem>} />
-                        </div>
-                      </div>}
+                               </FormItem>} />
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="operaciones.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en operaciones..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "comercial") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Comercial / KAM / Desarrollo de Negocio</h4>
@@ -1121,10 +1181,22 @@ const RegistroTalento = () => {
                                     <MultiSelect options={SECTORES_INDUSTRIA} selected={field.value || []} onChange={field.onChange} placeholder="Selecciona sectores atendidos..." />
                                   </FormControl>
                                   <FormMessage />
-                                </FormItem>} />
-                          </div>
-                        </div>
-                      </div>}
+                                 </FormItem>} />
+                           </div>
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="comercial.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en el área comercial..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "marketing") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Marketing</h4>
@@ -1168,9 +1240,21 @@ const RegistroTalento = () => {
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
-                              </FormItem>} />
-                        </div>
-                      </div>}
+                               </FormItem>} />
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="marketing.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en marketing..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "rrhh") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">RRHH</h4>
@@ -1215,9 +1299,21 @@ const RegistroTalento = () => {
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
-                              </FormItem>} />
-                        </div>
-                      </div>}
+                               </FormItem>} />
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="rrhh.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en RRHH..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
+                         </div>
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "finanzas") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Finanzas / Control</h4>
@@ -1277,9 +1373,21 @@ const RegistroTalento = () => {
                                   <Textarea {...field} placeholder="Describe tu experiencia que abarca múltiples áreas o aspectos transversales..." />
                                 </FormControl>
                                 <FormMessage />
-                              </FormItem>} />
+                               </FormItem>} />
+                           
+                           <div className="md:col-span-2">
+                             <FormField control={form.control} name="finanzas.comentarios" render={({
+                               field
+                             }) => <FormItem>
+                                   <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                   <FormControl>
+                                     <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en finanzas..." />
+                                   </FormControl>
+                                   <FormMessage />
+                                 </FormItem>} />
+                           </div>
                          </div>
-                      </div>}
+                       </div>}
 
                     {form.watch("familiasRol")?.some(f => f.area === "consultoria") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Consultoría / Asesoría</h4>

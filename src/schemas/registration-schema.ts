@@ -102,19 +102,22 @@ export const registrationSchema = z.object({
     normas: z.array(z.string()),
     nivelCompetencia: z.string(),
     registroIRCA: z.boolean(),
-    idIRCA: z.string().optional()
+    idIRCA: z.string().optional(),
+    comentarios: z.string().optional()
   }).optional(),
 
   certProductos: z.object({
     sectores: z.array(z.string()),
     rol: z.string(),
-    experiencia17065: z.string()
+    experiencia17065: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   certPersonas: z.object({
     areas: z.array(z.string()),
     rol: z.string(),
-    experiencia17024: z.string()
+    experiencia17024: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   auditoria: z.object({
@@ -122,36 +125,42 @@ export const registrationSchema = z.object({
     normasAuditadas: z.array(z.string()),
     horasAuditoria: z.string(),
     registroIRCA: z.boolean(),
-    idIRCA: z.string().optional()
+    idIRCA: z.string().optional(),
+    comentarios: z.string().optional()
   }).optional(),
 
   comercial: z.object({
     rol: z.string(),
     lineasDominadas: z.array(z.string()),
     ticketPromedio: z.string(),
-    sectoresAtendidos: z.array(z.string())
+    sectoresAtendidos: z.array(z.string()),
+    comentarios: z.string().optional()
   }).optional(),
 
   operaciones: z.object({
     nivel: z.string(),
     areas: z.array(z.string()),
     presupuesto: z.string(),
-    personasCargo: z.string()
+    personasCargo: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   marketing: z.object({
     rol: z.string(),
-    experiencia: z.string()
+    experiencia: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   rrhh: z.object({
     rol: z.string(),
-    experiencia: z.string()
+    experiencia: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   finanzas: z.object({
     rol: z.string(),
-    experiencia: z.string()
+    experiencia: z.string(),
+    comentarios: z.string().optional()
   }).optional(),
 
   todosTransversal: z.object({
