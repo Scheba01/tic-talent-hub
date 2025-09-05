@@ -59,7 +59,15 @@ const RegistroTalento = () => {
       const result = await submitCandidate(data);
       
       if (result.success) {
-        toast.success("¡Registro completado exitosamente! Te contactaremos pronto.", { id: "submit-form" });
+        toast.success("¡Registro completado exitosamente! 📧 Recibirás un correo de verificación. Accede a tu cuenta para hacer visible tu perfil a las empresas.", { 
+          id: "submit-form",
+          duration: 6000,
+          style: {
+            background: 'hsl(142 76% 36%)',
+            color: 'white',
+            border: '1px solid hsl(142 76% 36%)'
+          }
+        });
         form.reset();
       } else {
         toast.error(result.message || "Error al enviar el registro", { id: "submit-form" });
