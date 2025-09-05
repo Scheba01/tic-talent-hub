@@ -617,6 +617,99 @@ const RegistroTalento = () => {
                         </div>
                       </div>}
 
+                    {form.watch("familiasRol")?.some(f => f.area === "validacion-verificacion") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Validación y Verificación (ISO/IEC 17029 / ISO 14065)</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <FormField control={form.control} name="validacionVerificacion.tipoOrganismo" render={({
+                        field
+                      }) => <FormItem>
+                                <FormLabel>Tipo de organismo</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona tipo" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="validacion">Validación (ISO/IEC 17029)</SelectItem>
+                                    <SelectItem value="verificacion">Verificación (ISO/IEC 17029)</SelectItem>
+                                    <SelectItem value="carbono">Verificación de carbono (ISO 14065)</SelectItem>
+                                    <SelectItem value="gases-efecto-invernadero">Gases de efecto invernadero</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+
+                          <FormField control={form.control} name="validacionVerificacion.rol" render={({
+                        field
+                      }) => <FormItem>
+                                <FormLabel>Rol</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona rol" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="validador">Validador</SelectItem>
+                                    <SelectItem value="verificador">Verificador</SelectItem>
+                                    <SelectItem value="revisor-tecnico">Revisor técnico</SelectItem>
+                                    <SelectItem value="coordinador">Coordinador técnico</SelectItem>
+                                     <SelectItem value="jefe">Jefe de validación/verificación</SelectItem>
+                                     <SelectItem value="otro">Otro</SelectItem>
+                                   </SelectContent>
+                                 </Select>
+                                 <FormMessage />
+                               </FormItem>} />
+
+                          {/* Campo condicional para "Otro" rol validación/verificación */}
+                          {form.watch("validacionVerificacion.rol") === "otro" && (
+                            <FormField control={form.control} name="validacionVerificacion.rolOtro" render={({
+                              field
+                            }) => <FormItem>
+                                    <FormLabel>Especifica otro rol</FormLabel>
+                                    <FormControl>
+                                      <Input {...field} placeholder="Describe tu rol" />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>} />
+                          )}
+
+                          <FormField control={form.control} name="validacionVerificacion.experiencia17029" render={({
+                        field
+                      }) => <FormItem>
+                                <FormLabel>Experiencia 17029/14065</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecciona experiencia" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="sin-experiencia">Sin experiencia</SelectItem>
+                                    <SelectItem value="0-2">0–2 años</SelectItem>
+                                    <SelectItem value="3-5">3–5 años</SelectItem>
+                                    <SelectItem value="6-9">6–9 años</SelectItem>
+                                    <SelectItem value="10-mas">10+ años</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>} />
+                          
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="validacionVerificacion.comentarios" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                  <FormControl>
+                                    <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en validación/verificación..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                        </div>
+                      </div>}
+
                     {/* Continue with other conditional subforms... */}
                     
                     {/* 5) Sectores/Industrias */}

@@ -90,6 +90,14 @@ export const registrationSchema = z.object({
     comentarios: z.string().optional()
   }).optional(),
 
+  validacionVerificacion: z.object({
+    tipoOrganismo: z.string(),
+    rol: z.string(),
+    rolOtro: z.string().optional(),
+    experiencia17029: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
   certSistemas: z.object({
     normas: z.array(z.string()),
     nivelCompetencia: z.string(),
