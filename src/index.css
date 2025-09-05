@@ -41,6 +41,10 @@ All colors MUST be HSL. Following the black and red brand colors.
 
     --radius: 0.5rem;
 
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
     /* TIC SELECT Brand Specific */
     --brand-red: 0 85% 55%;
     --brand-black: 0 0% 9%;

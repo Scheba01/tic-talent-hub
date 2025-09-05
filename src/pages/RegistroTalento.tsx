@@ -62,11 +62,7 @@ const RegistroTalento = () => {
         toast.success("¡Registro completado exitosamente! 📧 Recibirás un correo de verificación. Accede a tu cuenta para hacer visible tu perfil a las empresas.", { 
           id: "submit-form",
           duration: 6000,
-          style: {
-            background: 'hsl(142 76% 36%)',
-            color: 'white',
-            border: '1px solid hsl(142 76% 36%)'
-          }
+          className: "bg-success text-success-foreground border-success"
         });
         form.reset();
       } else {
