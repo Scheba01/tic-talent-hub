@@ -35,7 +35,30 @@ const Auth = () => {
     };
     checkUser();
 
-    // Check if this is a password reset link
+    // Check for error parameters first
+    const error = searchParams.get('error');
+    const error_code = searchParams.get('error_code');
+    const error_description = searchParams.get('error_description');
+    
+    if (error) {
+      console.log('Auth error detected:', { error, error_code, error_description });
+      
+      if (error_code === 'otp_expired') {
+        toast.error(t('auth.token_expired'));
+        setShowPasswordReset(true); // Show password reset form to try again
+      } else if (error === 'access_denied') {
+        toast.error(t('auth.access_denied'));
+      } else {
+        toast.error(error_description || t('auth.auth_error'));
+      }
+      
+      // Clear the error parameters from URL
+      const newUrl = window.location.pathname;
+      window.history.replaceState({}, '', newUrl);
+      return;
+    }
+
+    // Check if this is a password reset link (success case)
     const access_token = searchParams.get('access_token');
     const refresh_token = searchParams.get('refresh_token');
     const type = searchParams.get('type');
@@ -48,7 +71,7 @@ const Auth = () => {
         refresh_token,
       });
     }
-  }, [navigate, searchParams]);
+  }, [navigate, searchParams, t]);
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -170,7 +193,7 @@ const Auth = () => {
       if (error) {
         toast.error(error.message);
       } else {
-        toast.success(t('auth.password_reset_sent'));
+        toast.success(t('auth.password_reset_sent_detailed'));
         setShowPasswordReset(false);
       }
     } catch (error: any) {

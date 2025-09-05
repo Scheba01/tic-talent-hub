@@ -324,6 +324,7 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.reset_password_description': 'Ingresa tu nueva contraseña a continuación',
     'auth.email_required': 'El email es requerido',
     'auth.password_reset_sent': 'Enlace de restablecimiento enviado a tu email',
+    'auth.password_reset_sent_detailed': 'Te hemos enviado un enlace para restablecer tu contraseña. Revisa tu email y haz clic en el enlace dentro de la próxima hora.',
     'auth.password_reset_error': 'Error al enviar email de restablecimiento',
     'auth.send_reset_link': 'Enviar Enlace',
     'auth.sending': 'Enviando...',
@@ -335,6 +336,9 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.password_updated': '¡Contraseña actualizada exitosamente!',
     'auth.password_update_error': 'Error al actualizar la contraseña',
     'auth.password_min_length': 'La contraseña debe tener al menos 6 caracteres',
+    'auth.token_expired': 'El enlace de restablecimiento ha expirado. Solicita uno nuevo.',
+    'auth.access_denied': 'Acceso denegado. El enlace puede haber expirado.',
+    'auth.auth_error': 'Error de autenticación. Inténtalo de nuevo.',
     // Profiles Covered Keys
     'profiles_covered.title': 'Perfiles que Cubrimos',
     'profiles_covered.ict_specialized': 'Perfiles Especializados del Sector TIC',
@@ -791,6 +795,7 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.reset_password_description': 'Enter your new password below',
     'auth.email_required': 'Email is required',
     'auth.password_reset_sent': 'Password reset link sent to your email',
+    'auth.password_reset_sent_detailed': 'We have sent you a password reset link. Check your email and click the link within the next hour.',
     'auth.password_reset_error': 'Error sending password reset email',
     'auth.send_reset_link': 'Send Reset Link',
     'auth.sending': 'Sending...',
@@ -801,7 +806,10 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.updating': 'Updating...',
     'auth.password_updated': 'Password updated successfully!',
     'auth.password_update_error': 'Error updating password',
-    'auth.password_min_length': 'Password must be at least 6 characters'
+    'auth.password_min_length': 'Password must be at least 6 characters',
+    'auth.token_expired': 'The reset link has expired. Please request a new one.',
+    'auth.access_denied': 'Access denied. The link may have expired.',
+    'auth.auth_error': 'Authentication error. Please try again.',
   },
   pt: {
     'nav.home': 'Início',
@@ -1099,6 +1107,7 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.reset_password_description': 'Digite sua nova senha abaixo',
     'auth.email_required': 'Email é obrigatório',
     'auth.password_reset_sent': 'Link de redefinição enviado para seu email',
+    'auth.password_reset_sent_detailed': 'Enviamos um link para redefinir sua senha. Verifique seu email e clique no link dentro da próxima hora.',
     'auth.password_reset_error': 'Erro ao enviar email de redefinição',
     'auth.send_reset_link': 'Enviar Link',
     'auth.sending': 'Enviando...',
@@ -1109,6 +1118,9 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.updating': 'Atualizando...',
     'auth.password_updated': 'Senha atualizada com sucesso!',
     'auth.password_update_error': 'Erro ao atualizar senha',
-    'auth.password_min_length': 'A senha deve ter pelo menos 6 caracteres'
+    'auth.password_min_length': 'A senha deve ter pelo menos 6 caracteres',
+    'auth.token_expired': 'O link de redefinição expirou. Solicite um novo.',
+    'auth.access_denied': 'Acesso negado. O link pode ter expirado.',
+    'auth.auth_error': 'Erro de autenticação. Tente novamente.',
   }
 };
