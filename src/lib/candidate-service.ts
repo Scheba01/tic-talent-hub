@@ -70,8 +70,9 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
     if (data.familiasRol?.length > 0) {
       const roleFamilyInserts = data.familiasRol.map(familia => ({
         candidate_id: candidateId,
-        familia_rol: familia,
-        familia_rol_otro: familia === 'otro' ? data.familiaRolOtro : null
+        familia_rol: familia.area,
+        familia_rol_otro: familia.area === 'otro' ? familia.areaOtro : null,
+        comentarios: familia.comentarios
       }))
 
       const { error: roleFamilyError } = await supabase
@@ -190,7 +191,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   const promises: Array<Promise<any>> = []
 
   // Laboratory specialization
-  if (data.familiasRol?.includes('laboratorio') && data.laboratorio) {
+  if (data.familiasRol?.some(f => f.area === 'laboratorio') && data.laboratorio) {
     promises.push(
       Promise.resolve(supabase.from('candidate_laboratory').insert({
         candidate_id: candidateId,
@@ -204,7 +205,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Inspection specialization
-  if (data.familiasRol?.includes('inspeccion') && data.inspeccion) {
+  if (data.familiasRol?.some(f => f.area === 'inspeccion') && data.inspeccion) {
     promises.push(
       Promise.resolve(supabase.from('candidate_inspection').insert({
         candidate_id: candidateId,
@@ -218,7 +219,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Systems certification specialization
-  if (data.familiasRol?.includes('cert-sistemas') && data.certSistemas) {
+  if (data.familiasRol?.some(f => f.area === 'cert-sistemas') && data.certSistemas) {
     promises.push(
       Promise.resolve(supabase.from('candidate_cert_sistemas').insert({
         candidate_id: candidateId,
@@ -231,7 +232,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Products certification specialization
-  if (data.familiasRol?.includes('cert-productos') && data.certProductos) {
+  if (data.familiasRol?.some(f => f.area === 'cert-productos') && data.certProductos) {
     promises.push(
       Promise.resolve(supabase.from('candidate_cert_productos').insert({
         candidate_id: candidateId,
@@ -243,7 +244,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Persons certification specialization
-  if (data.familiasRol?.includes('cert-personas') && data.certPersonas) {
+  if (data.familiasRol?.some(f => f.area === 'cert-personas') && data.certPersonas) {
     promises.push(
       Promise.resolve(supabase.from('candidate_cert_personas').insert({
         candidate_id: candidateId,
@@ -255,7 +256,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Audit specialization
-  if (data.familiasRol?.includes('auditoria') && data.auditoria) {
+  if (data.familiasRol?.some(f => f.area === 'auditoria') && data.auditoria) {
     promises.push(
       Promise.resolve(supabase.from('candidate_auditoria').insert({
         candidate_id: candidateId,
@@ -269,7 +270,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Commercial specialization
-  if (data.familiasRol?.includes('comercial') && data.comercial) {
+  if (data.familiasRol?.some(f => f.area === 'comercial') && data.comercial) {
     promises.push(
       Promise.resolve(supabase.from('candidate_comercial').insert({
         candidate_id: candidateId,
@@ -282,7 +283,7 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
   }
 
   // Operations specialization
-  if (data.familiasRol?.includes('operaciones') && data.operaciones) {
+  if (data.familiasRol?.some(f => f.area === 'operaciones') && data.operaciones) {
     promises.push(
       Promise.resolve(supabase.from('candidate_operaciones').insert({
         candidate_id: candidateId,

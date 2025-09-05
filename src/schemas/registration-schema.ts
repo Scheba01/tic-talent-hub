@@ -18,8 +18,11 @@ export const registrationSchema = z.object({
   sueldoActualBruto: z.string().min(1, "Sueldo actual bruto es requerido"),
 
   // Familias de rol
-  familiasRol: z.array(z.string()).min(1, "Debe seleccionar al menos una familia de rol"),
-  familiaRolOtro: z.string().optional(),
+  familiasRol: z.array(z.object({
+    area: z.string().min(1, "Área es requerida"),
+    areaOtro: z.string().optional(),
+    comentarios: z.string().optional()
+  })).min(1, "Debe seleccionar al menos una área de experiencia"),
 
   // Sectores/Industrias
   sectores: z.array(z.string()),

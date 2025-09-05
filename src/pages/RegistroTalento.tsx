@@ -21,7 +21,6 @@ import { submitCandidate } from "@/lib/candidate-service";
 import { useAuth } from "@/hooks/useAuth";
 
 const RegistroTalento = () => {
-  const [selectedFamilias, setSelectedFamilias] = useState<string[]>([]);
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
   const [selectedSubarea, setSelectedSubarea] = useState<string>("");
   const { user, profile } = useAuth();
@@ -31,7 +30,10 @@ const RegistroTalento = () => {
       nombreCompleto: "",
       email: "",
       codigoPais: "+56",
-      familiasRol: [],
+      familiasRol: [{
+        area: "",
+        comentarios: ""
+      }],
       sectores: [],
       competenciasNormas: [""],
       idiomas: [{
@@ -51,7 +53,6 @@ const RegistroTalento = () => {
       form.setValue("email", user.email || "");
     }
   }, [user, profile, form]);
-  const watchedFamilias = form.watch("familiasRol");
   const onSubmit = async (data: RegistrationFormData) => {
     try {
       toast.loading("Enviando registro...", { id: "submit-form" });
@@ -79,6 +80,21 @@ const RegistroTalento = () => {
       idioma: "",
       nivel: ""
     }]);
+  };
+  
+  const addAreaExperiencia = () => {
+    const currentAreas = form.getValues("familiasRol");
+    form.setValue("familiasRol", [...currentAreas, {
+      area: "",
+      comentarios: ""
+    }]);
+  };
+
+  const removeAreaExperiencia = (index: number) => {
+    const currentAreas = form.getValues("familiasRol");
+    if (currentAreas.length > 1) {
+      form.setValue("familiasRol", currentAreas.filter((_, i) => i !== index));
+    }
   };
   const removeIdioma = (index: number) => {
     const currentIdiomas = form.getValues("idiomas");
@@ -327,31 +343,68 @@ const RegistroTalento = () => {
                     {/* 3) Familias de rol */}
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">3. En qué área tienes experiencia? (elige una o más)</h3>
-                      <FormField control={form.control} name="familiasRol" render={({
-                      field
-                    }) => <FormItem>
-                            <FormControl>
-                              <MultiSelect options={FAMILIAS_ROL} selected={field.value} onChange={field.onChange} placeholder="Selecciona familias de rol..." />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>} />
+                      <div className="space-y-4">
+                        {form.watch("familiasRol")?.map((_, index) => (
+                          <div key={index} className="space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                              <FormField control={form.control} name={`familiasRol.${index}.area`} render={({
+                                field
+                              }) => <FormItem>
+                                        <FormLabel>Área de experiencia</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                          <FormControl>
+                                            <SelectTrigger>
+                                              <SelectValue placeholder="Selecciona área" />
+                                            </SelectTrigger>
+                                          </FormControl>
+                                          <SelectContent>
+                                            {FAMILIAS_ROL.map(familia => <SelectItem key={familia.value} value={familia.value}>
+                                                {familia.label}
+                                              </SelectItem>)}
+                                          </SelectContent>
+                                        </Select>
+                                        <FormMessage />
+                                      </FormItem>} />
 
-                      {/* Conditional "Otro" text field */}
-                      {watchedFamilias?.includes("otro") && (
-                        <FormField control={form.control} name="familiaRolOtro" render={({
-                        field
-                      }) => <FormItem className="mt-4">
-                              <FormLabel>Especifica otra área</FormLabel>
-                              <FormControl>
-                                <Input {...field} placeholder="Describe la otra área de experiencia" />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>} />
-                      )}
+                              <Button type="button" variant="outline" size="sm" onClick={() => removeAreaExperiencia(index)} disabled={form.watch("familiasRol")?.length <= 1}>
+                                <X className="h-4 w-4" />
+                              </Button>
+                            </div>
+                            
+                            {/* Campo condicional para "Otro" área */}
+                            {form.watch(`familiasRol.${index}.area`) === "otro" && (
+                              <FormField control={form.control} name={`familiasRol.${index}.areaOtro`} render={({
+                                field
+                              }) => <FormItem>
+                                      <FormLabel>Especifica otra área</FormLabel>
+                                      <FormControl>
+                                        <Input {...field} placeholder="Ingresa el área de experiencia" />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>} />
+                            )}
+
+                            {/* Campo de comentarios */}
+                            <FormField control={form.control} name={`familiasRol.${index}.comentarios`} render={({
+                              field
+                            }) => <FormItem>
+                                    <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                    <FormControl>
+                                      <Textarea {...field} placeholder="Describe tu experiencia y lo que has realizado en esta área..." />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>} />
+                          </div>
+                        ))}
+                        <Button type="button" variant="outline" onClick={addAreaExperiencia}>
+                          <Plus className="h-4 w-4 mr-2" />
+                          Añadir área de experiencia
+                        </Button>
+                      </div>
                     </div>
 
                     {/* Subformularios condicionales */}
-                    {watchedFamilias?.includes("laboratorio") && <div>
+                    {form.watch("familiasRol")?.some(f => f.area === "laboratorio") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Laboratorio (ISO/IEC 17025)</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
                           <div className="md:col-span-2">
@@ -426,7 +479,7 @@ const RegistroTalento = () => {
                         </div>
                       </div>}
 
-                    {watchedFamilias?.includes("inspeccion") && <div>
+                    {form.watch("familiasRol")?.some(f => f.area === "inspeccion") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Inspección (ISO/IEC 17020)</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
                           <FormField control={form.control} name="inspeccion.tipoOrganismo" render={({
