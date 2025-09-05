@@ -206,16 +206,16 @@ const Contacto = () => {
                       <Label htmlFor="tipoConsulta">{t('contact.form.query_type')}</Label>
                       <Select value={formData.tipoConsulta} onValueChange={(value) => setFormData({...formData, tipoConsulta: value})}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecciona el tipo de consulta" />
+                          <SelectValue placeholder={t('contact.form.query_placeholder')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="recruiting">Búsqueda de Talento Especializado</SelectItem>
-                          <SelectItem value="headhunting">Headhunting Ejecutivo</SelectItem>
-                          <SelectItem value="consultoria">Consultoría en RRHH</SelectItem>
-                          <SelectItem value="evaluacion-talento">Evaluación de Talento</SelectItem>
-                          <SelectItem value="programa-talento">Programa TalentoTIC</SelectItem>
-                          <SelectItem value="busco-empleo">Busco Empleo</SelectItem>
-                          <SelectItem value="otro">Otro</SelectItem>
+                          <SelectItem value="recruiting">{t('contact.form.query_options.recruiting')}</SelectItem>
+                          <SelectItem value="headhunting">{t('contact.form.query_options.headhunting')}</SelectItem>
+                          <SelectItem value="consultoria">{t('contact.form.query_options.consulting')}</SelectItem>
+                          <SelectItem value="evaluacion-talento">{t('contact.form.query_options.talent_evaluation')}</SelectItem>
+                          <SelectItem value="programa-talento">{t('contact.form.query_options.talent_program')}</SelectItem>
+                          <SelectItem value="busco-empleo">{t('contact.form.query_options.looking_job')}</SelectItem>
+                          <SelectItem value="otro">{t('contact.form.query_options.other')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

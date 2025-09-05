@@ -469,7 +469,15 @@ const translations: Record<Language, Record<string,string>> = {
     'contact.why.consultation': 'Consulta gratuita y sin compromiso',
     'contact.why.proposal': 'Propuesta personalizada en 24 horas',
     'contact.why.no_commitment': 'Sin permanencia ni contratos a largo plazo',
-    'contact.why.immediate_access': 'Acceso inmediato a nuestra base de talento'
+    'contact.why.immediate_access': 'Acceso inmediato a nuestra base de talento',
+    'contact.form.query_placeholder': 'Selecciona el tipo de consulta',
+    'contact.form.query_options.recruiting': 'Búsqueda de Talento Especializado',
+    'contact.form.query_options.headhunting': 'Headhunting Ejecutivo',
+    'contact.form.query_options.consulting': 'Consultoría en RRHH',
+    'contact.form.query_options.talent_evaluation': 'Evaluación de Talento',
+    'contact.form.query_options.talent_program': 'Programa TalentoTIC',
+    'contact.form.query_options.looking_job': 'Busco Empleo',
+    'contact.form.query_options.other': 'Otro'
   },
   en: {
     'nav.home': 'Home',
@@ -726,7 +734,15 @@ const translations: Record<Language, Record<string,string>> = {
     'contact.why.consultation': 'Free consultation with no commitment',
     'contact.why.proposal': 'Personalized proposal within 24 hours',
     'contact.why.no_commitment': 'No permanence or long-term contracts',
-    'contact.why.immediate_access': 'Immediate access to our talent database'
+    'contact.why.immediate_access': 'Immediate access to our talent database',
+    'contact.form.query_placeholder': 'Select query type',
+    'contact.form.query_options.recruiting': 'Specialized Talent Search',
+    'contact.form.query_options.headhunting': 'Executive Headhunting',
+    'contact.form.query_options.consulting': 'HR Consulting',
+    'contact.form.query_options.talent_evaluation': 'Talent Evaluation',
+    'contact.form.query_options.talent_program': 'TIC Talent Program',
+    'contact.form.query_options.looking_job': 'Looking for a Job',
+    'contact.form.query_options.other': 'Other'
   },
   pt: {
     'nav.home': 'Início',
@@ -983,6 +999,14 @@ const translations: Record<Language, Record<string,string>> = {
     'contact.why.consultation': 'Consulta gratuita e sem compromisso',
     'contact.why.proposal': 'Proposta personalizada em 24 horas',
     'contact.why.no_commitment': 'Sem permanência ou contratos de longo prazo',
-    'contact.why.immediate_access': 'Acesso imediato à nossa base de talentos'
+    'contact.why.immediate_access': 'Acesso imediato à nossa base de talentos',
+    'contact.form.query_placeholder': 'Selecione o tipo de consulta',
+    'contact.form.query_options.recruiting': 'Busca de Talento Especializado',
+    'contact.form.query_options.headhunting': 'Headhunting Executivo',
+    'contact.form.query_options.consulting': 'Consultoria em RH',
+    'contact.form.query_options.talent_evaluation': 'Avaliação de Talentos',
+    'contact.form.query_options.talent_program': 'Programa TIC Talento',
+    'contact.form.query_options.looking_job': 'Procuro Emprego',
+    'contact.form.query_options.other': 'Outro'
   }
 };
