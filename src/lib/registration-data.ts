@@ -45,6 +45,7 @@ export const PAISES_LATAM = [
 ]
 
 export const FAMILIAS_ROL = [
+  { value: "todos-transversal", label: "Todos - Transversal" },
   { value: "laboratorio", label: "Laboratorio (ISO/IEC 17025)" },
   { value: "inspeccion", label: "Inspección (ISO/IEC 17020)" },
   { value: "cert-sistemas", label: "Certificación de Sistemas (ISO/IEC 17021-1)" },
@@ -142,6 +143,7 @@ export const AREAS_PERSONAS = [
 ]
 
 export const SECTORES_INDUSTRIA = [
+  { value: "todos-transversal", label: "Todos - Transversal" },
   { value: "mineria", label: "Minería" },
   { value: "oil-gas", label: "Oil & Gas" },
   { value: "energia", label: "Energía/Utilities" },
