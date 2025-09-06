@@ -125,18 +125,20 @@ const RegistroTalento = () => {
             <Card className="shadow-elegant">
               <CardHeader>
                 <CardTitle className="text-2xl font-display">Formulario de Registro Candidato</CardTitle>
-                <div className="mt-4 p-4 bg-muted/30 rounded-lg border border-border">
-                  <p className="text-sm text-muted-foreground">
-                    ¿Ya tienes una cuenta? 
-                    <Link to="/auth" className="ml-1 text-primary hover:text-primary/80 font-medium">
-                      Inicia sesión aquí
-                    </Link>
-                    {" "}o{" "}
-                    <Link to="/auth" className="text-primary hover:text-primary/80 font-medium">
-                      restablece tu contraseña
-                    </Link>
-                  </p>
-                </div>
+                {!user && (
+                  <div className="mt-4 p-4 bg-muted/30 rounded-lg border border-border">
+                    <p className="text-sm text-muted-foreground">
+                      ¿Ya tienes una cuenta? 
+                      <Link to="/auth" className="ml-1 text-primary hover:text-primary/80 font-medium">
+                        Inicia sesión aquí
+                      </Link>
+                      {" "}o{" "}
+                      <Link to="/auth" className="text-primary hover:text-primary/80 font-medium">
+                        restablece tu contraseña
+                      </Link>
+                    </p>
+                  </div>
+                )}
               </CardHeader>
               <CardContent>
                 <Form {...form}>
