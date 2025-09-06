@@ -603,7 +603,7 @@ const translations: Record<Language, Record<string,string>> = {
     'why.approach.desc': 'Desde auditores especializados hasta directores regionales, cubrimos todos los niveles.',
     'why.ready.title': '¿Listo para Comenzar?',
     'why.ready.desc': 'Elige tu forma preferida de contactarnos',
-    'about.title': 'Quiénes Somos - Expertos en Reclutamiento TIC desde 2010',
+    'about.title': 'Quiénes Somos - Expertos en Reclutamiento TIC',
     'about.subtitle': 'Entendemos profundamente las necesidades específicas del sector Testing, Inspection & Certification porque venimos de él.',
     'about.experts.title': 'Red de Expertos',
     'about.experts.desc': 'Nuestro equipo entiende las necesidades específicas del sector TIC porque viene de él.',
