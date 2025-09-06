@@ -1,0 +1,125 @@
+// Critical CSS for above-the-fold content - mobile optimized
+@layer base {
+  html {
+    /* Prevent horizontal scrolling on mobile */
+    overflow-x: hidden;
+    /* Optimize font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Improve text rendering speed */
+    text-rendering: optimizeSpeed;
+  }
+
+  body {
+    /* Prevent layout shifts */
+    overflow-x: hidden;
+    /* Optimize scrolling performance */
+    -webkit-overflow-scrolling: touch;
+    /* Reduce memory usage on mobile */
+    background-attachment: fixed;
+  }
+
+  /* Critical navigation styles for fast render */
+  .critical-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+    /* Optimize for mobile touch targets */
+    min-height: 64px;
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Critical hero section styles */
+  .critical-hero {
+    /* Ensure proper sizing to prevent CLS */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    /* Optimize background rendering */
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Better for mobile */
+  }
+
+  /* Critical button styles for interaction readiness */
+  .critical-button {
+    /* Ensure proper touch targets (min 44px) */
+    min-height: 44px;
+    min-width: 44px;
+    /* Optimize for touch interactions */
+    touch-action: manipulation;
+    /* Hardware acceleration for smooth animations */
+    transform: translateZ(0);
+    transition: transform 150ms ease-out;
+  }
+
+  .critical-button:active {
+    transform: scale(0.98);
+  }
+
+  /* Optimize for mobile text readability */
+  .critical-text {
+    /* Improve text readability on mobile */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Prevent flash of unstyled content */
+  .critical-container {
+    /* Prevent layout shifts during loading */
+    contain: layout style paint;
+  }
+
+  /* Mobile-optimized spacing */
+  @media (max-width: 768px) {
+    .critical-hero {
+      min-height: 100vh;
+      padding-top: 64px; /* Account for fixed nav */
+    }
+  }
+}
+
+/* Critical animations for Core Web Vitals */
+@layer utilities {
+  .fade-in-fast {
+    animation: fadeInFast 200ms ease-out forwards;
+  }
+
+  .scale-in-fast {
+    animation: scaleInFast 150ms ease-out forwards;
+  }
+
+  @keyframes fadeInFast {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleInFast {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Hardware-accelerated transforms */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}

@@ -62,15 +62,20 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="critical-nav fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo - Optimized for LCP */}
           <Link to="/" className="flex items-center">
             <img 
               src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
+              width="120"
+              height="32"
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
             />
           </Link>
 
@@ -172,12 +177,15 @@ const Navigation = () => {
             </DropdownMenu>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - Optimized for touch */}
           <div className="lg:hidden">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
+              className="critical-button h-11 w-11 p-0"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>

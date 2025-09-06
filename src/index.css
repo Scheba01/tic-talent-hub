@@ -147,9 +147,117 @@ All colors MUST be HSL. Following the black and red brand colors.
   
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
+}
+
+/* Mobile Core Web Vitals Optimizations */
+@layer utilities {
+  /* Fast loading animations to improve perceived performance */
+  .fade-in-fast {
+    animation: fadeInFast 200ms ease-out forwards;
+    opacity: 0;
   }
-  
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
+
+  .scale-in-fast {
+    animation: scaleInFast 150ms ease-out forwards;
+    opacity: 0;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Mobile-optimized critical styles */
+  .critical-nav {
+    contain: layout style paint;
+    will-change: transform;
+  }
+
+  .critical-container {
+    contain: layout style paint;
+  }
+
+  .critical-text {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .critical-button {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: transform 150ms ease-out;
+  }
+
+  .critical-button:active {
+    transform: scale(0.98);
+  }
+
+  /* Responsive images to prevent CLS */
+  .responsive-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height);
+  }
+
+  /* Mobile-first viewport optimizations */
+  @media (max-width: 768px) {
+    .critical-hero {
+      min-height: 100vh;
+      min-height: 100dvh; /* Dynamic viewport height */
+    }
+    
+    /* Optimize touch targets for mobile */
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Prevent horizontal scroll */
+    html, body {
+      overflow-x: hidden;
+    }
+    
+    /* Optimize scrolling performance */
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes fadeInFast {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleInFast {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  /* Reduced motion fallback */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in-fast,
+    .scale-in-fast {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 }

@@ -58,16 +58,16 @@ const Index = () => {
       <Navigation />
       
       <main className="pt-16">
-        {/* Hero Section - Critical Above-the-fold */}
-        <section className="critical-hero">
-          <div className="critical-hero-content">
-            <h1 className="critical-hero-title">
+        {/* Hero Section - Optimized for mobile Core Web Vitals */}
+        <section className="critical-hero relative min-h-screen bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white flex items-center justify-center">
+          <div className="critical-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="critical-text text-4xl md:text-6xl font-display font-bold mb-8 fade-in-fast">
               {t('hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+            <p className="critical-text text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed scale-in-fast">
               {t('hero.subtitle')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center gpu-accelerated">
               <Button asChild className="btn-outline-hero">
                 <Link to="/servicios-para-empresas">{t('hero.discover_services')}</Link>
               </Button>
