@@ -237,7 +237,7 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
           name: data.nombreCompleto,
           email: data.email,
           telefono: data.telefono,
-          familiasRol: data.familiasRol
+          familiasRol: data.familiasRol?.map(familia => familia.area) || []
         }
       })
 
