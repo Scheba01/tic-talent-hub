@@ -1888,25 +1888,39 @@ const RegistroTalento = () => {
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-6">9. Documentos</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <FormField control={form.control} name="cv" render={({
-                        field
-                      }) => <FormItem>
-                              <FormLabel>Subir CV (PDF) <span className="text-red-500">*</span></FormLabel>
-                              <FormControl>
-                                <Input type="file" accept=".pdf" />
-                              </FormControl>
-                              <FormMessage />
+                         <FormField control={form.control} name="cv" render={({
+                         field
+                       }) => <FormItem>
+                               <FormLabel>Subir CV (PDF) <span className="text-red-500">*</span></FormLabel>
+                               <FormControl>
+                                 <Input 
+                                   type="file" 
+                                   accept=".pdf" 
+                                   onChange={(e) => {
+                                     const file = e.target.files?.[0];
+                                     field.onChange(file ? [file] : []);
+                                   }}
+                                 />
+                               </FormControl>
+                               <FormMessage />
                             </FormItem>} />
 
-                        <FormField control={form.control} name="certificadosAdicionales" render={({
-                        field
-                      }) => <FormItem>
-                              <FormLabel>Certificados (ZIP/PDF)</FormLabel>
-                              <FormControl>
-                                <Input type="file" accept=".pdf,.zip" />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>} />
+                         <FormField control={form.control} name="certificadosAdicionales" render={({
+                         field
+                       }) => <FormItem>
+                               <FormLabel>Certificados (ZIP/PDF)</FormLabel>
+                               <FormControl>
+                                 <Input 
+                                   type="file" 
+                                   accept=".pdf,.zip" 
+                                   onChange={(e) => {
+                                     const file = e.target.files?.[0];
+                                     field.onChange(file ? [file] : undefined);
+                                   }}
+                                 />
+                               </FormControl>
+                               <FormMessage />
+                             </FormItem>} />
 
                         <div className="md:col-span-2">
                           <FormField control={form.control} name="linkedin" render={({
