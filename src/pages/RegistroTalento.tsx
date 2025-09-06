@@ -31,18 +31,33 @@ const RegistroTalento = () => {
       nombreCompleto: "",
       email: "",
       codigoPais: "+56",
+      telefono: "",
+      pais: "",
+      ciudad: "",
+      situacionActual: "",
+      disponibilidad: "",
+      jornada: "",
+      sueldoActualBruto: "",
       familiasRol: [{
         area: "",
         comentarios: ""
       }],
       sectores: [],
       competenciasNormas: [""],
+      nivelMaximo: "",
+      areaEstudio: "",
       idiomas: [{
         idioma: "",
         nivel: ""
       }],
       autorizacionDatos: false,
-      experienciaLaboral: [],
+      experienciaLaboral: [{
+        empresa: "",
+        cargo: "",
+        periodo: "",
+        descripcion: ""
+      }],
+      cv: [],
       comentarios: ""
     }
   });
