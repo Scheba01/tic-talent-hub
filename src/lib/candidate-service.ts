@@ -39,46 +39,112 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
       }
     }
 
-    // Insert main candidate record
-    const { data: candidate, error: candidateError } = await supabase
+    // Check if candidate already exists for this user
+    const { data: existingCandidate } = await supabase
       .from('candidates')
-      .insert({
-        user_id: user.id,  // Link to authenticated user
-        nombre_completo: data.nombreCompleto,
-        email: data.email,
-        codigo_pais: data.codigoPais,
-        telefono: data.telefono,
-        codigo_otro: data.codigoOtro,
-        pais: data.pais,
-        pais_otro: data.paisOtro,
-        ciudad: data.ciudad,
-        situacion_actual: data.situacionActual,
-        disponibilidad: data.disponibilidad,
-        jornada: data.jornada,
-        sueldo_actual_bruto: data.sueldoActualBruto,
-        nivel_maximo: data.nivelMaximo,
-        area_estudio: data.areaEstudio,
-        area_estudio_otro: data.areaEstudioOtro,
-        certificaciones: data.certificaciones,
-        cv_url: cvUrl,
-        certificados_adicionales_url: certificadosUrl,
-        linkedin: data.linkedin || null,
-        comentarios: data.comentarios,
-        autorizacion_datos: data.autorizacionDatos
-      })
-      .select()
+      .select('id')
+      .eq('user_id', user.id)
       .single()
 
-    if (candidateError) {
-      // Handle specific error cases for better user experience
-      if (candidateError.code === '23505' && candidateError.message.includes('candidates_email_key')) {
-        throw new Error('Este email ya está registrado. Si ya tienes una cuenta, por favor inicia sesión.')
-      }
-      throw new Error(`Error al registrar candidato: ${candidateError.message}`)
-    }
-    if (!candidate) throw new Error('Failed to create candidate')
+    let candidate
+    let candidateId: string
 
-    const candidateId = candidate.id
+    if (existingCandidate) {
+      // Update existing candidate record
+      const { data: updatedCandidate, error: updateError } = await supabase
+        .from('candidates')
+        .update({
+          nombre_completo: data.nombreCompleto,
+          email: data.email,
+          codigo_pais: data.codigoPais,
+          telefono: data.telefono,
+          codigo_otro: data.codigoOtro,
+          pais: data.pais,
+          pais_otro: data.paisOtro,
+          ciudad: data.ciudad,
+          situacion_actual: data.situacionActual,
+          disponibilidad: data.disponibilidad,
+          jornada: data.jornada,
+          sueldo_actual_bruto: data.sueldoActualBruto,
+          nivel_maximo: data.nivelMaximo,
+          area_estudio: data.areaEstudio,
+          area_estudio_otro: data.areaEstudioOtro,
+          certificaciones: data.certificaciones,
+          cv_url: cvUrl,
+          certificados_adicionales_url: certificadosUrl,
+          linkedin: data.linkedin || null,
+          comentarios: data.comentarios,
+          autorizacion_datos: data.autorizacionDatos
+        })
+        .eq('user_id', user.id)
+        .select()
+        .single()
+
+      if (updateError) throw new Error(`Error al actualizar candidato: ${updateError.message}`)
+      candidate = updatedCandidate
+      candidateId = existingCandidate.id
+
+      // Delete existing related data before inserting new ones
+      await Promise.all([
+        supabase.from('candidate_role_families').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_sectors').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_competencies').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_languages').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_experience').delete().eq('candidate_id', candidateId),
+        // Delete specialization data
+        supabase.from('candidate_laboratory').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_inspection').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_cert_sistemas').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_cert_productos').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_cert_personas').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_auditoria').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_comercial').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_operaciones').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_ti').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_hse').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_legal').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_supply_chain').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_atencion_cliente').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_pmo').delete().eq('candidate_id', candidateId),
+        supabase.from('candidate_direccion').delete().eq('candidate_id', candidateId)
+      ])
+    } else {
+      // Insert new candidate record
+      const { data: newCandidate, error: candidateError } = await supabase
+        .from('candidates')
+        .insert({
+          user_id: user.id,  // Link to authenticated user
+          nombre_completo: data.nombreCompleto,
+          email: data.email,
+          codigo_pais: data.codigoPais,
+          telefono: data.telefono,
+          codigo_otro: data.codigoOtro,
+          pais: data.pais,
+          pais_otro: data.paisOtro,
+          ciudad: data.ciudad,
+          situacion_actual: data.situacionActual,
+          disponibilidad: data.disponibilidad,
+          jornada: data.jornada,
+          sueldo_actual_bruto: data.sueldoActualBruto,
+          nivel_maximo: data.nivelMaximo,
+          area_estudio: data.areaEstudio,
+          area_estudio_otro: data.areaEstudioOtro,
+          certificaciones: data.certificaciones,
+          cv_url: cvUrl,
+          certificados_adicionales_url: certificadosUrl,
+          linkedin: data.linkedin || null,
+          comentarios: data.comentarios,
+          autorizacion_datos: data.autorizacionDatos
+        })
+        .select()
+        .single()
+
+      if (candidateError) throw new Error(`Error al registrar candidato: ${candidateError.message}`)
+      candidate = newCandidate
+      candidateId = newCandidate.id
+    }
+
+    if (!candidate) throw new Error('Failed to create or update candidate')
 
     // Insert role families
     if (data.familiasRol?.length > 0) {
