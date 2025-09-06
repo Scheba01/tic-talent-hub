@@ -121,7 +121,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
           decoding="async"
           fetchPriority={priority ? 'high' : 'low'}
           className={cn(
-            'transition-opacity duration-300 w-full h-full object-cover',
+            'transition-opacity duration-300 w-full h-full object-contain',
             isLoaded ? 'opacity-100' : 'opacity-0'
           )}
           width={width}
