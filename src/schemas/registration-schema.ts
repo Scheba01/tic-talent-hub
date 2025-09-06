@@ -70,96 +70,96 @@ export const registrationSchema = z.object({
 
   // Subformularios condicionales
   laboratorio: z.object({
-    tiposLaboratorio: z.array(z.string()),
+    tiposLaboratorio: z.array(z.string()).optional(),
     tiposLaboratorioOtro: z.string().optional(),
-    rol: z.string(),
+    rol: z.string().optional(),
     rolOtro: z.string().optional(),
-    tecnicasEquipos: z.array(z.string()),
-    experiencia17025: z.string(),
+    tecnicasEquipos: z.array(z.string()).optional(),
+    experiencia17025: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   inspeccion: z.object({
-    tipoOrganismo: z.string(),
-    areasInspeccion: z.array(z.string()),
+    tipoOrganismo: z.string().optional(),
+    areasInspeccion: z.array(z.string()).optional(),
     areasInspeccionOtro: z.string().optional(),
-    rol: z.string(),
+    rol: z.string().optional(),
     rolOtro: z.string().optional(),
-    certificaciones: z.array(z.string()),
-    experiencia17020: z.string(),
+    certificaciones: z.array(z.string()).optional(),
+    experiencia17020: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   validacionVerificacion: z.object({
-    tipoOrganismo: z.string(),
-    rol: z.string(),
+    tipoOrganismo: z.string().optional(),
+    rol: z.string().optional(),
     rolOtro: z.string().optional(),
-    experiencia17029: z.string(),
+    experiencia17029: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   certSistemas: z.object({
-    normas: z.array(z.string()),
-    nivelCompetencia: z.string(),
-    registroIRCA: z.boolean(),
+    normas: z.array(z.string()).optional(),
+    nivelCompetencia: z.string().optional(),
+    registroIRCA: z.boolean().optional(),
     idIRCA: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   certProductos: z.object({
-    sectores: z.array(z.string()),
-    rol: z.string(),
-    experiencia17065: z.string(),
+    sectores: z.array(z.string()).optional(),
+    rol: z.string().optional(),
+    experiencia17065: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   certPersonas: z.object({
-    areas: z.array(z.string()),
-    rol: z.string(),
-    experiencia17024: z.string(),
+    areas: z.array(z.string()).optional(),
+    rol: z.string().optional(),
+    experiencia17024: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   auditoria: z.object({
-    tipoAuditor: z.array(z.string()),
-    normasAuditadas: z.array(z.string()),
-    horasAuditoria: z.string(),
-    registroIRCA: z.boolean(),
+    tipoAuditor: z.array(z.string()).optional(),
+    normasAuditadas: z.array(z.string()).optional(),
+    horasAuditoria: z.string().optional(),
+    registroIRCA: z.boolean().optional(),
     idIRCA: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   comercial: z.object({
-    rol: z.string(),
-    lineasDominadas: z.array(z.string()),
-    ticketPromedio: z.string(),
-    sectoresAtendidos: z.array(z.string()),
+    rol: z.string().optional(),
+    lineasDominadas: z.array(z.string()).optional(),
+    ticketPromedio: z.string().optional(),
+    sectoresAtendidos: z.array(z.string()).optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   operaciones: z.object({
-    nivel: z.string(),
-    areas: z.array(z.string()),
-    presupuesto: z.string(),
-    personasCargo: z.string(),
+    nivel: z.string().optional(),
+    areas: z.array(z.string()).optional(),
+    presupuesto: z.string().optional(),
+    personasCargo: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   marketing: z.object({
-    rol: z.string(),
-    experiencia: z.string(),
+    rol: z.string().optional(),
+    experiencia: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   rrhh: z.object({
-    rol: z.string(),
-    experiencia: z.string(),
+    rol: z.string().optional(),
+    experiencia: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   finanzas: z.object({
-    rol: z.string(),
-    experiencia: z.string(),
+    rol: z.string().optional(),
+    experiencia: z.string().optional(),
     comentarios: z.string().optional()
   }).optional(),
 
@@ -168,16 +168,16 @@ export const registrationSchema = z.object({
   }).optional(),
 
   consultoria: z.object({
-    rol: z.string(),
-    experiencia: z.string(),
-    areas: z.array(z.string()),
+    rol: z.string().optional(),
+    experiencia: z.string().optional(),
+    areas: z.array(z.string()).optional(),
     comentarios: z.string().optional()
   }).optional(),
 
   implementador: z.object({
-    tipoImplementacion: z.array(z.string()),
-    experienciaAnios: z.string(),
-    metodologias: z.array(z.string()),
+    tipoImplementacion: z.array(z.string()).optional(),
+    experienciaAnios: z.string().optional(),
+    metodologias: z.array(z.string()).optional(),
     comentarios: z.string().optional()
   }).optional(),
 
