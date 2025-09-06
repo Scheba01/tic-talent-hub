@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://ticselect.com/</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/" />
+  </url>
+
+  <!-- Main Service Pages - High Priority -->
+  <url>
+    <loc>https://ticselect.com/servicios-para-empresas</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/servicios-para-empresas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/enterprise-services" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/servicos-empresas" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/enterprise-services</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/servicios-para-empresas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/enterprise-services" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/servicos-empresas" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/servicos-empresas</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/servicios-para-empresas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/enterprise-services" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/servicos-empresas" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/vacantes-y-perfiles</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/vacantes-y-perfiles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/jobs-profiles" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/vagas-perfis" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/jobs-profiles</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/vacantes-y-perfiles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/jobs-profiles" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/vagas-perfis" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/vagas-perfis</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/vacantes-y-perfiles" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/jobs-profiles" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/vagas-perfis" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/programa-talentotic</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/programa-talentotic" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/tic-talent-program" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/programa-talento-tic" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/tic-talent-program</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/programa-talentotic" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/tic-talent-program" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/programa-talento-tic" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/programa-talento-tic</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/programa-talentotic" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/tic-talent-program" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/programa-talento-tic" />
+  </url>
+
+  <!-- About and Contact Pages - Important -->
+  <url>
+    <loc>https://ticselect.com/quienes-somos</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/quienes-somos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/about-us" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/sobre-nos" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/about-us</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/quienes-somos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/about-us" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/sobre-nos" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/sobre-nos</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/quienes-somos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/about-us" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/sobre-nos" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/contacto</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/contato" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/contact</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/contato" />
+  </url>
+
+  <url>
+    <loc>https://ticselect.com/contato</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ticselect.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ticselect.com/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ticselect.com/contato" />
+  </url>
+
+  <!-- Secondary Pages -->
+  <url>
+    <loc>https://ticselect.com/programa-afiliados</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://ticselect.com/politica-de-privacidad</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
