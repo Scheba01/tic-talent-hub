@@ -1948,31 +1948,35 @@ const RegistroTalento = () => {
                             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                           </FormControl>
                           <div className="space-y-1 leading-none">
-                            <FormLabel className="text-sm">
-                              Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
-                              <Link 
-                                to="/politica-de-privacidad" 
-                                target="_blank"
-                                className="text-primary font-medium hover:underline"
-                              >
-                                Política de Privacidad
-                              </Link> y 
-                              autorizo el uso de la información proporcionada para procesos de selección 
-                              y contacto profesional. Mis datos serán utilizados exclusivamente para 
-                              fines de reclutamiento y evaluación de perfiles profesionales.
-                            </FormLabel>
+                             <FormLabel className="text-sm">
+                               <span className="text-red-500">*</span> Acepto el tratamiento de mis datos personales de acuerdo con la{" "}
+                               <Link 
+                                 to="/politica-de-privacidad" 
+                                 target="_blank"
+                                 className="text-primary font-medium hover:underline"
+                               >
+                                 Política de Privacidad
+                               </Link> y 
+                               autorizo el uso de la información proporcionada para procesos de selección 
+                               y contacto profesional. Mis datos serán utilizados exclusivamente para 
+                               fines de reclutamiento y evaluación de perfiles profesionales.
+                             </FormLabel>
                           </div>
                           <FormMessage />
                         </FormItem>
                       )} />
                     </div>
 
-                    {/* Submit Button */}
-                    <div className="text-center pt-6">
-                      <Button type="submit" className="btn-hero px-8">
-                        FINALIZAR REGISTRO
-                      </Button>
-                    </div>
+                     {/* Submit Button */}
+                     <div className="text-center pt-6">
+                       <Button 
+                         type="submit" 
+                         className="btn-hero px-8" 
+                         disabled={!form.watch("autorizacionDatos")}
+                       >
+                         FINALIZAR REGISTRO
+                       </Button>
+                     </div>
                   </form>
                 </Form>
               </CardContent>
