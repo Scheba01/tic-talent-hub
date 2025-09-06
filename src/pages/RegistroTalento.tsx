@@ -55,6 +55,7 @@ const RegistroTalento = () => {
     }
   }, [user, profile, form]);
   const onSubmit = async (data: RegistrationFormData) => {
+    console.log("Form submission started", data); // Debug log
     try {
       toast.loading("Enviando registro...", { id: "submit-form" });
       
@@ -1987,6 +1988,12 @@ const RegistroTalento = () => {
                          type="submit" 
                          className="btn-hero px-8" 
                          disabled={!form.watch("autorizacionDatos")}
+                         onClick={() => {
+                           console.log("Submit button clicked");
+                           console.log("Form errors:", form.formState.errors);
+                           console.log("Form isValid:", form.formState.isValid);
+                           console.log("Authorization data:", form.watch("autorizacionDatos"));
+                         }}
                        >
                          FINALIZAR REGISTRO
                        </Button>
