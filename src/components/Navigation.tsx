@@ -183,10 +183,15 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsOpen(!isOpen);
+              }}
               className="critical-button h-11 w-11 p-0"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
+              type="button"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
