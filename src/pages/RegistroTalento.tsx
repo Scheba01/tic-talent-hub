@@ -1549,28 +1549,101 @@ const RegistroTalento = () => {
                           <div className="md:col-span-2">
                             <FormField control={form.control} name="implementador.metodologias" render={({
                               field
-                            }) => <FormItem>
-                                  <FormLabel>Metodologías y herramientas</FormLabel>
+                            }) => {
+                              const tipoImplementacion = form.watch("implementador.tipoImplementacion");
+                              
+                              const getMetodologiaOptions = () => {
+                                switch(tipoImplementacion) {
+                                  case "sistemas-gestion":
+                                    return [
+                                      { value: "iso-9001", label: "ISO 9001" },
+                                      { value: "iso-14001", label: "ISO 14001" },
+                                      { value: "iso-45001", label: "ISO 45001" },
+                                      { value: "iso-27001", label: "ISO 27001" },
+                                      { value: "iso-50001", label: "ISO 50001" }
+                                    ];
+                                  case "food-safety":
+                                    return [
+                                      { value: "iso-22000", label: "ISO 22000" },
+                                      { value: "fssc-22000", label: "FSSC 22000" },
+                                      { value: "brc-food", label: "BRC Food" },
+                                      { value: "ifs-food", label: "IFS Food" },
+                                      { value: "global-gap", label: "Global GAP" },
+                                      { value: "haccp", label: "HACCP" }
+                                    ];
+                                  case "sostenibilidad":
+                                    return [
+                                      { value: "gri-standards", label: "GRI Standards" },
+                                      { value: "b-corp", label: "B Corp" },
+                                      { value: "iso-26000", label: "ISO 26000" },
+                                      { value: "fairtrade", label: "Fairtrade" },
+                                      { value: "rainforest-alliance", label: "Rainforest Alliance" }
+                                    ];
+                                  case "social-compliance":
+                                    return [
+                                      { value: "sa-8000", label: "SA 8000" },
+                                      { value: "iso-26000", label: "ISO 26000" },
+                                      { value: "bsci", label: "BSCI" },
+                                      { value: "sedex", label: "SEDEX" },
+                                      { value: "wrap", label: "WRAP" }
+                                    ];
+                                  case "lean-six-sigma":
+                                    return [
+                                      { value: "lean", label: "Lean Manufacturing" },
+                                      { value: "six-sigma", label: "Six Sigma" },
+                                      { value: "kaizen", label: "Kaizen" },
+                                      { value: "5s", label: "5S" },
+                                      { value: "tps", label: "Toyota Production System" },
+                                      { value: "dmaic", label: "DMAIC" }
+                                    ];
+                                  case "seguridad-salud":
+                                    return [
+                                      { value: "iso-45001", label: "ISO 45001" },
+                                      { value: "ohsas-18001", label: "OHSAS 18001" },
+                                      { value: "nosa", label: "NOSA" },
+                                      { value: "dupont", label: "DuPont Safety" }
+                                    ];
+                                  case "medio-ambiente":
+                                    return [
+                                      { value: "iso-14001", label: "ISO 14001" },
+                                      { value: "emas", label: "EMAS" },
+                                      { value: "carbon-footprint", label: "Carbon Footprint" },
+                                      { value: "life-cycle", label: "Life Cycle Assessment" }
+                                    ];
+                                  case "bpm-digitalizacion":
+                                    return [
+                                      { value: "bpmn", label: "BPMN" },
+                                      { value: "process-mining", label: "Process Mining" },
+                                      { value: "rpa", label: "RPA" },
+                                      { value: "workflow", label: "Workflow Management" }
+                                    ];
+                                  default:
+                                    return [
+                                      { value: "iso-9001", label: "ISO 9001" },
+                                      { value: "lean", label: "Lean Manufacturing" },
+                                      { value: "six-sigma", label: "Six Sigma" },
+                                      { value: "kaizen", label: "Kaizen" },
+                                      { value: "5s", label: "5S" },
+                                      { value: "otros", label: "Otros" }
+                                    ];
+                                }
+                              };
+
+                              return (
+                                <FormItem>
+                                  <FormLabel>Metodologías y herramientas relacionadas</FormLabel>
                                   <FormControl>
                                     <MultiSelect 
-                                      options={[
-                                        { value: "iso-9001", label: "ISO 9001" },
-                                        { value: "iso-14001", label: "ISO 14001" },
-                                        { value: "iso-45001", label: "ISO 45001" },
-                                        { value: "lean", label: "Lean Manufacturing" },
-                                        { value: "six-sigma", label: "Six Sigma" },
-                                        { value: "kaizen", label: "Kaizen" },
-                                        { value: "5s", label: "5S" },
-                                        { value: "bpm", label: "BPM" },
-                                        { value: "otros", label: "Otros" }
-                                      ]} 
+                                      options={getMetodologiaOptions()} 
                                       selected={field.value || []} 
                                       onChange={field.onChange} 
-                                      placeholder="Selecciona metodologías..." 
+                                      placeholder={tipoImplementacion ? "Selecciona metodologías relacionadas..." : "Primero selecciona el tipo de implementación"} 
                                     />
                                   </FormControl>
                                   <FormMessage />
-                                </FormItem>} />
+                                </FormItem>
+                              );
+                            }} />
                           </div>
 
                           <div className="md:col-span-2">
