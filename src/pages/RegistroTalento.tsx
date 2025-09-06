@@ -1490,6 +1490,99 @@ const RegistroTalento = () => {
                         </div>
                       </div>}
 
+                    {form.watch("familiasRol")?.some(f => f.area === "implementador") && <div>
+                        <h4 className="text-lg font-semibold mb-4 text-primary">Implementador</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
+                          <div>
+                            <FormField control={form.control} name="implementador.tipoImplementacion" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Tipo de implementación</FormLabel>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <FormControl>
+                                      <SelectTrigger>
+                                        <SelectValue placeholder="Selecciona tipo" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      <SelectItem value="sistemas-gestion">Sistemas de Gestión</SelectItem>
+                                      <SelectItem value="normas-iso">Normas ISO</SelectItem>
+                                      <SelectItem value="procesos-calidad">Procesos de Calidad</SelectItem>
+                                      <SelectItem value="mejora-continua">Mejora Continua</SelectItem>
+                                      <SelectItem value="lean-six-sigma">Lean Six Sigma</SelectItem>
+                                      <SelectItem value="seguridad-salud">Seguridad y Salud Ocupacional</SelectItem>
+                                      <SelectItem value="medio-ambiente">Medio Ambiente</SelectItem>
+                                      <SelectItem value="otros">Otros</SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <div>
+                            <FormField control={form.control} name="implementador.experienciaAnios" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Años de experiencia</FormLabel>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <FormControl>
+                                      <SelectTrigger>
+                                        <SelectValue placeholder="Selecciona años" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      <SelectItem value="1-2">1-2 años</SelectItem>
+                                      <SelectItem value="3-5">3-5 años</SelectItem>
+                                      <SelectItem value="6-10">6-10 años</SelectItem>
+                                      <SelectItem value="11-15">11-15 años</SelectItem>
+                                      <SelectItem value="mas-15">Más de 15 años</SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="implementador.metodologias" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Metodologías y herramientas</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect 
+                                      options={[
+                                        { value: "iso-9001", label: "ISO 9001" },
+                                        { value: "iso-14001", label: "ISO 14001" },
+                                        { value: "iso-45001", label: "ISO 45001" },
+                                        { value: "lean", label: "Lean Manufacturing" },
+                                        { value: "six-sigma", label: "Six Sigma" },
+                                        { value: "kaizen", label: "Kaizen" },
+                                        { value: "5s", label: "5S" },
+                                        { value: "bpm", label: "BPM" },
+                                        { value: "otros", label: "Otros" }
+                                      ]} 
+                                      selected={field.value || []} 
+                                      onChange={field.onChange} 
+                                      placeholder="Selecciona metodologías..." 
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+
+                          <div className="md:col-span-2">
+                            <FormField control={form.control} name="implementador.comentarios" render={({
+                              field
+                            }) => <FormItem>
+                                  <FormLabel>Comentarios sobre lo que has realizado en esta área</FormLabel>
+                                  <FormControl>
+                                    <Textarea {...field} placeholder="Describe tu experiencia como implementador, proyectos destacados, metodologías aplicadas..." />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>} />
+                          </div>
+                        </div>
+                      </div>}
+
                      {/* Continue with other conditional subforms... */}
                      
                     

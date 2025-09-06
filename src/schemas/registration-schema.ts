@@ -172,6 +172,13 @@ export const registrationSchema = z.object({
     experiencia: z.string(),
     areas: z.array(z.string()),
     comentarios: z.string().optional()
+  }).optional(),
+
+  implementador: z.object({
+    tipoImplementacion: z.string(),
+    experienciaAnios: z.string(),
+    metodologias: z.array(z.string()),
+    comentarios: z.string().optional()
   }).optional()
 })
 
