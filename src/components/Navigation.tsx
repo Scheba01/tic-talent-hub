@@ -197,124 +197,124 @@ const Navigation = () => {
             </Button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`block px-3 py-2 text-base font-medium transition-colors hover:text-primary ${
-                    isActive(item.path) ? "text-primary" : "text-muted-foreground"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
+      {/* Mobile menu overlay */}
+      {isOpen && (
+        <div className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-background border-b border-border shadow-lg">
+          <div className="px-4 py-4 space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`block px-3 py-2 text-base font-medium transition-colors hover:text-primary ${
+                  isActive(item.path) ? "text-primary" : "text-muted-foreground"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            
+            <div className="pt-2 border-t border-border">
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground w-full mb-3">
+                <Link to={getLocalizedPath("/contacto")} onClick={() => setIsOpen(false)}>
+                  {t('nav.contact')}
                 </Link>
-              ))}
-              <div className="px-3 py-2">
-                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground w-full">
-                  <Link to={getLocalizedPath("/contacto")} onClick={() => setIsOpen(false)}>
-                    {t('nav.contact')}
-                  </Link>
-                </Button>
-              </div>
-              <div className="px-3 py-2">
-                {user ? (
-                  <div className="space-y-2">
-                    <div className="text-sm font-medium text-muted-foreground px-3 py-1">
-                      {profile?.nombre_completo || user.email}
-                    </div>
-                    <Button asChild variant="outline" className="w-full">
-                      <Link to="/mi-perfil" onClick={() => setIsOpen(false)}>
-                        Mi Perfil
-                      </Link>
-                    </Button>
-                    <Button asChild variant="outline" className="w-full">
-                      <Link to="/registro-talento" onClick={() => setIsOpen(false)}>
-                        Editar Perfil
-                      </Link>
-                    </Button>
-                    <Button 
-                      onClick={() => {
-                        setIsOpen(false);
-                        signOut();
-                      }}
-                      variant="outline" 
-                      className="w-full"
-                    >
-                      <LogOut className="h-4 w-4 mr-2" />
-                      {t('nav.logout')}
-                    </Button>
+              </Button>
+              
+              {user ? (
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-muted-foreground px-3 py-1">
+                    {profile?.nombre_completo || user.email}
                   </div>
-                ) : (
                   <Button asChild variant="outline" className="w-full">
-                    <Link to="/auth" onClick={() => setIsOpen(false)}>
-                      {t('nav.login')}
+                    <Link to="/mi-perfil" onClick={() => setIsOpen(false)}>
+                      Mi Perfil
                     </Link>
                   </Button>
-                )}
-              </div>
-              
-              {/* Language Switcher for Mobile */}
-              <div className="px-3 py-2">
-                <div className="text-sm font-medium text-muted-foreground px-3 py-1 mb-2">
-                  {t('nav.language')} Language
-                </div>
-                <div className="space-y-1">
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-start"
-                    onClick={() => {
-                      setLanguage('en');
-                      setIsOpen(false);
-                    }}
-                  >
-                    🇺🇸 English
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to="/registro-talento" onClick={() => setIsOpen(false)}>
+                      Editar Perfil
+                    </Link>
                   </Button>
                   <Button 
-                    variant="ghost" 
-                    className="w-full justify-start"
                     onClick={() => {
-                      setLanguage('es');
                       setIsOpen(false);
+                      signOut();
                     }}
+                    variant="outline" 
+                    className="w-full"
                   >
-                    🇪🇸 Español
-                  </Button>
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-start"
-                    onClick={() => {
-                      setLanguage('pt');
-                      setIsOpen(false);
-                    }}
-                  >
-                    🇧🇷 Português
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {t('nav.logout')}
                   </Button>
                 </div>
+              ) : (
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/auth" onClick={() => setIsOpen(false)}>
+                    {t('nav.login')}
+                  </Link>
+                </Button>
+              )}
+            </div>
+            
+            {/* Language Switcher */}
+            <div className="pt-2 border-t border-border">
+              <div className="text-sm font-medium text-muted-foreground px-3 py-1 mb-2">
+                Idioma / Language
               </div>
-              
-              {/* LinkedIn Link for Mobile */}
-              <div className="px-3 py-2">
-                <Button variant="outline" className="w-full" asChild>
-                  <a 
-                    href="https://www.linkedin.com/company/ticselect/about/?viewAsMember=true" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <img src={linkedinLogo} alt="LinkedIn" className="h-4 w-4 mr-2" />
-                    LinkedIn
-                  </a>
+              <div className="grid grid-cols-3 gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => {
+                    setLanguage('es');
+                    setIsOpen(false);
+                  }}
+                >
+                  🇪🇸 ES
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => {
+                    setLanguage('en');
+                    setIsOpen(false);
+                  }}
+                >
+                  🇺🇸 EN
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => {
+                    setLanguage('pt');
+                    setIsOpen(false);
+                  }}
+                >
+                  🇧🇷 PT
                 </Button>
               </div>
             </div>
+            
+            {/* LinkedIn */}
+            <div className="pt-2 border-t border-border">
+              <Button variant="outline" className="w-full" asChild>
+                <a 
+                  href="https://www.linkedin.com/company/ticselect/about/?viewAsMember=true" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <img src={linkedinLogo} alt="LinkedIn" className="h-4 w-4 mr-2" />
+                  LinkedIn
+                </a>
+              </Button>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
