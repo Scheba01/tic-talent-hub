@@ -63,25 +63,25 @@ export const RelatedLinks: React.FC<RelatedLinksProps> = ({ currentPage, maxLink
     {
       path: '/',
       title: t('nav.home'),
-      description: t('index.description'),
+      description: t('hero.subtitle'),
       category: 'main'
     },
     {
       path: getLocalizedPath('/quienes-somos'),
       title: t('nav.about'),
-      description: t('about.description'),
+      description: t('about.subtitle'),
       category: 'company'
     },
     {
       path: getLocalizedPath('/servicios-para-empresas'),
       title: t('nav.services'),
-      description: t('services.description'),
+      description: t('services_page.executive_search.subtitle'),
       category: 'services'
     },
     {
       path: getLocalizedPath('/vacantes-y-perfiles'),
       title: t('nav.jobs'),
-      description: t('jobs.description'),
+      description: t('jobs.subtitle'),
       category: 'jobs'
     },
     {
@@ -93,7 +93,7 @@ export const RelatedLinks: React.FC<RelatedLinksProps> = ({ currentPage, maxLink
     {
       path: getLocalizedPath('/contacto'),
       title: t('nav.contact'),
-      description: t('contact.description'),
+      description: t('contact.subtitle'),
       category: 'contact'
     }
   ];
