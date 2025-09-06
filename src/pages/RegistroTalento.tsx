@@ -1512,6 +1512,10 @@ const RegistroTalento = () => {
                                       <SelectItem value="lean-six-sigma">Lean Six Sigma</SelectItem>
                                       <SelectItem value="seguridad-salud">Seguridad y Salud Ocupacional</SelectItem>
                                       <SelectItem value="medio-ambiente">Medio Ambiente</SelectItem>
+                                      <SelectItem value="food-safety">Food Safety (Seguridad Alimentaria)</SelectItem>
+                                      <SelectItem value="sostenibilidad">Sostenibilidad y RSE</SelectItem>
+                                      <SelectItem value="social-compliance">Social Compliance</SelectItem>
+                                      <SelectItem value="bpm-digitalizacion">BPM y Digitalización</SelectItem>
                                       <SelectItem value="otros">Otros</SelectItem>
                                     </SelectContent>
                                   </Select>

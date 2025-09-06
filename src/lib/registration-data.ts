@@ -109,12 +109,21 @@ export const NORMAS_SISTEMAS = [
   { value: "iso-45001", label: "ISO 45001" },
   { value: "iso-22000", label: "ISO 22000" },
   { value: "fssc-22000", label: "FSSC 22000" },
+  { value: "brc-food", label: "BRC Food" },
+  { value: "ifs-food", label: "IFS Food" },
+  { value: "global-gap", label: "Global GAP" },
   { value: "iso-27001", label: "ISO 27001" },
   { value: "iso-37001", label: "ISO 37001" },
   { value: "iso-13485", label: "ISO 13485" },
   { value: "iso-50001", label: "ISO 50001" },
   { value: "iso-22301", label: "ISO 22301" },
   { value: "iso-20000-1", label: "ISO 20000-1" },
+  { value: "sa-8000", label: "SA 8000 (Social)" },
+  { value: "iso-26000", label: "ISO 26000 (Responsabilidad Social)" },
+  { value: "gri-standards", label: "GRI Standards (Sostenibilidad)" },
+  { value: "b-corp", label: "B Corp (Sostenibilidad)" },
+  { value: "fairtrade", label: "Fairtrade" },
+  { value: "rainforest-alliance", label: "Rainforest Alliance" },
   { value: "otros", label: "Otros" }
 ]
 
