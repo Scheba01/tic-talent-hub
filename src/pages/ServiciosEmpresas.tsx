@@ -9,7 +9,8 @@ import { Helmet } from "react-helmet";
 
 const ServiciosEmpresas = () => {
   const { t, language } = useLanguage();
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       <Helmet>
         <link rel="canonical" href="https://ticselect.com/servicios-para-empresas" />
         <meta property="og:url" content="https://ticselect.com/servicios-para-empresas" />

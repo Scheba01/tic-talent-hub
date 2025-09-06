@@ -7,9 +7,10 @@ import { GraduationCap, Users, Lightbulb, Award, Phone, Mail, CheckCircle, Trend
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
 import LazyImage from "@/components/ui/lazy-image";
+import { RelatedLinks, Breadcrumbs, ContextualLink, CTALinks } from "@/components/InternalLinks";
 
 const ProgramaTalentoTIC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <div className="min-h-screen bg-background">
