@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const PoliticaPrivacidad = () => {
   useEffect(() => {
@@ -49,6 +50,10 @@ const PoliticaPrivacidad = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://ticselect.com/politica-de-privacidad" />
+        <meta property="og:url" content="https://ticselect.com/politica-de-privacidad" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">

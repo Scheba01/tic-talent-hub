@@ -22,6 +22,8 @@ const ProgramaTalentoTIC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('programaTalentoTIC.title')} />
         <meta name="twitter:description" content={t('programaTalentoTIC.description')} />
+        <link rel="canonical" href="https://ticselect.com/programa-talentotic" />
+        <meta property="og:url" content="https://ticselect.com/programa-talentotic" />
       </Helmet>
       <Navigation />
       

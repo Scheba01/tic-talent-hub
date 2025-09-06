@@ -14,11 +14,16 @@ import {
   Mail
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 
 const VacantesPerfiles = () => {
   const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://ticselect.com/vacantes-y-perfiles" />
+        <meta property="og:url" content="https://ticselect.com/vacantes-y-perfiles" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">

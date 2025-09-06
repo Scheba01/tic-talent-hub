@@ -13,6 +13,7 @@ import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 
 
 const Contacto = () => {
@@ -98,6 +99,10 @@ const Contacto = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://ticselect.com/contacto" />
+        <meta property="og:url" content="https://ticselect.com/contacto" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">

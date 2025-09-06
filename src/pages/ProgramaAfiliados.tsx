@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, DollarSign, Target, Gift, Award, Handshake, TrendingUp, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 
 const ProgramaAfiliados = () => {
   const { t } = useLanguage();
@@ -82,6 +83,10 @@ const ProgramaAfiliados = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://ticselect.com/programa-afiliados" />
+        <meta property="og:url" content="https://ticselect.com/programa-afiliados" />
+      </Helmet>
       <Navigation />
       
       <main>

@@ -5,10 +5,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, BarChart3, TrendingUp, MessageSquare, Target, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 
 const ServiciosEmpresas = () => {
   const { t } = useLanguage();
   return <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://ticselect.com/servicios-para-empresas" />
+        <meta property="og:url" content="https://ticselect.com/servicios-para-empresas" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">

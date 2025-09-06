@@ -21,6 +21,8 @@ const QuienesSomos = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('about.seo.title')} />
         <meta name="twitter:description" content={t('about.seo.description')} />
+        <link rel="canonical" href="https://ticselect.com/quienes-somos" />
+        <meta property="og:url" content="https://ticselect.com/quienes-somos" />
       </Helmet>
       <Navigation />
       

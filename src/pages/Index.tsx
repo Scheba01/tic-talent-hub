@@ -5,10 +5,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, Target, Award, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Helmet } from "react-helmet";
 const Index = () => {
   const { t } = useLanguage();
 
   return <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://ticselect.com/" />
+        <meta property="og:url" content="https://ticselect.com/" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">
