@@ -619,7 +619,7 @@ const translations: Record<Language, Record<string,string>> = {
     'programaTalentoTIC.whatIs.title': '¿Qué es TIC Talento?',
     'programaTalentoTIC.whatIs.description1': 'TIC Talento es un programa que fortalece la base de talento de la industria de Testing, Inspección y Certificación. Vinculamos universidades, estudiantes y compañías para que los futuros profesionales se adapten a la cultura organizacional desde el inicio: trabajan en proyectos reales, reciben mentoría y se forman en estándares internacionales.',
     'programaTalentoTIC.whatIs.description2': 'Las empresas se suman como partners, cumplen criterios anuales (prácticas, proyectos, mentorías) y nosotros identificamos y preparamos a los candidatos. Así reducimos la brecha de perfiles especializados y promovemos la industria con nuevas vocaciones y mejores inserciones.',
-    'programaTalentoTIC.whatIs.description3': '',
+    'programaTalentoTIC.whatIs.description3': 'Nuestro enfoque es crear valor sostenible tanto para jóvenes como para empresas, estableciendo las bases para una fuerza laboral más preparada y competitiva.',
     'programaTalentoTIC.benefitsCompanies.title': 'Beneficios para las Empresas',
     'programaTalentoTIC.benefitsCompanies.preselectedTalent.title': 'Talento Preseleccionado',
     'programaTalentoTIC.benefitsCompanies.preselectedTalent.description': 'Acceso a jóvenes con potencial pre-evaluado y motivación demostrada.',
