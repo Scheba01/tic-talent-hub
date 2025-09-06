@@ -193,7 +193,7 @@ const MiPerfil = () => {
                   Familias de Roles Profesionales
                 </CardTitle>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Áreas de especialización y roles profesionales en los que tienes experiencia
+                  Selecciona las áreas de especialización y roles profesionales en los que tienes experiencia
                 </p>
               </CardHeader>
               <CardContent>

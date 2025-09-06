@@ -403,9 +403,12 @@ const RegistroTalento = () => {
                       </div>
                     </div>
 
-                    {/* 3) Familias de rol */}
+                    {/* 3) Familias de Roles Profesionales */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">3. En qué área tienes experiencia? (elige una o más)</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">3. Familias de Roles Profesionales</h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Selecciona las áreas de especialización y roles profesionales en los que tienes experiencia (elige una o más)
+                      </p>
                       <div className="space-y-4">
                         {form.watch("familiasRol")?.map((_, index) => (
                           <div key={index} className="space-y-4">
