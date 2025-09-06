@@ -22,7 +22,7 @@ interface ExploreMoreSectionProps {
   showGradient?: boolean;
 }
 
-export const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
+const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
   currentPage,
   title,
   description,
