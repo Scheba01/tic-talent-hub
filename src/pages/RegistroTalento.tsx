@@ -14,17 +14,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema, type RegistrationFormData } from "@/schemas/registration-schema";
 import { PAISES_LATAM, FAMILIAS_ROL, TIPOS_LABORATORIO, AREAS_INSPECCION, NORMAS_SISTEMAS, SECTORES_PRODUCTOS, AREAS_PERSONAS, SECTORES_INDUSTRIA, NORMAS_COMPETENCIAS, IDIOMAS, NIVELES_IDIOMA, NIVELES_COMPETENCIA, AREAS_FUNCIONALES, SUBAREAS_POR_AREA, ROLES_POR_SUBAREA, NIVELES_CARGO, SENIORITY_LEVELS, PERSONAS_CARGO, RESPONSABILIDAD_PL, ALCANCE_GEOGRAFICO, REPORTA_A, COUNTRY_CODES } from "@/lib/registration-data";
 import { useState, useEffect } from "react";
-import { Plus, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Plus, X, Loader2 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { submitCandidate } from "@/lib/candidate-service";
 import { useAuth } from "@/hooks/useAuth";
+import { getCandidateProfile, transformProfileToFormData } from "@/lib/candidate-profile-service";
 
 const RegistroTalento = () => {
   console.log("RegistroTalento component loaded"); // Debug log
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
   const [selectedSubarea, setSelectedSubarea] = useState<string>("");
-  const { user, profile } = useAuth();
+  const { user, profile, loading } = useAuth();
+  const navigate = useNavigate();
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(false);
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
@@ -57,13 +61,44 @@ const RegistroTalento = () => {
     }
   });
 
-  // Pre-fill form with user data when available
+  // Load existing profile data
   useEffect(() => {
-    if (user && profile) {
+    const loadExistingProfile = async () => {
+      if (!user || loading) return;
+      
+      setLoadingProfile(true);
+      try {
+        const profileData = await getCandidateProfile();
+        if (profileData) {
+          const formData = transformProfileToFormData(profileData);
+          form.reset(formData);
+          setIsEditMode(true);
+        }
+      } catch (error) {
+        console.error('Error loading profile:', error);
+        toast.error('Error al cargar el perfil');
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+
+    loadExistingProfile();
+  }, [user, loading, form]);
+
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/auth");
+    }
+  }, [user, loading, navigate]);
+
+  // Pre-fill form with user data when available (only for new registrations)
+  useEffect(() => {
+    if (user && profile && !isEditMode) {
       form.setValue("nombreCompleto", profile.nombre_completo || "");
       form.setValue("email", user.email || "");
     }
-  }, [user, profile, form]);
+  }, [user, profile, form, isEditMode]);
   const onSubmit = async (data: RegistrationFormData) => {
     console.log("Form submission started", data); // Debug log
     try {
@@ -108,6 +143,20 @@ const RegistroTalento = () => {
       form.setValue("familiasRol", currentAreas.filter((_, i) => i !== index));
     }
   };
+
+  // Show loading screen while checking authentication or loading profile
+  if (loading || loadingProfile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">
+            {loading ? "Verificando autenticación..." : "Cargando perfil..."}
+          </p>
+        </div>
+      </div>
+    );
+  }
   const removeIdioma = (index: number) => {
     const currentIdiomas = form.getValues("idiomas");
     if (currentIdiomas.length > 1) {
@@ -2441,13 +2490,13 @@ const RegistroTalento = () => {
 
                      {/* Submit Button */}
                      <div className="text-center pt-6">
-                       <Button 
-                         type="submit" 
-                         className="btn-hero px-8" 
-                         disabled={!form.watch("autorizacionDatos")}
-                       >
-                         FINALIZAR REGISTRO
-                       </Button>
+                        <Button 
+                          type="submit" 
+                          className="btn-hero px-8" 
+                          disabled={!form.watch("autorizacionDatos")}
+                        >
+                          {isEditMode ? "ACTUALIZAR PERFIL" : "FINALIZAR REGISTRO"}
+                        </Button>
                      </div>
                   </form>
                 </Form>
