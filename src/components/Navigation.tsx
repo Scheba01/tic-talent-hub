@@ -68,7 +68,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src={ticSelectLogo} 
+              src="/lovable-uploads/tic-select-logo.webp" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
             />
