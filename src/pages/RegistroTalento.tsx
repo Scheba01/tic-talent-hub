@@ -2456,19 +2456,36 @@ const RegistroTalento = () => {
                            console.log("Form isValid:", form.formState.isValid);
                            console.log("Authorization data:", form.watch("autorizacionDatos"));
                            
-                           // Check specific required fields
+                           // Check all required fields systematically
                            const formData = form.getValues();
-                           console.log("Form data:", formData);
-                           console.log("Familias rol:", formData.familiasRol);
-                           console.log("Experiencia laboral:", formData.experienciaLaboral);
-                           console.log("Idiomas:", formData.idiomas);
-                           console.log("CV:", formData.cv);
+                           console.log("=== FORM VALIDATION DEBUG ===");
+                           console.log("nombreCompleto:", formData.nombreCompleto);
+                           console.log("email:", formData.email);
+                           console.log("telefono:", formData.telefono);
+                           console.log("pais:", formData.pais);
+                           console.log("ciudad:", formData.ciudad);
+                           console.log("situacionActual:", formData.situacionActual);
+                           console.log("disponibilidad:", formData.disponibilidad);
+                           console.log("jornada:", formData.jornada);
+                           console.log("sueldoActualBruto:", formData.sueldoActualBruto);
+                           console.log("familiasRol:", formData.familiasRol);
+                           console.log("competenciasNormas:", formData.competenciasNormas);
+                           console.log("nivelMaximo:", formData.nivelMaximo);
+                           console.log("areaEstudio:", formData.areaEstudio);
+                           console.log("idiomas:", formData.idiomas);
+                           console.log("experienciaLaboral:", formData.experienciaLaboral);
+                           console.log("cv:", formData.cv);
+                           console.log("autorizacionDatos:", formData.autorizacionDatos);
                            
                            // Manually trigger validation to see specific errors
                            form.trigger().then(isValid => {
                              console.log("Manual validation result:", isValid);
                              if (!isValid) {
-                               console.log("Detailed form errors after trigger:", form.formState.errors);
+                               console.log("=== DETAILED VALIDATION ERRORS ===");
+                               const errors = form.formState.errors;
+                               Object.keys(errors).forEach(key => {
+                                 console.log(`Error in ${key}:`, errors[key as keyof typeof errors]);
+                               });
                              }
                            });
                          }}
