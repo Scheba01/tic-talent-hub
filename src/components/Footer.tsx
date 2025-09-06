@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Linkedin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -68,6 +70,18 @@ const Footer = () => {
                 <a href="tel:+56979575372" className="text-muted-foreground hover:text-primary transition-colors">
                   +56 9 7957 5372
                 </a>
+              </li>
+              <li>
+                <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
+                  <a 
+                    href="https://www.linkedin.com/company/ticselect/about/?viewAsMember=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                </Button>
               </li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Globe, User, LogOut } from "lucide-react";
+import { Menu, X, Globe, User, LogOut, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -127,6 +127,18 @@ const Navigation = () => {
                 <Link to="/auth">{t('nav.login')}</Link>
               </Button>
             )}
+            
+            {/* LinkedIn Link */}
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
+              <a 
+                href="https://www.linkedin.com/company/ticselect/about/?viewAsMember=true" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+            </Button>
             
             {/* Language Switcher */}
             <DropdownMenu>
