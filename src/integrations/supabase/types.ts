@@ -1188,6 +1188,15 @@ export type Database = {
           telefono: string
         }[]
       }
+      get_candidate_stats: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          active_candidates: number
+          by_country: Json
+          by_status: Json
+          total_candidates: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -1198,6 +1207,20 @@ export type Database = {
       is_admin_or_staff: {
         Args: { _user_id: string }
         Returns: boolean
+      }
+      list_candidates_secure: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          area_estudio: string
+          ciudad: string
+          created_at: string
+          email: string
+          id: string
+          nombre_completo: string
+          pais: string
+          situacion_actual: string
+          status: string
+        }[]
       }
       log_candidate_access: {
         Args: { _access_type: string; _candidate_id: string; _purpose: string }
