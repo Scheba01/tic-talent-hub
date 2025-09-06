@@ -604,7 +604,7 @@ const translations: Record<Language, Record<string,string>> = {
     'why.ready.title': '¿Listo para Comenzar?',
     'why.ready.desc': 'Elige tu forma preferida de contactarnos',
     'about.title': 'Quiénes Somos - Expertos en Reclutamiento TIC',
-    'about.subtitle': 'Entendemos profundamente las necesidades específicas del sector Testing, Inspection & Certification porque venimos de él.',
+    'about.subtitle': 'En TIC Select somos un equipo que proviene directamente de la industria de Testing, Inspección y Certificación (TIC), con más de 30 años de experiencia acumulada en distintos mercados de América Latina. Nuestra trayectoria nos permite entender de primera mano los desafíos que enfrentan las empresas del sector y adaptar la búsqueda de talento según el nivel de madurez y las necesidades específicas de cada organización, ya sea en fases de crecimiento, expansión internacional o consolidación. Contamos con una red regional sólida, con presencia en los principales países de LATAM, lo que nos da acceso privilegiado a profesionales técnicos, comerciales y ejecutivos especializados en TIC. Más que un servicio de reclutamiento, ofrecemos una visión estratégica: sabemos cómo identificar a los perfiles que realmente generan impacto en el negocio, porque hemos estado en su lugar. En TIC Select conectamos a las empresas con el talento adecuado en el momento justo, impulsando el desarrollo de una industria que no se detiene.',
     'about.experts.title': 'Red de Expertos',
     'about.experts.desc': 'Nuestro equipo entiende las necesidades específicas del sector TIC porque viene de él.',
     'about.talent_universe.title': 'Universo de Talento',
