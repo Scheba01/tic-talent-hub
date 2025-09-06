@@ -68,7 +68,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <LazyImage 
-              src="/lovable-uploads/tic-select-logo.webp" 
+              src="/src/assets/tic-select-logo.png" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
               priority={true}
