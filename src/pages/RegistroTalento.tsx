@@ -1993,6 +1993,22 @@ const RegistroTalento = () => {
                            console.log("Form errors:", form.formState.errors);
                            console.log("Form isValid:", form.formState.isValid);
                            console.log("Authorization data:", form.watch("autorizacionDatos"));
+                           
+                           // Check specific required fields
+                           const formData = form.getValues();
+                           console.log("Form data:", formData);
+                           console.log("Familias rol:", formData.familiasRol);
+                           console.log("Experiencia laboral:", formData.experienciaLaboral);
+                           console.log("Idiomas:", formData.idiomas);
+                           console.log("CV:", formData.cv);
+                           
+                           // Manually trigger validation to see specific errors
+                           form.trigger().then(isValid => {
+                             console.log("Manual validation result:", isValid);
+                             if (!isValid) {
+                               console.log("Detailed form errors after trigger:", form.formState.errors);
+                             }
+                           });
                          }}
                        >
                          FINALIZAR REGISTRO
