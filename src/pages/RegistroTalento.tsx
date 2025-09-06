@@ -20,8 +20,10 @@ import { toast } from "sonner";
 import { submitCandidate } from "@/lib/candidate-service";
 import { useAuth } from "@/hooks/useAuth";
 import { getCandidateProfile, transformProfileToFormData } from "@/lib/candidate-profile-service";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const RegistroTalento = () => {
+  const { t } = useLanguage();
   console.log("RegistroTalento component loaded"); // Debug log
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
   const [selectedSubarea, setSelectedSubarea] = useState<string>("");
@@ -171,10 +173,10 @@ const RegistroTalento = () => {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Registro de Candidato TIC
+              {t('registration.title')}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Completa tu perfil profesional para acceder a las mejores oportunidades en el sector TIC de Latinoamérica.
+              {t('registration.subtitle')}
             </p>
           </div>
         </section>
@@ -184,17 +186,17 @@ const RegistroTalento = () => {
           <div className="max-w-4xl mx-auto">
             <Card className="shadow-elegant">
               <CardHeader>
-                <CardTitle className="text-2xl font-display">Formulario de Registro Candidato</CardTitle>
+                <CardTitle className="text-2xl font-display">{t('registration.form_title')}</CardTitle>
                 {!user && (
                   <div className="mt-4 p-4 bg-muted/30 rounded-lg border border-border">
                     <p className="text-sm text-muted-foreground">
-                      ¿Ya tienes una cuenta? 
+                      {t('registration.already_account')}
                       <Link to="/auth" className="ml-1 text-primary hover:text-primary/80 font-medium">
-                        Inicia sesión aquí
+                        {t('registration.login_here')}
                       </Link>
-                      {" "}o{" "}
+                      {" "}{t('registration.or')}{" "}
                       <Link to="/auth" className="text-primary hover:text-primary/80 font-medium">
-                        restablece tu contraseña
+                        {t('registration.reset_password')}
                       </Link>
                     </p>
                   </div>
@@ -203,10 +205,10 @@ const RegistroTalento = () => {
               <CardContent>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                    
-                    {/* 1) Datos personales */}
-                    <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">1. Datos Personales</h3>
+                     
+                     {/* 1) Personal Data */}
+                     <div>
+                       <h3 className="text-xl font-display font-semibold mb-6">1. {t('registration.personal_data.title')}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField control={form.control} name="nombreCompleto" render={({
                         field
@@ -221,7 +223,7 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="email" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Email <span className="text-red-500">*</span></FormLabel>
+                              <FormLabel>{t('registration.email')} <span className="text-red-500">*</span></FormLabel>
                               <FormControl>
                                 <Input type="email" {...field} />
                               </FormControl>
@@ -232,7 +234,7 @@ const RegistroTalento = () => {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <div>
                           <div className="space-y-2">
-                            <Label>Teléfono (WhatsApp) <span className="text-red-500">*</span></Label>
+                            <Label>{t('registration.phone')} <span className="text-red-500">*</span></Label>
                             <div className="flex gap-2">
                               <FormField control={form.control} name="codigoPais" render={({
                                 field
@@ -287,11 +289,11 @@ const RegistroTalento = () => {
                           <FormField control={form.control} name="pais" render={({
                           field
                         }) => <FormItem>
-                                <FormLabel>País de residencia <span className="text-red-500">*</span></FormLabel>
+                                <FormLabel>{t('registration.country_residence')} <span className="text-red-500">*</span></FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue placeholder="Selecciona tu país" />
+                                      <SelectValue placeholder={t('registration.select_country')} />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
@@ -309,7 +311,7 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="paisOtro" render={({
                           field
                         }) => <FormItem>
-                              <FormLabel>Especifica tu país</FormLabel>
+                              <FormLabel>{t('registration.specify_country')}</FormLabel>
                               <FormControl>
                                 <Input placeholder="Escribe tu país" {...field} />
                               </FormControl>
@@ -320,7 +322,7 @@ const RegistroTalento = () => {
                       <FormField control={form.control} name="ciudad" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Ciudad</FormLabel>
+                              <FormLabel>{t('registration.city')}</FormLabel>
                               <FormControl>
                                 <Input {...field} />
                               </FormControl>
@@ -328,25 +330,25 @@ const RegistroTalento = () => {
                             </FormItem>} />
                     </div>
 
-                    {/* 2) Situación laboral & disponibilidad */}
-                    <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">2. Situación Laboral & Disponibilidad</h3>
+                     {/* 2) Employment Situation & Availability */}
+                     <div>
+                       <h3 className="text-xl font-display font-semibold mb-6">2. {t('registration.employment_situation.title')}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField control={form.control} name="situacionActual" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Situación actual</FormLabel>
+                              <FormLabel>{t('registration.current_situation')}</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona tu situación" />
+                                    <SelectValue placeholder={t('registration.select_situation')} />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="empleado">Empleado</SelectItem>
-                                  <SelectItem value="independiente">Independiente</SelectItem>
-                                  <SelectItem value="desempleado">Desempleado</SelectItem>
-                                  <SelectItem value="estudiante">Estudiante/Práctica</SelectItem>
+                                   <SelectItem value="empleado">{t('registration.employed')}</SelectItem>
+                                   <SelectItem value="independiente">{t('registration.independent')}</SelectItem>
+                                   <SelectItem value="desempleado">{t('registration.unemployed')}</SelectItem>
+                                   <SelectItem value="estudiante">{t('registration.student')}</SelectItem>
                                 </SelectContent>
                               </Select>
                               <FormMessage />
@@ -355,18 +357,18 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="disponibilidad" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Disponibilidad</FormLabel>
+                              <FormLabel>{t('registration.availability')}</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona disponibilidad" />
+                                    <SelectValue placeholder={t('registration.select_availability')} />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="inmediata">Inmediata</SelectItem>
-                                  <SelectItem value="15-dias">15 días</SelectItem>
-                                  <SelectItem value="30-dias">30 días</SelectItem>
-                                  <SelectItem value="mas-30-dias">&gt;30 días</SelectItem>
+                                   <SelectItem value="inmediata">{t('registration.immediate')}</SelectItem>
+                                   <SelectItem value="15-dias">{t('registration.15_days')}</SelectItem>
+                                   <SelectItem value="30-dias">{t('registration.30_days')}</SelectItem>
+                                   <SelectItem value="mas-30-dias">{t('registration.more_30_days')}</SelectItem>
                                 </SelectContent>
                               </Select>
                               <FormMessage />
@@ -375,11 +377,11 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="jornada" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Jornada</FormLabel>
+                              <FormLabel>{t('registration.work_schedule')}</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
-                                    <SelectValue placeholder="Selecciona jornada" />
+                                    <SelectValue placeholder={t('registration.select_schedule')} />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -405,10 +407,10 @@ const RegistroTalento = () => {
 
                     {/* 3) Familias de Roles Profesionales */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">3. Familias de Roles Profesionales</h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        Selecciona las áreas de especialización y roles profesionales en los que tienes experiencia (elige una o más)
-                      </p>
+                       <h3 className="text-xl font-display font-semibold mb-6">3. {t('registration.role_families.title')}</h3>
+                       <p className="text-sm text-muted-foreground mb-4">
+                         {t('registration.role_families.description')}
+                       </p>
                       <div className="space-y-4">
                         {form.watch("familiasRol")?.map((_, index) => (
                           <div key={index} className="space-y-4">
@@ -416,11 +418,11 @@ const RegistroTalento = () => {
                               <FormField control={form.control} name={`familiasRol.${index}.area`} render={({
                                 field
                               }) => <FormItem>
-                                        <FormLabel>Área de experiencia</FormLabel>
+                                        <FormLabel>{t('registration.experience_area')}</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                           <FormControl>
                                             <SelectTrigger>
-                                              <SelectValue placeholder="Selecciona área" />
+                                               <SelectValue placeholder={t('registration.select_area')} />
                                             </SelectTrigger>
                                           </FormControl>
                                           <SelectContent>
@@ -1132,7 +1134,7 @@ const RegistroTalento = () => {
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue placeholder="Selecciona rango" />
+                                     <SelectValue placeholder={t('registration.select_salary')} />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
@@ -2396,12 +2398,12 @@ const RegistroTalento = () => {
 
                     {/* 9) Documentos */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">9. Documentos</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">9. {t('registration.documents.title')}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                          <FormField control={form.control} name="cv" render={({
                          field
                        }) => <FormItem>
-                               <FormLabel>Subir CV (PDF) <span className="text-red-500">*</span></FormLabel>
+                               <FormLabel>{t('registration.cv')} <span className="text-red-500">*</span></FormLabel>
                                <FormControl>
                                  <Input 
                                    type="file" 
@@ -2479,11 +2481,8 @@ const RegistroTalento = () => {
                                  target="_blank"
                                  className="text-primary font-medium hover:underline"
                                >
-                                 Política de Privacidad
-                               </Link> y 
-                               autorizo el uso de la información proporcionada para procesos de selección 
-                               y contacto profesional. Mis datos serán utilizados exclusivamente para 
-                               fines de reclutamiento y evaluación de perfiles profesionales.
+                                  {t('registration.privacy_policy')}
+                                </Link> {t('registration.data_authorization.text')}
                              </FormLabel>
                           </div>
                           <FormMessage />
@@ -2498,7 +2497,7 @@ const RegistroTalento = () => {
                           className="btn-hero px-8" 
                           disabled={!form.watch("autorizacionDatos")}
                         >
-                          {isEditMode ? "ACTUALIZAR PERFIL" : "FINALIZAR REGISTRO"}
+                          {isEditMode ? t('profile.edit_button') : t('registration.submit')}
                         </Button>
                      </div>
                   </form>
