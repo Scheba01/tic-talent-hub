@@ -8,7 +8,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
 
 const ServiciosEmpresas = () => {
-  console.log('ServiciosEmpresas component loaded - no ContextualLink used');
   const { t, language } = useLanguage();
   return (
     <div className="min-h-screen bg-background">
