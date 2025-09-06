@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
+import ExploreMoreSection from "@/components/ExploreMoreSection";
 
 const QuienesSomos = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <div className="min-h-screen bg-background">
@@ -102,6 +103,21 @@ const QuienesSomos = () => {
             </div>
           </div>
         </section>
+
+        {/* Enhanced Explore More Section */}
+        <ExploreMoreSection
+          currentPage={language === 'en' ? '/about-us' : language === 'pt' ? '/sobre-nos' : '/quienes-somos'}
+          description="Conoce nuestros servicios especializados y descubre las oportunidades de carrera que tenemos disponibles para profesionales TIC."
+          primaryCTA={{
+            text: t('nav.services'),
+            href: language === 'en' ? '/enterprise-services' : language === 'pt' ? '/servicos-empresas' : '/servicios-para-empresas'
+          }}
+          secondaryCTA={{
+            text: t('nav.jobs'),
+            href: language === 'en' ? '/jobs-profiles' : language === 'pt' ? '/vagas-perfis' : '/vacantes-y-perfiles'
+          }}
+          maxLinks={3}
+        />
       </main>
 
       <Footer />

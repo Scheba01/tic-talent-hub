@@ -104,29 +104,31 @@ export const RelatedLinks: React.FC<RelatedLinksProps> = ({ currentPage, maxLink
     .slice(0, maxLinks);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">{t('internal_links.related_pages')}</h3>
-      <div className="grid gap-3">
-        {relatedPages.map((page) => (
-          <Link
-            key={page.path}
+    <div className="space-y-5">
+      {relatedPages.map((page, index) => (
+        <div 
+          key={page.path} 
+          className="group animate-fade-in"
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
+          <Link 
             to={page.path}
-            className="block p-3 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/50 transition-all duration-200 group"
+            className="block p-6 rounded-xl border border-border/50 bg-card/50 hover:bg-card hover:border-border transition-all duration-300 hover:shadow-md"
           >
             <div className="flex items-center justify-between">
-              <div>
-                <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
+              <div className="flex-1">
+                <h3 className="font-display font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
                   {page.title}
-                </h4>
-                <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed font-light line-clamp-2">
                   {page.description}
                 </p>
               </div>
-              <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all ml-4 flex-shrink-0" />
             </div>
           </Link>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

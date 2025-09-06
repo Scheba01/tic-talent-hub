@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, BarChart3, TrendingUp, MessageSquare, Target, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
+import ExploreMoreSection from "@/components/ExploreMoreSection";
 
 const ServiciosEmpresas = () => {
   const { t, language } = useLanguage();
@@ -556,6 +557,21 @@ const ServiciosEmpresas = () => {
             </div>
           </div>
         </section>
+
+        {/* Enhanced Explore More Section */}
+        <ExploreMoreSection
+          currentPage={language === 'en' ? '/enterprise-services' : language === 'pt' ? '/servicos-empresas' : '/servicios-para-empresas'}
+          description="Descubre nuestros programas de talento y conecta con profesionales especializados para impulsar el crecimiento de tu empresa."
+          primaryCTA={{
+            text: t('nav.contact'),
+            href: language === 'en' ? '/contact' : language === 'pt' ? '/contato' : '/contacto'
+          }}
+          secondaryCTA={{
+            text: t('nav.talent_program'),
+            href: language === 'en' ? '/tic-talent-program' : language === 'pt' ? '/programa-talento-tic' : '/programa-talentotic'
+          }}
+          maxLinks={3}
+        />
       </main>
 
       <Footer />

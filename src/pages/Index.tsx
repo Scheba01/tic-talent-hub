@@ -11,6 +11,7 @@ import { preloadCriticalImages } from "@/utils/image-optimization";
 import { injectCriticalCSS, loadNonCriticalCSS } from "@/utils/critical-css";
 import { getPerformanceMonitor, markCriticalResourcesLoaded } from "@/utils/performance-monitor";
 import { CTALinks, RelatedLinks, ContextualLink } from "@/components/InternalLinks";
+import ExploreMoreSection from "@/components/ExploreMoreSection";
 const Index = () => {
   const { t, language } = useLanguage();
 
@@ -266,20 +267,21 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Internal Links Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-accent/50">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-display font-bold mb-4">{t('internal_links.explore_more')}</h2>
-              <p className="text-lg text-muted-foreground">
-                Descubre cómo <ContextualLink href="/servicios-para-empresas" keyword="nuestros servicios especializados">nuestros servicios especializados</ContextualLink> pueden 
-                ayudar a tu empresa a encontrar el <ContextualLink href="/vacantes-y-perfiles" keyword="talento adecuado">talento adecuado</ContextualLink> en 
-                la industria TIC.
-              </p>
-            </div>
-            <RelatedLinks currentPage="/" maxLinks={4} />
-          </div>
-        </section>
+        {/* Enhanced Explore More Section */}
+        <ExploreMoreSection
+          currentPage="/"
+          description="Descubre cómo nuestros servicios especializados pueden ayudar a tu empresa a encontrar el talento adecuado en la industria TIC."
+          primaryCTA={{
+            text: t('hero.contact_us'),
+            href: language === 'en' ? '/contact' : language === 'pt' ? '/contato' : '/contacto'
+          }}
+          secondaryCTA={{
+            text: t('nav.services'),
+            href: language === 'en' ? '/enterprise-services' : language === 'pt' ? '/servicos-empresas' : '/servicios-para-empresas'
+          }}
+          maxLinks={4}
+          showGradient={true}
+        />
       </main>
 
       <Footer />

@@ -8,6 +8,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
 import LazyImage from "@/components/ui/lazy-image";
 import { RelatedLinks, Breadcrumbs, ContextualLink, CTALinks } from "@/components/InternalLinks";
+import ExploreMoreSection from "@/components/ExploreMoreSection";
 
 const ProgramaTalentoTIC = () => {
   const { t, language } = useLanguage();
@@ -404,78 +405,21 @@ const ProgramaTalentoTIC = () => {
           </div>
         </section>
 
-        {/* Enhanced Internal Links Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-display font-bold mb-6 text-blue-900">
-                {t('internal_links.explore_more')}
-              </h2>
-              <div className="max-w-3xl mx-auto">
-                <p className="text-xl text-gray-700 leading-relaxed">
-                  Descubre cómo nuestros <ContextualLink href="/servicios-para-empresas" keyword="servicios especializados">servicios especializados</ContextualLink> pueden 
-                  ayudar a las empresas a encontrar <ContextualLink href="/vacantes-y-perfiles" keyword="talento TIC">talento TIC</ContextualLink> y 
-                  cómo puedes <ContextualLink href="/registro-talento" keyword="unirte a nuestra red">unirte a nuestra red</ContextualLink> de profesionales.
-                </p>
-              </div>
-            </div>
-            
-            <div className="grid lg:grid-cols-3 gap-8 items-start">
-              {/* Related Pages Column */}
-              <div className="lg:col-span-2">
-                <div className="bg-white rounded-2xl shadow-lg border border-cyan-100 p-8">
-                  <h3 className="text-2xl font-semibold text-blue-800 mb-6 flex items-center">
-                    <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full mr-4"></div>
-                    Páginas Relacionadas
-                  </h3>
-                  <RelatedLinks 
-                    currentPage={language === 'en' ? '/tic-talent-program' : language === 'pt' ? '/programa-talento-tic' : '/programa-talentotic'} 
-                    maxLinks={4} 
-                  />
-                </div>
-              </div>
-              
-              {/* CTA Column */}
-              <div className="space-y-6">
-                <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-8 text-white">
-                  <h3 className="text-xl font-semibold mb-4">¿Listo para empezar?</h3>
-                  <p className="text-blue-100 mb-6 text-sm leading-relaxed">
-                    Únete al programa TIC Talento o contacta con nuestro equipo para más información.
-                  </p>
-                  <div className="space-y-3">
-                    <Button asChild className="w-full bg-cyan-400 hover:bg-cyan-300 text-blue-900 font-semibold">
-                      <Link to="/registro-talento">
-                        {t('jobs.register_now')}
-                      </Link>
-                    </Button>
-                    <Button 
-                      asChild 
-                      variant="outline" 
-                      className="w-full border-white text-white hover:bg-white hover:text-blue-700"
-                    >
-                      <Link to={language === 'en' ? '/contact' : language === 'pt' ? '/contato' : '/contacto'}>
-                        {t('nav.contact')}
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-                
-                {/* Additional Info Card */}
-                <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                      <GraduationCap className="w-5 h-5 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">Programa Gratuito</h4>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    TIC Talento es completamente gratuito para estudiantes y jóvenes profesionales.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Enhanced Explore More Section */}
+        <ExploreMoreSection
+          currentPage={language === 'en' ? '/tic-talent-program' : language === 'pt' ? '/programa-talento-tic' : '/programa-talentotic'}
+          description="Descubre cómo nuestros servicios especializados pueden ayudar a las empresas a encontrar talento TIC y cómo puedes unirte a nuestra red de profesionales."
+          primaryCTA={{
+            text: t('jobs.register_now'),
+            href: '/registro-talento'
+          }}
+          secondaryCTA={{
+            text: t('nav.contact'),
+            href: language === 'en' ? '/contact' : language === 'pt' ? '/contato' : '/contacto'
+          }}
+          maxLinks={4}
+          showGradient={true}
+        />
       </main>
 
       <Footer />
