@@ -68,9 +68,13 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/tic-select-logo.webp" 
+              src="/lovable-uploads/tic-select-small.webp" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
+              onError={(e) => {
+                console.log('Logo failed to load, trying fallback');
+                e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8dGV4dCB4PSI1MCIgeT0iMjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRJQyBTRUxFQ1Q8L3RleHQ+Cjwvc3ZnPgo=';
+              }}
             />
           </Link>
 
