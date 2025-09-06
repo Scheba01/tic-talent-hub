@@ -98,15 +98,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <Link to="/" className="mb-4 md:mb-0 inline-block">
               <img 
-                src="/lovable-uploads/tic-select-logo.webp" 
+                src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
                 alt="TIC SELECT" 
                 className="h-8 w-auto"
-                onError={(e) => {
-                  e.currentTarget.src = "/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png";
-                }}
-                loading="lazy"
-                width={120}
-                height={32}
               />
             </Link>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">

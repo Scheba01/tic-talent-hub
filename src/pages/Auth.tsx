@@ -228,15 +228,9 @@ const Auth = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-block mb-4">
             <img 
-              src="/lovable-uploads/tic-select-logo.webp" 
+              src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
               alt="TIC SELECT" 
               className="h-12 w-auto mx-auto"
-              onError={(e) => {
-                e.currentTarget.src = "/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png";
-              }}
-              loading="eager"
-              width={180}
-              height={48}
             />
           </Link>
           <h1 className="text-2xl font-display font-bold text-foreground">

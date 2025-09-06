@@ -68,15 +68,10 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/tic-select-logo.webp" 
+              src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
-              onError={(e) => {
-                e.currentTarget.src = "/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png";
-              }}
               loading="eager"
-              width={120}
-              height={32}
             />
           </Link>
 
