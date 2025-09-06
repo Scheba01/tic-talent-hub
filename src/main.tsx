@@ -1,3 +1,4 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import App from './App.tsx';
@@ -54,16 +55,18 @@ if (performance.mark) {
 }
 
 root.render(
-  <GoogleReCaptchaProvider 
-    reCaptchaKey={RECAPTCHA_SITE_KEY}
-    scriptProps={{
-      async: true, // Non-blocking load
-      defer: true,
-      appendTo: "body"
-    }}
-  >
-    <App />
-  </GoogleReCaptchaProvider>
+  <React.StrictMode>
+    <GoogleReCaptchaProvider 
+      reCaptchaKey={RECAPTCHA_SITE_KEY}
+      scriptProps={{
+        async: true, // Non-blocking load
+        defer: true,
+        appendTo: "body"
+      }}
+    >
+      <App />
+    </GoogleReCaptchaProvider>
+  </React.StrictMode>
 );
 
 // Mark React render complete
