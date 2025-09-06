@@ -15,9 +15,10 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
+import { RelatedLinks, Breadcrumbs, ContextualLink } from "@/components/InternalLinks";
 
 const VacantesPerfiles = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -252,6 +253,24 @@ const VacantesPerfiles = () => {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </section>
+
+        {/* Internal Links Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-accent/50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold mb-4">{t('internal_links.explore_more')}</h2>
+              <p className="text-lg text-muted-foreground">
+                Explora nuestros <ContextualLink href="/servicios-para-empresas" keyword="servicios para empresas">servicios para empresas</ContextualLink> y 
+                únete a nuestro <ContextualLink href="/programa-talentotic" keyword="programa de talento TIC">programa de talento TIC</ContextualLink> para 
+                acelerar tu carrera profesional.
+              </p>
+            </div>
+            <RelatedLinks 
+              currentPage={language === 'en' ? '/jobs-profiles' : language === 'pt' ? '/vagas-perfis' : '/vacantes-y-perfiles'} 
+              maxLinks={3} 
+            />
           </div>
         </section>
       </main>

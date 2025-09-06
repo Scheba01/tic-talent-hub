@@ -402,6 +402,41 @@ const ProgramaTalentoTIC = () => {
             </div>
           </div>
         </section>
+
+        {/* Internal Links Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-accent/50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold mb-4">{t('internal_links.explore_more')}</h2>
+              <p className="text-lg text-muted-foreground">
+                Descubre cómo nuestros <ContextualLink href="/servicios-para-empresas" keyword="servicios especializados">servicios especializados</ContextualLink> pueden 
+                ayudar a las empresas a encontrar <ContextualLink href="/vacantes-y-perfiles" keyword="talento TIC">talento TIC</ContextualLink> y 
+                cómo puedes <ContextualLink href="/registro-talento" keyword="unirte a nuestra red">unirte a nuestra red</ContextualLink> de profesionales.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <RelatedLinks 
+                  currentPage={language === 'en' ? '/tic-talent-program' : language === 'pt' ? '/programa-talento-tic' : '/programa-talentotic'} 
+                  maxLinks={3} 
+                />
+              </div>
+              <div>
+                <CTALinks 
+                  primary={{
+                    text: t('jobs.register_now'),
+                    href: '/registro-talento'
+                  }}
+                  secondary={{
+                    text: t('nav.contact'),
+                    href: language === 'en' ? '/contact' : language === 'pt' ? '/contato' : '/contacto'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

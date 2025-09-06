@@ -10,8 +10,9 @@ import { useEffect } from "react";
 import { preloadCriticalImages } from "@/utils/image-optimization";
 import { injectCriticalCSS, loadNonCriticalCSS } from "@/utils/critical-css";
 import { getPerformanceMonitor, markCriticalResourcesLoaded } from "@/utils/performance-monitor";
+import { CTALinks, RelatedLinks, ContextualLink } from "@/components/InternalLinks";
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const startTime = performance.now();
@@ -248,6 +249,35 @@ const Index = () => {
                 </CardContent>
               </Card>
             </div>
+            
+            {/* Call to Action */}
+            <div className="text-center mt-16">
+              <CTALinks 
+                primary={{
+                  text: t('hero.contact_us'),
+                  href: language === 'en' ? '/contact' : language === 'pt' ? '/contato' : '/contacto'
+                }}
+                secondary={{
+                  text: t('nav.talent_program'),
+                  href: language === 'en' ? '/tic-talent-program' : language === 'pt' ? '/programa-talento-tic' : '/programa-talentotic'
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Internal Links Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-accent/50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-display font-bold mb-4">{t('internal_links.explore_more')}</h2>
+              <p className="text-lg text-muted-foreground">
+                Descubre cómo <ContextualLink href="/servicios-para-empresas" keyword="nuestros servicios especializados">nuestros servicios especializados</ContextualLink> pueden 
+                ayudar a tu empresa a encontrar el <ContextualLink href="/vacantes-y-perfiles" keyword="talento adecuado">talento adecuado</ContextualLink> en 
+                la industria TIC.
+              </p>
+            </div>
+            <RelatedLinks currentPage="/" maxLinks={4} />
           </div>
         </section>
       </main>

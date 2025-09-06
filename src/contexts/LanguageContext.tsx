@@ -231,6 +231,14 @@ const translations: Record<Language, Record<string,string>> = {
     'footer.privacy_policy': 'Política de Privacidad',
     'footer.cookies_policy': 'Política de Cookies',
     'footer.all_rights': '© 2024 TIC Select. Todos los derechos reservados.',
+    
+    // Internal Links
+    'internal_links.related_pages': 'Páginas Relacionadas',
+    'internal_links.learn_more': 'Saber Más',
+    'internal_links.our_services': 'Nuestros Servicios',
+    'internal_links.get_started': 'Comenzar',
+    'internal_links.explore_more': 'Explorar Más',
+    
     'footer.affiliate_program': 'Programa de Afiliados',
     'hero.title': 'El Talento que Impulsa la Industria TIC',
     'hero.subtitle': 'Conectamos líderes del sector de Pruebas, Inspección y Certificación (TIC) con el talento que necesitan para crecer. Entregamos una shortlist en 7 días. Garantizado.',
@@ -1058,6 +1066,13 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.access_denied': 'Access denied. The link may have expired.',
     'auth.auth_error': 'Authentication error. Please try again.',
     'footer.affiliate_program': 'Affiliate Program',
+    
+    // Internal Links
+    'internal_links.related_pages': 'Related Pages',
+    'internal_links.learn_more': 'Learn More',
+    'internal_links.our_services': 'Our Services',
+    'internal_links.get_started': 'Get Started',
+    'internal_links.explore_more': 'Explore More',
     // Profile Page Keys (English)
     'profile.title': 'My Professional Profile',
     'profile.subtitle': 'Complete information of your TIC profile',
@@ -1713,5 +1728,12 @@ const translations: Record<Language, Record<string,string>> = {
     'registration.submit': 'Enviar Registro',
     'registration.submitting': 'Enviando...',
     'footer.affiliate_program': 'Programa de Afiliados',
+    
+    // Internal Links
+    'internal_links.related_pages': 'Páginas Relacionadas',
+    'internal_links.learn_more': 'Saber Mais',
+    'internal_links.our_services': 'Nossos Serviços',
+    'internal_links.get_started': 'Começar',
+    'internal_links.explore_more': 'Explorar Mais',
   }
 };

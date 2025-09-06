@@ -8,7 +8,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
 
 const ServiciosEmpresas = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return <div className="min-h-screen bg-background">
       <Helmet>
         <link rel="canonical" href="https://ticselect.com/servicios-para-empresas" />
@@ -558,6 +558,8 @@ const ServiciosEmpresas = () => {
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default ServiciosEmpresas;
