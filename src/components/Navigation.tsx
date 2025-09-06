@@ -103,8 +103,13 @@ const Navigation = () => {
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
+                    <Link to="/mi-perfil" className="w-full cursor-pointer">
+                      Mi Perfil
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <Link to="/registro-talento" className="w-full cursor-pointer">
-                      {t('nav.talent_registration')}
+                      Editar Perfil
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
