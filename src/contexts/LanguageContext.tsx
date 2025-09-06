@@ -156,22 +156,31 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const t = (key: string): string => {
-    // Try current language first
-    const current = translations[language] as Record<string,string> | undefined;
-    const val = current?.[key];
-    if (val) return val;
-    
-    // Fallback to Spanish if key exists there
-    const fallback = translations['es'][key];
-    if (fallback) return fallback;
-    
-    // Log missing translation in development
-    if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
-      console.warn(`[i18n] Missing translation: ${language}.${key}`);
+    try {
+      // Try current language first
+      const currentLangTranslations = translations[language];
+      if (currentLangTranslations && currentLangTranslations[key]) {
+        return currentLangTranslations[key];
+      }
+      
+      // Fallback to Spanish if key exists there
+      const spanishTranslations = translations['es'];
+      if (spanishTranslations && spanishTranslations[key]) {
+        return spanishTranslations[key];
+      }
+      
+      // Log missing translation in development
+      if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+        console.warn(`[i18n] Missing translation: ${language}.${key}`);
+        console.log('Available keys:', Object.keys(currentLangTranslations || {}));
+      }
+      
+      // Return the key itself as final fallback
+      return key;
+    } catch (error) {
+      console.error('[i18n] Error in translation function:', error);
+      return key;
     }
-    
-    // Return the key itself as final fallback
-    return key;
   };
 
   // Helper function to translate dropdown options
