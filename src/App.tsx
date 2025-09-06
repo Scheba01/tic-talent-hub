@@ -13,6 +13,7 @@ import Contacto from "./pages/Contacto";
 import PoliticaPrivacidad from "./pages/PoliticaPrivacidad";
 import ProgramaAfiliados from "./pages/ProgramaAfiliados";
 import Auth from "./pages/Auth";
+import MiPerfil from "./pages/MiPerfil";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./hooks/useAuth";
@@ -54,6 +55,7 @@ const App = () => (
               <Route path="/contato" element={<Contacto />} />
               
               <Route path="/registro-talento" element={<ProtectedRoute><RegistroTalento /></ProtectedRoute>} />
+              <Route path="/mi-perfil" element={<ProtectedRoute><MiPerfil /></ProtectedRoute>} />
               <Route path="/programa-afiliados" element={<ProgramaAfiliados />} />
               <Route path="/politica-de-privacidad" element={<PoliticaPrivacidad />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
