@@ -18,6 +18,8 @@ import LazyImage from "@/components/ui/lazy-image";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  console.log('Mobile menu isOpen:', isOpen);
   const location = useLocation();
   const { user, profile, signOut } = useAuth();
   const { language, setLanguage, t } = useLanguage();
@@ -186,7 +188,9 @@ const Navigation = () => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('Menu button clicked! Current state:', isOpen);
                 setIsOpen(!isOpen);
+                console.log('New state will be:', !isOpen);
               }}
               className="critical-button h-11 w-11 p-0"
               aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -201,8 +205,8 @@ const Navigation = () => {
 
       {/* Mobile menu overlay */}
       {isOpen && (
-        <div className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-background border-b border-border shadow-lg">
-          <div className="px-4 py-4 space-y-4">
+        <div className="lg:hidden fixed top-16 left-0 right-0 z-[9999] bg-red-500 min-h-[200px] border-4 border-blue-500">
+          <div className="bg-background p-4 space-y-4 border border-border shadow-lg">{/* Mobile menu content */}
             {navItems.map((item) => (
               <Link
                 key={item.path}
