@@ -153,7 +153,7 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <Link to="/" className="inline-block">
               <LazyImage 
-                src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
+                src="/lovable-uploads/bfbd522e-174e-4547-8427-2862ff16d915.png" 
                 alt="TIC SELECT" 
                 className="h-6 w-auto object-contain"
                 width={90}
