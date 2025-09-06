@@ -18,6 +18,9 @@ import LazyImage from "@/components/ui/lazy-image";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  // Debug logging
+  console.log('Mobile menu state:', isOpen);
   const location = useLocation();
   const { user, profile, signOut } = useAuth();
   const { language, setLanguage, t } = useLanguage();
@@ -186,6 +189,7 @@ const Navigation = () => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                console.log('Menu button clicked, current state:', isOpen);
                 setIsOpen(!isOpen);
               }}
               className="critical-button h-11 w-11 p-0"
@@ -200,7 +204,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden">
+          <div className="lg:hidden absolute top-full left-0 right-0 z-50 bg-background shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
               {navItems.map((item) => (
                 <Link
