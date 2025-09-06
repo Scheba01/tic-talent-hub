@@ -111,6 +111,7 @@ export const NORMAS_SISTEMAS = [
   { value: "iso-13485", label: "ISO 13485" },
   { value: "iso-50001", label: "ISO 50001" },
   { value: "iso-20000-1", label: "ISO 20000-1" },
+  { value: "iso-17021-1", label: "ISO/IEC 17021-1 (Certificación de Sistemas)" },
   
   // Food Safety, Quality & Agriculture
   { value: "argentine-food-seal", label: "Argentine Food Seal" },
