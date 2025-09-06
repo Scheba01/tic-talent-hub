@@ -20,15 +20,23 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
     let certificadosUrl: string | undefined
 
     if (data.cv && data.cv[0]) {
-      const cvFileName = `cv_${Date.now()}_${data.cv[0].name}`
-      const cvUpload = await uploadFile('candidate-documents', cvFileName, data.cv[0])
-      cvUrl = supabase.storage.from('candidate-documents').getPublicUrl(cvUpload.path).data.publicUrl
+      try {
+        const cvFileName = `${user.id}/cv_${Date.now()}_${data.cv[0].name}`
+        const cvUpload = await uploadFile('candidate-documents', cvFileName, data.cv[0])
+        cvUrl = `candidate-documents/${cvUpload.path}`
+      } catch (error) {
+        throw new Error(`Error uploading CV: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      }
     }
 
     if (data.certificadosAdicionales && data.certificadosAdicionales[0]) {
-      const certFileName = `cert_${Date.now()}_${data.certificadosAdicionales[0].name}`
-      const certUpload = await uploadFile('candidate-documents', certFileName, data.certificadosAdicionales[0])
-      certificadosUrl = supabase.storage.from('candidate-documents').getPublicUrl(certUpload.path).data.publicUrl
+      try {
+        const certFileName = `${user.id}/cert_${Date.now()}_${data.certificadosAdicionales[0].name}`
+        const certUpload = await uploadFile('candidate-documents', certFileName, data.certificadosAdicionales[0])
+        certificadosUrl = `candidate-documents/${certUpload.path}`
+      } catch (error) {
+        throw new Error(`Error uploading certificates: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      }
     }
 
     // Insert main candidate record
