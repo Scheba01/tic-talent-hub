@@ -312,7 +312,7 @@ const translations: Record<Language, Record<string,string>> = {
     'services_page.step4.title': 'Presentación',
     'services_page.step4.desc': 'Te presentamos una shortlist curada de los mejores candidatos en máximo 7 días.',
     'services_page.promise': 'Te Entregamos una Shortlist en 7 Días o Menos',
-    'services_page.benefit1': 'Acceso exclusivo a profesionales TIC pasivos, que no están buscando activamente pero están abiertos a nuevas oportunidades.',
+    'services_page.benefit1': 'Trabajamos con profesionales TIC pasivos, que no están buscando activamente pero están abiertos a nuevas oportunidades.',
     'services_page.benefit2': 'Evaluación técnica especializada en las competencias específicas del sector de Pruebas, Inspección y Certificación.',
     'services_page.benefit3': 'Assessment cultural para asegurar que el candidato se adapte perfectamente a tu organización.',
     'services_page.benefit4': 'Proceso de contratación acelerado que te ahorra tiempo y recursos en la búsqueda de talento especializado.',
