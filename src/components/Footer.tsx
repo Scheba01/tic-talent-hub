@@ -106,9 +106,9 @@ const Footer = () => {
                   {t('footer.privacy_policy')}
                 </Link>
                 <span className="text-muted-foreground">|</span>
-                <a href="#politica-cookies" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/politica-de-cookies" className="text-muted-foreground hover:text-primary transition-colors">
                   {t('footer.cookies_policy')}
-                </a>
+                </Link>
               </div>
               <p className="text-muted-foreground text-sm">
                 {t('footer.all_rights')}

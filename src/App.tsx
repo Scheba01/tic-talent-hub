@@ -10,6 +10,7 @@ import ProgramaTalentoTIC from "./pages/ProgramaTalentoTIC";
 import RegistroTalento from "./pages/RegistroTalento";
 import Contacto from "./pages/Contacto";
 import PoliticaPrivacidad from "./pages/PoliticaPrivacidad";
+import PoliticasCookies from "./pages/PoliticasCookies";
 import ProgramaAfiliados from "./pages/ProgramaAfiliados";
 import Auth from "./pages/Auth";
 import MiPerfil from "./pages/MiPerfil";
@@ -55,6 +56,7 @@ const App = () => {
               <Route path="/mi-perfil" element={<ProtectedRoute><MiPerfil /></ProtectedRoute>} />
               <Route path="/programa-afiliados" element={<ProgramaAfiliados />} />
               <Route path="/politica-de-privacidad" element={<PoliticaPrivacidad />} />
+              <Route path="/politica-de-cookies" element={<PoliticasCookies />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
