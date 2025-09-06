@@ -1493,32 +1493,32 @@ const RegistroTalento = () => {
                     {form.watch("familiasRol")?.some(f => f.area === "implementador") && <div>
                         <h4 className="text-lg font-semibold mb-4 text-primary">Implementador</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-muted/30 p-6 rounded-lg">
-                          <div>
+                          <div className="md:col-span-2">
                             <FormField control={form.control} name="implementador.tipoImplementacion" render={({
                               field
                             }) => <FormItem>
-                                  <FormLabel>Tipo de implementación</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger>
-                                        <SelectValue placeholder="Selecciona tipo" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      <SelectItem value="sistemas-gestion">Sistemas de Gestión</SelectItem>
-                                      <SelectItem value="normas-iso">Normas ISO</SelectItem>
-                                      <SelectItem value="procesos-calidad">Procesos de Calidad</SelectItem>
-                                      <SelectItem value="mejora-continua">Mejora Continua</SelectItem>
-                                      <SelectItem value="lean-six-sigma">Lean Six Sigma</SelectItem>
-                                      <SelectItem value="seguridad-salud">Seguridad y Salud Ocupacional</SelectItem>
-                                      <SelectItem value="medio-ambiente">Medio Ambiente</SelectItem>
-                                      <SelectItem value="food-safety">Food Safety (Seguridad Alimentaria)</SelectItem>
-                                      <SelectItem value="sostenibilidad">Sostenibilidad y RSE</SelectItem>
-                                      <SelectItem value="social-compliance">Social Compliance</SelectItem>
-                                      <SelectItem value="bpm-digitalizacion">BPM y Digitalización</SelectItem>
-                                      <SelectItem value="otros">Otros</SelectItem>
-                                    </SelectContent>
-                                  </Select>
+                                  <FormLabel>Tipos de implementación</FormLabel>
+                                  <FormControl>
+                                    <MultiSelect 
+                                      options={[
+                                        { value: "sistemas-gestion", label: "Sistemas de Gestión" },
+                                        { value: "normas-iso", label: "Normas ISO" },
+                                        { value: "procesos-calidad", label: "Procesos de Calidad" },
+                                        { value: "mejora-continua", label: "Mejora Continua" },
+                                        { value: "lean-six-sigma", label: "Lean Six Sigma" },
+                                        { value: "seguridad-salud", label: "Seguridad y Salud Ocupacional" },
+                                        { value: "medio-ambiente", label: "Medio Ambiente" },
+                                        { value: "food-safety", label: "Food Safety (Seguridad Alimentaria)" },
+                                        { value: "sostenibilidad", label: "Sostenibilidad y RSE" },
+                                        { value: "social-compliance", label: "Social Compliance" },
+                                        { value: "bpm-digitalizacion", label: "BPM y Digitalización" },
+                                        { value: "otros", label: "Otros" }
+                                      ]} 
+                                      selected={field.value || []} 
+                                      onChange={field.onChange} 
+                                      placeholder="Selecciona tipos de implementación..." 
+                                    />
+                                  </FormControl>
                                   <FormMessage />
                                 </FormItem>} />
                           </div>
@@ -1550,83 +1550,97 @@ const RegistroTalento = () => {
                             <FormField control={form.control} name="implementador.metodologias" render={({
                               field
                             }) => {
-                              const tipoImplementacion = form.watch("implementador.tipoImplementacion");
+                              const tiposImplementacion = form.watch("implementador.tipoImplementacion") || [];
                               
                               const getMetodologiaOptions = () => {
-                                switch(tipoImplementacion) {
-                                  case "sistemas-gestion":
-                                    return [
-                                      { value: "iso-9001", label: "ISO 9001" },
-                                      { value: "iso-14001", label: "ISO 14001" },
-                                      { value: "iso-45001", label: "ISO 45001" },
-                                      { value: "iso-27001", label: "ISO 27001" },
-                                      { value: "iso-50001", label: "ISO 50001" }
-                                    ];
-                                  case "food-safety":
-                                    return [
-                                      { value: "iso-22000", label: "ISO 22000" },
-                                      { value: "fssc-22000", label: "FSSC 22000" },
-                                      { value: "brc-food", label: "BRC Food" },
-                                      { value: "ifs-food", label: "IFS Food" },
-                                      { value: "global-gap", label: "Global GAP" },
-                                      { value: "haccp", label: "HACCP" }
-                                    ];
-                                  case "sostenibilidad":
-                                    return [
-                                      { value: "gri-standards", label: "GRI Standards" },
-                                      { value: "b-corp", label: "B Corp" },
-                                      { value: "iso-26000", label: "ISO 26000" },
-                                      { value: "fairtrade", label: "Fairtrade" },
-                                      { value: "rainforest-alliance", label: "Rainforest Alliance" }
-                                    ];
-                                  case "social-compliance":
-                                    return [
-                                      { value: "sa-8000", label: "SA 8000" },
-                                      { value: "iso-26000", label: "ISO 26000" },
-                                      { value: "bsci", label: "BSCI" },
-                                      { value: "sedex", label: "SEDEX" },
-                                      { value: "wrap", label: "WRAP" }
-                                    ];
-                                  case "lean-six-sigma":
-                                    return [
-                                      { value: "lean", label: "Lean Manufacturing" },
-                                      { value: "six-sigma", label: "Six Sigma" },
-                                      { value: "kaizen", label: "Kaizen" },
-                                      { value: "5s", label: "5S" },
-                                      { value: "tps", label: "Toyota Production System" },
-                                      { value: "dmaic", label: "DMAIC" }
-                                    ];
-                                  case "seguridad-salud":
-                                    return [
-                                      { value: "iso-45001", label: "ISO 45001" },
-                                      { value: "ohsas-18001", label: "OHSAS 18001" },
-                                      { value: "nosa", label: "NOSA" },
-                                      { value: "dupont", label: "DuPont Safety" }
-                                    ];
-                                  case "medio-ambiente":
-                                    return [
-                                      { value: "iso-14001", label: "ISO 14001" },
-                                      { value: "emas", label: "EMAS" },
-                                      { value: "carbon-footprint", label: "Carbon Footprint" },
-                                      { value: "life-cycle", label: "Life Cycle Assessment" }
-                                    ];
-                                  case "bpm-digitalizacion":
-                                    return [
-                                      { value: "bpmn", label: "BPMN" },
-                                      { value: "process-mining", label: "Process Mining" },
-                                      { value: "rpa", label: "RPA" },
-                                      { value: "workflow", label: "Workflow Management" }
-                                    ];
-                                  default:
-                                    return [
-                                      { value: "iso-9001", label: "ISO 9001" },
-                                      { value: "lean", label: "Lean Manufacturing" },
-                                      { value: "six-sigma", label: "Six Sigma" },
-                                      { value: "kaizen", label: "Kaizen" },
-                                      { value: "5s", label: "5S" },
-                                      { value: "otros", label: "Otros" }
-                                    ];
-                                }
+                                const allOptions: { value: string; label: string; }[] = [];
+                                
+                                tiposImplementacion.forEach((tipo: string) => {
+                                  switch(tipo) {
+                                    case "sistemas-gestion":
+                                      allOptions.push(
+                                        { value: "iso-9001", label: "ISO 9001" },
+                                        { value: "iso-14001", label: "ISO 14001" },
+                                        { value: "iso-45001", label: "ISO 45001" },
+                                        { value: "iso-27001", label: "ISO 27001" },
+                                        { value: "iso-50001", label: "ISO 50001" }
+                                      );
+                                      break;
+                                    case "food-safety":
+                                      allOptions.push(
+                                        { value: "iso-22000", label: "ISO 22000" },
+                                        { value: "fssc-22000", label: "FSSC 22000" },
+                                        { value: "brc-food", label: "BRC Food" },
+                                        { value: "ifs-food", label: "IFS Food" },
+                                        { value: "global-gap", label: "Global GAP" },
+                                        { value: "haccp", label: "HACCP" }
+                                      );
+                                      break;
+                                    case "sostenibilidad":
+                                      allOptions.push(
+                                        { value: "gri-standards", label: "GRI Standards" },
+                                        { value: "b-corp", label: "B Corp" },
+                                        { value: "iso-26000", label: "ISO 26000" },
+                                        { value: "fairtrade", label: "Fairtrade" },
+                                        { value: "rainforest-alliance", label: "Rainforest Alliance" }
+                                      );
+                                      break;
+                                    case "social-compliance":
+                                      allOptions.push(
+                                        { value: "sa-8000", label: "SA 8000" },
+                                        { value: "iso-26000", label: "ISO 26000" },
+                                        { value: "bsci", label: "BSCI" },
+                                        { value: "sedex", label: "SEDEX" },
+                                        { value: "wrap", label: "WRAP" }
+                                      );
+                                      break;
+                                    case "lean-six-sigma":
+                                      allOptions.push(
+                                        { value: "lean", label: "Lean Manufacturing" },
+                                        { value: "six-sigma", label: "Six Sigma" },
+                                        { value: "kaizen", label: "Kaizen" },
+                                        { value: "5s", label: "5S" },
+                                        { value: "tps", label: "Toyota Production System" },
+                                        { value: "dmaic", label: "DMAIC" }
+                                      );
+                                      break;
+                                    case "seguridad-salud":
+                                      allOptions.push(
+                                        { value: "iso-45001", label: "ISO 45001" },
+                                        { value: "ohsas-18001", label: "OHSAS 18001" },
+                                        { value: "nosa", label: "NOSA" },
+                                        { value: "dupont", label: "DuPont Safety" }
+                                      );
+                                      break;
+                                    case "medio-ambiente":
+                                      allOptions.push(
+                                        { value: "iso-14001", label: "ISO 14001" },
+                                        { value: "emas", label: "EMAS" },
+                                        { value: "carbon-footprint", label: "Carbon Footprint" },
+                                        { value: "life-cycle", label: "Life Cycle Assessment" }
+                                      );
+                                      break;
+                                    case "bpm-digitalizacion":
+                                      allOptions.push(
+                                        { value: "bpmn", label: "BPMN" },
+                                        { value: "process-mining", label: "Process Mining" },
+                                        { value: "rpa", label: "RPA" },
+                                        { value: "workflow", label: "Workflow Management" }
+                                      );
+                                      break;
+                                  }
+                                });
+                                
+                                // Remove duplicates and return unique options
+                                const uniqueOptions = allOptions.filter((option, index, self) => 
+                                  index === self.findIndex(o => o.value === option.value)
+                                );
+                                
+                                return uniqueOptions.length > 0 ? uniqueOptions : [
+                                  { value: "iso-9001", label: "ISO 9001" },
+                                  { value: "lean", label: "Lean Manufacturing" },
+                                  { value: "otros", label: "Otros" }
+                                ];
                               };
 
                               return (
@@ -1637,7 +1651,7 @@ const RegistroTalento = () => {
                                       options={getMetodologiaOptions()} 
                                       selected={field.value || []} 
                                       onChange={field.onChange} 
-                                      placeholder={tipoImplementacion ? "Selecciona metodologías relacionadas..." : "Primero selecciona el tipo de implementación"} 
+                                      placeholder={tiposImplementacion.length > 0 ? "Selecciona metodologías relacionadas..." : "Primero selecciona los tipos de implementación"}
                                     />
                                   </FormControl>
                                   <FormMessage />
