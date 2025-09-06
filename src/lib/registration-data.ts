@@ -104,26 +104,72 @@ export const AREAS_INSPECCION = [
 ]
 
 export const NORMAS_SISTEMAS = [
+  // Management Systems
   { value: "iso-9001", label: "ISO 9001" },
   { value: "iso-14001", label: "ISO 14001" },
   { value: "iso-45001", label: "ISO 45001" },
-  { value: "iso-22000", label: "ISO 22000" },
-  { value: "fssc-22000", label: "FSSC 22000" },
-  { value: "brc-food", label: "BRC Food" },
-  { value: "ifs-food", label: "IFS Food" },
-  { value: "global-gap", label: "Global GAP" },
-  { value: "iso-27001", label: "ISO 27001" },
-  { value: "iso-37001", label: "ISO 37001" },
   { value: "iso-13485", label: "ISO 13485" },
   { value: "iso-50001", label: "ISO 50001" },
-  { value: "iso-22301", label: "ISO 22301" },
   { value: "iso-20000-1", label: "ISO 20000-1" },
-  { value: "sa-8000", label: "SA 8000 (Social)" },
+  
+  // Food Safety, Quality & Agriculture
+  { value: "argentine-food-seal", label: "Argentine Food Seal" },
+  { value: "asc", label: "ASC (Aquaculture Stewardship Council)" },
+  { value: "bap", label: "BAP (Best Aquaculture Practices)" },
+  { value: "bonsucro", label: "Bonsucro – Sustainable Sugarcane" },
+  { value: "brc-food", label: "BRCGS Food Safety" },
+  { value: "brc-packaging", label: "BRCGS Packaging Materials" },
+  { value: "fami-qs", label: "FAMI-QS (Feed Additives & Premixtures)" },
+  { value: "fssc-22000", label: "FSSC 22000" },
+  { value: "fsa-gfsi", label: "Food Safety Assessments (FSA, GFSI, etc.)" },
+  { value: "global-gap", label: "GLOBALG.A.P." },
+  { value: "haccp", label: "HACCP (Codex)" },
+  { value: "ifs-standards", label: "IFS Standards (Food, Broker, Logistics, PACsecure, etc.)" },
+  { value: "iso-22000", label: "ISO 22000 – Food Safety Management" },
+  { value: "iso-22005", label: "ISO 22005 – Traceability (feed & food chain)" },
+  { value: "leaf-marque", label: "LEAF Marque – Sustainable Farming" },
+  { value: "organic", label: "Organic" },
+  { value: "organic-input", label: "Organic Input Registration" },
+  { value: "roc", label: "Regenerative Organic Certified (ROC®)" },
+  { value: "zero-food-waste", label: "Zero Food Waste Certification" },
+  
+  // Sustainability & Environmental
+  { value: "animal-welfare", label: "Animal Welfare Certifications" },
+  { value: "eudr", label: "EU Deforestation Regulation (EUDR)" },
+  { value: "fsc", label: "FSC (Forest Stewardship Council)" },
+  { value: "gots", label: "GOTS (Global Organic Textile Standard)" },
+  { value: "iscc", label: "ISCC (International Sustainability & Carbon Certification)" },
+  { value: "iso-14064", label: "ISO 14064 – Greenhouse Gases" },
+  { value: "iso-20001", label: "ISO 20001 (Food Waste Management, in development)" },
+  { value: "pefc", label: "PEFC (Programme for the Endorsement of Forest Certification)" },
+  { value: "rainforest-alliance", label: "Rainforest Alliance" },
+  { value: "regenerative-agriculture", label: "Regenerative Agriculture / Sustainable Crops" },
+  { value: "rtrs", label: "RTRS (Responsible Soy)" },
+  
+  // Social Responsibility & Ethical Trade
+  { value: "amfori-bsci", label: "amfori BSCI" },
+  { value: "csr-advisory", label: "CSR Ratings Advisory / CSR Guidance" },
+  { value: "fairtrade", label: "Fair Trade (FLO / Fair Trade USA / SPP)" },
+  { value: "fssc-24000", label: "FSSC 24000" },
+  { value: "iqnet-sr10", label: "IQNet SR10" },
+  { value: "sa-8000", label: "SA8000 (Social Accountability)" },
+  { value: "smeta", label: "SMETA (Sedex)" },
+  { value: "supplier-code", label: "Supplier Code of Conduct / Ethical Codes" },
+  { value: "responsible-sourcing", label: "Responsible Sourcing Certification" },
   { value: "iso-26000", label: "ISO 26000 (Responsabilidad Social)" },
+  
+  // Governance, Risk & Security
+  { value: "climate-impact", label: "Climate Impact Check & Assessment" },
+  { value: "corporate-governance", label: "Corporate Governance Tools" },
+  { value: "esg-frameworks", label: "ESG Frameworks / Sustainability Audits" },
+  { value: "iso-27001", label: "ISO/IEC 27001 – Information Security" },
+  { value: "iso-22301", label: "ISO 22301 – Business Continuity" },
+  { value: "iso-31000", label: "ISO 31000 – Risk Management" },
+  { value: "iso-37001", label: "ISO 37001 – Anti-Bribery" },
+  { value: "une-19601", label: "UNE 19601 – Criminal Compliance" },
   { value: "gri-standards", label: "GRI Standards (Sostenibilidad)" },
   { value: "b-corp", label: "B Corp (Sostenibilidad)" },
-  { value: "fairtrade", label: "Fairtrade" },
-  { value: "rainforest-alliance", label: "Rainforest Alliance" },
+  
   { value: "otros", label: "Otros" }
 ]
 
