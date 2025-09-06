@@ -104,7 +104,7 @@ export const RelatedLinks: React.FC<RelatedLinksProps> = ({ currentPage, maxLink
     .slice(0, maxLinks);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-3">
       {relatedPages.map((page, index) => (
         <div 
           key={page.path} 
@@ -113,18 +113,18 @@ export const RelatedLinks: React.FC<RelatedLinksProps> = ({ currentPage, maxLink
         >
           <Link 
             to={page.path}
-            className="block p-6 rounded-xl border border-border/50 bg-card/50 hover:bg-card hover:border-border transition-all duration-300 hover:shadow-md"
+            className="block p-4 rounded-lg border border-border/50 bg-card/50 hover:bg-card hover:border-border transition-all duration-300 hover:shadow-sm"
           >
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <h3 className="font-display font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
+                <h3 className="font-display font-medium text-foreground mb-1 text-sm group-hover:text-primary transition-colors">
                   {page.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-light line-clamp-2">
+                <p className="text-xs text-muted-foreground leading-relaxed font-light line-clamp-2">
                   {page.description}
                 </p>
               </div>
-              <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all ml-4 flex-shrink-0" />
+              <ArrowRight className="w-3 h-3 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all ml-3 flex-shrink-0" />
             </div>
           </Link>
         </div>

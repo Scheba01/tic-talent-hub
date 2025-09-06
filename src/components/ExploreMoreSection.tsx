@@ -41,21 +41,21 @@ const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
     : "bg-muted/30";
 
   return (
-    <section className={`py-24 px-4 sm:px-6 lg:px-8 ${backgroundClass} relative overflow-hidden`}>
+    <section className={`py-12 px-4 sm:px-6 lg:px-8 ${backgroundClass} relative overflow-hidden`}>
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary))_1px,transparent_1px)] bg-[length:24px_24px]" />
       </div>
       
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-5xl mx-auto relative">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl font-display font-light mb-6 text-foreground tracking-tight">
+        <div className="text-center mb-8 animate-fade-in">
+          <h2 className="text-2xl font-display font-light mb-4 text-foreground tracking-tight">
             {title || defaultTitle}
           </h2>
           {(description || defaultDescription) && (
-            <div className="max-w-3xl mx-auto">
-              <p className="text-lg text-muted-foreground leading-relaxed font-light">
+            <div className="max-w-2xl mx-auto">
+              <p className="text-base text-muted-foreground leading-relaxed font-light">
                 {description || defaultDescription}
               </p>
             </div>
@@ -63,13 +63,13 @@ const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-12 items-start">
+        <div className="grid lg:grid-cols-3 gap-6 items-start">
           {/* Related Links - Takes up 2 columns */}
           <div className="lg:col-span-2">
-            <div className="bg-card rounded-2xl border border-border/50 p-8 shadow-elegant hover:shadow-lg transition-all duration-500 animate-scale-in">
-              <div className="flex items-center mb-8">
-                <div className="w-1 h-12 bg-gradient-to-b from-primary to-primary/60 rounded-full mr-6"></div>
-                <h3 className="text-xl font-display font-medium text-foreground">
+            <div className="bg-card rounded-xl border border-border/50 p-6 shadow-elegant hover:shadow-lg transition-all duration-500 animate-scale-in">
+              <div className="flex items-center mb-6">
+                <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/60 rounded-full mr-4"></div>
+                <h3 className="text-lg font-display font-medium text-foreground">
                   Páginas Relacionadas
                 </h3>
               </div>
@@ -81,14 +81,14 @@ const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
           </div>
 
           {/* CTA Section - Takes up 1 column */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* Primary CTA Card */}
-            <div className="bg-card rounded-2xl border border-border/50 p-8 shadow-elegant hover:shadow-lg transition-all duration-500 animate-scale-in [animation-delay:200ms]">
+            <div className="bg-card rounded-xl border border-border/50 p-6 shadow-elegant hover:shadow-lg transition-all duration-500 animate-scale-in [animation-delay:200ms]">
               <div className="text-center">
-                <h3 className="text-lg font-display font-medium mb-4 text-foreground">
+                <h3 className="text-base font-display font-medium mb-3 text-foreground">
                   ¿Listo para comenzar?
                 </h3>
-                <p className="text-muted-foreground mb-8 text-sm leading-relaxed font-light">
+                <p className="text-muted-foreground mb-6 text-sm leading-relaxed font-light">
                   Conecta con nuestro equipo de expertos y descubre las mejores oportunidades.
                 </p>
                 
@@ -125,13 +125,13 @@ const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
             </div>
 
             {/* Info Card */}
-            <div className="bg-muted/50 rounded-xl border border-border/30 p-6 animate-fade-in [animation-delay:400ms]">
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <ExternalLink className="w-5 h-5 text-primary" />
+            <div className="bg-muted/50 rounded-lg border border-border/30 p-4 animate-fade-in [animation-delay:400ms]">
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <ExternalLink className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-foreground mb-2 text-sm">
+                  <h4 className="font-medium text-foreground mb-1 text-sm">
                     Consultoría Gratuita
                   </h4>
                   <p className="text-muted-foreground text-xs leading-relaxed">
@@ -144,8 +144,8 @@ const ExploreMoreSection: React.FC<ExploreMoreSectionProps> = ({
         </div>
 
         {/* Bottom accent line */}
-        <div className="mt-16 flex justify-center animate-fade-in [animation-delay:600ms]">
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+        <div className="mt-8 flex justify-center animate-fade-in [animation-delay:600ms]">
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
         </div>
       </div>
     </section>
