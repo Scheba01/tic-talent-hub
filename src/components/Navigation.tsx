@@ -18,9 +18,6 @@ import LazyImage from "@/components/ui/lazy-image";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
-  // Debug logging
-  console.log('Mobile menu state:', isOpen);
   const location = useLocation();
   const { user, profile, signOut } = useAuth();
   const { language, setLanguage, t } = useLanguage();
@@ -189,7 +186,6 @@ const Navigation = () => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('Menu button clicked, current state:', isOpen);
                 setIsOpen(!isOpen);
               }}
               className="critical-button h-11 w-11 p-0"
@@ -204,7 +200,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 z-50 bg-background shadow-lg">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
               {navItems.map((item) => (
                 <Link
@@ -260,6 +256,60 @@ const Navigation = () => {
                     </Link>
                   </Button>
                 )}
+              </div>
+              
+              {/* Language Switcher for Mobile */}
+              <div className="px-3 py-2">
+                <div className="text-sm font-medium text-muted-foreground px-3 py-1 mb-2">
+                  {t('nav.language')} Language
+                </div>
+                <div className="space-y-1">
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setLanguage('en');
+                      setIsOpen(false);
+                    }}
+                  >
+                    🇺🇸 English
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setLanguage('es');
+                      setIsOpen(false);
+                    }}
+                  >
+                    🇪🇸 Español
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setLanguage('pt');
+                      setIsOpen(false);
+                    }}
+                  >
+                    🇧🇷 Português
+                  </Button>
+                </div>
+              </div>
+              
+              {/* LinkedIn Link for Mobile */}
+              <div className="px-3 py-2">
+                <Button variant="outline" className="w-full" asChild>
+                  <a 
+                    href="https://www.linkedin.com/company/ticselect/about/?viewAsMember=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <img src={linkedinLogo} alt="LinkedIn" className="h-4 w-4 mr-2" />
+                    LinkedIn
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
