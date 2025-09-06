@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      candidate_access_log: {
+        Row: {
+          access_type: string
+          accessed_at: string
+          accessed_by: string
+          candidate_id: string
+          id: string
+          ip_address: unknown | null
+          purpose: string
+          user_agent: string | null
+        }
+        Insert: {
+          access_type: string
+          accessed_at?: string
+          accessed_by: string
+          candidate_id: string
+          id?: string
+          ip_address?: unknown | null
+          purpose: string
+          user_agent?: string | null
+        }
+        Update: {
+          access_type?: string
+          accessed_at?: string
+          accessed_by?: string
+          candidate_id?: string
+          id?: string
+          ip_address?: unknown | null
+          purpose?: string
+          user_agent?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_access_log_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_access_log_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       candidate_atencion_cliente: {
         Row: {
           candidate_id: string | null
@@ -45,6 +93,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_atencion_cliente_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -88,6 +143,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_auditoria_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_cert_personas: {
@@ -123,6 +185,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_cert_personas_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_cert_productos: {
@@ -156,6 +225,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_cert_productos_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -196,6 +272,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_cert_sistemas_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_comercial: {
@@ -234,6 +317,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_comercial_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_competencies: {
@@ -261,6 +351,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_competencies_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -296,6 +393,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_direccion_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -336,6 +440,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_experience_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_hse: {
@@ -369,6 +480,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_hse_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -412,6 +530,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_inspection_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_laboratory: {
@@ -453,6 +578,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_laboratory_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_languages: {
@@ -488,6 +620,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_languages_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_legal: {
@@ -521,6 +660,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_legal_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -561,6 +707,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_operaciones_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_pmo: {
@@ -596,6 +749,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_pmo_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_role_families: {
@@ -628,6 +788,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_role_families_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_sectors: {
@@ -658,6 +825,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_sectors_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -695,6 +869,13 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "candidate_supply_chain_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
+            referencedColumns: ["id"]
+          },
         ]
       }
       candidate_ti: {
@@ -728,6 +909,13 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidate_ti_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates_admin_view"
             referencedColumns: ["id"]
           },
         ]
@@ -905,9 +1093,101 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      candidates_admin_view: {
+        Row: {
+          area_estudio: string | null
+          certificaciones: string | null
+          certificados_adicionales_url: string | null
+          ciudad: string | null
+          created_at: string | null
+          cv_url: string | null
+          disponibilidad: string | null
+          email: string | null
+          id: string | null
+          jornada: string | null
+          linkedin: string | null
+          nivel_maximo: string | null
+          nombre_completo: string | null
+          pais: string | null
+          situacion_actual: string | null
+          status: string | null
+          sueldo_actual_bruto: string | null
+          telefono: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          area_estudio?: string | null
+          certificaciones?: string | null
+          certificados_adicionales_url?: never
+          ciudad?: string | null
+          created_at?: string | null
+          cv_url?: never
+          disponibilidad?: string | null
+          email?: string | null
+          id?: string | null
+          jornada?: string | null
+          linkedin?: string | null
+          nivel_maximo?: string | null
+          nombre_completo?: string | null
+          pais?: string | null
+          situacion_actual?: string | null
+          status?: string | null
+          sueldo_actual_bruto?: never
+          telefono?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          area_estudio?: string | null
+          certificaciones?: string | null
+          certificados_adicionales_url?: never
+          ciudad?: string | null
+          created_at?: string | null
+          cv_url?: never
+          disponibilidad?: string | null
+          email?: string | null
+          id?: string | null
+          jornada?: string | null
+          linkedin?: string | null
+          nivel_maximo?: string | null
+          nombre_completo?: string | null
+          pais?: string | null
+          situacion_actual?: string | null
+          status?: string | null
+          sueldo_actual_bruto?: never
+          telefono?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      can_access_candidate_data: {
+        Args: { _candidate_id: string; _purpose: string; _user_id: string }
+        Returns: boolean
+      }
+      get_candidate_secure: {
+        Args: { _candidate_id: string; _purpose: string }
+        Returns: {
+          area_estudio: string
+          certificaciones: string
+          ciudad: string
+          codigo_pais: string
+          created_at: string
+          cv_url: string
+          disponibilidad: string
+          email: string
+          id: string
+          jornada: string
+          linkedin: string
+          nivel_maximo: string
+          nombre_completo: string
+          pais: string
+          situacion_actual: string
+          status: string
+          sueldo_actual_bruto: string
+          telefono: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -918,6 +1198,10 @@ export type Database = {
       is_admin_or_staff: {
         Args: { _user_id: string }
         Returns: boolean
+      }
+      log_candidate_access: {
+        Args: { _access_type: string; _candidate_id: string; _purpose: string }
+        Returns: undefined
       }
     }
     Enums: {
