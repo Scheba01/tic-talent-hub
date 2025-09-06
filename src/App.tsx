@@ -34,7 +34,7 @@ const AppWithPerformance = () => {
     optimizeImages: true
   });
 
-  return null; // This component only handles performance optimizations
+  return <></>; // Return empty fragment instead of null
 };
 
 const App = () => (
