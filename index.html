@@ -3,25 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- DNS prefetch and preconnect for critical resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Critical font preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="/src/assets/tic-select-logo.png" as="image" />
+    <link rel="preload" href="/lovable-uploads/tic-select-logo.webp" as="image" />
+    
     <title>TIC SELECT - Talento Especializado para la Industria TIC</title>
     <meta name="description" content="Conectamos líderes del sector de Pruebas, Inspección y Certificación con el talento que necesitan. Shortlist en 7 días garantizado." />
     <meta name="author" content="TIC SELECT" />
     <meta name="keywords" content="talento TIC, recruiting, headhunting, pruebas, inspección, certificación, LATAM" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ticselect.com/" />
 
+    <!-- Open Graph meta tags -->
     <meta property="og:title" content="TIC SELECT - Talento Especializado para la Industria TIC" />
     <meta property="og:description" content="Conectamos líderes del sector de Pruebas, Inspección y Certificación con el talento que necesitan. Shortlist en 7 días garantizado." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://ticselect.com/" />
+    <meta property="og:image" content="https://ticselect.com/lovable-uploads/tic-select-logo.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="TIC SELECT" />
 
+    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="TIC SELECT - Talento Especializado para la Industria TIC" />
+    <meta name="twitter:description" content="Conectamos líderes del sector de Pruebas, Inspección y Certificación con el talento que necesitan." />
+    <meta name="twitter:image" content="https://ticselect.com/lovable-uploads/tic-select-logo.webp" />
     
     <!-- Language alternates for SEO -->
     <link rel="alternate" hreflang="es" href="https://ticselect.com/" />
-    <link rel="alternate" hreflang="en" href="https://ticselect.com/" />
-    <link rel="alternate" hreflang="pt" href="https://ticselect.com/" />
+    <link rel="alternate" hreflang="en" href="https://ticselect.com/en/" />
+    <link rel="alternate" hreflang="pt" href="https://ticselect.com/pt/" />
     <link rel="alternate" hreflang="x-default" href="https://ticselect.com/" />
+    
+    <!-- Favicon and app icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#dc2626" />
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TIC SELECT",
+      "url": "https://ticselect.com",
+      "logo": "https://ticselect.com/lovable-uploads/tic-select-logo.webp",
+      "description": "Especialistas en talento para la industria de Testing, Inspección y Certificación",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "contacto@ticselect.com"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/tic-select"
+      ]
+    }
+    </script>
+    
+    <!-- Performance optimization script -->
+    <script>
+      // Critical performance optimization
+      (function() {
+        // Mark navigation start
+        if ('performance' in window && 'mark' in performance) {
+          performance.mark('navigation-start');
+        }
+        
+        // Add resource hints
+        function addResourceHint(rel, href, as, crossorigin) {
+          const link = document.createElement('link');
+          link.rel = rel;
+          link.href = href;
+          if (as) link.as = as;
+          if (crossorigin) link.crossOrigin = crossorigin;
+          document.head.appendChild(link);
+        }
+        
+        // Prefetch critical routes
+        setTimeout(function() {
+          ['/', '/programa-talentotic', '/servicios-para-empresas'].forEach(function(route) {
+            addResourceHint('prefetch', route);
+          });
+        }, 2000);
+        
+        // Preload module script
+        addResourceHint('modulepreload', '/src/main.tsx');
+      })();
+    </script>
     
     <!-- Google tag (gtag.js) temporarily disabled -->
     <!-- 
@@ -30,17 +112,28 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-SHRVJLT86M');
     </script>
     -->
-    
-    <!-- Google reCAPTCHA v3 temporarily disabled -->
-    <!-- <script src="https://www.google.com/recaptcha/api.js?render=6LfMsbgrAAAAAJubJ3wE6z3AF5FwkxC3r0lTeQqm"></script> -->
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('SW registered: ', registration);
+            })
+            .catch(function(registrationError) {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

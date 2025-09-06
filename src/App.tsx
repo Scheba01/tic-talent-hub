@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { usePerformanceOptimization } from "@/hooks/use-performance-optimization";
 import Index from "./pages/Index";
 import QuienesSomos from "./pages/QuienesSomos";
 import ServiciosEmpresas from "./pages/ServiciosEmpresas";
@@ -21,11 +22,27 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 
 const queryClient = new QueryClient();
 
+const AppWithPerformance = () => {
+  // Initialize performance optimizations
+  usePerformanceOptimization({
+    preloadImages: [
+      '/lovable-uploads/tic-select-logo.webp',
+      '/lovable-uploads/tic-talento-hero.webp'
+    ],
+    enableServiceWorker: true,
+    measureMetrics: true,
+    optimizeImages: true
+  });
+
+  return null; // This component only handles performance optimizations
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <AuthProvider>
         <TooltipProvider>
+          <AppWithPerformance />
           <Toaster />
           <Sonner />
           <BrowserRouter>
