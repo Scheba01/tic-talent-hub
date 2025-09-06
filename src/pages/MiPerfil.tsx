@@ -12,8 +12,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const MiPerfil = () => {
+  const { t } = useLanguage();
   const { user, loading: authLoading } = useAuth();
-  const { language } = useLanguage();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<CandidateProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -48,8 +48,8 @@ const MiPerfil = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Cargando perfil...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4 text-gray-600">{t('auth.login_loading')}</p>
         </div>
       </div>
     );
@@ -59,18 +59,23 @@ const MiPerfil = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
-        <main className="container mx-auto px-4 py-8">
-          <div className="text-center py-12">
-            <FileText className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h2 className="text-2xl font-bold mb-2">No tienes un perfil registrado</h2>
-            <p className="text-muted-foreground mb-6">
-              Completa tu registro para crear tu perfil de talento TIC
-            </p>
-            <Button onClick={() => navigate("/registro-talento")}>
-              Crear mi perfil
-            </Button>
-          </div>
+        
+        <main className="pt-16">
+          <section className="py-20 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
+                {t('profile.title')}
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                {t('profile.no_profile_message')}
+              </p>
+              <Button onClick={() => navigate("/registro-talento")} size="lg">
+                {t('profile.create_profile')}
+              </Button>
+            </div>
+          </section>
         </main>
+
         <Footer />
       </div>
     );
@@ -79,105 +84,105 @@ const MiPerfil = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Mi Perfil</h1>
-            <p className="text-muted-foreground">Información completa de tu perfil profesional</p>
+      
+      <main className="pt-16">
+        {/* Hero Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
+              {t('profile.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              {t('profile.subtitle')}
+            </p>
           </div>
-          <Button onClick={handleEdit} className="flex items-center gap-2">
-            <Edit className="h-4 w-4" />
-            Editar perfil
-          </Button>
-        </div>
+        </section>
 
-        <div className="grid gap-6">
-          {/* Información Personal */}
+        {/* Profile Content */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="flex justify-end mb-6">
+              <Button onClick={handleEdit} variant="outline">
+                {t('profile.edit_button')}
+              </Button>
+            </div>
+
+          {/* Personal Information */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <User className="h-5 w-5" />
-                Información Personal
+                {t('profile.personal_info.title')}
               </CardTitle>
             </CardHeader>
-            <CardContent className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-3">
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Nombre completo</label>
-                  <p className="font-medium">{profile.candidate?.nombre_completo}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.personal_info.full_name')}</label>
+                  <p className="mt-1">{profile.nombreCompleto}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Email</label>
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <p>{profile.candidate?.email}</p>
-                  </div>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.personal_info.email')}</label>
+                  <p className="mt-1">{profile.email}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Teléfono</label>
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-muted-foreground" />
-                    <p>{profile.candidate?.codigo_pais} {profile.candidate?.telefono}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">Ubicación</label>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-muted-foreground" />
-                    <p>{profile.candidate?.ciudad}, {profile.candidate?.pais}</p>
-                  </div>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.personal_info.phone')}</label>
+                  <p className="mt-1">{profile.codigoPais} {profile.telefono}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Situación actual</label>
-                  <p>{profile.candidate?.situacion_actual}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.personal_info.country')}</label>
+                  <p className="mt-1">{profile.pais}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Disponibilidad</label>
-                  <p>{profile.candidate?.disponibilidad}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.personal_info.city')}</label>
+                  <p className="mt-1">{profile.ciudad}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Información Profesional */}
+          {/* Professional Information */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Briefcase className="h-5 w-5" />
-                Información Profesional
+                {t('profile.professional_info.title')}
               </CardTitle>
             </CardHeader>
-            <CardContent className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-3">
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Área de estudio</label>
-                  <p>{profile.candidate?.area_estudio}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.current_situation')}</label>
+                  <p className="mt-1">{profile.situacionActual}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Nivel máximo de estudios</label>
-                  <p>{profile.candidate?.nivel_maximo}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.availability')}</label>
+                  <p className="mt-1">{profile.disponibilidad}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Jornada laboral</label>
-                  <p>{profile.candidate?.jornada}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.work_schedule')}</label>
+                  <p className="mt-1">{profile.jornada}</p>
                 </div>
-              </div>
-              <div className="space-y-3">
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Sueldo actual bruto</label>
-                  <p>{profile.candidate?.sueldo_actual_bruto}</p>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.current_salary')}</label>
+                  <p className="mt-1">{profile.sueldoActualBruto}</p>
                 </div>
-                {profile.candidate?.linkedin && (
+                <div>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.education_level')}</label>
+                  <p className="mt-1">{profile.nivelMaximo}</p>
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.study_area')}</label>
+                  <p className="mt-1">{profile.areaEstudio}</p>
+                </div>
+                {profile.linkedin && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">LinkedIn</label>
-                    <div className="flex items-center gap-2">
-                      <Globe className="h-4 w-4 text-muted-foreground" />
-                      <a href={profile.candidate.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                        Ver perfil
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.professional_info.linkedin')}</label>
+                    <p className="mt-1">
+                      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                        {profile.linkedin}
                       </a>
-                    </div>
+                    </p>
                   </div>
                 )}
               </div>
@@ -190,10 +195,10 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Star className="h-5 w-5" />
-                  Familias de Roles Profesionales
+                  {t('profile.role_families.title')}
                 </CardTitle>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Áreas de especialización y roles profesionales en los que tienes experiencia
+                  {t('profile.role_families.description')}
                 </p>
               </CardHeader>
               <CardContent>
@@ -206,7 +211,7 @@ const MiPerfil = () => {
                         </Badge>
                         {familia.familia_rol_otro && (
                           <p className="text-sm text-muted-foreground">
-                            <strong>Especificación:</strong> {familia.familia_rol_otro}
+                            <strong>{t('profile.role_families.specification')}:</strong> {familia.familia_rol_otro}
                           </p>
                         )}
                       </div>
@@ -221,12 +226,18 @@ const MiPerfil = () => {
           {profile.sectors && profile.sectors.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>Sectores de Experiencia</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Globe className="h-5 w-5" />
+                  {t('profile.sectors.title')}
+                </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('profile.sectors.description')}
+                </p>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {profile.sectors.map((sector, index) => (
-                    <Badge key={index} variant="outline">
+                    <Badge key={index} variant="secondary">
                       {sector.sector}
                     </Badge>
                   ))}
@@ -241,13 +252,16 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Competencias
+                  {t('profile.competencies.title')}
                 </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('profile.competencies.description')}
+                </p>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {profile.competencies.map((comp, index) => (
-                    <Badge key={index} variant="default">
+                    <Badge key={index} variant="outline">
                       {comp.competencia}
                     </Badge>
                   ))}
@@ -262,15 +276,18 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Languages className="h-5 w-5" />
-                  Idiomas
+                  {t('profile.languages.title')}
                 </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('profile.languages.description')}
+                </p>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {profile.languages.map((idioma, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {profile.languages.map((lang, index) => (
                     <div key={index} className="flex justify-between items-center p-3 border rounded-lg">
-                      <span className="font-medium">{idioma.idioma}</span>
-                      <Badge variant="secondary">{idioma.nivel}</Badge>
+                      <span className="font-medium">{lang.idioma}</span>
+                      <Badge variant="default">{lang.nivel}</Badge>
                     </div>
                   ))}
                 </div>
@@ -284,19 +301,26 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
-                  Experiencia Laboral
+                  {t('profile.experience.title')}
                 </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('profile.experience.description')}
+                </p>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {profile.experience.map((exp, index) => (
-                    <div key={index} className="p-4 border rounded-lg">
+                    <div key={index} className="border-l-2 border-primary pl-4 pb-4">
                       <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-semibold">{exp.cargo}</h4>
+                        <div>
+                          <h4 className="font-semibold">{exp.cargo}</h4>
+                          <p className="text-muted-foreground">{exp.empresa}</p>
+                        </div>
                         <Badge variant="outline">{exp.periodo}</Badge>
                       </div>
-                      <p className="text-muted-foreground mb-2">{exp.empresa}</p>
-                      {exp.descripcion && <p className="text-sm">{exp.descripcion}</p>}
+                      {exp.descripcion && (
+                        <p className="text-sm text-muted-foreground mt-2">{exp.descripcion}</p>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -311,17 +335,17 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Especialización en Laboratorio
+                  {t('profile.laboratory.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                  <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                   <p>{profile.specializations.laboratorio.rol}</p>
                 </div>
                 {profile.specializations.laboratorio.tipos_laboratorio?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Tipos de Laboratorio</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.types')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.laboratorio.tipos_laboratorio.map((tipo, index) => (
                         <Badge key={index} variant="outline">{tipo}</Badge>
@@ -331,7 +355,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.laboratorio.tecnicas_equipos?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Técnicas y Equipos</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.techniques')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.laboratorio.tecnicas_equipos.map((tecnica, index) => (
                         <Badge key={index} variant="secondary">{tecnica}</Badge>
@@ -341,13 +365,13 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.laboratorio.experiencia_17025 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia ISO 17025</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.experience_17025')}</label>
                     <p>{profile.specializations.laboratorio.experiencia_17025}</p>
                   </div>
                 )}
                 {profile.specializations.laboratorio.experiencia_auditorias && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia en Auditorías</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.audit_experience')}</label>
                     <Badge variant="default">Sí</Badge>
                   </div>
                 )}
@@ -361,13 +385,13 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Especialización en Auditoría
+                  {t('profile.audit.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.auditoria.tipo_auditor?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Tipo de Auditor</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.audit.auditor_type')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.auditoria.tipo_auditor.map((tipo, index) => (
                         <Badge key={index} variant="outline">{tipo}</Badge>
@@ -377,7 +401,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.auditoria.normas_auditadas?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Normas Auditadas</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.audit.audited_standards')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.auditoria.normas_auditadas.map((norma, index) => (
                         <Badge key={index} variant="secondary">{norma}</Badge>
@@ -387,13 +411,13 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.auditoria.horas_auditoria && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Horas de Auditoría</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.audit.hours')}</label>
                     <p>{profile.specializations.auditoria.horas_auditoria}</p>
                   </div>
                 )}
                 {profile.specializations.auditoria.registro_irca && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Registro IRCA</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.audit.irca_registration')}</label>
                     <Badge variant="default">ID: {profile.specializations.auditoria.id_irca}</Badge>
                   </div>
                 )}
@@ -407,19 +431,19 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Certificación de Sistemas de Gestión
+                  {t('profile.cert_systems.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.certSistemas.nivel_competencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Nivel de Competencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_systems.competence_level')}</label>
                     <p>{profile.specializations.certSistemas.nivel_competencia}</p>
                   </div>
                 )}
                 {profile.specializations.certSistemas.normas?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Normas</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_systems.standards')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.certSistemas.normas.map((norma, index) => (
                         <Badge key={index} variant="outline">{norma}</Badge>
@@ -429,7 +453,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.certSistemas.registro_irca && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Registro IRCA</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_systems.irca_registration')}</label>
                     <Badge variant="default">ID: {profile.specializations.certSistemas.id_irca}</Badge>
                   </div>
                 )}
@@ -443,19 +467,19 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Certificación de Productos
+                  {t('profile.cert_products.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.certProductos.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.certProductos.rol}</p>
                   </div>
                 )}
                 {profile.specializations.certProductos.sectores?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Sectores</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_products.sectors')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.certProductos.sectores.map((sector, index) => (
                         <Badge key={index} variant="outline">{sector}</Badge>
@@ -465,7 +489,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.certProductos.experiencia_17065 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia ISO 17065</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_products.experience_17065')}</label>
                     <p>{profile.specializations.certProductos.experiencia_17065}</p>
                   </div>
                 )}
@@ -479,19 +503,19 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Certificación de Personas
+                  {t('profile.cert_persons.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.certPersonas.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.certPersonas.rol}</p>
                   </div>
                 )}
                 {profile.specializations.certPersonas.areas?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Áreas</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_persons.areas')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.certPersonas.areas.map((area, index) => (
                         <Badge key={index} variant="outline">{area}</Badge>
@@ -501,7 +525,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.certPersonas.experiencia_17024 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia ISO 17024</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.cert_persons.experience_17024')}</label>
                     <p>{profile.specializations.certPersonas.experiencia_17024}</p>
                   </div>
                 )}
@@ -515,25 +539,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Award className="h-5 w-5" />
-                  Inspección
+                  {t('profile.inspection.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.inspeccion.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.inspeccion.rol}</p>
                   </div>
                 )}
                 {profile.specializations.inspeccion.tipo_organismo && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Tipo de Organismo</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.inspection.organism_type')}</label>
                     <p>{profile.specializations.inspeccion.tipo_organismo}</p>
                   </div>
                 )}
                 {profile.specializations.inspeccion.areas_inspeccion?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Áreas de Inspección</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.inspection.areas')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.inspeccion.areas_inspeccion.map((area, index) => (
                         <Badge key={index} variant="outline">{area}</Badge>
@@ -543,7 +567,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.inspeccion.certificaciones?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Certificaciones</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.inspection.certifications')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.inspeccion.certificaciones.map((cert, index) => (
                         <Badge key={index} variant="secondary">{cert}</Badge>
@@ -553,7 +577,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.inspeccion.experiencia_17020 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia ISO 17020</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.inspection.experience_17020')}</label>
                     <p>{profile.specializations.inspeccion.experiencia_17020}</p>
                   </div>
                 )}
@@ -567,19 +591,19 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Área Comercial
+                  {t('profile.commercial.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.comercial.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.comercial.rol}</p>
                   </div>
                 )}
                 {profile.specializations.comercial.sectores_atendidos?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Sectores Atendidos</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.commercial.sectors_served')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.comercial.sectores_atendidos.map((sector, index) => (
                         <Badge key={index} variant="outline">{sector}</Badge>
@@ -589,7 +613,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.comercial.lineas_dominadas?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Líneas de Negocio Dominadas</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.commercial.dominated_lines')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.comercial.lineas_dominadas.map((linea, index) => (
                         <Badge key={index} variant="secondary">{linea}</Badge>
@@ -599,7 +623,7 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.comercial.ticket_promedio && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Ticket Promedio</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.commercial.average_ticket')}</label>
                     <p>{profile.specializations.comercial.ticket_promedio}</p>
                   </div>
                 )}
@@ -613,19 +637,19 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Operaciones
+                  {t('profile.operations.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.operaciones.nivel && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Nivel</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.operations.level')}</label>
                     <p>{profile.specializations.operaciones.nivel}</p>
                   </div>
                 )}
                 {profile.specializations.operaciones.areas?.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Áreas</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.operations.areas')}</label>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {profile.specializations.operaciones.areas.map((area, index) => (
                         <Badge key={index} variant="outline">{area}</Badge>
@@ -635,13 +659,13 @@ const MiPerfil = () => {
                 )}
                 {profile.specializations.operaciones.personas_cargo && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Personas a Cargo</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.operations.team_size')}</label>
                     <p>{profile.specializations.operaciones.personas_cargo}</p>
                   </div>
                 )}
                 {profile.specializations.operaciones.presupuesto && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Presupuesto Manejado</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.operations.budget')}</label>
                     <p>{profile.specializations.operaciones.presupuesto}</p>
                   </div>
                 )}
@@ -655,25 +679,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Tecnologías de la Información
+                  {t('profile.ti.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.ti.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.ti.rol}</p>
                   </div>
                 )}
                 {profile.specializations.ti.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.ti.title')}</label>
                     <p>{profile.specializations.ti.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.ti.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.ti.comentarios}</p>
                   </div>
                 )}
@@ -686,25 +710,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  HSE (Salud, Seguridad y Medio Ambiente)
+                  {t('profile.hse.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.hse.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.hse.rol}</p>
                   </div>
                 )}
                 {profile.specializations.hse.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.hse.title')}</label>
                     <p>{profile.specializations.hse.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.hse.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.hse.comentarios}</p>
                   </div>
                 )}
@@ -717,25 +741,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Área Legal
+                  {t('profile.legal.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.legal.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.legal.rol}</p>
                   </div>
                 )}
                 {profile.specializations.legal.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.legal.title')}</label>
                     <p>{profile.specializations.legal.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.legal.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.legal.comentarios}</p>
                   </div>
                 )}
@@ -748,25 +772,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Supply Chain
+                  {t('profile.supply_chain.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.supplyChain.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.supplyChain.rol}</p>
                   </div>
                 )}
                 {profile.specializations.supplyChain.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.supply_chain.title')}</label>
                     <p>{profile.specializations.supplyChain.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.supplyChain.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.supplyChain.comentarios}</p>
                   </div>
                 )}
@@ -779,25 +803,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Atención al Cliente
+                  {t('profile.customer_service.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.atencionCliente.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.atencionCliente.rol}</p>
                   </div>
                 )}
                 {profile.specializations.atencionCliente.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.customer_service.title')}</label>
                     <p>{profile.specializations.atencionCliente.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.atencionCliente.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.atencionCliente.comentarios}</p>
                   </div>
                 )}
@@ -810,25 +834,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  PMO (Project Management Office)
+                  {t('profile.pmo.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.pmo.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.pmo.rol}</p>
                   </div>
                 )}
                 {profile.specializations.pmo.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.pmo.title')}</label>
                     <p>{profile.specializations.pmo.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.pmo.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.pmo.comentarios}</p>
                   </div>
                 )}
@@ -841,25 +865,25 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Dirección
+                  {t('profile.management.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.specializations.direccion.rol && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Rol</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.laboratory.role')}</label>
                     <p>{profile.specializations.direccion.rol}</p>
                   </div>
                 )}
                 {profile.specializations.direccion.experiencia && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Experiencia</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.management.title')}</label>
                     <p>{profile.specializations.direccion.experiencia}</p>
                   </div>
                 )}
                 {profile.specializations.direccion.comentarios && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Comentarios</label>
+                    <label className="text-sm font-medium text-muted-foreground">{t('profile.comments.title')}</label>
                     <p>{profile.specializations.direccion.comentarios}</p>
                   </div>
                 )}
@@ -868,32 +892,46 @@ const MiPerfil = () => {
           )}
 
           {/* Certificaciones */}
-          {profile.candidate?.certificaciones && (
+          {profile.certificaciones && (
             <Card>
               <CardHeader>
-                <CardTitle>Certificaciones</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Award className="h-5 w-5" />
+                  {t('profile.certifications.title')}
+                </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('profile.certifications.description')}
+                </p>
               </CardHeader>
               <CardContent>
-                <p className="whitespace-pre-wrap">{profile.candidate.certificaciones}</p>
+                <p className="whitespace-pre-wrap">{profile.certificaciones}</p>
               </CardContent>
             </Card>
           )}
 
-          {/* Comentarios adicionales */}
-          {profile.candidate?.comentarios && (
+          {/* Comentarios Adicionales */}
+          {profile.comentarios && (
             <Card>
               <CardHeader>
-                <CardTitle>Comentarios Adicionales</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5" />
+                  {t('profile.comments.title')}
+                </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('profile.comments.description')}
+                </p>
               </CardHeader>
               <CardContent>
-                <p className="whitespace-pre-wrap">{profile.candidate.comentarios}</p>
+                <p className="whitespace-pre-wrap">{profile.comentarios}</p>
               </CardContent>
             </Card>
           )}
         </div>
-      </main>
-      <Footer />
-    </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
   );
 };
 
