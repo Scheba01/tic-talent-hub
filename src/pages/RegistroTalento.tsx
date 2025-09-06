@@ -23,7 +23,7 @@ import { getCandidateProfile, transformProfileToFormData } from "@/lib/candidate
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const RegistroTalento = () => {
-  const { t } = useLanguage();
+  const { t, translateDropdownOptions } = useLanguage();
   console.log("RegistroTalento component loaded"); // Debug log
   const [selectedAreaFuncional, setSelectedAreaFuncional] = useState<string>("");
   const [selectedSubarea, setSelectedSubarea] = useState<string>("");
@@ -2341,12 +2341,12 @@ const RegistroTalento = () => {
                                               <SelectValue placeholder={t('registration.select_language')} />
                                             </SelectTrigger>
                                           </FormControl>
-                                          <SelectContent>
-                                            {IDIOMAS.map(idioma => <SelectItem key={idioma.value} value={idioma.value}>
-                                                {idioma.label}
-                                              </SelectItem>)}
-                                          </SelectContent>
-                                        </Select>
+                                           <SelectContent>
+                                             {translateDropdownOptions(IDIOMAS).map(idioma => <SelectItem key={idioma.value} value={idioma.value}>
+                                                 {idioma.label}
+                                               </SelectItem>)}
+                                           </SelectContent>
+                                         </Select>
                                         <FormMessage />
                                       </FormItem>} />
 
@@ -2360,12 +2360,12 @@ const RegistroTalento = () => {
                                                <SelectValue placeholder={t('registration.select_level')} />
                                             </SelectTrigger>
                                           </FormControl>
-                                          <SelectContent>
-                                            {NIVELES_IDIOMA.map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
-                                                {nivel.label}
-                                              </SelectItem>)}
-                                          </SelectContent>
-                                        </Select>
+                                           <SelectContent>
+                                             {translateDropdownOptions(NIVELES_IDIOMA).map(nivel => <SelectItem key={nivel.value} value={nivel.value}>
+                                                 {nivel.label}
+                                               </SelectItem>)}
+                                           </SelectContent>
+                                         </Select>
                                         <FormMessage />
                                       </FormItem>} />
 

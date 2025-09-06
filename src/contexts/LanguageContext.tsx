@@ -6,6 +6,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  translateDropdownOptions: (options: Array<{value: string, label: string}>) => Array<{value: string, label: string}>;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -163,8 +164,43 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return val || translations['es'][key] || key;
   };
 
+  // Helper function to translate dropdown options
+  const translateDropdownOptions = (options: Array<{value: string, label: string}>) => {
+    return options.map(option => ({
+      ...option,
+      label: getTranslatedLabel(option.value, option.label)
+    }));
+  };
+
+  const getTranslatedLabel = (value: string, fallback: string): string => {
+    const languageMappings = {
+      // Language levels
+      'nativo': t('dropdown.language.native'),
+      'avanzado': t('dropdown.language.advanced'), 
+      'intermedio': t('dropdown.language.intermediate'),
+      'basico': t('dropdown.language.basic'),
+      // Languages
+      'espanol': t('dropdown.language.spanish'),
+      'ingles': t('dropdown.language.english'),
+      'portugues': t('dropdown.language.portuguese'),
+      'frances': t('dropdown.language.french'),
+      'aleman': t('dropdown.language.german'),
+      // Competence levels
+      'conocimiento': t('dropdown.competence.knowledge'),
+      'operativo': t('dropdown.competence.operative'),
+      'implementador': t('dropdown.competence.implementer'),
+      'auditor-interno': t('dropdown.competence.internal_auditor'),
+      'auditor-lider': t('dropdown.competence.lead_auditor'),
+      'experto-tecnico': t('dropdown.competence.technical_expert'),
+      'formador': t('dropdown.competence.trainer'),
+      'otro': t('dropdown.language.other')
+    };
+
+    return languageMappings[value] || fallback;
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, translateDropdownOptions }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -669,7 +705,25 @@ const translations: Record<Language, Record<string,string>> = {
     'contact.form.query_options.talent_evaluation': 'Evaluación de Talento',
     'contact.form.query_options.talent_program': 'Programa TalentoTIC',
     'contact.form.query_options.looking_job': 'Busco Empleo',
-    'contact.form.query_options.other': 'Otro'
+    'contact.form.query_options.other': 'Otro',
+    // Dropdown Options Translations
+    'dropdown.language.native': 'Nativo',
+    'dropdown.language.advanced': 'Avanzado',
+    'dropdown.language.intermediate': 'Intermedio',
+    'dropdown.language.basic': 'Básico',
+    'dropdown.language.spanish': 'Español',
+    'dropdown.language.english': 'Inglés',
+    'dropdown.language.portuguese': 'Portugués',
+    'dropdown.language.french': 'Francés',
+    'dropdown.language.german': 'Alemán',
+    'dropdown.language.other': 'Otro',
+    'dropdown.competence.knowledge': 'Conocimiento',
+    'dropdown.competence.operative': 'Operativo',
+    'dropdown.competence.implementer': 'Implementador',
+    'dropdown.competence.internal_auditor': 'Auditor Interno',
+    'dropdown.competence.lead_auditor': 'Auditor Líder',
+    'dropdown.competence.technical_expert': 'Experto técnico',
+    'dropdown.competence.trainer': 'Formador',
   },
   en: {
     'nav.home': 'Home',
@@ -935,6 +989,24 @@ const translations: Record<Language, Record<string,string>> = {
     'contact.form.query_options.talent_program': 'TIC Talent Program',
     'contact.form.query_options.looking_job': 'Looking for a Job',
     'contact.form.query_options.other': 'Other',
+    // Dropdown Options Translations (English)
+    'dropdown.language.native': 'Native',
+    'dropdown.language.advanced': 'Advanced',
+    'dropdown.language.intermediate': 'Intermediate',
+    'dropdown.language.basic': 'Basic',
+    'dropdown.language.spanish': 'Spanish',
+    'dropdown.language.english': 'English',
+    'dropdown.language.portuguese': 'Portuguese',
+    'dropdown.language.french': 'French',
+    'dropdown.language.german': 'German',
+    'dropdown.language.other': 'Other',
+    'dropdown.competence.knowledge': 'Knowledge',
+    'dropdown.competence.operative': 'Operative',
+    'dropdown.competence.implementer': 'Implementer',
+    'dropdown.competence.internal_auditor': 'Internal Auditor',
+    'dropdown.competence.lead_auditor': 'Lead Auditor',
+    'dropdown.competence.technical_expert': 'Technical Expert',
+    'dropdown.competence.trainer': 'Trainer',
     // Auth Page Keys (English)
     'auth.title': 'Access to TIC SELECT',
     'auth.subtitle': 'Join the largest TIC professional network in LATAM',
