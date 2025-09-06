@@ -92,13 +92,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <Link to="/" className="mb-4 md:mb-0 inline-block">
-              <LazyImage 
-                src="/lovable-uploads/bfbd522e-174e-4547-8427-2862ff16d915.png" 
-                alt="TIC SELECT" 
-                className="h-6 w-auto object-contain"
-                width={90}
-                height={24}
-              />
+              <span className="text-lg font-display font-bold text-foreground">TIC SELECT</span>
             </Link>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
               <div className="flex space-x-4 text-sm">
