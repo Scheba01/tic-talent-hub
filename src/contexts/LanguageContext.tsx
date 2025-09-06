@@ -615,7 +615,7 @@ const translations: Record<Language, Record<string,string>> = {
     'programaTalentoTIC.statistics.gap.description': 'Tiempo promedio que toma a un recién graduado adquirir competencias laborales',
     'programaTalentoTIC.statistics.demand.value': '+40%',
     'programaTalentoTIC.statistics.demand.title': 'Crecimiento de la Demanda',
-    'programaTalentoTIC.statistics.demand.description': 'Aumento proyectado en la demanda de profesionales TIC para 2025',
+    'programaTalentoTIC.statistics.demand.description': 'Aumento proyectado en la demanda de profesionales TIC para 2030',
     'programaTalentoTIC.whatIs.title': '¿Qué es TIC Talento?',
     'programaTalentoTIC.whatIs.description1': 'TIC Talento es un programa innovador diseñado para conectar a jóvenes talentos universitarios y recién graduados con las empresas líderes del sector de Testing, Inspección y Certificación.',
     'programaTalentoTIC.whatIs.description2': 'Nuestro objetivo es cerrar la brecha entre la formación académica y las necesidades reales de la industria, proporcionando experiencias de aprendizaje práctico que preparen a los participantes para una inserción laboral exitosa.',
