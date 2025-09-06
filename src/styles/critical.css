@@ -65,10 +65,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section Critical Styles */
 .critical-hero {
   position: relative;
-  padding: 8rem 1rem 2rem;
+  padding: 4rem 1rem 3rem;
   overflow: hidden;
   background: var(--gradient-hero);
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
 }
@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .critical-hero {
-    padding: 8rem 1.5rem 2rem;
+    padding: 5rem 1.5rem 3rem;
   }
   
   .critical-hero-buttons {
@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .critical-hero {
-    padding: 8rem 2rem 2rem;
+    padding: 6rem 2rem 4rem;
   }
   
   .critical-hero-title {
