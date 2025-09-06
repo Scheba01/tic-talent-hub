@@ -270,7 +270,7 @@ const translations: Record<Language, Record<string,string>> = {
     'internal_links.get_started': 'Comenzar',
     'internal_links.explore_more': 'Explorar Más',
     
-    'hero.title': 'Reclutamiento Ejecutivo Especializado en TIC',
+    'hero.title': 'Reclutamiento Especializado en TIC',
     'hero.subtitle': 'Somos expertos en búsqueda de talento para el sector Testing, Inspección y Certificación. Presentamos candidatos preseleccionados en 7 días máximo.',
     'hero.discover_services': 'Descubre Nuestros Servicios',
     'hero.contact_us': 'Contáctanos',
