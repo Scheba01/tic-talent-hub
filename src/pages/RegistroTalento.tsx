@@ -2193,13 +2193,13 @@ const RegistroTalento = () => {
                     
                     {/* 5) Sectores/Industrias */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">5. Sectores/Industrias</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">5. {t('registration.sectors.title')}</h3>
                       <div className="space-y-4">
                         <FormField control={form.control} name="sectores" render={({
                         field
                       }) => <FormItem>
                               <FormControl>
-                                <MultiSelect options={SECTORES_INDUSTRIA} selected={field.value} onChange={field.onChange} placeholder="Selecciona sectores de interés..." />
+                                <MultiSelect options={SECTORES_INDUSTRIA} selected={field.value} onChange={field.onChange} placeholder={t('registration.sectors.description')} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>} />
@@ -2222,13 +2222,13 @@ const RegistroTalento = () => {
 
                     {/* 6) Conocimiento y Competencia en Normas & Certificaciones */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">6. Conocimiento y Competencia en Normas & Certificaciones</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">6. {t('registration.competencies.title')}</h3>
                       <FormField 
                         control={form.control} 
                         name="competenciasNormas.0" 
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Conocimiento y Competencia en Normas & Certificaciones</FormLabel>
+                            <FormLabel>{t('registration.competencies.description')}</FormLabel>
                             <FormControl>
                               <Textarea
                                 placeholder="Escribe tus normas y niveles. Ej.:&#10;ISO 9712 – UT – Nivel II&#10;ASME Sección VIII Div.1 – Inspector&#10;ISO 9001 – Lead Auditor (IRCA)&#10;ISO 14065 – Verificador GEI – ISO 14064-1"
@@ -2244,12 +2244,12 @@ const RegistroTalento = () => {
 
                     {/* 7) Formación académica */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">7. Formación Académica</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">7. {t('registration.education.title')}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField control={form.control} name="nivelMaximo" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Máximo nivel</FormLabel>
+                              <FormLabel>{t('registration.max_education')}</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
@@ -2285,7 +2285,7 @@ const RegistroTalento = () => {
                         <FormField control={form.control} name="areaEstudio" render={({
                         field
                       }) => <FormItem>
-                              <FormLabel>Área de estudio</FormLabel>
+                              <FormLabel>{t('registration.study_area')}</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
@@ -2326,7 +2326,7 @@ const RegistroTalento = () => {
 
                     {/* 8) Idiomas */}
                     <div>
-                      <h3 className="text-xl font-display font-semibold mb-6">8. Idiomas</h3>
+                      <h3 className="text-xl font-display font-semibold mb-6">8. {t('registration.languages.title')}</h3>
                       <div className="space-y-4">
                         {form.watch("idiomas")?.map((_, index) => (
                           <div key={index} className="space-y-4">
@@ -2334,11 +2334,11 @@ const RegistroTalento = () => {
                               <FormField control={form.control} name={`idiomas.${index}.idioma`} render={({
                                 field
                               }) => <FormItem>
-                                        <FormLabel>Idioma</FormLabel>
+                                        <FormLabel>{t('registration.language')}</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                           <FormControl>
                                             <SelectTrigger>
-                                              <SelectValue placeholder="Selecciona idioma" />
+                                              <SelectValue placeholder={t('registration.select_language')} />
                                             </SelectTrigger>
                                           </FormControl>
                                           <SelectContent>
@@ -2353,11 +2353,11 @@ const RegistroTalento = () => {
                               <FormField control={form.control} name={`idiomas.${index}.nivel`} render={({
                                 field
                               }) => <FormItem>
-                                        <FormLabel>Nivel</FormLabel>
+                                        <FormLabel>{t('registration.level')}</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                           <FormControl>
                                             <SelectTrigger>
-                                              <SelectValue placeholder="Selecciona nivel" />
+                                               <SelectValue placeholder={t('registration.select_level')} />
                                             </SelectTrigger>
                                           </FormControl>
                                           <SelectContent>
@@ -2379,7 +2379,7 @@ const RegistroTalento = () => {
                               <FormField control={form.control} name={`idiomas.${index}.idiomaOtro`} render={({
                                 field
                               }) => <FormItem>
-                                      <FormLabel>Especifica otro idioma</FormLabel>
+                                      <FormLabel>{t('registration.other_language')}</FormLabel>
                                       <FormControl>
                                         <Input {...field} placeholder="Ingresa el idioma" />
                                       </FormControl>
@@ -2390,7 +2390,7 @@ const RegistroTalento = () => {
                         ))}
                         <Button type="button" variant="outline" onClick={addIdioma}>
                           <Plus className="h-4 w-4 mr-2" />
-                          Añadir idioma
+                          {t('registration.add_language')}
                         </Button>
                       </div>
                     </div>
@@ -2450,14 +2450,14 @@ const RegistroTalento = () => {
 
                      {/* 10) Notas y preferencias */}
                      <div>
-                       <h3 className="text-xl font-display font-semibold mb-6">10. Notas y Preferencias</h3>
+                       <h3 className="text-xl font-display font-semibold mb-6">10. {t('registration.additional_info.title')}</h3>
                        <div className="space-y-6">
                          <FormField control={form.control} name="comentarios" render={({
                          field
                        }) => <FormItem>
-                               <FormLabel>Comentarios adicionales</FormLabel>
+                               <FormLabel>{t('registration.comments')}</FormLabel>
                                <FormControl>
-                                 <Textarea {...field} placeholder="Información adicional relevante..." />
+                                 <Textarea {...field} placeholder={t('registration.comments_placeholder')} />
                                </FormControl>
                                <FormMessage />
                              </FormItem>} />
