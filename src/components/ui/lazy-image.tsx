@@ -71,8 +71,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
       className={cn('relative overflow-hidden', className)}
       style={{ width, height }}
     >
-      {!isLoaded && !error && (
-        <div className="absolute inset-0 bg-muted animate-pulse" />
+      {!isLoaded && !error && !priority && (
+        <div className="absolute inset-0 bg-muted/20 animate-pulse rounded" />
       )}
       {isInView && (
         <img

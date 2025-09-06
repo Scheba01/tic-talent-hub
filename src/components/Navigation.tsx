@@ -67,12 +67,14 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <LazyImage 
+            <img 
               src="/lovable-uploads/tic-select-logo.webp" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
-              fallbackSrc="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png"
-              priority={true}
+              onError={(e) => {
+                e.currentTarget.src = "/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png";
+              }}
+              loading="eager"
               width={120}
               height={32}
             />
