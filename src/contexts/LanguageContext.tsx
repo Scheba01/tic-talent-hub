@@ -605,7 +605,7 @@ const translations: Record<Language, Record<string,string>> = {
     'programaTalentoTIC.description': 'Un programa innovador que conecta jóvenes talentos con empresas del sector TIC, brindando oportunidades de experiencia práctica y crecimiento profesional.',
     'programaTalentoTIC.keywords': 'TIC Talento, programa jóvenes, industria TIC, experiencia práctica, desarrollo profesional',
     'programaTalentoTIC.hero.heading': 'Conectando <span class="text-cyan-300">Jóvenes Talentos</span> con la <span class="text-cyan-300">Industria TIC</span>',
-    'programaTalentoTIC.hero.subheading': 'Un programa innovador que cierra la brecha entre la formación académica y las necesidades reales de la industria TIC.',
+    'programaTalentoTIC.hero.subheading': 'El programa TIC Talento es una iniciativa diseñada para formar, vincular y potenciar a jóvenes profesionales y estudiantes dentro de la industria de Testing, Inspección y Certificación (TIC) en América Latina.',
     'programaTalentoTIC.hero.cta': 'Únete al Programa',
     'programaTalentoTIC.statistics.shortage.value': '65%',
     'programaTalentoTIC.statistics.shortage.title': 'Escasez de Talento TIC',
