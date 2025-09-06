@@ -942,11 +942,12 @@ const RegistroTalento = () => {
                                   <FormLabel>Tipo de auditor</FormLabel>
                                   <FormControl>
                                     <MultiSelect 
-                                      options={[
-                                        { value: "interno", label: "Auditor interno" },
-                                        { value: "lead", label: "Lead auditor" },
-                                        { value: "jefe", label: "Jefe de auditores" }
-                                      ]} 
+                                       options={[
+                                         { value: "interno", label: "Auditor interno" },
+                                         { value: "lead", label: "Lead auditor" },
+                                         { value: "jefe", label: "Jefe de auditores" },
+                                         { value: "freelance", label: "Freelance" }
+                                       ]}
                                       selected={field.value || []} 
                                       onChange={field.onChange} 
                                       placeholder="Selecciona tipo de auditor..." 
@@ -1500,20 +1501,21 @@ const RegistroTalento = () => {
                                   <FormLabel>Tipos de implementación</FormLabel>
                                   <FormControl>
                                     <MultiSelect 
-                                      options={[
-                                        { value: "sistemas-gestion", label: "Sistemas de Gestión" },
-                                        { value: "normas-iso", label: "Normas ISO" },
-                                        { value: "procesos-calidad", label: "Procesos de Calidad" },
-                                        { value: "mejora-continua", label: "Mejora Continua" },
-                                        { value: "lean-six-sigma", label: "Lean Six Sigma" },
-                                        { value: "seguridad-salud", label: "Seguridad y Salud Ocupacional" },
-                                        { value: "medio-ambiente", label: "Medio Ambiente" },
-                                        { value: "food-safety", label: "Food Safety (Seguridad Alimentaria)" },
-                                        { value: "sostenibilidad", label: "Sostenibilidad y RSE" },
-                                        { value: "social-compliance", label: "Social Compliance" },
-                                        { value: "bpm-digitalizacion", label: "BPM y Digitalización" },
-                                        { value: "otros", label: "Otros" }
-                                      ]} 
+                                       options={[
+                                         { value: "sistemas-gestion", label: "Sistemas de Gestión" },
+                                         { value: "normas-iso", label: "Normas ISO" },
+                                         { value: "procesos-calidad", label: "Procesos de Calidad" },
+                                         { value: "mejora-continua", label: "Mejora Continua" },
+                                         { value: "lean-six-sigma", label: "Lean Six Sigma" },
+                                         { value: "seguridad-salud", label: "Seguridad y Salud Ocupacional" },
+                                         { value: "medio-ambiente", label: "Medio Ambiente" },
+                                         { value: "food-safety", label: "Food Safety (Seguridad Alimentaria)" },
+                                         { value: "sostenibilidad", label: "Sostenibilidad y RSE" },
+                                         { value: "social-compliance", label: "Social Compliance" },
+                                         { value: "bpm-digitalizacion", label: "BPM y Digitalización" },
+                                         { value: "freelance", label: "Freelance" },
+                                         { value: "otros", label: "Otros" }
+                                       ]}
                                       selected={field.value || []} 
                                       onChange={field.onChange} 
                                       placeholder="Selecciona tipos de implementación..." 
