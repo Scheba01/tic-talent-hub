@@ -67,11 +67,10 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <LazyImage 
-              src="/src/assets/tic-select-logo.png" 
+            <img 
+              src={ticSelectLogo} 
               alt="TIC SELECT" 
               className="h-8 w-auto"
-              priority={true}
             />
           </Link>
 
