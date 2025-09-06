@@ -8,11 +8,40 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 import { preloadCriticalImages } from "@/utils/image-optimization";
+import { injectCriticalCSS, loadNonCriticalCSS } from "@/utils/critical-css";
+import { getPerformanceMonitor, markCriticalResourcesLoaded } from "@/utils/performance-monitor";
 const Index = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
+    const startTime = performance.now();
+    
+    // Inject critical CSS immediately
+    injectCriticalCSS();
+    // Preload critical images
     preloadCriticalImages();
+    // Load non-critical CSS asynchronously
+    loadNonCriticalCSS();
+    
+    // Mark critical resources as loaded
+    markCriticalResourcesLoaded();
+    
+    // Initialize performance monitoring
+    const monitor = getPerformanceMonitor();
+    
+    // Log performance metrics after page load
+    setTimeout(() => {
+      monitor.logMetrics();
+      const assessment = monitor.assessPerformance();
+      console.log(`Performance Score: ${assessment.score}/100`);
+      if (assessment.recommendations.length > 0) {
+        console.log('Recommendations:', assessment.recommendations);
+      }
+    }, 3000);
+    
+    return () => {
+      monitor.destroy();
+    };
   }, []);
 
   return <div className="min-h-screen bg-background">
@@ -20,15 +49,18 @@ const Index = () => {
         <link rel="canonical" href="https://ticselect.com/" />
         <meta property="og:url" content="https://ticselect.com/" />
         <link rel="preload" as="image" href="/lovable-uploads/tic-select-logo.webp" />
+        <link rel="preload" as="style" href="/src/index.css" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </Helmet>
       <Navigation />
       
       <main className="pt-16">
-        {/* Hero Section */}
-        <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-          <div className="absolute inset-0 gradient-hero"></div>
-          <div className="relative max-w-6xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-8">
+        {/* Hero Section - Critical Above-the-fold */}
+        <section className="critical-hero">
+          <div className="critical-hero-content">
+            <h1 className="critical-hero-title">
+              {t('hero.title')}
               {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
@@ -38,7 +70,7 @@ const Index = () => {
               <Button asChild className="btn-outline-hero">
                 <Link to="/servicios-para-empresas">{t('hero.discover_services')}</Link>
               </Button>
-              <Button asChild className="btn-hero">
+              <Button asChild className="critical-btn-hero">
                 <Link to="/contacto">{t('hero.contact_us')}</Link>
               </Button>
             </div>

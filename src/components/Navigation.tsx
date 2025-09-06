@@ -62,15 +62,15 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="critical-nav">
+      <div className="critical-nav-container">
+        <div className="critical-nav-content">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
               src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
               alt="TIC SELECT" 
-              className="h-8 w-auto"
+              className="critical-logo"
               loading="eager"
             />
           </Link>
