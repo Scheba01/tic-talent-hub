@@ -59,7 +59,7 @@ const Index = () => {
       
       <main className="pt-16">
         {/* Hero Section - Optimized for mobile Core Web Vitals */}
-        <section className="critical-hero relative min-h-screen bg-black text-white flex items-center justify-center">
+        <section className="critical-hero relative py-20 md:py-32 bg-black text-white flex items-center justify-center">
           <div className="critical-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="critical-text text-4xl md:text-6xl font-display font-bold mb-8 fade-in-fast">
               {t('hero.title')}
