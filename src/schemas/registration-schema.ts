@@ -179,6 +179,49 @@ export const registrationSchema = z.object({
     experienciaAnios: z.string(),
     metodologias: z.array(z.string()),
     comentarios: z.string().optional()
+  }).optional(),
+
+  // New areas
+  ti: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
+  hse: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
+  legal: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
+  supplyChain: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
+  atencionCliente: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
+  pmo: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
+  }).optional(),
+
+  direccion: z.object({
+    rol: z.string(),
+    experiencia: z.string(),
+    comentarios: z.string().optional()
   }).optional()
 })
 
