@@ -311,7 +311,7 @@ const translations: Record<Language, Record<string,string>> = {
     'why.talent.title': '+15.000 Talentos en LATAM',
     // Services Page Keys
     'services_page.title': 'Servicios para Empresas',
-    'services_page.executive_search.title': 'Recruiting & Headhunting de Alta Dirección',
+    'services_page.executive_search.title': 'Recruiting & Headhunting',
     'services_page.executive_search.subtitle': 'Identificamos y atraemos a los líderes que tu empresa necesita para crecer en el sector TIC.',
     'services_page.process': 'Nuestro Proceso',
     'services_page.step1.title': 'Análisis del Perfil',
