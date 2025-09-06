@@ -69,7 +69,13 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
       .select()
       .single()
 
-    if (candidateError) throw candidateError
+    if (candidateError) {
+      // Handle specific error cases for better user experience
+      if (candidateError.code === '23505' && candidateError.message.includes('candidates_email_key')) {
+        throw new Error('Este email ya está registrado. Si ya tienes una cuenta, por favor inicia sesión.')
+      }
+      throw new Error(`Error al registrar candidato: ${candidateError.message}`)
+    }
     if (!candidate) throw new Error('Failed to create candidate')
 
     const candidateId = candidate.id
