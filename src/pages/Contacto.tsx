@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { COUNTRY_CODES } from "@/lib/registration-data";
@@ -273,7 +273,7 @@ const Contacto = () => {
                   {/* Alternative Contact Options */}
                   <div className="mt-8 pt-8 border-t border-border">
                     <h3 className="text-lg font-display font-semibold mb-4 text-center">{t('contact.direct_title')}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <Button
                         variant="outline"
                         className="w-full border-green-500 text-green-600 hover:bg-green-50 hover:text-green-700"
@@ -295,6 +295,20 @@ const Contacto = () => {
                       >
                         <Mail className="w-4 h-4 mr-2" />
                         {t('why.direct_email')}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="w-full border-blue-500 text-blue-600 hover:bg-blue-50 hover:text-blue-700"
+                        asChild
+                      >
+                        <a 
+                          href="https://www.linkedin.com/company/tic-select/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Linkedin className="w-4 h-4 mr-2" />
+                          LinkedIn
+                        </a>
                       </Button>
                     </div>
                   </div>
