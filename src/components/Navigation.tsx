@@ -195,8 +195,13 @@ const Navigation = () => {
                       {profile?.nombre_completo || user.email}
                     </div>
                     <Button asChild variant="outline" className="w-full">
+                      <Link to="/mi-perfil" onClick={() => setIsOpen(false)}>
+                        Mi Perfil
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="w-full">
                       <Link to="/registro-talento" onClick={() => setIsOpen(false)}>
-                        {t('nav.talent_registration')}
+                        Editar Perfil
                       </Link>
                     </Button>
                     <Button 
