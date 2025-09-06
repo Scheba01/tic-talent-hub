@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import LazyImage from "@/components/ui/lazy-image";
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
@@ -226,10 +227,14 @@ const Auth = () => {
         {/* Logo and Header */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-block mb-4">
-            <img 
-              src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
+            <LazyImage 
+              src="/lovable-uploads/tic-select-logo.webp" 
               alt="TIC SELECT" 
               className="h-12 w-auto mx-auto"
+              fallbackSrc="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png"
+              priority={true}
+              width={180}
+              height={48}
             />
           </Link>
           <h1 className="text-2xl font-display font-bold text-foreground">

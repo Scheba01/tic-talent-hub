@@ -13,6 +13,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ticSelectLogo from "@/assets/tic-select-logo.png";
 import linkedinLogo from "@/assets/linkedin-logo.svg";
+import LazyImage from "@/components/ui/lazy-image";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,10 +67,14 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
+            <LazyImage 
+              src="/lovable-uploads/tic-select-logo.webp" 
               alt="TIC SELECT" 
               className="h-8 w-auto"
+              fallbackSrc="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png"
+              priority={true}
+              width={120}
+              height={32}
             />
           </Link>
 

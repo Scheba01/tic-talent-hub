@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { GraduationCap, Users, Lightbulb, Award, Phone, Mail, CheckCircle, TrendingUp, Users2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
+import LazyImage from "@/components/ui/lazy-image";
 
 const ProgramaTalentoTIC = () => {
   const { t } = useLanguage();
@@ -24,6 +25,7 @@ const ProgramaTalentoTIC = () => {
         <meta name="twitter:description" content={t('programaTalentoTIC.description')} />
         <link rel="canonical" href="https://ticselect.com/programa-talentotic" />
         <meta property="og:url" content="https://ticselect.com/programa-talentotic" />
+        <link rel="preload" as="image" href="/lovable-uploads/tic-talento-hero.webp" />
       </Helmet>
       <Navigation />
       
@@ -46,10 +48,13 @@ const ProgramaTalentoTIC = () => {
               </div>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-transparent rounded-full blur-3xl"></div>
-                <img 
-                  src="/lovable-uploads/aa173f7b-4df3-46c2-a94d-5be3c0deb921.png" 
+                <LazyImage 
+                  src="/lovable-uploads/tic-talento-hero.webp" 
                   alt="TIC Talento Hero" 
                   className="relative z-10 w-full max-w-md mx-auto"
+                  fallbackSrc="/lovable-uploads/aa173f7b-4df3-46c2-a94d-5be3c0deb921.png"
+                  width={400}
+                  height={300}
                 />
               </div>
             </div>
@@ -270,10 +275,13 @@ const ProgramaTalentoTIC = () => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <img 
-                  src="/lovable-uploads/384b0134-c54d-4f2d-9d89-8174e50ed97b.png" 
+                <LazyImage 
+                  src="/lovable-uploads/tic-certificate.webp" 
                   alt="Certificado TIC Talento" 
                   className="w-64 h-64 object-contain"
+                  fallbackSrc="/lovable-uploads/384b0134-c54d-4f2d-9d89-8174e50ed97b.png"
+                  width={256}
+                  height={256}
                 />
               </div>
             </div>
@@ -392,10 +400,13 @@ const ProgramaTalentoTIC = () => {
             {/* Subtle TIC Select attribution */}
             <div className="mt-12 flex items-center justify-center space-x-2 text-sm text-gray-500">
               <span>{t('programaTalentoTIC.cta.contact.developedBy')}</span>
-              <img 
-                src="/lovable-uploads/42d7e844-a2f7-47e6-9cbc-b08fab2c11e2.png" 
+              <LazyImage 
+                src="/lovable-uploads/tic-select-small.webp" 
                 alt="TIC Select" 
                 className="h-4 w-auto opacity-70"
+                fallbackSrc="/lovable-uploads/42d7e844-a2f7-47e6-9cbc-b08fab2c11e2.png"
+                width={60}
+                height={16}
               />
             </div>
           </div>

@@ -6,13 +6,20 @@ import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Shield, Users, Target, Award, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import { preloadCriticalImages } from "@/utils/image-optimization";
 const Index = () => {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    preloadCriticalImages();
+  }, []);
 
   return <div className="min-h-screen bg-background">
       <Helmet>
         <link rel="canonical" href="https://ticselect.com/" />
         <meta property="og:url" content="https://ticselect.com/" />
+        <link rel="preload" as="image" href="/lovable-uploads/tic-select-logo.webp" />
       </Helmet>
       <Navigation />
       
