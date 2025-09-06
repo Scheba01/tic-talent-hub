@@ -48,13 +48,10 @@ const ProgramaTalentoTIC = () => {
               </div>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-transparent rounded-full blur-3xl"></div>
-                <LazyImage 
-                  src="/lovable-uploads/tic-talento-hero.webp" 
+                <img 
+                  src="/lovable-uploads/aa173f7b-4df3-46c2-a94d-5be3c0deb921.png" 
                   alt="TIC Talento Hero" 
                   className="relative z-10 w-full max-w-md mx-auto"
-                  fallbackSrc="/lovable-uploads/aa173f7b-4df3-46c2-a94d-5be3c0deb921.png"
-                  width={400}
-                  height={300}
                 />
               </div>
             </div>
@@ -275,13 +272,10 @@ const ProgramaTalentoTIC = () => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <LazyImage 
-                  src="/lovable-uploads/tic-certificate.webp" 
+                <img 
+                  src="/lovable-uploads/384b0134-c54d-4f2d-9d89-8174e50ed97b.png" 
                   alt="Certificado TIC Talento" 
                   className="w-64 h-64 object-contain"
-                  fallbackSrc="/lovable-uploads/384b0134-c54d-4f2d-9d89-8174e50ed97b.png"
-                  width={256}
-                  height={256}
                 />
               </div>
             </div>
@@ -400,13 +394,10 @@ const ProgramaTalentoTIC = () => {
             {/* Subtle TIC Select attribution */}
             <div className="mt-12 flex items-center justify-center space-x-2 text-sm text-gray-500">
               <span>{t('programaTalentoTIC.cta.contact.developedBy')}</span>
-              <LazyImage 
-                src="/lovable-uploads/tic-select-small.webp" 
+              <img 
+                src="/lovable-uploads/42d7e844-a2f7-47e6-9cbc-b08fab2c11e2.png" 
                 alt="TIC Select" 
                 className="h-4 w-auto opacity-70"
-                fallbackSrc="/lovable-uploads/42d7e844-a2f7-47e6-9cbc-b08fab2c11e2.png"
-                width={60}
-                height={16}
               />
             </div>
           </div>
