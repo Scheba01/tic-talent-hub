@@ -193,21 +193,21 @@ const MiPerfil = () => {
                   Familias de Roles Profesionales
                 </CardTitle>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Selecciona las áreas de especialización y roles profesionales en los que tienes experiencia
+                  Áreas de especialización y roles profesionales en los que tienes experiencia
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {profile.roleFamilies.map((familia, index) => (
-                    <div key={index} className="p-3 border rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <Badge variant="default" className="text-sm">
+                    <div key={index} className="p-4 border rounded-lg bg-muted/30">
+                      <div className="flex flex-col gap-2">
+                        <Badge variant="default" className="text-sm w-fit">
                           {familia.familia_rol}
                         </Badge>
                         {familia.familia_rol_otro && (
-                          <span className="text-sm text-muted-foreground">
-                            - {familia.familia_rol_otro}
-                          </span>
+                          <p className="text-sm text-muted-foreground">
+                            <strong>Especificación:</strong> {familia.familia_rol_otro}
+                          </p>
                         )}
                       </div>
                     </div>
