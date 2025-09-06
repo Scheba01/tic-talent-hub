@@ -231,6 +231,7 @@ const translations: Record<Language, Record<string,string>> = {
     'footer.privacy_policy': 'Política de Privacidad',
     'footer.cookies_policy': 'Política de Cookies',
     'footer.all_rights': '© 2024 TIC Select. Todos los derechos reservados.',
+    'footer.affiliate_program': 'Programa de Afiliados',
     'hero.title': 'El Talento que Impulsa la Industria TIC',
     'hero.subtitle': 'Conectamos líderes del sector de Pruebas, Inspección y Certificación (TIC) con el talento que necesitan para crecer. Entregamos una shortlist en 7 días. Garantizado.',
     'hero.discover_services': 'Descubre Nuestros Servicios',
@@ -1056,6 +1057,7 @@ const translations: Record<Language, Record<string,string>> = {
     'auth.token_expired': 'The reset link has expired. Please request a new one.',
     'auth.access_denied': 'Access denied. The link may have expired.',
     'auth.auth_error': 'Authentication error. Please try again.',
+    'footer.affiliate_program': 'Affiliate Program',
     // Profile Page Keys (English)
     'profile.title': 'My Professional Profile',
     'profile.subtitle': 'Complete information of your TIC profile',
@@ -1710,5 +1712,6 @@ const translations: Record<Language, Record<string,string>> = {
     'registration.privacy_policy': 'Política de Privacidade',
     'registration.submit': 'Enviar Registro',
     'registration.submitting': 'Enviando...',
+    'footer.affiliate_program': 'Programa de Afiliados',
   }
 };

@@ -44,7 +44,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/programa-afiliados" className="text-muted-foreground hover:text-primary transition-colors">
-                  Programa de Afiliados
+                   {t('footer.affiliate_program')}
                 </Link>
               </li>
               <li>
