@@ -155,9 +155,9 @@ const Footer = () => {
               <LazyImage 
                 src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
                 alt="TIC SELECT" 
-                className="h-8 w-auto"
-                width={120}
-                height={32}
+                className="h-10 w-auto object-contain"
+                width={150}
+                height={40}
               />
             </Link>
             <div className="flex flex-col md:flex-row items-center gap-4">
