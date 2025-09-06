@@ -75,7 +75,7 @@ const ProgramaTalentoTIC = () => {
               <div className="bg-white rounded-xl p-8 shadow-lg border border-cyan-100">
                 <div className="text-4xl font-bold text-blue-600 mb-2">{t('programaTalentoTIC.statistics.demand.value')}</div>
                 <div className="text-cyan-600 font-semibold mb-2">{t('programaTalentoTIC.statistics.demand.title')}</div>
-                <p className="text-gray-600">{t('programaTalentoTIC.statistics.demand.description')}</p>
+                <p className="text-gray-600">2030</p>
               </div>
             </div>
           </div>
