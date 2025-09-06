@@ -34,9 +34,23 @@ const QuienesSomos = () => {
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
               {t('about.title')}
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              {t('about.subtitle')}
-            </p>
+            <div className="text-xl text-muted-foreground leading-relaxed space-y-6 max-w-5xl mx-auto">
+              <p>
+                En TIC Select somos un equipo que proviene directamente de la industria de Testing, Inspección y Certificación (TIC), con más de 30 años de experiencia acumulada en distintos mercados de América Latina.
+              </p>
+              <p>
+                Nuestra trayectoria nos permite entender de primera mano los desafíos que enfrentan las empresas del sector y adaptar la búsqueda de talento según el nivel de madurez y las necesidades específicas de cada organización, ya sea en fases de crecimiento, expansión internacional o consolidación.
+              </p>
+              <p>
+                Contamos con una red regional sólida, con presencia en los principales países de LATAM, lo que nos da acceso privilegiado a profesionales técnicos, comerciales y ejecutivos especializados en TIC.
+              </p>
+              <p>
+                Más que un servicio de reclutamiento, ofrecemos una visión estratégica: sabemos cómo identificar a los perfiles que realmente generan impacto en el negocio, porque hemos estado en su lugar.
+              </p>
+              <p className="font-medium text-primary">
+                En TIC Select conectamos a las empresas con el talento adecuado en el momento justo, impulsando el desarrollo de una industria que no se detiene.
+              </p>
+            </div>
           </div>
         </section>
 
