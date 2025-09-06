@@ -14,6 +14,7 @@ import { COUNTRY_CODES } from "@/lib/registration-data";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet";
+import { supabase } from "@/integrations/supabase/client";
 
 
 const Contacto = () => {
@@ -43,28 +44,24 @@ const Contacto = () => {
     setIsSubmitting(true);
     
     try {
-      
-      // Formspree endpoint configured
-      const formspreeEndpoint = "https://formspree.io/f/xjkewene";
-      
-      const response = await fetch(formspreeEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      // Call the Supabase edge function
+      const { data, error } = await supabase.functions.invoke('contact-form', {
+        body: {
           nombre: formData.nombre,
           email: formData.email,
           empresa: formData.empresa,
           telefono: `${formData.codigoPais === "otro" ? formData.codigoOtro : formData.codigoPais} ${formData.telefono}`,
-          tipoConsulta: formData.tipoConsulta,
+          tipo_consulta: formData.tipoConsulta,
           mensaje: formData.mensaje,
-          _replyto: formData.email,
-          _subject: `Nueva consulta de ${formData.nombre} - ${formData.tipoConsulta}`
-        }),
+        },
       });
 
-      if (response.ok) {
+      if (error) {
+        console.error('Error calling edge function:', error);
+        throw new Error(error.message || "Failed to send message");
+      }
+
+      if (data && data.success) {
         toast.success(t('nav.home') === 'Home' ? "✅ Message sent successfully. We will contact you soon." : t('nav.home') === 'Início' ? "✅ Mensagem enviada com sucesso. Entraremos em contato em breve." : "✅ Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.", {
           style: {
             background: '#10B981',

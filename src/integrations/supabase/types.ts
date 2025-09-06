@@ -819,6 +819,39 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          empresa: string | null
+          id: string
+          mensaje: string
+          nombre: string
+          telefono: string | null
+          tipo_consulta: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          empresa?: string | null
+          id?: string
+          mensaje: string
+          nombre: string
+          telefono?: string | null
+          tipo_consulta?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          empresa?: string | null
+          id?: string
+          mensaje?: string
+          nombre?: string
+          telefono?: string | null
+          tipo_consulta?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
