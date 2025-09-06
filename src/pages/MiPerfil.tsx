@@ -190,15 +190,27 @@ const MiPerfil = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Star className="h-5 w-5" />
-                  Familias de Roles
+                  Familias de Roles Profesionales
                 </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Áreas de especialización y roles profesionales en los que tienes experiencia
+                </p>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
+                <div className="space-y-3">
                   {profile.roleFamilies.map((familia, index) => (
-                    <Badge key={index} variant="secondary">
-                      {familia.area}
-                    </Badge>
+                    <div key={index} className="p-3 border rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="default" className="text-sm">
+                          {familia.familia_rol}
+                        </Badge>
+                        {familia.familia_rol_otro && (
+                          <span className="text-sm text-muted-foreground">
+                            - {familia.familia_rol_otro}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </CardContent>
