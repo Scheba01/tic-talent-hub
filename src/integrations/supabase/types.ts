@@ -14,6 +14,41 @@ export type Database = {
   }
   public: {
     Tables: {
+      candidate_atencion_cliente: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_atencion_cliente_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       candidate_auditoria: {
         Row: {
           candidate_id: string | null
@@ -230,6 +265,41 @@ export type Database = {
           },
         ]
       }
+      candidate_direccion: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_direccion_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       candidate_experience: {
         Row: {
           candidate_id: string | null
@@ -261,6 +331,41 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "candidate_experience_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_hse: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_hse_candidate_id_fkey"
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
@@ -385,6 +490,41 @@ export type Database = {
           },
         ]
       }
+      candidate_legal: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_legal_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       candidate_operaciones: {
         Row: {
           areas: string[] | null
@@ -416,6 +556,41 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "candidate_operaciones_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_pmo: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_pmo_candidate_id_fkey"
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
@@ -480,6 +655,76 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "candidate_sectors_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_supply_chain: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_supply_chain_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_ti: {
+        Row: {
+          candidate_id: string | null
+          comentarios: string | null
+          created_at: string
+          experiencia: string | null
+          id: string
+          rol: string | null
+        }
+        Insert: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Update: {
+          candidate_id?: string | null
+          comentarios?: string | null
+          created_at?: string
+          experiencia?: string | null
+          id?: string
+          rol?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_ti_candidate_id_fkey"
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"

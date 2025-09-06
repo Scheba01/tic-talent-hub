@@ -303,6 +303,90 @@ const insertSpecializationData = async (candidateId: string, data: RegistrationF
     )
   }
 
+  // New areas - TI
+  if (data.familiasRol?.some(f => f.area === 'ti') && data.ti) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_ti').insert({
+        candidate_id: candidateId,
+        rol: data.ti.rol,
+        experiencia: data.ti.experiencia,
+        comentarios: data.ti.comentarios
+      }))
+    )
+  }
+
+  // HSE
+  if (data.familiasRol?.some(f => f.area === 'hse') && data.hse) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_hse').insert({
+        candidate_id: candidateId,
+        rol: data.hse.rol,
+        experiencia: data.hse.experiencia,
+        comentarios: data.hse.comentarios
+      }))
+    )
+  }
+
+  // Legal
+  if (data.familiasRol?.some(f => f.area === 'legal') && data.legal) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_legal').insert({
+        candidate_id: candidateId,
+        rol: data.legal.rol,
+        experiencia: data.legal.experiencia,
+        comentarios: data.legal.comentarios
+      }))
+    )
+  }
+
+  // Supply Chain
+  if (data.familiasRol?.some(f => f.area === 'supply-chain') && data.supplyChain) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_supply_chain').insert({
+        candidate_id: candidateId,
+        rol: data.supplyChain.rol,
+        experiencia: data.supplyChain.experiencia,
+        comentarios: data.supplyChain.comentarios
+      }))
+    )
+  }
+
+  // Atención al Cliente
+  if (data.familiasRol?.some(f => f.area === 'atencion-cliente') && data.atencionCliente) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_atencion_cliente').insert({
+        candidate_id: candidateId,
+        rol: data.atencionCliente.rol,
+        experiencia: data.atencionCliente.experiencia,
+        comentarios: data.atencionCliente.comentarios
+      }))
+    )
+  }
+
+  // PMO
+  if (data.familiasRol?.some(f => f.area === 'pmo') && data.pmo) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_pmo').insert({
+        candidate_id: candidateId,
+        rol: data.pmo.rol,
+        experiencia: data.pmo.experiencia,
+        comentarios: data.pmo.comentarios
+      }))
+    )
+  }
+
+  // Dirección
+  if (data.familiasRol?.some(f => f.area === 'direccion') && data.direccion) {
+    promises.push(
+      Promise.resolve(supabase.from('candidate_direccion').insert({
+        candidate_id: candidateId,
+        rol: data.direccion.rol,
+        experiencia: data.direccion.experiencia,
+        comentarios: data.direccion.comentarios
+      }))
+    )
+  }
+
   // Execute all specialization inserts
   if (promises.length > 0) {
     const results = await Promise.allSettled(promises)
