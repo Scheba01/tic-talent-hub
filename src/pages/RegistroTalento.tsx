@@ -51,12 +51,7 @@ const RegistroTalento = () => {
         nivel: ""
       }],
       autorizacionDatos: false,
-      experienciaLaboral: [{
-        empresa: "",
-        cargo: "",
-        periodo: "",
-        descripcion: ""
-      }],
+      experienciaLaboral: [],
       cv: [],
       comentarios: ""
     }
