@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import linkedinLogo from "@/assets/linkedin-logo.svg";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -79,7 +79,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
-                    <Linkedin className="h-4 w-4" />
+                    <img src={linkedinLogo} alt="LinkedIn" className="h-4 w-4" />
                   </a>
                 </Button>
               </li>
