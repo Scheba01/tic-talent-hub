@@ -62,16 +62,16 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="critical-nav">
-      <div className="critical-nav-container">
-        <div className="critical-nav-content">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/d7b9699f-31e6-4a94-a4ae-696ec5740e15.png" 
+            <LazyImage 
+              src="/lovable-uploads/tic-select-logo.webp" 
               alt="TIC SELECT" 
-              className="critical-logo"
-              loading="eager"
+              className="h-8 w-auto"
+              priority={true}
             />
           </Link>
 
@@ -88,7 +88,7 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild className="btn-hero">
+            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
               <Link to={getLocalizedPath("/contacto")}>{t('nav.contact')}</Link>
             </Button>
             
@@ -202,7 +202,7 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button asChild className="btn-hero w-full">
+                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground w-full">
                   <Link to={getLocalizedPath("/contacto")} onClick={() => setIsOpen(false)}>
                     {t('nav.contact')}
                   </Link>
