@@ -151,8 +151,7 @@ export const submitCandidate = async (data: RegistrationFormData): Promise<Candi
       const roleFamilyInserts = data.familiasRol.map(familia => ({
         candidate_id: candidateId,
         familia_rol: familia.area,
-        familia_rol_otro: familia.area === 'otro' ? familia.areaOtro : null,
-        comentarios: familia.comentarios
+        familia_rol_otro: familia.area === 'otro' ? familia.areaOtro : null
       }))
 
       const { error: roleFamilyError } = await supabase
