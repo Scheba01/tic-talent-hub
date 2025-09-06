@@ -147,6 +147,7 @@ All colors MUST be HSL. Following the black and red brand colors.
   
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
+  }
 }
 
 /* Mobile Core Web Vitals Optimizations */
