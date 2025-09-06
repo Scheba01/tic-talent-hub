@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePerformanceOptimization } from "@/hooks/use-performance-optimization";
 import Index from "./pages/Index";
 import QuienesSomos from "./pages/QuienesSomos";
-import ServiciosEmpresas from "./pages/ServiciosEmpresas";
+import ServiciosEmpresas from "./pages/ServiciosEmpresas_Clean";
 import VacantesPerfiles from "./pages/VacantesPerfiles";
 import ProgramaTalentoTIC from "./pages/ProgramaTalentoTIC";
 import RegistroTalento from "./pages/RegistroTalento";
