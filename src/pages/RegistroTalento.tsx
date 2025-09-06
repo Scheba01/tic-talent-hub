@@ -227,7 +227,7 @@ const RegistroTalento = () => {
                           <FormField control={form.control} name="pais" render={({
                           field
                         }) => <FormItem>
-                                <FormLabel>País de residencia</FormLabel>
+                                <FormLabel>País de residencia <span className="text-red-500">*</span></FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
