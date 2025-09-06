@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Globe, User, LogOut } from "lucide-react";
+import { Menu, X, Globe, User, LogOut, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,7 +12,7 @@ import {
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ticSelectLogo from "@/assets/tic-select-logo.png";
-import linkedinLogo from "@/assets/linkedin-logo.svg";
+
 import LazyImage from "@/components/ui/lazy-image";
 
 const Navigation = () => {
@@ -143,7 +143,7 @@ const Navigation = () => {
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
-                <img src={linkedinLogo} alt="LinkedIn" className="h-4 w-4" />
+                <Linkedin className="h-4 w-4 text-[#0077B5]" />
               </a>
             </Button>
             
