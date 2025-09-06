@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const ProgramaAfiliados = () => {
@@ -56,9 +57,11 @@ const ProgramaAfiliados = () => {
             </div>
 
             <div className="text-center pt-8">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Únete al Programa
-              </Button>
+              <Link to="/contacto">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Únete al Programa
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
