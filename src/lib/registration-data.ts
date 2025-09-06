@@ -66,6 +66,7 @@ export const FAMILIAS_ROL = [
   { value: "pmo", label: "PMO / Proyectos" },
   { value: "direccion", label: "Dirección / General Management" },
   { value: "consultoria", label: "Consultoría / Asesoría" },
+  { value: "implementador", label: "Implementador" },
   { value: "otro", label: "Otro" }
 ]
 
