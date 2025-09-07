@@ -61,7 +61,9 @@ const Contacto = () => {
         throw new Error(error.message || "Failed to send message");
       }
 
-      if (data && data.success) {
+      console.log('Contact form response:', data);
+
+      if (data && (data.success || data.message)) {
         toast.success(t('nav.home') === 'Home' ? "✅ Message sent successfully. We will contact you soon." : t('nav.home') === 'Início' ? "✅ Mensagem enviada com sucesso. Entraremos em contato em breve." : "✅ Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.", {
           style: {
             background: '#10B981',
