@@ -549,7 +549,7 @@ const ServiciosEmpresas = () => {
               <Button
                 variant="outline"
                 className="w-full border-red-500 text-red-600 hover:bg-red-50 hover:text-red-700 px-12 py-4"
-                onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
+                onClick={() => window.open('mailto:contacto@ticselect.com?subject=Consulta sobre servicios TIC Select', '_blank')}
               >
                 <Mail className="w-4 h-4 mr-2" />
                 {t('why.direct_email')}
