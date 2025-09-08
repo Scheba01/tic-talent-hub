@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
+import { Resend } from "npm:resend@2.0.0";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -78,6 +79,36 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     console.log('Contact form submitted successfully:', data);
+
+    // Send email notification
+    try {
+      const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+      
+      const emailContent = `
+        <h2>Nueva consulta de contacto - TIC Select</h2>
+        <p><strong>Nombre:</strong> ${formData.nombre}</p>
+        <p><strong>Email:</strong> ${formData.email}</p>
+        ${formData.empresa ? `<p><strong>Empresa:</strong> ${formData.empresa}</p>` : ''}
+        ${formData.telefono ? `<p><strong>Teléfono:</strong> ${formData.telefono}</p>` : ''}
+        ${formData.tipo_consulta ? `<p><strong>Tipo de consulta:</strong> ${formData.tipo_consulta}</p>` : ''}
+        <p><strong>Mensaje:</strong></p>
+        <p>${formData.mensaje.replace(/\n/g, '<br>')}</p>
+        <hr>
+        <p><small>Enviado desde el formulario de contacto de ticselect.com</small></p>
+      `;
+
+      const emailResponse = await resend.emails.send({
+        from: 'Formulario TIC Select <no-reply@ticselect.com>',
+        to: ['contacto@ticselect.com'],
+        subject: `Nueva consulta: ${formData.tipo_consulta || 'Contacto general'} - ${formData.nombre}`,
+        html: emailContent,
+      });
+
+      console.log('Email sent successfully:', emailResponse);
+    } catch (emailError) {
+      console.error('Error sending email notification:', emailError);
+      // Don't fail the request if email fails, just log it
+    }
 
     // Return success response
     return new Response(
