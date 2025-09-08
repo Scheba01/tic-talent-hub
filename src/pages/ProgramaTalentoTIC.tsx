@@ -386,7 +386,7 @@ const ProgramaTalentoTIC = () => {
               <Button
                 variant="outline"
                 className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 px-12 py-4"
-                onClick={() => window.open('mailto:email@ticselect.com?subject=Consulta sobre Programa TIC Talento', '_blank')}
+                onClick={() => window.open('mailto:contacto@ticselect.com?subject=Consulta sobre Programa TIC Talento', '_blank')}
               >
                 <Mail className="w-4 h-4 mr-2" />
                 {t('programaTalentoTIC.cta.contact.email')}
