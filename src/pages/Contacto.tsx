@@ -131,7 +131,7 @@ const Contacto = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="nombre">{t('contact.form.full_name')}</Label>
+                        <Label htmlFor="nombre">{t('contact.form.full_name')} <span className="text-red-500">*</span></Label>
                         <Input
                           id="nombre"
                           type="text"
