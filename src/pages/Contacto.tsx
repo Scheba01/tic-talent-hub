@@ -160,7 +160,6 @@ const Contacto = () => {
                           type="text"
                           value={formData.empresa}
                           onChange={(e) => setFormData({...formData, empresa: e.target.value})}
-                          required
                         />
                       </div>
                     </div>
