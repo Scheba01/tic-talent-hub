@@ -9,12 +9,14 @@ export const EmailTest = () => {
   const sendTestEmail = async () => {
     setSending(true)
     try {
-      const { data, error } = await supabase.functions.invoke('send-confirmation-email', {
+      const { data, error } = await supabase.functions.invoke('contact-form', {
         body: {
-          name: 'Test User - TIC Select Demo',
+          nombre: 'Test User - Email Validation',
           email: 'bills.orders@gmail.com',
+          empresa: 'TIC Select Test',
           telefono: '+56912345678',
-          familiasRol: ['laboratorio', 'inspección', 'certificación de sistemas']
+          tipo_consulta: 'test-email',
+          mensaje: 'This is a test email to validate the contact form email system is working properly.'
         }
       })
 
@@ -23,7 +25,7 @@ export const EmailTest = () => {
         toast.error('Error enviando email: ' + error.message)
       } else {
         console.log('Email sent successfully:', data)
-        toast.success('¡Email de prueba enviado exitosamente a bills.orders@gmail.com!')
+        toast.success('¡Formulario de contacto enviado! Revisa contacto@ticselect.com para el email.')
       }
     } catch (error) {
       console.error('Error:', error)
@@ -35,9 +37,9 @@ export const EmailTest = () => {
 
   return (
     <div className="max-w-md mx-auto p-6 border rounded-lg shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">Test Email System</h3>
+      <h3 className="text-lg font-semibold mb-4">Test Contact Form Email</h3>
       <p className="text-sm text-muted-foreground mb-4">
-        This will send a test confirmation email to bills.orders@gmail.com
+        This will submit a test contact form to validate email delivery to contacto@ticselect.com
       </p>
       <Button 
         onClick={sendTestEmail} 
