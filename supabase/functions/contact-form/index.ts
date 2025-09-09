@@ -98,7 +98,7 @@ const handler = async (req: Request): Promise<Response> => {
       `;
 
       const emailResponse = await resend.emails.send({
-        from: 'TIC Select Contact <onboarding@resend.dev>',
+        from: 'Formulario TIC Select <no-reply@ticselect.com>',
         to: ['contacto@ticselect.com'],
         subject: `Nueva consulta: ${formData.tipo_consulta || 'Contacto general'} - ${formData.nombre}`,
         html: emailContent,
