@@ -82,7 +82,15 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email notification
     try {
-      const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+      const resendApiKey = Deno.env.get('RESEND_API_KEY');
+      console.log('Resend API Key available:', !!resendApiKey);
+      
+      if (!resendApiKey) {
+        console.error('RESEND_API_KEY environment variable is not set');
+        throw new Error('RESEND_API_KEY not configured');
+      }
+      
+      const resend = new Resend(resendApiKey);
       
       const emailContent = `
         <h2>Nueva consulta de contacto - TIC Select</h2>
