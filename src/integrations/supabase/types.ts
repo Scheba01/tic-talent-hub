@@ -53,13 +53,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_access_log_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_atencion_cliente: {
@@ -93,13 +86,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_atencion_cliente_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -143,13 +129,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_auditoria_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_cert_personas: {
@@ -185,13 +164,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_cert_personas_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_cert_productos: {
@@ -225,13 +197,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_cert_productos_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -272,13 +237,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_cert_sistemas_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_comercial: {
@@ -317,13 +275,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_comercial_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_competencies: {
@@ -351,13 +302,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_competencies_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -393,13 +337,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_direccion_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -440,13 +377,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_experience_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_hse: {
@@ -480,13 +410,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_hse_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -530,13 +453,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_inspection_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_laboratory: {
@@ -578,13 +494,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_laboratory_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_languages: {
@@ -620,13 +529,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_languages_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_legal: {
@@ -660,13 +562,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_legal_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -707,13 +602,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_operaciones_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_pmo: {
@@ -749,13 +637,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_pmo_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_role_families: {
@@ -788,13 +669,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_role_families_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_sectors: {
@@ -825,13 +699,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_sectors_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -869,13 +736,6 @@ export type Database = {
             referencedRelation: "candidates"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "candidate_supply_chain_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
-            referencedColumns: ["id"]
-          },
         ]
       }
       candidate_ti: {
@@ -909,13 +769,6 @@ export type Database = {
             columns: ["candidate_id"]
             isOneToOne: false
             referencedRelation: "candidates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "candidate_ti_candidate_id_fkey"
-            columns: ["candidate_id"]
-            isOneToOne: false
-            referencedRelation: "candidates_secure"
             referencedColumns: ["id"]
           },
         ]
@@ -1117,93 +970,7 @@ export type Database = {
       }
     }
     Views: {
-      candidates_secure: {
-        Row: {
-          area_estudio: string | null
-          area_estudio_otro: string | null
-          autorizacion_datos: boolean | null
-          certificaciones: string | null
-          certificados_adicionales_url: string | null
-          ciudad: string | null
-          codigo_otro: string | null
-          codigo_pais: string | null
-          comentarios: string | null
-          created_at: string | null
-          cv_url: string | null
-          disponibilidad: string | null
-          email: string | null
-          id: string | null
-          jornada: string | null
-          linkedin: string | null
-          nivel_maximo: string | null
-          nombre_completo: string | null
-          pais: string | null
-          pais_otro: string | null
-          situacion_actual: string | null
-          status: string | null
-          sueldo_actual_bruto: string | null
-          telefono: string | null
-          updated_at: string | null
-          user_id: string | null
-        }
-        Insert: {
-          area_estudio?: string | null
-          area_estudio_otro?: string | null
-          autorizacion_datos?: boolean | null
-          certificaciones?: string | null
-          certificados_adicionales_url?: never
-          ciudad?: string | null
-          codigo_otro?: string | null
-          codigo_pais?: string | null
-          comentarios?: string | null
-          created_at?: string | null
-          cv_url?: never
-          disponibilidad?: string | null
-          email?: never
-          id?: string | null
-          jornada?: string | null
-          linkedin?: string | null
-          nivel_maximo?: string | null
-          nombre_completo?: never
-          pais?: string | null
-          pais_otro?: string | null
-          situacion_actual?: string | null
-          status?: string | null
-          sueldo_actual_bruto?: never
-          telefono?: never
-          updated_at?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          area_estudio?: string | null
-          area_estudio_otro?: string | null
-          autorizacion_datos?: boolean | null
-          certificaciones?: string | null
-          certificados_adicionales_url?: never
-          ciudad?: string | null
-          codigo_otro?: string | null
-          codigo_pais?: string | null
-          comentarios?: string | null
-          created_at?: string | null
-          cv_url?: never
-          disponibilidad?: string | null
-          email?: never
-          id?: string | null
-          jornada?: string | null
-          linkedin?: string | null
-          nivel_maximo?: string | null
-          nombre_completo?: never
-          pais?: string | null
-          pais_otro?: string | null
-          situacion_actual?: string | null
-          status?: string | null
-          sueldo_actual_bruto?: never
-          telefono?: never
-          updated_at?: string | null
-          user_id?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       apply_data_retention_policy: {
